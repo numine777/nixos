@@ -5,6 +5,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
     # awesomewm modules
@@ -12,7 +13,7 @@
     rubato = { url = "github:andOrlando/rubato"; flake = false; };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, emacs-overlay, nixpkgs-f2k, ... }@inputs:
     let
       system = "x86_64-linux";
 
@@ -51,6 +52,7 @@
       overlays = [
         nixpkgs-f2k.overlay
         neovim-nightly.overlay
+        emacs-overlay.overlay
       ];
     in
     {
@@ -63,7 +65,7 @@
               programs.home-manager.enable = true;
               home.keyboard = null;
               nixpkgs.overlays = overlays;
-              imports = [ ./hosts/thelio/user.nix ];
+              imports = [ ./hosts/nixosThelio/user.nix ];
             };
           system = "x86_64-linux";
           homeDirectory = "/home/scott";
@@ -78,7 +80,7 @@
             {
               nixpkgs.overlays = overlays;
             }
-            ./hosts/thelio/configuration.nix
+            ./hosts/nixosThelio/configuration.nix
           ];
         };
       };

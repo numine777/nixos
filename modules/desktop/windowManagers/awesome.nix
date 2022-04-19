@@ -10,9 +10,9 @@ in
 
   config = mkIf cfg.enable {
     home.file = {
-      ".config/awesome".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/awesome";
-      "dotfiles/config/awesome/modules/bling".source = inputs.bling.outPath;
-      "dotfiles/config/awesome/modules/rubato".source = inputs.rubato.outPath;
+      ".config/awesome".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/awesome";
+      "nixos/config/awesome/modules/bling".source = inputs.bling.outPath;
+      "nixos/config/awesome/modules/rubato".source = inputs.rubato.outPath;
     };
   };
 }

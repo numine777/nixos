@@ -3,6 +3,8 @@
   set -g prefix C-a
   bind C-a send-prefix
   setw -g mode-keys vi
+  set -g base-index 1
+  setw -g pane-base-index 1
   # cheat sheet
   bind -r i run-shell "tmux neww tmux-cht.sh"
   # Kitty

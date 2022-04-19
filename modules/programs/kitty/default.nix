@@ -19,7 +19,7 @@ in
         size = 14;
       };
       settings = {
-        cursor_shape = "underline";
+        cursor_shape = "block";
         window_padding_width = "20 30 20 30";
         scrollback_lines = 5000;
         tab_bar_style = "fade";

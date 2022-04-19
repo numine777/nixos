@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  services.xserver.  services.xserver = {
+  services.xserver = {
     enable = true;
     # displayManager.lightdm = {
     #   enable = true;
@@ -9,13 +9,13 @@
     extraLayouts.real-prog-dvorak = {
       description = "Real Programmers Dvorak";
       languages = [ "eng" ];
+      # symbolsFile = "${config.home.homeDirectory}/nixos/modules/system/symbols/real-prog-dvorak";
       symbolsFile = ./symbols/real-prog-dvorak;
     };
 
-    displayManager = {
-      # defaultSession = "xfce+i3";
-      sddm.enable = true;
-      defaultSession = "none+awesome";
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
     };
     libinput.enable = true;
     layout = "real-prog-dvorak";
@@ -28,6 +28,14 @@
         enable = true;
         package = pkgs.i3-gaps;
       };
+      berry.enable = true;
+      herbstluftwm.enable = true;
     };
   };
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
+  programs.slock.enable = true;
 }

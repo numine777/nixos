@@ -17,6 +17,6 @@ in
       python39Packages.isort
     ];
     home.file.".config/nvim".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nvim";
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim";
   };
 }

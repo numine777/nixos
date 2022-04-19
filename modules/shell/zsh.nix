@@ -3,7 +3,7 @@
   programs.zsh = {
     enable = true;
     enableSyntaxHighlighting = true;
-    initExtra = "bindkey -s ^f \"tmux-sessionizer\\n\"";
+    initExtra = "bindkey -s ^f \"tmux-sessionizer\\n\"\neval \"$(direnv hook zsh)\"";
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
@@ -21,8 +21,8 @@
     localVariables = {
       ANDROID_SDK_ROOT = "/home/scott/Android/Sdk";
       ANDROID_HOME = "/home/scott/Android/Sdk";
-      PATH =
-        "$PATH:/home/scott/bin/depot_tools:/home/scott/.local/bin:/home/scott/go/bin:/home/scott/.android/:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$HOME/bin/flutter/bin:$HOME/.poetry/bin:$HOME/.local/.npm-global/bin";
+      # PATH =
+      #   "$PATH:/home/scott/bin/depot_tools:/home/scott/.local/bin:/home/scott/go/bin:/home/scott/.android/:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$HOME/bin/flutter/bin:$HOME/.poetry/bin:$HOME/.local/.npm-global/bin";
     };
     history = {
       size = 10000;

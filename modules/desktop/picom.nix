@@ -11,9 +11,9 @@ in
   config = mkIf cfg.enable {
     services.picom = {
       enable = true;
-      package = pkgs.picom;
-      fade = false;
-      experimentalBackends = false;
+      package = pkgs.picom-git;
+      fade = true;
+      experimentalBackends = true;
       # inactiveDim = "0.05";
       shadow = true;
       extraOptions = ''

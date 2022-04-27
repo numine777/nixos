@@ -1,0 +1,6 @@
+.luarc.json
+bin/result
+config/awesome/modules/
+config/nvim/plugin/
+result
+

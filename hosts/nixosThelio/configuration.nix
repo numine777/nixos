@@ -12,6 +12,7 @@
       ../../modules/system/sound.nix
       ../../modules/system/xorg.nix
     ];
+  nixpkgs.config.allowUnfree = true; 
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -20,6 +21,7 @@
   boot.loader.grub.configurationLimit = 5;
   hardware.system76.kernel-modules.enable = true;
   hardware.system76.enableAll = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
 
   # use latest kernel
   # boot.kernelPackages = pkgs.linuxPackages_latest;

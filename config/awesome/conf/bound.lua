@@ -11,7 +11,7 @@ awful.keyboard.append_global_keybindings {
   awful.key({ modkey }, "Return", function()
     awful.spawn(C.terminal)
   end, { description = "open a terminal", group = "launcher" }),
-  awful.key({ modkey }, "space", function()
+  awful.key({ modkey }, "d", function()
     awful.spawn "rofi -show drun"
   end, { description = "run prompt", group = "launcher" }),
   awful.key({ modkey }, "w", function()

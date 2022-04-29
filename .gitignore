@@ -3,4 +3,5 @@ bin/result
 config/awesome/modules/
 config/nvim/plugin/
 result
+config/zsh/.zsh/zinit
 

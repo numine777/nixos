@@ -103,6 +103,7 @@ autoload -U add-zsh-hook
 # aliases
 source "$HOME/.zsh/aliases.zsh"
 source "$HOME/.zsh/git.zsh"
+source "$HOME/.zsh/git-prompt.sh"
 
 # better url management
 autoload -Uz url-quote-magic
@@ -126,26 +127,41 @@ bindkey '^[[H' beginning-of-line                  # home
 bindkey '^[[F' end-of-line                        # end
 bindkey -s '^f' "tmux-sessionizer\n"
 
-# prompt
-precmd() {
-    precmd() {
-        echo
-    }
-}
-eval "$(zoxide init zsh)"
-
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-zstyle ':vcs_info:git:*' formats '%F{red}(%b)%r%f'
-zstyle ':vcs_info:*' enable git
+# # prompt
+# precmd() {
+#     precmd() {
+#         echo
+#     }
+# }
+# eval "$(zoxide init zsh)"
 
 autoload -U promptinit && promptinit
 setopt PROMPTSUBST
+# B.
+zinit wait lucid for \
+  OMZL::git.zsh \
+  atload"unalias grv" \
+  OMZP::git
+
+PS1="READY >" # provide a simple prompt till the theme loads
+
+# C.
+zinit wait'!' lucid for \
+  OMZL::prompt_info_functions.zsh \
+  OMZL::spectrum.zsh \
+  OMZL::theme-and-appearance.zsh \
+  OMZT::robbyrussell
+
+# D.
+zinit wait lucid for \
+  atinit"zicompinit; zicdreplay" \
+  z-shell/fast-syntax-highlighting \
+  OMZP::colored-man-pages \
+  as"completion" \
+  OMZP::docker/_docker
 _prompt_nix() {
   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
 }
-PS1='%F{green}>%f $vcs_info_msg_0_ '
 RPS1='$(_prompt_nix)%F{blue}%~%f'
 if [ -n "$IN_NIX_SANDBOX" ]; then
   PS1+='%F{red}[sandbox]%f '

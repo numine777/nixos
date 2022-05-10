@@ -82,7 +82,7 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path '${ZDOTDIR:-$HOME}/.zcompcache'
+zstyle ':completion::complete:*' cache-path "${ZINIT[HOME_DIR]}/.zcompcache"
 zstyle ':completion:*' list-colors $LS_COLORS
 zstyle ':completion:*:*:*:*:processes' command'ps -u $USER -o pid,user,comm,cmd -w -w'
 zstyle ':completion:*:exa' file-sort modification
@@ -167,3 +167,4 @@ if [ -n "$IN_NIX_SANDBOX" ]; then
   PS1+='%F{red}[sandbox]%f '
 fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(direnv hook zsh)"

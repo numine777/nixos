@@ -20,14 +20,15 @@ in
       font pango:JetBrainsMono Nerd Font 9
 
       # gaps
-      gaps inner 10
-      gaps outer 10
+      gaps inner 4
+      gaps outer 4
 
       # decorations
       title_align center
 
       default_border pixel 0
 
+      exec_always feh --bg-scale /home/scott/backgrounds/dragon-girl.jpg
       set $fg_focus   #abb2bf
       set $bg_focus   #c678dd
       set $fg_unfocus #545862
@@ -40,17 +41,17 @@ in
       client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
       # start a terminal
-      bindsym $mod+Shift+Return exec kitty
+      bindsym $mod+Return exec kitty
 
       # keybinding for apps that i use often
-      bindsym $mod+Shift+b exec brave
+      bindsym $mod+b exec brave
       bindsym $mod+Shift+e exec emacs
 
       # kill focused window
       bindsym $mod+Shift+c kill
 
       # rofi
-      bindsym $mod+p exec --no-startup-id rofi -show drun
+      bindsym $mod+d exec --no-startup-id rofi -show drun
 
       # Use pactl to adjust volume in PulseAudio.
       bindsym XF86AudioRaiseVolume exec --no-startup-id setvol +5%

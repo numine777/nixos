@@ -25,12 +25,12 @@ panel_window_name = tint2
 
 # Taskbar
 taskbar_name = 1
-taskbar_mode = single_desktop
-taskbar_hide_inactive_tasks = 1
+taskbar_mode = multi_desktop
+taskbar_hide_inactive_tasks = 0
 taskbar_name_padding = 10
 taskbar_name_font_color = #d4be98 100
 taskbar_name_active_font_color = #89b482 100
-taskbar_name_font = JetBrainsMono Nerd Font 8
+taskbar_name_font = JetBrainsMono Nerd Font 10
 taskbar_name_background_id = 2
 taskbar_padding = 10 3 2
 
@@ -42,12 +42,16 @@ task_font_color = #d4be98 100
 task_font = JetBrainsMono Nerd Font 8
 
 # Battery
-execp = new
-execp_command = status bat
-execp_interval = 30
-execp_font = JetBrainsMono Nerd Font 8
-execp_font_color = #a9b665 100
-execp_padding = 15 0
+# execp = new
+# execp_command = status bat
+# execp_interval = 30
+# execp_font = JetBrainsMono Nerd Font 8
+# execp_font_color = #a9b665 100
+# execp_padding = 15 0
+
+# Systray
+systray = 1
+systray_padding = 15 0
 
 # Clock
 time1_format =  %H:%M

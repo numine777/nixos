@@ -39,31 +39,31 @@ local apps = wibox.widget {
   app_inkscape,
 }
 
-local battery_percent = wibox.widget {
-  widget = wibox.widget.textclock,
-  font = beautiful.font_name .. " Bold 10",
-  valign = "center",
-  align = "center",
-  text = "lol",
-}
+-- local battery_percent = wibox.widget {
+--   widget = wibox.widget.textclock,
+--   font = beautiful.font_name .. " Bold 10",
+--   valign = "center",
+--   align = "center",
+--   text = "lol",
+-- }
 
-local battery_circle = wibox.widget {
-  value = 0,
-  border_width = 6,
-  widget = wibox.container.radialprogressbar,
-  color = beautiful.fg_normal,
-  border_color = beautiful.bg_focus,
-  {
-    -- widget = wibox.widget.imagebox,
-    -- image = beautiful.charge_icon,
-    -- stylesheet = " * { stroke: " .. beautiful.fg_normal .. " }",
-    -- valign = "center",
-    -- halign = "center",
-    battery_percent,
-    widget = wibox.container.margin,
-    margins = 20,
-  },
-}
+-- local battery_circle = wibox.widget {
+--   value = 0,
+--   border_width = 6,
+--   widget = wibox.container.radialprogressbar,
+--   color = beautiful.fg_normal,
+--   border_color = beautiful.bg_focus,
+--   {
+--     -- widget = wibox.widget.imagebox,
+--     -- image = beautiful.charge_icon,
+--     -- stylesheet = " * { stroke: " .. beautiful.fg_normal .. " }",
+--     -- valign = "center",
+--     -- halign = "center",
+--     battery_percent,
+--     widget = wibox.container.margin,
+--     margins = 20,
+--   },
+-- }
 
 -- awesome.connect_signal("squeal::battery", function(capacity, status)
 --   local fill_color = beautiful.fg_normal
@@ -84,17 +84,17 @@ local battery_circle = wibox.widget {
 --   battery_circle.color = fill_color
 -- end)
 
-local battery = wibox.widget {
-  widget = wibox.container.background,
-  bg = beautiful.bg_subtle,
-  forced_width = 100,
-  forced_height = 100,
-  {
-    widget = wibox.container.margin,
-    margins = 15,
-    battery_circle,
-  },
-}
+-- local battery = wibox.widget {
+--   widget = wibox.container.background,
+--   bg = beautiful.bg_subtle,
+--   forced_width = 100,
+--   forced_height = 100,
+--   {
+--     widget = wibox.container.margin,
+--     margins = 15,
+--     battery_circle,
+--   },
+-- }
 
 local calendar = wibox.widget {
   widget = wibox.container.background,

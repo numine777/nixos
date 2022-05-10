@@ -24,7 +24,7 @@ theme.fg_focus = "#ddc7a1"
 theme.fg_urgent = "#ddc7a1"
 theme.fg_minimize = "#a89984"
 
-theme.useless_gap = dpi(20)
+theme.useless_gap = dpi(10)
 theme.border_width = dpi(0)
 theme.border_color_normal = "#1d2021"
 theme.border_color_active = "#282828"
@@ -102,6 +102,5 @@ theme.tag_preview_widget_border_width = 2
 theme.tag_preview_widget_margin = 10
 
 theme.icon_theme = nil
--- theme.wallpaper = "./aegis-pointing.png"
 
 return theme

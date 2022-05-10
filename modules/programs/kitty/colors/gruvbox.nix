@@ -16,6 +16,7 @@
     inactive_tab_background = "#1d2021";
     inactive_tab_foreground = "#a89984";
     inactive_tab_font_style = "normal";
+    background_opacity 		= "0.60";
 
     color0 = "#1d2021";
     color1 = "#ea6962";

@@ -47,7 +47,7 @@ while [ "$1" ]; do
       exit ;;
     upgrade)
       nix flake update "$HOME/nixos"
-      sudo nixos-rebuild "${2:-switch}" --flake "$HOME/nixos#"
+      nixos-rebuild -use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
       nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "Finished upgrade"
       exit ;;

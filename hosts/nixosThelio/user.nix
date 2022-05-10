@@ -39,7 +39,7 @@
       nix.enable = true;
       node.enable = true;
       python.enable = true;
-      rust.enable = false;
+      rust.enable = true;
     };
     editors = {
       emacs.enable = true;

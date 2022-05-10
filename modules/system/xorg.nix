@@ -20,6 +20,9 @@
     };
     libinput.enable = true;
     layout = "real-prog-dvorak";
+    desktopManager = {
+      gnome.enable = true;
+    };
     windowManager = {
       awesome = {
         enable = true;

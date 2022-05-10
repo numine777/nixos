@@ -12,10 +12,10 @@ in
     services.picom = {
       enable = true;
       package = pkgs.picom-git;
-      fade = true;
-      experimentalBackends = true;
+      fade = false;
+      experimentalBackends = false;
       # inactiveDim = "0.05";
-      shadow = true;
+      shadow = false;
       extraOptions = ''
         shadow-radius = 60
         shadow-opacity = 0.25

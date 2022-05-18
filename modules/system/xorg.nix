@@ -18,6 +18,7 @@
       enable = true;
       wayland = true;
     };
+    desktopManager.mate.enable = true;
     libinput.enable = true;
     layout = "real-prog-dvorak";
     desktopManager = {

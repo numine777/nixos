@@ -45,10 +45,15 @@
     dconf
     direnv
     efibootmgr
+    flameshot
     glibc
     htop
+    lazygit
+    lazydocker
+    nnn
     postman
     jq
+    k9s
     kubectl
     lsof
     nix-index

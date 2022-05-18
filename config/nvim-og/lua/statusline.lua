@@ -147,4 +147,9 @@ utils.augroup("Statusline", {
     targets = { "*" },
     command = "setlocal statusline=%!v:lua.Statusline.inactive()",
   },
+  {
+    events = { "WinEnter,BufEnter" },
+    targets = { "NvimTree" },
+    command = "setlocal statusline=%!v:lua.Statusline.short()",
+  },
 })

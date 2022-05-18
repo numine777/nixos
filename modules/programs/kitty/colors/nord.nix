@@ -14,6 +14,7 @@
     inactive_tab_background = "#3b4252";
     inactive_tab_foreground = "#d8dee9";
     tab_bar_background = "#3b4252";
+    background_opacity 		= "0.80";
 
     color0 = "#2e3440";
     color1 = "#bf616a";

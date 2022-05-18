@@ -1,5 +1,4 @@
 local telescope = require "telescope"
-local utils = require "utils"
 local a = require "telescope.actions"
 local b = require "telescope.builtin"
 local x = telescope.extensions
@@ -56,7 +55,6 @@ telescope.setup {
 l "fzf"
 l "file_browser"
 l "live_grep_raw"
-l "git_worktree"
 
 local function grep()
   x.live_grep_raw.live_grep_raw {
@@ -139,44 +137,41 @@ local function lsp_code_actions()
   }
 end
 
-utils.nnoremap("<leader>f", b.find_files, {})
-utils.nnoremap("<leader>st", grep, {})
-utils.nnoremap("<leader>sh", b.help_tags, {})
-utils.nnoremap("<leader>sm", b.man_pages, {})
-utils.nnoremap("<leader>gw", x.git_worktree.git_worktrees, {})
-utils.nnoremap("<leader>gm", x.git_worktree.create_git_worktree, {})
---   ["<leader>"] = {
---     -- find
---     f = {
---       name = "+find",
---       f = { b.find_files, "files" },
---       -- r = { x.frecency.frecency, "frecent files" },
---       w = { grep, "grep" },
---       b = { b.current_buffer_fuzzy_find, "find in buffer" },
---       m = { b.man_pages, "man pages" },
---       h = { b.help_tags, "help" },
---       i = { ivy, "ivy" },
---       g = {
---         name = "+git",
---         f = { b.git_files, "files" },
---         b = { b.git_branches, "branches" },
---         c = { b.git_commits, "commits" },
---         s = { b.git_status, "status" },
---         S = { b.git_stash, "stash" },
---       },
---       l = {
---         name = "+lsp",
---         d = { b.lsp_definitions, "definitions" },
---         r = { b.references, "references" },
---         i = { b.lsp_implementations, "implementations" },
---         s = { b.lsp_document_symbols, "document symbols" },
---         w = { b.lsp_workspace_symbols, "workspace symbols" },
---       },
---     },
---   },
---   ["<M-f>"] = { ivy, "find files" },
---   ["<M-b>"] = { browse_files, "browse files" },
---   ["<M-s>"] = { buffers, "switch buffer" },
--- }
+local wk = require "which-key"
+
+wk.register {
+  ["<leader>"] = {
+    -- find
+    f = {
+      name = "+find",
+      f = { b.find_files, "files" },
+      -- r = { x.frecency.frecency, "frecent files" },
+      w = { grep, "grep" },
+      b = { b.current_buffer_fuzzy_find, "find in buffer" },
+      m = { b.man_pages, "man pages" },
+      h = { b.help_tags, "help" },
+      i = { ivy, "ivy" },
+      g = {
+        name = "+git",
+        f = { b.git_files, "files" },
+        b = { b.git_branches, "branches" },
+        c = { b.git_commits, "commits" },
+        s = { b.git_status, "status" },
+        S = { b.git_stash, "stash" },
+      },
+      l = {
+        name = "+lsp",
+        d = { b.lsp_definitions, "definitions" },
+        r = { b.references, "references" },
+        i = { b.lsp_implementations, "implementations" },
+        s = { b.lsp_document_symbols, "document symbols" },
+        w = { b.lsp_workspace_symbols, "workspace symbols" },
+      },
+    },
+  },
+  ["<M-f>"] = { ivy, "find files" },
+  ["<M-b>"] = { browse_files, "browse files" },
+  ["<M-s>"] = { buffers, "switch buffer" },
+}
 
 return { lsp_code_actions = lsp_code_actions }

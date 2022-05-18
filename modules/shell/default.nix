@@ -44,7 +44,6 @@
     curl
     dconf
     direnv
-    efibootmgr
     glibc
     htop
     postman
@@ -57,8 +56,6 @@
     tabnine
     tree
     unzip
-    xorg.xkbcomp
-    xscreensaver
   ];
 
   # not big enough for their own modules

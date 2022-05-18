@@ -72,6 +72,18 @@
           username = "scott";
           stateVersion = "21.11";
         };
+        nixM1 = home-manager.lib.homeManagerConfiguration {
+          inherit extraSpecialArgs;
+          configuration = { pkgs, config, ... }:
+            {
+              programs.home-manager.enable = true;
+              nixpkgs.overlays = overlays;
+              imports = [ ./hosts/nixM1/user.nix ];
+            };
+          system = "aarch64-darwin";
+          homeDirectory = "/Users/scott";
+          username = "scott";
+        };
       };
       nixosConfigurations = {
         nixosThelio = nixpkgs.lib.nixosSystem {

@@ -75,11 +75,11 @@ require("packer").startup({
 		})
 
 		--  LSP ----------------------------------------------------
-		-- use({
-		-- 	"jose-elias-alvarez/null-ls.nvim",
-		-- 	module = "null-ls",
-		-- 	after = "nvim-lspconfig",
-		-- })
+		use({
+			"jose-elias-alvarez/null-ls.nvim",
+			module = "null-ls",
+			after = "nvim-lspconfig",
+		})
 		use({
 			"folke/trouble.nvim",
 			after = "nvim-lspconfig",

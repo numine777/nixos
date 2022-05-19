@@ -1,9 +1,9 @@
 local u = require("utils")
 
-u.nnoremap("<leader>vf", vim.lsp.buf.format, {})
 u.nnoremap("<leader>e", ":Ex<CR>", {})
 u.nnoremap("<leader>a", require("harpoon.mark").add_file, {})
 u.nnoremap("<leader>bn", ":lua print(vim.fn.bufname())<CR>", {})
+-- u.nnoremap("<leader>pp", ":lua print(package.path)<CR>", {})
 u.nnoremap("<C-e>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {})
 u.nnoremap("<C-h>", ":lua require('harpoon.ui').nav_file(1)<CR>", {})
 u.nnoremap("<C-t>", ":lua require('harpoon.ui').nav_file(2)<CR>", {})

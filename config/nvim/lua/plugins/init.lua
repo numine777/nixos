@@ -158,7 +158,7 @@ require("packer").startup({
 			config = function()
 				require("plugins.cmp").init()
 				require("plugins.cmp_tabnine").init()
-				require("plugins.lspkind").init()
+				require("plugins.lsp_kind").init()
 			end,
 		})
 		use({

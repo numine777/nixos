@@ -3,7 +3,7 @@ local g = vim.g
 
 o.relativenumber = true
 o.clipboard = "unnamed"
-o.timeoutlen = 300
+o.timeoutlen = 500
 o.shiftwidth = 4
 o.tabstop = 4
 o.showtabline = 1

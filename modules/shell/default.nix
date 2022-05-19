@@ -9,8 +9,15 @@
   home.packages = with pkgs; [
     acpi
     alsa-utils
+    awscli
     bottom
     brightnessctl
+    brotli
+    cmake
+    curl
+    dconf
+    direnv
+    efibootmgr
     exa
     fd
     feh
@@ -18,52 +25,37 @@
     fortune
     fzf
     github-cli
+    glibc
     gnumake
     hsetroot
+    htop
+    jq
+    k9s
+    kubectl
+    lazygit
+    lazydocker
     lm_sensors
+    lsof
     maim
+    mosh
     ncdu
+    nix-index
+    nnn
     pamixer
     pass
     playerctl
     ranger
     (ripgrep.override { withPCRE2 = true; })
     slop
+    stow
+    tabnine
+    tree
     tmux
     unzip
     wget
     xclip
-    zoxide
-
-    _1password-gui
-    mosh
-    synergy
-    awscli
-    brotli
-    cmake
-    curl
-    dconf
-    direnv
-    efibootmgr
-    flameshot
-    glibc
-    htop
-    lazygit
-    lazydocker
-    nnn
-    postman
-    jq
-    k9s
-    kubectl
-    lsof
-    nix-index
-    slack-dark
-    stow
-    tabnine
-    tree
-    unzip
     xorg.xkbcomp
-    xscreensaver
+    zoxide
   ];
 
   # not big enough for their own modules

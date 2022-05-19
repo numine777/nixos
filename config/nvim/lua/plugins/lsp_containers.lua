@@ -94,9 +94,9 @@ local function setup(config, server)
 		config.cmd = lspcontainers.command(server, { network = "bridge" })
 		config.root_dir = util.root_pattern(".git", vim.fn.getcwd())
 
-		-- vim.api.nvim_exec([[
-		--   autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"TypeHint", "ChainingHint", "ParameterHint" } }
-		-- ]], false)
+		vim.api.nvim_exec([[
+		  autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"TypeHint", "ChainingHint", "ParameterHint" } }
+		]], false)
 	end
 
 	if server == "terraformls" then

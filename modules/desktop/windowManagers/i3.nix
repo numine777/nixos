@@ -17,7 +17,7 @@ in
             floating_modifier $mod
 
             # font
-            font pango:JetBrainsMono Nerd Font 11
+            font pango:JetBrainsMono Nerd Font 12
 
             # gaps
             gaps inner 4

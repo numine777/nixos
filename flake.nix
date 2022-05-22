@@ -57,7 +57,7 @@
     in
     {
       homemanagerConfigurations = {
-        nixosThelio = home-manager.lib.homeManagerConfiguration {
+        nixos = home-manager.lib.homeManagerConfiguration {
           inherit extraSpecialArgs;
           configuration = { pkgs, config, ... }:
             {
@@ -65,7 +65,7 @@
               programs.home-manager.enable = true;
               home.keyboard = null;
               nixpkgs.overlays = overlays;
-              imports = [ ./hosts/nixosThelio/user.nix ];
+              imports = [ ./hosts/nixos/user.nix ];
             };
           system = "x86_64-linux";
           homeDirectory = "/home/scott";
@@ -74,13 +74,13 @@
         };
       };
       nixosConfigurations = {
-        nixosThelio = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             {
               nixpkgs.overlays = overlays;
             }
-            ./hosts/nixosThelio/configuration.nix
+            ./hosts/nixos/configuration.nix
           ];
         };
       };

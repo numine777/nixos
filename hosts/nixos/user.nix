@@ -43,7 +43,7 @@
       rust.enable = true;
     };
     editors = {
-      emacs.enable = true;
+      emacs.enable = false;
       neovim.enable = true;
       vim.enable = false;
       helix.enable = true;

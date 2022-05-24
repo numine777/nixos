@@ -16,7 +16,6 @@
     cmake
     curl
     dconf
-    direnv
     efibootmgr
     exa
     fd
@@ -37,7 +36,6 @@
     lm_sensors
     lsof
     maim
-    mosh
     ncdu
     nix-index
     nnn

@@ -23,10 +23,13 @@ in
             gaps inner 4
             gaps outer 4
 
-            # decorations
-            title_align center
+            # Hide titlebar
+            new_window pixel
 
-            default_border pixel 1
+            # decorations
+            #title_align center
+
+            #default_border pixel 1
 
             exec_always feh --bg-scale /home/scott/altf4-dots/roles/nitrogen/files/cowboy-bebop-1920x1080.jpg
             set $fg_focus   #abb2bf
@@ -41,11 +44,14 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
+            # bindsym $mod+Return exec alacritty
             bindsym $mod+Return exec kitty
+            bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave
             bindsym $mod+b exec firefox
+            bindsym $mod+Shift+s exec nixGL slack
             bindsym $mod+Shift+e exec emacs
 
             # kill focused window
@@ -167,12 +173,17 @@ in
             bindsym $mod+Shift+9 move container to workspace number $ws9
             bindsym $mod+Shift+0 move container to workspace number $ws10
 
+            # move workspaces to differenc monitors
+            bindsym $mod+p move workspace to output right
+            bindsym $mod+o move workspace to output left
+
             # reload the configuration file
             bindsym $mod+Control+r reload
             # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
             bindsym $mod+Shift+r restart
             # exit i3 (logs you out of your X session)
-            bindsym $mod+Shift+q exec "i3-msg exit"
+            # bindsym $mod+Shift+q exec "i3-msg exit"
+            bindsym $mod+Shift+q exec mate-session-save --logout-dialog
 
             # resize window (you can also use the mouse for that)
             mode "resize" {
@@ -213,7 +224,7 @@ smart_borders on
             bar {
       	i3bar_command i3bar
       	status_command i3status
-      	position bottom
+      	position top
 
       ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
       #	tray_output primary
@@ -250,7 +261,7 @@ smart_borders on
           client.background       #2B2C2B
 
             # picom
-            exec --no-startup-id picom
+            exec --no-startup-id nixGL picom
 
             # set wallpaper (ft. feh)
             exec --no-startup-id ~/.fehbg

@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-let cfg = config.modules.desktop.picom;
+let
+  cfg = config.modules.desktop.picom;
 in
 {
   options.modules.desktop.picom = {
@@ -12,6 +13,7 @@ in
     services.picom = {
       enable = true;
       package = pkgs.picom;
+      # package = pkgs.picom;
       # fade = false;
       # experimentalBackends = false;
       # inactiveDim = "0.05";

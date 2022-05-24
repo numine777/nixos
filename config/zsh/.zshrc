@@ -168,3 +168,26 @@ if [ -n "$IN_NIX_SANDBOX" ]; then
 fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(direnv hook zsh)"
+# Copied from "direnv hook zsh" output:
+_direnv_hook_enabled=1
+_direnv_hook() {
+  if [ $_direnv_hook_enabled -eq 1 ]; then
+      eval "$("direnv" export zsh)";
+  fi
+}
+direnv-freeze() {
+    if [[ $# -eq 1 ]]; then
+        echo "direnv: setting up shell environment for directory $1"
+        pushd "$1" > /dev/null || return 1
+        eval "$(direnv export zsh)"
+        popd > /dev/null
+    fi
+    echo "direnv: disabling shell hook; use direnv-thaw to enable again"
+    _direnv_hook_enabled=0
+}
+direnv-thaw() {
+    echo "direnv: enabling shell hook"
+    _direnv_hook_enabled=1
+}
+
+# complete -F _cd direnv-freeze

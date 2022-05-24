@@ -7,21 +7,18 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+    nixgl.url = "github:guibou/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
 
     # awesomewm modules
     bling = { url = "github:BlingCorp/bling"; flake = false; };
     rubato = { url = "github:andOrlando/rubato"; flake = false; };
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, emacs-overlay, nixpkgs-f2k, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, emacs-overlay, nixpkgs-f2k, nixgl, ... }@inputs:
+
     let
       system = "x86_64-linux";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; }; # Forgive me Mr. Stallman
-      };
-
       lib = nixpkgs.lib.extend
         (final: prev:
           let
@@ -40,8 +37,17 @@
               type = types.bool;
               example = true;
             };
+
           });
 
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; }; # Forgive me Mr. Stallman
+        # overlays = [
+        #   (import ./wrapWithNixGL.nix)
+        # ];
+      };
 
       extraSpecialArgs = {
         inherit inputs self;
@@ -49,10 +55,14 @@
         rubato = inputs.rubato;
       };
 
+
+
       overlays = [
         nixpkgs-f2k.overlay
         neovim-nightly.overlay
         emacs-overlay.overlay
+        nixgl.overlay
+        (import ./overlays/wrapWithNixGL.nix)
       ];
     in
     {
@@ -64,12 +74,16 @@
               home.stateVersion = "21.11";
               programs.home-manager.enable = true;
               home.keyboard = null;
+              home.sessionVariables = {
+                LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
+                NIXPKGS_ALLOW_UNFREE = true;
+              };
               nixpkgs.overlays = overlays;
               imports = [ ./hosts/nixosThelio/user.nix ];
             };
           system = "x86_64-linux";
-          homeDirectory = "/home/scott";
-          username = "scott";
+          homeDirectory = "/home/mwalls";
+          username = "mwalls";
           stateVersion = "21.11";
         };
       };

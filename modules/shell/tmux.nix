@@ -1,4 +1,5 @@
 ''
+  set-option -g default-shell /bin/zsh
   # unbind C-b
   set -g prefix C-a
   bind C-a send-prefix
@@ -8,9 +9,9 @@
   # cheat sheet
   bind -r i run-shell "tmux neww tmux-cht.sh"
   # Kitty
-  set -g default-terminal "xterm-kitty"
-  set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
-  set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
+  set -g default-terminal "xterm-256color"
+  # set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+  # set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
   # vim style yank
   bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -i -sel clip > /dev/null"
   bind-key p run "xclip -o -sel clip | tmux load-buffer - ; tmux paste-buffer"
@@ -58,6 +59,23 @@
   # Message
   set-option -g message-style bg=default
   set-option -g message-style fg=green
+  # -- copy mode -----------------------------------------------------------------
+
+bind Enter copy-mode # enter copy mode
+
+run -b 'tmux bind -t vi-copy v begin-selection 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi v send -X begin-selection 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy C-v rectangle-toggle 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi C-v send -X rectangle-toggle 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy y copy-selection 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi y send -X copy-selection-and-cancel 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy Escape cancel 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi Escape send -X cancel 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy H start-of-line 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi H send -X start-of-line 2> /dev/null || true'
+run -b 'tmux bind -t vi-copy L end-of-line 2> /dev/null || true'
+run -b 'tmux bind -T copy-mode-vi L send -X end-of-line 2> /dev/null || true'
+
   # run '~/.tmux/plugins/tpm/tpm'
   # DONT WRITE ANYTHING AFTER THIS LINE
   # vim: ft=tmux

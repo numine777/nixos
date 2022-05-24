@@ -18,4 +18,3 @@ if [ -d "$HOME/n" ]; then
 fi
 
 export PATH=$N_PREFIX/bin:$PATH
-

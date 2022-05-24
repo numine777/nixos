@@ -1,9 +1,10 @@
 { config, pkgs, libs, ... }:
 {
-  imports = [ ./bottom.nix ./graphics.nix ./irssi.nix ./kitty ./mail.nix ];
+  imports = [ ./bottom.nix ./graphics.nix ./irssi.nix ./kitty ];
   home.packages = with pkgs; [
     _1password-gui
     brave
+    gcc
     firefox
     flameshot
     postman

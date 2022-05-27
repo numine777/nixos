@@ -45,7 +45,7 @@ in
 
             # start a terminal
             # bindsym $mod+Return exec alacritty
-            bindsym $mod+Return exec kitty
+            bindsym $mod+Return exec nixGLNvidia kitty
             bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
@@ -261,10 +261,10 @@ smart_borders on
           client.background       #2B2C2B
 
             # picom
-            exec --no-startup-id nixGL picom
+            exec --no-startup-id nixGLNvidia picom
 
             # set wallpaper (ft. feh)
-            exec --no-startup-id ~/.fehbg
+            # exec --no-startup-id ~/.fehbg
     '';
   };
 }

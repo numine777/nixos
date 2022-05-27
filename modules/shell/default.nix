@@ -15,7 +15,6 @@
     brotli
     cmake
     curl
-    dconf
     efibootmgr
     exa
     fd

@@ -1,3 +1,4 @@
+{ ... }@inputs:
 final: prev:
 
 prev.lib.genAttrs [

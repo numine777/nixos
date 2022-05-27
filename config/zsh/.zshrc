@@ -37,7 +37,7 @@ zinit wait lucid light-mode for \
   ' \
     zsh-users/zsh-completions \
   atinit"
-    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30000
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE='_*|pre(cmd|exec)|sudo pacman -S*|pacman -S*|paru -S*|yay -S*|\)\*'
   " \
@@ -86,24 +86,22 @@ zstyle ':completion::complete:*' cache-path "${ZINIT[HOME_DIR]}/.zcompcache"
 zstyle ':completion:*' list-colors $LS_COLORS
 zstyle ':completion:*:*:*:*:processes' command'ps -u $USER -o pid,user,comm,cmd -w -w'
 zstyle ':completion:*:exa' file-sort modification
-zstyle ':completion:*:exa' sort false
+zstyle ':completion:*:exa' sort true
 
 
 # History file configuration
 HISTFILE="$HOME/.zsh_hist"
 setopt extended_history          # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first    # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups          # Don't record an entry that was just recorded again
-setopt hist_find_no_dups         # Do not display a line previously found
-setopt hist_ignore_space         # ignore commands that start with space
+# setopt hist_ignore_dups          # Don't record an entry that was just recorded again
+# setopt hist_find_no_dups         # Do not display a line previously found
+# setopt hist_ignore_space         # ignore commands that start with space
 setopt inc_append_history        # add commands to HISTFILE in order of execution
 
 autoload -U add-zsh-hook
 
 # aliases
 source "$HOME/.zsh/aliases.zsh"
-source "$HOME/.zsh/git.zsh"
-source "$HOME/.zsh/git-prompt.sh"
 
 # better url management
 autoload -Uz url-quote-magic
@@ -158,7 +156,10 @@ zinit wait lucid for \
   z-shell/fast-syntax-highlighting \
   OMZP::colored-man-pages \
   as"completion" \
-  OMZP::docker/_docker
+  OMZP::docker/_docker \
+  OMZP::bazel/_bazel \
+  OMZP::fzf
+
 _prompt_nix() {
   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
 }

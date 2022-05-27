@@ -7,6 +7,7 @@
     gcc
     firefox
     flameshot
+    nixgl.auto.nixGLNvidia
     postman
     rofi
     notion-app-enhanced

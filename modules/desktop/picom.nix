@@ -13,7 +13,6 @@ in
     services.picom = {
       enable = true;
       package = pkgs.picom;
-      # package = pkgs.picom;
       # fade = false;
       # experimentalBackends = false;
       # inactiveDim = "0.05";

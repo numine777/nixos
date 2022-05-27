@@ -45,7 +45,8 @@
         inherit system;
         config = { allowUnfree = true; }; # Forgive me Mr. Stallman
         # overlays = [
-        #   (import ./wrapWithNixGL.nix)
+        #   (import ./overlays/wrapWithNixGL.nix)
+        #   (import ./overlays/wrappedPackages.nix)
         # ];
       };
 
@@ -62,7 +63,8 @@
         neovim-nightly.overlay
         emacs-overlay.overlay
         nixgl.overlay
-        (import ./overlays/wrapWithNixGL.nix)
+        # (import ./overlays/wrapWithNixGL.nix { inherit pkgs; inherit nixgl; })
+        # (import ./overlays/wrappedPackages.nix { inherit pkgs; })
       ];
     in
     {
@@ -73,6 +75,29 @@
             {
               home.stateVersion = "21.11";
               programs.home-manager.enable = true;
+              home.packages =
+                let
+                  nixGLNvidiaScript = pkgs.writeShellScriptBin "nixGLNvidia" ''
+                    $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixGLNvidia --no-out-link)/bin/* "$@"
+                  '';
+                  nixGLIntelScript = pkgs.writeShellScriptBin "nixGLIntel" ''
+                    $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixGLIntel --no-out-link)/bin/* "$@"
+                  '';
+                  nixVulkanIntelScript =
+                    pkgs.writeShellScriptBin "nixVulkanIntel" ''
+                      $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixVulkanIntel --no-out-link)/bin/* "$@"
+                    '';
+                  nixVulkanNvidiaScript =
+                    pkgs.writeShellScriptBin "nixVulkanNvidia" ''
+                      $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixVulkanNvidia --no-out-link)/bin/* "$@"
+                    '';
+                in
+                with pkgs; [
+                  nixGLNvidiaScript
+                  nixGLIntelScript
+                  nixVulkanIntelScript
+                  nixVulkanNvidiaScript
+                ];
               home.keyboard = null;
               home.sessionVariables = {
                 LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;

@@ -91,6 +91,9 @@ zstyle ':completion:*:exa' sort false
 
 # History file configuration
 HISTFILE="$HOME/.zsh_hist"
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+setopt appendhistory
 setopt extended_history          # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first    # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups          # Don't record an entry that was just recorded again
@@ -158,7 +161,8 @@ zinit wait lucid for \
   z-shell/fast-syntax-highlighting \
   OMZP::colored-man-pages \
   as"completion" \
-  OMZP::docker/_docker
+  OMZP::docker/_docker \
+  OMZP::fzf
 _prompt_nix() {
   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
 }

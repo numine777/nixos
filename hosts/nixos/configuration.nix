@@ -13,6 +13,7 @@
       ../../modules/system/xorg.nix
     ];
   nixpkgs.config.allowUnfree = true; 
+  virtualisation.vmware.guest.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.grub.enable = true;

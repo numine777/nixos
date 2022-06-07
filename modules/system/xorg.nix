@@ -2,6 +2,7 @@
 {
   services.xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ];
     # displayManager.lightdm = {
     #   enable = true;
     #   greeters.gtk.enable = true;

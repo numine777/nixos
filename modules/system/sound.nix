@@ -6,7 +6,7 @@
   '';
   boot.blacklistedKernelModules = [ "snd_pcsp" ];
   hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  # hardware.pulseaudio.package = pkgs.pulseaudioFull;
   # security.rtkit.enable = true;
   # services.pipewire = {
   #   enable = true;

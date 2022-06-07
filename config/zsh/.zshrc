@@ -70,7 +70,7 @@ setopt path_dirs                # Perform Path Search Even On Command Names With
 setopt auto_menu                # Show Completion Menu On A Successive Tab Press.
 setopt auto_list                # Automatically List Choices On Ambiguous Completion.
 setopt auto_param_slash         # If Completed Parameter Is A Directory, Add A Trailing Slash.
-setopt menu_complete            # Do Not Autoselect The First Completion Entry.
+# setopt menu_complete            # Do Not Autoselect The First Completion Entry.
 
 # zstyle
 zstyle ':completion:*:matches' group 'yes'
@@ -91,12 +91,15 @@ zstyle ':completion:*:exa' sort true
 
 # History file configuration
 HISTFILE="$HOME/.zsh_hist"
-setopt extended_history          # record timestamp of command in HISTFILE
-setopt hist_expire_dups_first    # delete duplicates first when HISTFILE size exceeds HISTSIZE
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+setopt APPENDHISTORY
+setopt EXTENDED_HISTORY          # record timestamp of command in HISTFILE
+setopt HIST_EXPIRE_DUPS_FIRST    # delete duplicates first when HISTFILE size exceeds HISTSIZE
 # setopt hist_ignore_dups          # Don't record an entry that was just recorded again
 # setopt hist_find_no_dups         # Do not display a line previously found
 # setopt hist_ignore_space         # ignore commands that start with space
-setopt inc_append_history        # add commands to HISTFILE in order of execution
+# setopt INC_APPEND_HISTORY        # add commands to HISTFILE in order of execution
 
 autoload -U add-zsh-hook
 
@@ -131,7 +134,7 @@ bindkey -s '^f' "tmux-sessionizer\n"
 #         echo
 #     }
 # }
-# eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 
 autoload -U promptinit && promptinit
 setopt PROMPTSUBST
@@ -192,3 +195,7 @@ direnv-thaw() {
 }
 
 # complete -F _cd direnv-freeze
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

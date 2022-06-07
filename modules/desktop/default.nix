@@ -6,6 +6,7 @@
     ./gtk.nix
   ];
   home.packages = with pkgs; [
+    i3status
     tint2
     xss-lock
   ];
@@ -20,7 +21,7 @@
 
   xsession = {
     enable = true;
-    initExtra = "~/.fehbg\nxss-lock slock &";
+    initExtra = "~/.fehbg\nXDG_DATA_DIRS DEFAULT=@{HOME}/.nix-profile/share:/usr/local/share:/usr/share";
   };
 
 }

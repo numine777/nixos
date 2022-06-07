@@ -9,6 +9,65 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.file.".config/i3status/config".text = ''
+            # i3status configuration file.
+
+            general {
+                    colors = true
+                    interval = 5
+                    color_good = "#2AA198"
+                    color_bad = "#586E75"
+                    color_degraded = "#DC322F"
+            }
+
+            order += "cpu_usage"
+            order += "disk /"
+            # order += "wireless _first_"
+            order += "ethernet _first_"
+            order += "battery all"
+            order += "memory"
+            order += "tztime local"
+
+            cpu_usage {
+                    format = " cpu  %usage "
+            }
+
+            load {
+                    format = " load %1min "
+            }
+
+            disk "/" {
+                    format = " ⛁ %avail "
+            }
+
+            ethernet _first_ {
+                    format_up = " lan: %ip %speed "
+                    format_down = " no lan "
+            }
+            
+            battery all {
+                    format = " %status %percentage"
+                    format_down = "No battery"
+                    last_full_capacity = true
+                    integer_battery_capacity = true
+                    status_chr = ""
+                    status_bat = ""
+                    status_full = ""
+                    low_threshold = 15
+                    threshold_type = time
+            }
+
+            memory {
+                    format = "%used | %available"
+                    threshold_degraded = "1G"
+                    format_degraded = "MEMORY < %available"
+            }
+
+            tztime local {
+                    format = " %d.%m. %H:%M "
+            }
+            
+    '';
     home.file.".config/i3/config".text = ''
             # i3 config
 
@@ -44,9 +103,9 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            # bindsym $mod+Return exec alacritty
-            bindsym $mod+Return exec nixGLNvidia kitty
-            bindsym $mod+Shift+Return exec alacritty
+            bindsym $mod+Return exec alacritty
+            # bindsym $mod+Return exec nixGLNvidia kitty
+            # bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave
@@ -61,6 +120,7 @@ in
             bindsym $mod+d exec --no-startup-id rofi -show drun
 
             # Use pactl to adjust volume in PulseAudio.
+            set $refresh_i3status killall -SIGUSR1 i3status
             bindsym XF86AudioRaiseVolume exec --no-startup-id setvol +5%
             bindsym XF86AudioLowerVolume exec --no-startup-id setvol 5%- 
             bindsym XF86AudioMute exec --no-startup-id setvol 0%
@@ -224,7 +284,7 @@ smart_borders on
             bar {
       	i3bar_command i3bar
       	status_command i3status
-      	position top
+      	position bottom
 
       ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
       #	tray_output primary

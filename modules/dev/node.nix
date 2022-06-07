@@ -9,7 +9,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.nodejs_latest ];
+    home.packages = [ pkgs.nodejs ];
     home.sessionVariables = {
       NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
       NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";

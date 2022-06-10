@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ../../modules/shell
+    ../../modules/shell/common.nix
     ../../modules/editors/neovim.nix
     ../../modules/editors/vim.nix
     ../../modules/editors/helix.nix
@@ -11,7 +11,7 @@
     ../../modules/dev/rust.nix
     ../../modules/dev/nix.nix
     ../../modules/dev/python.nix
-    ../../modules/programs
+    ../../modules/programs/common.nix
     ../../modules/desktop/windowManagers/yabai.nix
   ];
 

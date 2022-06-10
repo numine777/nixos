@@ -105,7 +105,7 @@ in
 
             # start a terminal
             bindsym $mod+Return exec alacritty
-            # bindsym $mod+Return exec nixGLNvidia kitty
+            # bindsym $mod+Return exec kitty
             # bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often

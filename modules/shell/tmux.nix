@@ -1,5 +1,4 @@
 ''
-  set-option -g default-shell /bin/zsh
   # unbind C-b
   set -g prefix C-a
   bind C-a send-prefix

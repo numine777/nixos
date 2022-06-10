@@ -19,5 +19,6 @@
     pass
     playerctl
     slop
+    zoxide
   ];
 }

@@ -104,9 +104,8 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec alacritty
-            # bindsym $mod+Return exec kitty
-            # bindsym $mod+Shift+Return exec alacritty
+            bindsym $mod+Return exec kitty
+            bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave

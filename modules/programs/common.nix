@@ -1,8 +1,7 @@
 { config, pkgs, libs, ... }:
 {
-  imports = [ ./bottom.nix ./graphics.nix ./irssi.nix ./kitty ./mail.nix ];
+  imports = [ ./bottom.nix ./graphics.nix ./irssi.nix ./kitty ./mail.nix ./alacritty.nix ];
   home.packages = with pkgs; [
-    alacritty
     k9s
     lazygit
     lazydocker

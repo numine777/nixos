@@ -11,7 +11,7 @@
     ../../modules/dev/rust.nix
     ../../modules/dev/nix.nix
     ../../modules/dev/python.nix
-    ../../modules/programs/common.nix
+    ../../modules/programs/mac-default.nix
     ../../modules/desktop/windowManagers/yabai.nix
   ];
 
@@ -25,7 +25,7 @@
       clojure.enable = true;
       lua.enable = true;
       nix.enable = true;
-      node.enable = false;
+      node.enable = true;
       python.enable = true;
       rust.enable = true;
     };

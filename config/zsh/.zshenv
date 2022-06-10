@@ -13,6 +13,10 @@ typeset -U PATH path
 path=("$HOME/.bin" "$HOME/.local/bin" "$HOME/.emacs.d/bin" "$HOME/.cache/npm/bin" "$path[@]")
 export PATH
 
+if [ "$(uname)" = 'Darwin' ]; then
+  export PATH="$PATH:/run/current-system/sw/bin"
+  export PATH="$PATH:$HOME/.nix-profile/bin"
+fi
 if [ -d "$HOME/n" ]; then
   export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 fi

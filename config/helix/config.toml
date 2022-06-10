@@ -1,0 +1,8 @@
+theme = "gruvbox"
+
+[editor]
+true-color = true
+line-number = "relative"
+
+[keys.insert]
+C-c = "normal_mode"

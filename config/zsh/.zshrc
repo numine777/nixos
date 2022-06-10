@@ -31,7 +31,7 @@ zinit wait lucid light-mode for \
     zdharma-continuum/fast-syntax-highlighting \
   blockf atpull'zinit creinstall -q .' \
   atload'
-    eval "$(dircolors)"
+    # eval "$(dircolors)"
     zstyle ":completion:*:default" list-colors "${(s.:.)LS_COLORS}" "ma=38;5;7;7;1"
     zstyle ":completion:*:*:kill:*:processes" list-colors "=(#b) #([0-9]#) ([0-9a-z-]#)*=36=0=01"
   ' \

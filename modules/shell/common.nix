@@ -20,6 +20,7 @@
     unzip
     wget
     xclip
+    zoxide
 
     awscli
     brotli

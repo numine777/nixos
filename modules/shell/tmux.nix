@@ -38,7 +38,7 @@
   set-option -g status-left "#[fg=black,bg=cyan] #S #[fg=default,bg=default]         "
   # Window status
   set-option -g window-status-format "#[fg=white,bg=#3c3836] #I #[fg=white,bg=#brightblack] #W "
-  set-option -g window-status-current-format "#[fg=black,bg=red] #I #[fg=white,bg=#brightblack] #W "
+  set-option -g window-status-current-format "#[fg=black,bg=colour105] #I #[fg=white,bg=#brightblack] #W "
   set-option -g window-status-separator "  "
   set-option -g status-justify centre
   # Right side of status bar

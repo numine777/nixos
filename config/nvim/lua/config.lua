@@ -1,12 +1,8 @@
--- config file for my neovim configuration
--- meta, aint it?
-
 O = {
-  colorscheme = "gruvbox",
+  colorscheme = "nord",
   leader = " ",
-  localleader = ",",
   borders = "single",
-  format_on_save = true,
+  format_on_save = false,
   icon_colors = true,
   smart_close = "help,startuptime,qf,lspinfo,packer,tsplayground", -- windows to close with 'q'
   icons = {

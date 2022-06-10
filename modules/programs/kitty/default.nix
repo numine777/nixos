@@ -8,7 +8,7 @@ in
     enable = mkEnableOption "kitty";
   };
 
-  imports = [ ./colors/gruvbox.nix ];
+  imports = [ ./colors/tokyonight.nix ];
 
 
   config = mkIf cfg.enable {
@@ -20,7 +20,7 @@ in
       };
       settings = {
         cursor_shape = "block";
-        window_padding_width = "20 30 20 30";
+        window_padding_width = "10 10 10 10";
         scrollback_lines = 5000;
         tab_bar_style = "fade";
         tab_fade = 1;

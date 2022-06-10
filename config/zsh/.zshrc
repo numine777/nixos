@@ -82,7 +82,7 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' verbose yes
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path '${ZDOTDIR:-$HOME}/.zcompcache'
+zstyle ':completion::complete:*' cache-path "${ZINIT[HOME_DIR]}/.zcompcache"
 zstyle ':completion:*' list-colors $LS_COLORS
 zstyle ':completion:*:*:*:*:processes' command'ps -u $USER -o pid,user,comm,cmd -w -w'
 zstyle ':completion:*:exa' file-sort modification
@@ -91,6 +91,9 @@ zstyle ':completion:*:exa' sort false
 
 # History file configuration
 HISTFILE="$HOME/.zsh_hist"
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+setopt appendhistory
 setopt extended_history          # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first    # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups          # Don't record an entry that was just recorded again
@@ -158,7 +161,8 @@ zinit wait lucid for \
   z-shell/fast-syntax-highlighting \
   OMZP::colored-man-pages \
   as"completion" \
-  OMZP::docker/_docker
+  OMZP::docker/_docker \
+  OMZP::fzf
 _prompt_nix() {
   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
 }
@@ -167,3 +171,4 @@ if [ -n "$IN_NIX_SANDBOX" ]; then
   PS1+='%F{red}[sandbox]%f '
 fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(direnv hook zsh)"

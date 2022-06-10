@@ -14,8 +14,8 @@ in
       package = pkgs.picom-git;
       fade = false;
       experimentalBackends = false;
-      # inactiveDim = "0.05";
-      shadow = false;
+      inactiveDim = "0.05";
+      shadow = true;
       extraOptions = ''
         shadow-radius = 60
         shadow-opacity = 0.25

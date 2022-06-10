@@ -3,6 +3,7 @@
   imports = [
     ../../modules/shell
     ../../modules/editors/neovim.nix
+    ../../modules/editors/helix.nix
     ../../modules/editors/emacs.nix
     ../../modules/editors/vim.nix
     ../../modules/dev/clojure.nix
@@ -42,9 +43,10 @@
       rust.enable = true;
     };
     editors = {
-      emacs.enable = true;
+      emacs.enable = false;
       neovim.enable = true;
       vim.enable = false;
+      helix.enable = true;
     };
     programs = {
       bottom.enable = true;

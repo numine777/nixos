@@ -13,6 +13,7 @@
     ffmpeg
     fzf
     github-cli
+    glibc
     gnumake
     ranger
     (ripgrep.override { withPCRE2 = true; })
@@ -27,15 +28,14 @@
     curl
     direnv
     htop
-    postman
     jq
     kubectl
     lsof
     nix-index
-    slack-dark
     stow
     tabnine
     tree
+    tmux
     unzip
   ];
 

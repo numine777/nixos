@@ -1,3 +1,13 @@
+---Get the full path to `$LUNARVIM_CACHE_DIR`
+---@return string
+function _G.get_cache_dir()
+  local lvim_cache_dir = os.getenv "LUNARVIM_CACHE_DIR"
+  if not lvim_cache_dir then
+    return vim.call("stdpath", "cache")
+  end
+  return lvim_cache_dir
+end
+
 local api = vim.api
 local fmt = string.format
 
@@ -76,6 +86,9 @@ function utils.nnoremap(key, cmd, opts)
 end
 function utils.vnoremap(key, cmd, opts)
   return map("v", key, cmd, opts, { noremap = true })
+end
+function utils.tnoremap(key, cmd, opts)
+  return map("t", key, cmd, opts, { noremap = true })
 end
 function utils.xnoremap(key, cmd, opts)
   return map("x", key, cmd, opts, { noremap = true })

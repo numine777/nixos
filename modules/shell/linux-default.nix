@@ -8,6 +8,7 @@
     acpi
     alsa-utils
     brightnessctl
+    efibootmgr
     feh
     fortune
     hsetroot

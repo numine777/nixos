@@ -29,6 +29,10 @@ while [ "$1" ]; do
       nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
       exit ;;
+    home-vm)
+      nix build "$HOME/nixos#homemanagerConfigurations.nixos.activationPackage" --impure && ./result/activate
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
+      exit ;;
     home-mac)
       nix build "$HOME/nixos#homemanagerConfigurations.aarch64-darwin.nixM1.activationPackage" --impure && ./result/activate
       exit ;;
@@ -54,7 +58,7 @@ while [ "$1" ]; do
     upgrade)
       nix flake update "$HOME/nixos"
       nixos-rebuild -use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
-      nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" && ./result/activate
+      nix build "$HOME/nixos#homemanagerConfigurations.nixos.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "Finished upgrade"
       exit ;;
     optimise)

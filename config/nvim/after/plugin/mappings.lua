@@ -1,60 +1,21 @@
-local wk = require "which-key"
+local u = require("utils")
 
-wk.register {
-  ["<leader>"] = {
-    -- toggle stuff
-    t = {
-      name = "+toggle",
-      n = { "<CMD>set nu!<CR>", "number" },
-      r = { "<CMD>set relativenumber!<CR>", "relative number" },
-      i = { "<CMD>IndentBlanklineToggle<CR>", "indentline" },
-      z = { "<CMD>ZenMode<CR>", "zen mode" },
-      t = { "<CMD>Twilight<CR>", "twilight" },
-      c = { "<CMD>ColorizerToggle<CR>", "colorizer" },
-      f = { require("lsp.utils").toggle_format_on_save, "format on save" },
-    },
-    -- packer
-    p = {
-      name = "+packer",
-      u = { "<CMD>PackerUpdate<CR>", "Update Plugins" },
-      s = { "<CMD>PackerSync<CR>", "Sync Plugins" },
-      i = { "<CMD>PackerInstall<CR>", "Install Plugins" },
-      c = { "<CMD>PackerCompile<CR>", "Compile Config" },
-      C = { "<CMD>PackerClean<CR>", "Clean Plugins" },
-      p = { "<CMD>PackerProfile<CR>", "Profile" },
-    },
-    [","] = { "<CMD>edit ~/.config/nvim/lua/config.lua<CR>", "edit config" },
-    d = { "<CMD>TroubleToggle<CR>", "trouble" },
-    -- git
-    g = {
-      name = "+git",
-      s = "stage hunk",
-      u = "undo stage hunk",
-      r = "reset hunk",
-      R = "reset buffer",
-      p = "preview hunk",
-      b = "blame line",
-    },
-    u = { "<CMD>UndotreeToggle<CR>", "undotree" },
-    F = { vim.lsp.buf.formatting_sync, "format" },
-  },
-
-  -- localleader mappings
-  ["<localleader>"] = {
-    a = "swap: next",
-    A = "swap: prev",
-  },
-
-  -- next
-  ["]"] = {
-    m = { "next function" },
-  },
-
-  -- prev
-  ["["] = {
-    m = { "prev function" },
-  },
-
-  ["<M-right>"] = { "<CMD>bn<CR>", "next buffer" },
-  ["<M-left>"] = { "<CMD>bp<CR>", "prev buffer" },
-}
+u.nnoremap("<leader>e", ":Ex<CR>", {})
+u.nnoremap("<leader>a", require("harpoon.mark").add_file, {})
+u.nnoremap("<leader>bn", ":lua print(vim.fn.bufname())<CR>", {})
+-- u.nnoremap("<leader>pp", ":lua print(package.path)<CR>", {})
+u.nnoremap("<C-e>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", {})
+u.nnoremap("<C-h>", ":lua require('harpoon.ui').nav_file(1)<CR>", {})
+u.nnoremap("<C-t>", ":lua require('harpoon.ui').nav_file(2)<CR>", {})
+u.nnoremap("<C-n>", ":lua require('harpoon.ui').nav_file(3)<CR>", {})
+u.nnoremap("<C-s>", ":lua require('harpoon.ui').nav_file(4)<CR>", {})
+u.nnoremap("<C-f>", ':lua require("harpoon.term").sendCommand(1, "tmux-sessionizer\\n"); require("harpoon.term").gotoTerminal(1)<CR>', {})
+u.tnoremap("<Esc>", "<C-\\><C-n>")
+u.nnoremap("<leader>y", '"+y', {})
+u.vnoremap("<leader>y", '"+y', {})
+u.nnoremap("<leader>d", '"_d', {})
+u.vnoremap("<leader>d", '"_d', {})
+u.nnoremap("<leader>p", '"+p', {})
+u.vnoremap("<leader>p", '"+p', {})
+u.nnoremap("<leader>/", "<ESC><CMD>lua require('Comment.api').toggle_current_linewise()<CR>", {})
+u.vnoremap("<leader>/", "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", {})

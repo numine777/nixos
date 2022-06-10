@@ -9,24 +9,32 @@ naughty.connect_signal("request::display_error", function(message, startup)
   }
 end)
 
+local beautiful = require("beautiful")
 local config_dir = require("gears").filesystem.get_configuration_dir()
-require("beautiful").init(config_dir .. "themes/forest/theme.lua")
-require("beautiful").wallpaper = config_dir .. "themes/forest/forest.jpg"
+beautiful.init(config_dir .. "themes/forest/theme.lua")
+beautiful.wallpaper = config_dir .. "themes/forest/forest.jpg"
 for s in screen do
   require("awful").wallpaper {
     screen = s,
+    -- widget = {
+    --   {
+    --     image = require("beautiful").wallpaper,
+    --     resize = true,
+    --     widget = require("wibox").widget.imagebox,
+    --   },
+    --   valign = "center",
+    --   halign = "center",
+    --   tiled = false,
+    --   widget = require("wibox").container.tile,
+    -- },
     widget = {
-      {
-        image = require("beautiful").wallpaper,
-        resize = true,
-        widget = require("wibox").widget.imagebox,
-      },
-      valign = "center",
-      halign = "center",
-      tiled = false,
-      widget = require("wibox").container.tile,
+      horizontal_fit_policy = "fit",
+      vertical_fit_policy = "fit",
+      image = beautiful.wallpaper,
+      widget = require("wibox").widget.imagebox,
     },
   }
+  -- require("gears").wallpaper.maximized("themes/forest/forest.jpg", s)
 end
 
 F = {}

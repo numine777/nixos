@@ -71,6 +71,21 @@
             username = "scott";
             stateVersion = "21.11";
           };
+          nixos = home-manager.lib.homeManagerConfiguration {
+            inherit extraSpecialArgs;
+            configuration = { pkgs, config, ... }:
+              {
+                home.stateVersion = "21.11";
+                programs.home-manager.enable = true;
+                home.keyboard = null;
+                nixpkgs.overlays = overlays;
+                imports = [ ./hosts/nixosThelio/user.nix ];
+              };
+            system = "x86_64-linux";
+            homeDirectory = "/home/scott";
+            username = "scott";
+            stateVersion = "21.11";
+          };
           nixM1 = home-manager.lib.homeManagerConfiguration {
             inherit extraSpecialArgs;
             configuration = { pkgs, config, ... }:
@@ -105,7 +120,6 @@
               ./hosts/nixM1/configuration.nix
             ];
           };
-
         };
       });
 }

@@ -31,62 +31,62 @@ local bat_arcchart = wibox.widget {
   bg = beautiful.bg_focus,
 }
 
-local battery_percent = wibox.widget {
-  widget = wibox.widget.textclock,
-  font = beautiful.font_name .. " Bold 10",
-  valign = "center",
-  align = "center",
-  text = "lol",
-}
+-- local battery_percent = wibox.widget {
+--   widget = wibox.widget.textclock,
+--   font = beautiful.font_name .. " Bold 10",
+--   valign = "center",
+--   align = "center",
+--   text = "lol",
+-- }
 
-local battery_circle = wibox.widget {
-  value = 0,
-  border_width = 6,
-  forced_width = 100,
-  forced_height = 100,
-  widget = wibox.container.radialprogressbar,
-  color = beautiful.fg_normal,
-  border_color = beautiful.bg_focus,
-  {
-    battery_percent,
-    widget = wibox.container.margin,
-    margins = 20,
-  },
-}
+-- local battery_circle = wibox.widget {
+--   value = 0,
+--   border_width = 6,
+--   forced_width = 100,
+--   forced_height = 100,
+--   widget = wibox.container.radialprogressbar,
+--   color = beautiful.fg_normal,
+--   border_color = beautiful.bg_focus,
+--   {
+--     battery_percent,
+--     widget = wibox.container.margin,
+--     margins = 20,
+--   },
+-- }
 
-local battery_popup = awful.popup {
-  widget = {
-    widget = wibox.container.margin,
-    margins = 15,
-    battery_circle,
-  },
-  bg = beautiful.bg_dark,
-  visible = false,
-  border_width = 2,
-  border_color = beautiful.bg_focus,
-  placement = function(c)
-    (awful.placement.bottom_left)(c, { margins = { left = 65, bottom = 50 } })
-  end,
-  ontop = true,
-}
+-- local battery_popup = awful.popup {
+--   widget = {
+--     widget = wibox.container.margin,
+--     margins = 15,
+--     battery_circle,
+--   },
+--   bg = beautiful.bg_dark,
+--   visible = false,
+--   border_width = 2,
+--   border_color = beautiful.bg_focus,
+--   placement = function(c)
+--     (awful.placement.bottom_left)(c, { margins = { left = 65, bottom = 50 } })
+--   end,
+--   ontop = true,
+-- }
 
-local battery = wibox.widget {
-  bg = beautiful.bg_subtle,
-  widget = wibox.container.background,
-  buttons = {
-    awful.button({}, 1, function()
-      battery_popup.visible = not battery_popup.visible
-    end),
-  },
-  {
-    bat_arcchart,
-    widget = wibox.container.margin,
-    margins = 7,
-    bottom = 8,
-  },
-}
+-- local battery = wibox.widget {
+--   bg = beautiful.bg_subtle,
+--   widget = wibox.container.background,
+--   buttons = {
+--     awful.button({}, 1, function()
+--       battery_popup.visible = not battery_popup.visible
+--     end),
+--   },
+--   {
+--     bat_arcchart,
+--     widget = wibox.container.margin,
+--     margins = 7,
+--     bottom = 8,
+--   },
+-- }
 
-helpers.add_hover_cursor(battery, "hand1")
+-- helpers.add_hover_cursor(battery, "hand1")
 
 -- awesome.connect_signal("squeal::battery", function(capacity, status)
 --   local fill_color = beautiful.fg_normal
@@ -202,7 +202,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         -- },
         nil,
         {
-          { widget = battery },
+          -- { widget = battery },
           { widget = time },
           { widget = layoutbox },
           layout = wibox.layout.fixed.vertical,

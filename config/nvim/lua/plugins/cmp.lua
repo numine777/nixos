@@ -1,91 +1,63 @@
-local cmp = require "cmp"
-local luasnip = require "luasnip"
+local function init()
+  local cmp = require'cmp'
+  local lspkind = require'lspkind'
 
-cmp.setup {
-  experimental = {
-    ghost_text = false,
-  },
-  snippet = {
-    expand = function(args)
-      require("luasnip").lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-n>"] = cmp.mapping.select_next_item(),
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.close(),
-    ["<CR>"] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
     },
-    ["<Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif vim.api.nvim_get_mode().mode == "c" then
-        fallback()
-      else
-        fallback()
-      end
-    end,
-    ["<S-Tab>"] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      elseif vim.api.nvim_get_mode().mode == "c" then
-        fallback()
-      else
-        fallback()
-      end
-    end,
-  },
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = O.icons.kinds[vim_item.kind]
-      vim_item.menu = ({
-        nvim_lsp = "[LSP]",
-        luasnip = "[Snip]",
-        buffer = "[Buf]",
-        spell = "[Spl]",
-        path = "[Path]",
-        cmdline = "[Cmd]",
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
-  -- documentation = {
-  --   border = O.borders,
-  -- },
-  window = {
-    documentation = "native",
-  },
-  sources = {
-    { name = "nvim_lua" },
-    { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "path" },
-    { name = "spell", keyword_length = 4 },
-    { name = "buffer", keyword_length = 4 },
-  },
+    mapping = cmp.mapping.preset.insert({
+      ['<Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ['<S-Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = {
+      { name = 'cmp_tabnine' },
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
+      { name = 'treesitter' },
+      { name = 'vsnip' },
+    },
+    formatting = {
+      format = lspkind.cmp_format({
+        maxwidth = 50,
+        menu = ({
+          buffer = "[Buffer]",
+          cmp_tabnine = "[T9]",
+          nvim_lsp = "[LSP]",
+          nvim_lua = "[Lua]",
+          treesitter = "[TS]",
+          vsnip = "[VSnip]",
+        }),
+        with_text = true
+      }),
+    }
+  })
+
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  vim.o.completeopt = 'menu,menuone,noselect'
+end
+
+return {
+  init = init
 }
-local search_sources = {
-  sources = cmp.config.sources({
-    { name = "nvim_lsp_document_symbol", keyword_length = 4 },
-  }, {
-    { name = "buffer", keyword_length = 4 },
-  }),
-}
--- Use buffer source for `/`.
-cmp.setup.cmdline("/", search_sources)
-cmp.setup.cmdline("?", search_sources)
--- Use cmdline & path source for ':'.
-cmp.setup.cmdline(":", {
-  sources = {
-    { name = "cmdline", keyword_length = 3 },
-  },
-})

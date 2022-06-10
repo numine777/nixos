@@ -1,0 +1,12 @@
+-- require("lspconfig").pyright.setup({
+-- 	root_dir = function(filename)
+-- 		return require("lspconfig/util").root_pattern(unpack({
+-- 			"setup.py",
+-- 			"pyproject.toml",
+-- 			"setup.cfg",
+-- 			"requirements.txt",
+-- 			".git",
+-- 			"BUILD.bazel",
+-- 		}))(filename) or require("lspconfig/util").path.dirname(filename)
+-- 	end,
+-- })

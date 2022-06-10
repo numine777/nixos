@@ -1,0 +1,6 @@
+require("configs.my_settings")
+require("configs.my_plugins")
+require("configs.my_which_key")
+require("configs.flutter_tools_config")
+require("configs.telescope")
+require("configs.context")

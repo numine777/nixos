@@ -12,6 +12,8 @@
     postman
     rofi
     notion-app-enhanced
+    nix-top
+    nix-output-monitor
     slack-dark
     synergy
   ];

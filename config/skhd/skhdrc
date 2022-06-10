@@ -1,0 +1,125 @@
+# open terminal
+# cmd - return : open -na alacritty.app
+# cmd + shift - return : urxvt
+
+# focus window
+#alt - x : yabai -m window --focus recent
+cmd - h : yabai -m window --focus west
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
+cmd - s : yabai -m window --focus stack.prev
+cmd - n : yabai -m window --focus stack.next
+
+# swap window
+#ctrl + alt - x : yabai -m window --swap recent
+shift + cmd - h : yabai -m window --swap west
+shift + cmd - j : yabai -m window --swap south
+shift + cmd - k : yabai -m window --swap north
+shift + cmd - l : yabai -m window --swap east
+
+# move window
+alt + cmd - h : yabai -m window --move rel:-20:0
+alt + cmd - j : yabai -m window --move rel:0:20
+alt + cmd - k : yabai -m window --move rel:0:-20
+alt + cmd - l : yabai -m window --move rel:20:0
+
+# balance size of windows
+cmd + alt - 0 : yabai -m space --balance
+
+# create desktop, move window and follow focus
+alt + cmd - n : yabai -m space --create;\
+                  id=$(yabai -m query --displays --display | grep "spaces");\
+                  yabai -m window --space $(echo ${id:10:${#id}-10});\
+                  yabai -m space --focus $(echo ${id:10:${#id}-10})
+
+# create desktop and follow focus
+cmd + shift - n : yabai -m space --create;\
+                id=$(yabai -m query --displays --display | grep "spaces");\
+                yabai -m space --focus $(echo ${id:10:${#id}-10})
+
+# destroy desktop
+cmd + alt - w : yabai -m space --destroy
+
+# Move focus container to workspace
+#ctrl + alt - m : yabai -m window --space last; yabai -m space --focus last
+cmd + ctrl - z : yabai -m window --space prev; yabai -m space --focus prev
+cmd + ctrl - x : yabai -m window --space next; yabai -m space --focus next
+cmd + ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
+cmd + ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
+cmd + ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
+cmd + ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4
+cmd + ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5
+cmd + ctrl - 6 : yabai -m window --space 6; yabai -m space --focus 6
+cmd + ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7
+cmd + ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8
+cmd + ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9
+
+# Move focus container to workspace
+cmd - z : yabai -m space --focus prev
+cmd - x : yabai -m space --focus next
+cmd - + : yabai -m space --focus 1
+cmd - [ : yabai -m space --focus 2
+cmd - { : yabai -m space --focus 3
+cmd - ( : yabai -m space --focus 4
+cmd - & : yabai -m space --focus 5
+cmd - = : yabai -m space --focus 6
+cmd - ) : yabai -m space --focus 7
+cmd - } : yabai -m space --focus 8
+cmd - ] : yabai -m space --focus 9
+
+# focus monitor
+ctrl + shift - p  : yabai -m display --focus prev
+ctrl + shift - o  : yabai -m display --focus next
+#ctrl + shift - 1  : yabai -m display --focus 1
+#ctrl + shift - 2  : yabai -m display --focus 2
+
+# send window to monitor and follow focus
+#ctrl + alt - c  : yabai -m window --display recent; yabai -m display --focus recent
+ctrl + alt - p  : yabai -m space --display prev; yabai -m display --focus prev
+ctrl + alt - o  : yabai -m space --display next; yabai -m display --focus next
+
+# move window
+#shift + ctrl - a : yabai -m window --move rel:-20:0
+#shift + ctrl - s : yabai -m window --move rel:0:20
+#shift + ctrl - w : yabai -m window --move rel:0:-20
+#shift + ctrl - d : yabai -m window --move rel:20:0
+
+# increase window size
+ctrl + alt - left : yabai -m window --resize left:-20:0
+ctrl + alt - down : yabai -m window --resize bottom:0:20
+ctrl + alt - up : yabai -m window --resize top:0:-20
+ctrl + alt - right : yabai -m window --resize right:20:0
+
+# decrease window size
+shift + cmd - left : yabai -m window --resize left:20:0
+shift + cmd - down : yabai -m window --resize bottom:0:-20
+shift + cmd - up : yabai -m window --resize top:0:20
+shift + cmd - right : yabai -m window --resize right:-20:0
+
+# rotate tree
+alt - r : yabai -m space --rotate 90
+
+# mirror tree y-axis
+alt - y : yabai -m space --mirror y-axis
+
+# mirror tree x-axis
+alt - x : yabai -m space --mirror x-axis
+
+# toggle window native fullscreen
+ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
+
+# change layout of desktop
+ctrl + alt - b : yabai -m space --layout bsp
+ctrl + alt - s : yabai -m space --layout stack
+ctrl + alt - d : yabai -m space --layout float
+
+# opens iTerm2
+ctrl - return : "${HOME}"/bin/open-iterm2.sh
+cmd - b : open -na "Brave Browser" --args --new-window
+
+ctrl + shift - q : yabai -m window --close
+
+ctrl + alt - a : osascript -e 'tell application "System Events" to tell every desktop to set picture to "/Users/scott/Downloads/yellow_red_blue.png" as POSIX file'
+ctrl + alt - i : osascript -e 'tell application "System Events" to tell every desktop to set picture to "/Users/scott/Downloads/IMG_0915.jpeg" as POSIX file'
+ctrl + alt - w : osascript -e 'tell application "System Events" to tell every desktop to set picture to "/Users/scott/Downloads/5Zv7d0.jpeg" as POSIX file'

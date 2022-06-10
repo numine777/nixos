@@ -7,52 +7,35 @@
     ./zsh.nix
   ];
   home.packages = with pkgs; [
-    acpi
-    alsa-utils
-    awscli
     bottom
-    brightnessctl
+    exa
+    fd
+    ffmpeg
+    fzf
+    github-cli
+    gnumake
+    ranger
+    (ripgrep.override { withPCRE2 = true; })
+    tmux
+    unzip
+    wget
+    xclip
+
+    awscli
     brotli
     cmake
     curl
-    efibootmgr
-    exa
-    fd
-    feh
-    ffmpeg
-    fortune
-    fzf
-    github-cli
-    glibc
-    gnumake
-    hsetroot
+    direnv
     htop
     jq
-    k9s
     kubectl
-    lazygit
-    lazydocker
-    lm_sensors
     lsof
-    maim
-    ncdu
     nix-index
-    nnn
-    pamixer
-    pass
-    playerctl
-    ranger
-    (ripgrep.override { withPCRE2 = true; })
-    slop
     stow
     tabnine
     tree
     tmux
     unzip
-    wget
-    xclip
-    xorg.xkbcomp
-    zoxide
   ];
 
   # not big enough for their own modules

@@ -1,6 +1,6 @@
 { config, pkgs, libs, ... }:
 {
-  imports = [ ./bottom.nix ./graphics.nix ./irssi.nix ./kitty ];
+  imports = [ ./common.nix ];
   home.packages = with pkgs; [
     _1password-gui
     brave
@@ -9,12 +9,12 @@
     firefox
     flameshot
     nixgl.auto.nixGLNvidia
-    postman
     rofi
     notion-app-enhanced
     nix-top
     nix-output-monitor
-    slack-dark
+    rofi
+    notion-app-enhanced
     synergy
   ];
   home.file.".config/rofi".source =

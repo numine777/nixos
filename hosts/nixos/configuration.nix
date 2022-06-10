@@ -13,26 +13,23 @@
       ../../modules/system/xorg.nix
     ];
   nixpkgs.config.allowUnfree = true; 
+  virtualisation.vmware.guest.enable = true;
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.device = "/dev/nvme1n1";
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.configurationLimit = 5;
-  hardware.system76.kernel-modules.enable = true;
-  hardware.system76.enableAll = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
 
   # use latest kernel
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   time.timeZone = "America/Chicago";
 
   networking = {
-    hostName = "nixosThelio";
+    hostName = "nixos";
     networkmanager.enable = true;
     useDHCP = false;
-    interfaces.enp68s0.useDHCP = true;
-    interfaces.wlo2.useDHCP = true;
+    interfaces.ens33.useDHCP = true;
   };
 
   services.avahi = {
@@ -86,31 +83,7 @@
 
   virtualisation.docker.enable = true;
   services.openssh.enable = true;
-  services.openvpn.servers = {
-    adytonVPN = {
-      config = '' 
-client
-route-nopull
-route 172.31.0.0 255.255.0.0
-dev tun
-proto udp
-remote remote.themel.io 1194
-resolv-retry infinite
-nobind
-user nobody
-group nobody
-persist-key
-persist-tun
-verb 3
-mute 20
-ca /home/scott/swalls/ca.crt
-cert /home/scott/swalls/swalls.crt
-key /home/scott/swalls/swalls.key
-    '';
-    };
-  };
   programs.mosh.enable = true;
-  networking.firewall.allowedTCPPorts = [ 24800 ];
   networking.firewall.allowedUDPPorts = [ 60001 ];
   system.stateVersion = "21.11";
 }

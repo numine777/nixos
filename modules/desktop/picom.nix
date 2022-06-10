@@ -12,10 +12,10 @@ in
   config = mkIf cfg.enable {
     services.picom = {
       enable = true;
-      package = pkgs.picom;
-      # fade = false;
-      # experimentalBackends = false;
-      # inactiveDim = "0.05";
+      package = pkgs.picom-git;
+      fade = false;
+      experimentalBackends = false;
+      inactiveDim = "0.05";
       shadow = true;
       extraOptions = ''
         shadow-radius = 60

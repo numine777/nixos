@@ -34,31 +34,31 @@
           sway.enable = false;
         };
       };
-      dev = {
-        clojure.enable = true;
-        # lisp.enable = false;
-        lua.enable = true;
-        nix.enable = true;
-        node.enable = true;
-        python.enable = true;
-        rust.enable = true;
-      };
-      editors = {
-        emacs.enable = false;
-        neovim.enable = true;
-        vim.enable = false;
-        helix.enable = true;
-      };
-      programs = {
-        bottom.enable = true;
-        irssi.enable = false;
-        kitty.enable = true;
-        graphics = {
-          aseprite.enable = false;
-          gimp.enable = true;
-          inkscape.enable = true;
-          krita.enable = false;
-        };
+    };
+    dev = {
+      clojure.enable = true;
+      # lisp.enable = false;
+      lua.enable = true;
+      nix.enable = true;
+      node.enable = true;
+      python.enable = true;
+      rust.enable = true;
+    };
+    editors = {
+      emacs.enable = false;
+      neovim.enable = true;
+      vim.enable = false;
+      helix.enable = true;
+    };
+    programs = {
+      bottom.enable = true;
+      irssi.enable = false;
+      kitty.enable = true;
+      graphics = {
+        aseprite.enable = false;
+        gimp.enable = true;
+        inkscape.enable = true;
+        krita.enable = false;
       };
     };
   };

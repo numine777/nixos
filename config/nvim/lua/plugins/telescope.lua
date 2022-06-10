@@ -46,15 +46,15 @@ telescope.setup {
             --     site = "$HOME/projects/site",
             --   },
             -- },
-            fzf = {
-                override_generic_sorter = true, -- override the generic sorter
-                override_file_sorter = true, -- override the file sorter
-            },
+            -- fzf = {
+            --     override_generic_sorter = true, -- override the generic sorter
+            --     override_file_sorter = true, -- override the file sorter
+            -- },
         },
     },
 }
 
-l "fzf"
+-- l "fzf"
 l "file_browser"
 l "live_grep_raw"
 l "git_worktree"

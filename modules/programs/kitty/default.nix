@@ -8,7 +8,7 @@ in
     enable = mkEnableOption "kitty";
   };
 
-  imports = [ ./colors/nord.nix ];
+  imports = [ ./colors/tokyonight.nix ];
 
 
   config = mkIf cfg.enable {

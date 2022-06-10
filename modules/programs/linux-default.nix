@@ -10,7 +10,6 @@
     gcc
     firefox
     flameshot
-    nixgl.auto.nixGLNvidia
     rofi
     notion-app-enhanced
     nix-top

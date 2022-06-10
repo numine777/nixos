@@ -93,7 +93,7 @@
                   NIXPKGS_ALLOW_UNFREE = true;
                 };
                 nixpkgs.overlays = overlays;
-                imports = [ ./hosts/nixos/user.nix ];
+                imports = [ ./hosts/nixWork/user.nix ];
               };
             system = "x86_64-linux";
             homeDirectory = "/home/mwalls";
@@ -107,8 +107,11 @@
                 home.stateVersion = "21.11";
                 programs.home-manager.enable = true;
                 home.keyboard = null;
-                nixpkgs.overlays = overlays;
-                imports = [ ./hosts/nixosThelio/user.nix ];
+                nixpkgs.overlays = [
+                  nixpkgs-f2k.overlay
+                  neovim-nightly.overlay
+                ];
+                imports = [ ./hosts/nixos/user.nix ];
               };
             system = "x86_64-linux";
             homeDirectory = "/home/scott";

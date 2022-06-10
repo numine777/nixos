@@ -37,7 +37,7 @@ zinit wait lucid light-mode for \
   ' \
     zsh-users/zsh-completions \
   atinit"
-    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30000
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
     ZSH_AUTOSUGGEST_COMPLETION_IGNORE='_*|pre(cmd|exec)|sudo pacman -S*|pacman -S*|paru -S*|yay -S*|\)\*'
   " \
@@ -70,7 +70,7 @@ setopt path_dirs                # Perform Path Search Even On Command Names With
 setopt auto_menu                # Show Completion Menu On A Successive Tab Press.
 setopt auto_list                # Automatically List Choices On Ambiguous Completion.
 setopt auto_param_slash         # If Completed Parameter Is A Directory, Add A Trailing Slash.
-setopt menu_complete            # Do Not Autoselect The First Completion Entry.
+# setopt menu_complete            # Do Not Autoselect The First Completion Entry.
 
 # zstyle
 zstyle ':completion:*:matches' group 'yes'
@@ -86,27 +86,25 @@ zstyle ':completion::complete:*' cache-path "${ZINIT[HOME_DIR]}/.zcompcache"
 zstyle ':completion:*' list-colors $LS_COLORS
 zstyle ':completion:*:*:*:*:processes' command'ps -u $USER -o pid,user,comm,cmd -w -w'
 zstyle ':completion:*:exa' file-sort modification
-zstyle ':completion:*:exa' sort false
+zstyle ':completion:*:exa' sort true
 
 
 # History file configuration
 HISTFILE="$HOME/.zsh_hist"
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
-setopt appendhistory
-setopt extended_history          # record timestamp of command in HISTFILE
-setopt hist_expire_dups_first    # delete duplicates first when HISTFILE size exceeds HISTSIZE
-setopt hist_ignore_dups          # Don't record an entry that was just recorded again
-setopt hist_find_no_dups         # Do not display a line previously found
-setopt hist_ignore_space         # ignore commands that start with space
-setopt inc_append_history        # add commands to HISTFILE in order of execution
+setopt APPENDHISTORY
+setopt EXTENDED_HISTORY          # record timestamp of command in HISTFILE
+setopt HIST_EXPIRE_DUPS_FIRST    # delete duplicates first when HISTFILE size exceeds HISTSIZE
+# setopt hist_ignore_dups          # Don't record an entry that was just recorded again
+# setopt hist_find_no_dups         # Do not display a line previously found
+# setopt hist_ignore_space         # ignore commands that start with space
+# setopt INC_APPEND_HISTORY        # add commands to HISTFILE in order of execution
 
 autoload -U add-zsh-hook
 
 # aliases
 source "$HOME/.zsh/aliases.zsh"
-source "$HOME/.zsh/git.zsh"
-source "$HOME/.zsh/git-prompt.sh"
 
 # better url management
 autoload -Uz url-quote-magic
@@ -136,7 +134,7 @@ bindkey -s '^f' "tmux-sessionizer\n"
 #         echo
 #     }
 # }
-# eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 
 autoload -U promptinit && promptinit
 setopt PROMPTSUBST
@@ -162,7 +160,9 @@ zinit wait lucid for \
   OMZP::colored-man-pages \
   as"completion" \
   OMZP::docker/_docker \
+  OMZP::bazel/_bazel \
   OMZP::fzf
+
 _prompt_nix() {
   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
 }
@@ -172,3 +172,30 @@ if [ -n "$IN_NIX_SANDBOX" ]; then
 fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(direnv hook zsh)"
+# Copied from "direnv hook zsh" output:
+_direnv_hook_enabled=1
+_direnv_hook() {
+  if [ $_direnv_hook_enabled -eq 1 ]; then
+      eval "$("direnv" export zsh)";
+  fi
+}
+direnv-freeze() {
+    if [[ $# -eq 1 ]]; then
+        echo "direnv: setting up shell environment for directory $1"
+        pushd "$1" > /dev/null || return 1
+        eval "$(direnv export zsh)"
+        popd > /dev/null
+    fi
+    echo "direnv: disabling shell hook; use direnv-thaw to enable again"
+    _direnv_hook_enabled=0
+}
+direnv-thaw() {
+    echo "direnv: enabling shell hook"
+    _direnv_hook_enabled=1
+}
+
+# complete -F _cd direnv-freeze
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

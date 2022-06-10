@@ -1,7 +1,7 @@
 { config, pkgs, libs, ... }:
 {
   accounts.email = {
-    maildirBasePath = "/Users/scott/.mail";
+    maildirBasePath = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.mail";
     accounts = {
       Gmail = {
         address = "scottwalls2008@gmail.com";
@@ -19,12 +19,5 @@
         msmtp.enable = true;
       };
     };
-  };
-
-  home.packages = with pkgs; [ mu isync ];
-
-  programs = {
-    msmtp.enable = true;
-    mbsync.enable = true;
   };
 }

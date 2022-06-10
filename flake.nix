@@ -7,12 +7,13 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+    nixgl.url = "github:guibou/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
   };
-
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, flake-utils, darwin, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, flake-utils, darwin, nixgl, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
         # system = "x86_64-linux";
@@ -52,6 +53,7 @@
         overlays = [
           nixpkgs-f2k.overlay
           neovim-nightly.overlay
+          nixgl.overlay
         ];
       in
       {
@@ -62,13 +64,40 @@
               {
                 home.stateVersion = "21.11";
                 programs.home-manager.enable = true;
+                home.packages =
+                  let
+                    nixGLNvidiaScript = pkgs.writeShellScriptBin "nixGLNvidia" ''
+                      $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixGLNvidia --no-out-link)/bin/* "$@"
+                    '';
+                    nixGLIntelScript = pkgs.writeShellScriptBin "nixGLIntel" ''
+                      $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixGLIntel --no-out-link)/bin/* "$@"
+                    '';
+                    nixVulkanIntelScript =
+                      pkgs.writeShellScriptBin "nixVulkanIntel" ''
+                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixVulkanIntel --no-out-link)/bin/* "$@"
+                      '';
+                    nixVulkanNvidiaScript =
+                      pkgs.writeShellScriptBin "nixVulkanNvidia" ''
+                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixVulkanNvidia --no-out-link)/bin/* "$@"
+                      '';
+                  in
+                  with pkgs; [
+                    nixGLNvidiaScript
+                    nixGLIntelScript
+                    nixVulkanIntelScript
+                    nixVulkanNvidiaScript
+                  ];
                 home.keyboard = null;
+                home.sessionVariables = {
+                  LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
+                  NIXPKGS_ALLOW_UNFREE = true;
+                };
                 nixpkgs.overlays = overlays;
-                imports = [ ./hosts/nixosThelio/user.nix ];
+                imports = [ ./hosts/nixos/user.nix ];
               };
             system = "x86_64-linux";
-            homeDirectory = "/home/scott";
-            username = "scott";
+            homeDirectory = "/home/mwalls";
+            username = "mwalls";
             stateVersion = "21.11";
           };
           nixos = home-manager.lib.homeManagerConfiguration {

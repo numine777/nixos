@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-let cfg = config.modules.desktop.picom;
+let
+  cfg = config.modules.desktop.picom;
 in
 {
   options.modules.desktop.picom = {

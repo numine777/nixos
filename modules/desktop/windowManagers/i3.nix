@@ -9,6 +9,65 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.file.".config/i3status/config".text = ''
+            # i3status configuration file.
+
+            general {
+                    colors = true
+                    interval = 5
+                    color_good = "#2AA198"
+                    color_bad = "#586E75"
+                    color_degraded = "#DC322F"
+            }
+
+            order += "cpu_usage"
+            order += "disk /"
+            # order += "wireless _first_"
+            order += "ethernet _first_"
+            order += "battery all"
+            order += "memory"
+            order += "tztime local"
+
+            cpu_usage {
+                    format = " cpu  %usage "
+            }
+
+            load {
+                    format = " load %1min "
+            }
+
+            disk "/" {
+                    format = " ⛁ %avail "
+            }
+
+            ethernet _first_ {
+                    format_up = " lan: %ip %speed "
+                    format_down = " no lan "
+            }
+            
+            battery all {
+                    format = " %status %percentage"
+                    format_down = "No battery"
+                    last_full_capacity = true
+                    integer_battery_capacity = true
+                    status_chr = ""
+                    status_bat = ""
+                    status_full = ""
+                    low_threshold = 15
+                    threshold_type = time
+            }
+
+            memory {
+                    format = "%used | %available"
+                    threshold_degraded = "1G"
+                    format_degraded = "MEMORY < %available"
+            }
+
+            tztime local {
+                    format = " %d.%m. %H:%M "
+            }
+            
+    '';
     home.file.".config/i3/config".text = ''
             # i3 config
 
@@ -23,10 +82,13 @@ in
             gaps inner 4
             gaps outer 4
 
-            # decorations
-            title_align center
+            # Hide titlebar
+            new_window pixel
 
-            default_border pixel 1
+            # decorations
+            #title_align center
+
+            #default_border pixel 1
 
             exec_always feh --bg-scale /home/scott/altf4-dots/roles/nitrogen/files/sunset.png
             exec_always xrandr --output Virtual-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output Virtual-2 --off --output Virtual-3 --off --output Virtual-4 --off --output Virtual-5 --off --output Virtual-6 --off --output Virtual-7 --off --output Virtual-8 --off
@@ -42,11 +104,14 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec kitty
+            bindsym $mod+Return exec alacritty
+            # bindsym $mod+Return exec nixGLNvidia kitty
+            # bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave
             bindsym $mod+b exec firefox
+            bindsym $mod+Shift+s exec nixGL slack
             bindsym $mod+Shift+e exec emacs
 
             # kill focused window
@@ -56,6 +121,7 @@ in
             bindsym $mod+d exec --no-startup-id rofi -show drun
 
             # Use pactl to adjust volume in PulseAudio.
+            set $refresh_i3status killall -SIGUSR1 i3status
             bindsym XF86AudioRaiseVolume exec --no-startup-id setvol +5%
             bindsym XF86AudioLowerVolume exec --no-startup-id setvol 5%- 
             bindsym XF86AudioMute exec --no-startup-id setvol 0%
@@ -177,7 +243,8 @@ in
             # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
             bindsym $mod+Shift+r restart
             # exit i3 (logs you out of your X session)
-            bindsym $mod+Shift+q exec "i3-msg exit"
+            # bindsym $mod+Shift+q exec "i3-msg exit"
+            bindsym $mod+Shift+q exec mate-session-save --logout-dialog
 
             # resize window (you can also use the mouse for that)
             mode "resize" {
@@ -255,10 +322,10 @@ smart_borders on
           client.background       #2B2C2B
 
             # picom
-            exec --no-startup-id picom
+            exec --no-startup-id nixGLNvidia picom
 
             # set wallpaper (ft. feh)
-            exec --no-startup-id ~/.fehbg
+            # exec --no-startup-id ~/.fehbg
     '';
   };
 }

@@ -7,6 +7,15 @@
     discord
     firefox
     flameshot
+    gcc
+    firefox
+    flameshot
+    nixgl.auto.nixGLNvidia
+    rofi
+    notion-app-enhanced
+    nix-top
+    nix-output-monitor
+    rofi
     notion-app-enhanced
     rofi
     synergy

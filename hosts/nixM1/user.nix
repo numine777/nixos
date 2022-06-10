@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ../../modules/shell/common.nix
+    ../../modules/shell/mac-default.nix
     ../../modules/editors/neovim.nix
     ../../modules/editors/vim.nix
     ../../modules/editors/helix.nix

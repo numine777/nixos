@@ -7,7 +7,6 @@
     acpi
     alsa-utils
     brightnessctl
-    direnv
     efibootmgr
     feh
     fortune

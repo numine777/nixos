@@ -13,7 +13,6 @@
     ffmpeg
     fzf
     github-cli
-    glibc
     gnumake
     ranger
     (ripgrep.override { withPCRE2 = true; })

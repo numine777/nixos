@@ -4,10 +4,11 @@
   home.packages = with pkgs; [
     _1password-gui
     brave
+    discord
     firefox
     flameshot
-    rofi
     notion-app-enhanced
+    rofi
     synergy
   ];
   home.file.".config/rofi".source =

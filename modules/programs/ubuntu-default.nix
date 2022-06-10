@@ -1,6 +1,6 @@
 { config, pkgs, libs, ... }:
 {
-  imports = [ ./linux-default.nix ]
+  imports = [ ./linux-default.nix ];
   home.packages = with pkgs; [
     nixgl.auto.nixGLNvidia
   ];

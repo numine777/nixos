@@ -52,6 +52,7 @@
         bottom.enable = true;
         irssi.enable = false;
         kitty.enable = true;
+        alacritty.enable = true;
         graphics = {
           aseprite.enable = false;
           gimp.enable = true;

@@ -58,67 +58,104 @@ font:
 draw_bold_text_with_bright_colors: true
 
 # Colors (Monokai Dark)
-colors:
-  # selection_background : "#e5e9f0"
-  # selection_foreground : "#2e3440"
-  # url_color : "#d8dee9"
-  # cursor : "#e5e9f0"
-  # active_border_color : "#4c566a"
-  # inactive_border_color : "#3b4252"
-  # active_tab_background : "#2e3440"
-  # active_tab_foreground : "#e5e9f0"
-  # inactive_tab_background : "#3b4252"
-  # inactive_tab_foreground : "#d8dee9"
-  # tab_bar_background : "#3b4252"
-  primary:
-    background : '#2e3440'
-    foreground : '#e5e9f0'
-    # background: '0x282828'
-    # foreground: '0xebdbb2'
+schemes:
+  # Tokyo Night theme, based on both:
+  #   https://github.com/ghifarit53/tokyonight-vim
+  #   https://github.com/enkia/tokyo-night-vscode-theme
+  tokyo-night: &tokyo-night
+    # Default colors
+    primary:
+      background: '0x1a1b26'
+      foreground: '0xa9b1d6'
 
-  normal:
-    black:   "#2e3440"
-    red:     "#bf616a"
-    green:   "#a3be8c"
-    yellow:  "#ebcb8b"
-    blue:    "#81a1c1"
-    magenta: "#b48ead"
-    cyan:    "#88c0d0"
-    white:   "#e5e9f0"
+    # Normal colors
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x787c99'
 
-  bright:
-    black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
+    # Bright colors
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
 
-    # color0 = "#2e3440";
-    # color1 = "#bf616a";
-    # color2 = "#a3be8c";
-    # color3 = "#ebcb8b";
-    # color4 = "#81a1c1";
-    # color5 = "#b48ead";
-    # color6 = "#88c0d0";
-    # color7 = "#e5e9f0";
-    # color8 = "#616E88";
-    # color9 = "#bf616a";
+  tokyo-night-storm: &tokyo-night-storm
+    # Default colors
+    primary:
+      background: '0x24283b'
+      foreground: '0xa9b1d6'
 
-    # color10 = "#a3be8c";
-    # color11 = "#ebcb8b";
-    # color12 = "#81a1c1";
-    # color13 = "#b48ead";
-    # color14 = "#88c0d0";
-    # color15 = "#8fbcbb";
-    # color16 = "#d08770";
-    # color17 = "#5e81ac";
-    # color18 = "#3b4252";
-    # color19 = "#434c5e";
-    # color20 = "#d8dee9";
-    # color21 = "#eceff4";
+    # Normal colors
+    normal:
+      black:   '0x32344a'
+      red:     '0xf7768e'
+      green:   '0x9ece6a'
+      yellow:  '0xe0af68'
+      blue:    '0x7aa2f7'
+      magenta: '0xad8ee6'
+      cyan:    '0x449dab'
+      white:   '0x9699a8'
+
+    # Bright colors
+    bright:
+      black:   '0x444b6a'
+      red:     '0xff7a93'
+      green:   '0xb9f27c'
+      yellow:  '0xff9e64'
+      blue:    '0x7da6ff'
+      magenta: '0xbb9af7'
+      cyan:    '0x0db9d7'
+      white:   '0xacb0d0'
+
+colors: *tokyo-night
+# colors:
+#   # selection_background : "#e5e9f0"
+#   # selection_foreground : "#2e3440"
+#   # url_color : "#d8dee9"
+#   # cursor : "#e5e9f0"
+#   # active_border_color : "#4c566a"
+#   # inactive_border_color : "#3b4252"
+#   # active_tab_background : "#2e3440"
+#   # active_tab_foreground : "#e5e9f0"
+#   # inactive_tab_background : "#3b4252"
+#   # inactive_tab_foreground : "#d8dee9"
+#   # tab_bar_background : "#3b4252"
+#   primary:
+#     background : '#2e3440'
+#     foreground : '#e5e9f0'
+#     # background: '0x282828'
+#     # foreground: '0xebdbb2'
+
+#   normal:
+#     black:   "#2e3440"
+#     red:     "#bf616a"
+#     green:   "#a3be8c"
+#     yellow:  "#ebcb8b"
+#     blue:    "#81a1c1"
+#     magenta: "#b48ead"
+#     cyan:    "#88c0d0"
+#     white:   "#e5e9f0"
+
+#   bright:
+#     black:   '0x928374'
+#     red:     '0xfb4934'
+#     green:   '0xb8bb26'
+#     yellow:  '0xfabd2f'
+#     blue:    '0x83a598'
+#     magenta: '0xd3869b'
+#     cyan:    '0x8ec07c'
+#     white:   '0xebdbb2'
 
 # Visual bell
 bell:
@@ -146,8 +183,8 @@ cursor:
 
 live_config_reload: true
 
-# shell:
-#   program: /bin/zsh
+shell:
+  program: /bin/zsh
 
 key_bindings:
   - { key: Y,        mods: Control, action: Paste                        }

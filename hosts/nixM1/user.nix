@@ -37,6 +37,7 @@
     programs = {
       bottom.enable = true;
       kitty.enable = true;
+      alacritty.enable = true;
       graphics = {
         aseprite.enable = false;
         gimp.enable = false;

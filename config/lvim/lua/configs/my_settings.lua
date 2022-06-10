@@ -3,11 +3,11 @@ CACHE_PATH = vim.fn.stdpath("cache")
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "nord"
+-- lvim.colorscheme = "nord"
 lvim.transparent_window = true
 -- lvim.builtin.nvimtree.setup.nvim_tree_ignore = {}
 -- lvim.builtin.nvimtree.setup.nvim_tree_hide_dotfiles = 0
-lvim.builtin.lualine.options.theme = "nord"
+-- lvim.builtin.lualine.options.theme = "nord"
 -- lvim.builtin.nvimtree.setup.update_cwd = false
 -- lvim.builtin.nvimtree.setup.hijack_netrw = false
 -- lvim.builtin.nvimtree.setup.disable_netrw = false
@@ -28,6 +28,17 @@ vim.api.nvim_set_hl(0, 'WinSeparator', { background = nil })
 
 lvim.leader = "space"
 
+vim.g.tokyonight_style = "night"
+vim.g.tokyonight_italic_functions = true
+vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+
+-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+
+-- Load the colorscheme
+lvim.colorscheme = "tokyonight"
+lvim.builtin.lualine.options.theme = "tokyonight"
+
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.terminal.active = true
@@ -38,22 +49,21 @@ lvim.builtin.project.active = false
 lvim.builtin.nvimtree.active = false
 lvim.builtin.terminal.open_mapping = [[<c-\>]]
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 1
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-    "bash",
-    "c",
-    "cpp",
-    "javascript",
-    "json",
-    "lua",
-    "python",
-    "typescript",
-    "css",
-    "rust",
-    "java",
-    "yaml",
+  "bash",
+  "c",
+  "cpp",
+  "javascript",
+  "json",
+  "lua",
+  "python",
+  "typescript",
+  "css",
+  "rust",
+  "java",
+  "yaml",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -61,50 +71,50 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
-    {
-        exe = "prettier",
-        args = { "--tab-width", "4" },
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
-    },
-    { exe = "stylua", filetypes = { "lua" } },
-    -- { exe = "clang-format", filetypes = { "cpp" } },
-    { exe = "black", filetypes = { "python" } },
+  {
+    exe = "prettier",
+    args = { "--tab-width", "4" },
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+  },
+  { exe = "stylua", filetypes = { "lua" } },
+  -- { exe = "clang-format", filetypes = { "cpp" } },
+  { exe = "black", filetypes = { "python" } },
 })
 
 local function tprint(tbl, indent)
-    if not indent then
-        indent = 0
+  if not indent then
+    indent = 0
+  end
+  local return_string = ""
+  for k, v in pairs(tbl) do
+    local formatting = string.rep("  ", indent) .. k .. ": "
+    if type(v) == "table" then
+      print(formatting)
+      tprint(v, indent + 1)
+    elseif type(v) == "boolean" then
+      print(formatting .. tostring(v))
+    else
+      print(formatting .. v)
     end
-    local return_string = ""
-    for k, v in pairs(tbl) do
-        local formatting = string.rep("  ", indent) .. k .. ": "
-        if type(v) == "table" then
-            print(formatting)
-            tprint(v, indent + 1)
-        elseif type(v) == "boolean" then
-            print(formatting .. tostring(v))
-        else
-            print(formatting .. v)
-        end
-    end
+  end
 end
 
 local root_files = {
-    "tsconfig.json",
-    ".eslintrc.js",
-    "package.json",
-    ".git",
-    "BUILD.bazel",
+  "tsconfig.json",
+  ".eslintrc.js",
+  "package.json",
+  ".git",
+  "BUILD.bazel",
 }
 local linters = require("lvim.lsp.null-ls.linters")
 local util = require("lspconfig.util")
 linters.setup({
-    {
-        exe = "eslint",
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
-        cwd = function(params)
-            return util.root_pattern(unpack(root_files))(params.bufname) or util.path.dirname(params.bufname)
-        end,
-    },
+  {
+    exe = "eslint",
+    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+    cwd = function(params)
+      return util.root_pattern(unpack(root_files))(params.bufname) or util.path.dirname(params.bufname)
+    end,
+  },
 })
 lvim.format_on_save = false

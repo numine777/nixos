@@ -7,44 +7,45 @@
     ./zsh.nix
   ];
   home.packages = with pkgs; [
-    acpi
-    alsa-utils
+    # acpi
+    # alsa-utils
     bottom
-    brightnessctl
+    # brightnessctl
     exa
     fd
-    feh
+    # feh
     ffmpeg
-    fortune
+    # fortune
     fzf
     github-cli
     gnumake
-    hsetroot
-    lm_sensors
-    maim
-    ncdu
-    pamixer
-    pass
-    playerctl
+    # hsetroot
+    # lm_sensors
+    # maim
+    # ncdu
+    # pamixer
+    # pass
+    # playerctl
     ranger
     (ripgrep.override { withPCRE2 = true; })
-    slop
+    # slop
     tmux
     unzip
     wget
     xclip
-    zoxide
+    # zoxide
 
-    _1password-gui
+    # _1password-gui
+    _1password
     mosh
-    synergy
+    # synergy
     awscli
     brotli
     cmake
     curl
-    dconf
+    # dconf
     direnv
-    glibc
+    # glibc
     htop
     postman
     jq

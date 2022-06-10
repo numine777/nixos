@@ -1,7 +1,7 @@
 { config, pkgs, libs, ... }:
 {
   accounts.email = {
-    maildirBasePath = "/home/scott/.mail";
+    maildirBasePath = "/Users/scott/.mail";
     accounts = {
       Gmail = {
         address = "scottwalls2008@gmail.com";

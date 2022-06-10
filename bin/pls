@@ -30,7 +30,7 @@ while [ "$1" ]; do
       notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
       exit ;;
     home-work)
-      nix build "$HOME/nixos#homemanagerConfigurations.linux-x86_64.nixosThelio.activationPackage" --impure && ./result/activate
+      nix build "$HOME/nixos#homemanagerConfigurations.x86_64-linux.nixosThelio.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
       exit ;;
     home-vm)

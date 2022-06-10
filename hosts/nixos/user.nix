@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ../../modules/shell
+    ../../modules/shell/linux-default.nix
     ../../modules/editors/neovim.nix
     ../../modules/editors/helix.nix
     ../../modules/editors/emacs.nix
@@ -12,7 +12,7 @@
     ../../modules/dev/rust.nix
     ../../modules/dev/nix.nix
     ../../modules/dev/python.nix
-    ../../modules/programs
+    ../../modules/programs/linux-default.nix
     ../../modules/desktop
     ../../modules/desktop/windowManagers/awesome.nix
     ../../modules/desktop/windowManagers/berry.nix
@@ -34,31 +34,30 @@
           sway.enable = false;
         };
       };
-    };
-    dev = {
-      clojure.enable = true;
-      # lisp.enable = false;
-      lua.enable = true;
-      nix.enable = true;
-      node.enable = true;
-      python.enable = true;
-      rust.enable = true;
-    };
-    editors = {
-      emacs.enable = false;
-      neovim.enable = true;
-      vim.enable = false;
-      helix.enable = true;
-    };
-    programs = {
-      bottom.enable = true;
-      irssi.enable = false;
-      kitty.enable = true;
-      graphics = {
-        aseprite.enable = false;
-        gimp.enable = true;
-        inkscape.enable = true;
-        krita.enable = false;
+      dev = {
+        clojure.enable = true;
+        lua.enable = true;
+        nix.enable = true;
+        node.enable = true;
+        python.enable = true;
+        rust.enable = true;
+      };
+      editors = {
+        emacs.enable = false;
+        neovim.enable = true;
+        vim.enable = false;
+        helix.enable = true;
+      };
+      programs = {
+        bottom.enable = true;
+        irssi.enable = false;
+        kitty.enable = true;
+        graphics = {
+          aseprite.enable = false;
+          gimp.enable = true;
+          inkscape.enable = true;
+          krita.enable = false;
+        };
       };
     };
   };

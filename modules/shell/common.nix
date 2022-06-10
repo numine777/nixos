@@ -25,7 +25,6 @@
     brotli
     cmake
     curl
-    direnv
     htop
     jq
     kubectl

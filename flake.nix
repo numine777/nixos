@@ -13,7 +13,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
   };
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, flake-utils, darwin, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, flake-utils, darwin, nixgl, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system:
       let
         # system = "x86_64-linux";
@@ -53,6 +53,7 @@
         overlays = [
           nixpkgs-f2k.overlay
           neovim-nightly.overlay
+          nixgl.overlay
         ];
       in
       {
@@ -92,7 +93,7 @@
                   NIXPKGS_ALLOW_UNFREE = true;
                 };
                 nixpkgs.overlays = overlays;
-                imports = [ ./hosts/nixosThelio/user.nix ];
+                imports = [ ./hosts/nixos/user.nix ];
               };
             system = "x86_64-linux";
             homeDirectory = "/home/mwalls";

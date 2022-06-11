@@ -44,6 +44,10 @@ while [ "$1" ]; do
       nixos-rebuild --use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
       notify-send -i "$HOME/nixos/nixos.png" "pls" "nixos config rebuilt "
       exit ;;
+    rebuild-vm)
+      nixos-rebuild --use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#x86_64-linux.nixos"
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "nixos config rebuilt "
+      exit ;;
     rebuild-mac)
       darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#aarch64-darwin.Scotts-MacBook-Pro"
       exit ;;
@@ -61,7 +65,7 @@ while [ "$1" ]; do
       exit ;;
     upgrade)
       nix flake update "$HOME/nixos"
-      nixos-rebuild -use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
+      nixos-rebuild --use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
       nix build "$HOME/nixos#homemanagerConfigurations.nixos.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "Finished upgrade"
       exit ;;

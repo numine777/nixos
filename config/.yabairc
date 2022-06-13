@@ -55,5 +55,5 @@ yabai -m rule --add app="^Android Studio$" manage=off
 # SPACEBAR_HEIGHT=$(spacebar -m config height)
 # yabai -m config external_bar all:$SPACEBAR_HEIGHT:0
 
-yabai -m rule --add app="^Slack$" space=2
+yabai -m rule --add app="^Slack$" space=5
 #yabai -m rule --add app="^zoom.us$" space=4

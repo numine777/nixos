@@ -115,7 +115,8 @@ ctrl + alt - s : yabai -m space --layout stack
 ctrl + alt - d : yabai -m space --layout float
 
 # opens iTerm2
-ctrl - return : "${HOME}"/bin/open-iterm2.sh
+# ctrl - return : "${HOME}"/bin/open-iterm2.sh
+ctrl - return : alacritty
 cmd - b : open -na "Brave Browser" --args --new-window
 
 ctrl + shift - q : yabai -m window --close

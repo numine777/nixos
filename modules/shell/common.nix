@@ -3,6 +3,7 @@
   nixpkgs.config.allowUnfree = true;
   imports = [
     ./dircolors.nix
+    ./fish.nix
     ./git.nix
     ./zsh.nix
   ];

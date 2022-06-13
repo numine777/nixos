@@ -177,6 +177,7 @@ _direnv_hook_enabled=1
 _direnv_hook() {
   if [ $_direnv_hook_enabled -eq 1 ]; then
       eval "$("direnv" export zsh)";
+      # eval "$(direnv export $SHELL 2> >( egrep -v -e '^direnv: (loading|export|unloading)' ))";
   fi
 }
 direnv-freeze() {
@@ -195,7 +196,3 @@ direnv-thaw() {
 }
 
 # complete -F _cd direnv-freeze
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

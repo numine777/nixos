@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   imports = [
-    ../../modules/shell/ubuntu-default.nix
+    ../../modules/shell/linux-default.nix
     ../../modules/editors/neovim.nix
     ../../modules/editors/helix.nix
     ../../modules/editors/emacs.nix

@@ -176,8 +176,8 @@ eval "$(direnv hook zsh)"
 _direnv_hook_enabled=1
 _direnv_hook() {
   if [ $_direnv_hook_enabled -eq 1 ]; then
-      eval "$("direnv" export zsh)";
-      # eval "$(direnv export $SHELL 2> >( egrep -v -e '^direnv: (loading|export|unloading)' ))";
+      # eval "$("direnv" export zsh)";
+      eval "$(direnv export $SHELL 2> >( egrep -v -e '^direnv: (loading|export|unloading)' ))";
   fi
 }
 direnv-freeze() {

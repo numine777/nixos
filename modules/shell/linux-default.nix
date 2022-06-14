@@ -6,6 +6,8 @@
   home.packages = with pkgs; [
     acpi
     alsa-utils
+    bash_5
+    bash-completion
     brightnessctl
     direnv
     efibootmgr

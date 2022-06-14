@@ -7,6 +7,7 @@ export VISUAL=/bin/vim
 export DOTFILES=$HOME/nixos
 export PROJECTS_DIR=$HOME/work
 export NPM_PREFIX_DIR=$HOME/.node_modules
+export XDG_DATA_HOME="${HOME}/.local/share";
 # export NVM_DIR="$HOME/.nvm"
 
 

@@ -38,6 +38,7 @@
     tree
     tmux
     unzip
+    zellij
   ];
 
   # not big enough for their own modules

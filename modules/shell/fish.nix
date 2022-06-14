@@ -13,7 +13,12 @@
     #     };
     #   }
     # ];
-    shellInit = "starship init fish | source";
+    functions = {
+      fish_user_key_bindings = {
+        body = "bind \\cf tmux-sessionizer";
+      };
+    };
+    shellInit = "direnv hook fish | source\nstarship init fish | source";
   };
   # home.file.".config/fish".source =
   #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/fish";

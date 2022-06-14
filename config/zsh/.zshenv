@@ -24,3 +24,15 @@ if [ -d "$HOME/n" ]; then
 fi
 
 export PATH=$N_PREFIX/bin:$PATH
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+export GRADLE_HOME="$HOME/.local/bin/gradle-6.9.1"
+export PATH="$PATH:$HOME/bin/flutter/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/Library/Android/sdk"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$GRADLE_HOME/bin"
+export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
+export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin"
+export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"

@@ -13,5 +13,8 @@
     #     };
     #   }
     # ];
+    shellInit = "starship init fish | source";
   };
+  # home.file.".config/fish".source =
+  #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/fish";
 }

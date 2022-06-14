@@ -32,6 +32,7 @@
     kubectl
     lsof
     nix-index
+    starship
     stow
     tabnine
     tree

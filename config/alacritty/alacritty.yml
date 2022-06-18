@@ -184,7 +184,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: /bin/zsh
+  program: zsh
 
 key_bindings:
   - { key: Y,        mods: Control, action: Paste                        }

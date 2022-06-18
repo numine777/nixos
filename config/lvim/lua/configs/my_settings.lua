@@ -28,7 +28,7 @@ vim.api.nvim_set_hl(0, 'WinSeparator', { background = nil })
 
 lvim.leader = "space"
 
-vim.g.tokyonight_style = "night"
+vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_italic_functions = true
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 

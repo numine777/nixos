@@ -10,6 +10,7 @@
     ../../modules/dev/lua.nix
     ../../modules/dev/node.nix
     ../../modules/dev/rust.nix
+    ../../modules/dev/go.nix
     ../../modules/dev/nix.nix
     ../../modules/dev/python.nix
     ../../modules/programs/ubuntu-default.nix
@@ -41,6 +42,7 @@
         node.enable = true;
         python.enable = true;
         rust.enable = true;
+        golang.enable = true;
       };
       editors = {
         emacs.enable = false;

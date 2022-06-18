@@ -5,6 +5,7 @@
   setw -g mode-keys vi
   set -g base-index 1
   setw -g pane-base-index 1
+  set-option -g default-shell $SHELL
   # cheat sheet
   bind -r i run-shell "tmux neww tmux-cht.sh"
   # Kitty

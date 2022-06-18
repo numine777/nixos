@@ -2,12 +2,15 @@
 
 # exports
 export EDITOR=nvim
+export SHELL=$(which zsh)
 export MANPAGER="less -R --use-color -Dd+r -Du+b -DS+ky -DP+kg -DE+kR"
 export VISUAL=/usr/bin/vim
 export DOTFILES=$HOME/nixos
 export PROJECTS_DIR=$HOME/work
 # export NPM_PREFIX_DIR=$HOME/.node_modules
 export NVM_DIR="$HOME/.nvm"
+export XDG_DATA_HOME="${HOME}/.local/share";
+# export NVM_DIR="$HOME/.nvm"
 
 
 typeset -U PATH path

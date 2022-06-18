@@ -39,7 +39,6 @@ zinit wait lucid light-mode for \
   atinit"
     ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30000
     ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-    ZSH_AUTOSUGGEST_COMPLETION_IGNORE='_*|pre(cmd|exec)|sudo pacman -S*|pacman -S*|paru -S*|yay -S*|\)\*'
   " \
     zsh-users/zsh-autosuggestions \
   atload"
@@ -90,7 +89,7 @@ zstyle ':completion:*:exa' sort true
 
 
 # History file configuration
-HISTFILE="$HOME/.zsh_history"
+export HISTFILE="$HOME/.zsh_history"
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
 setopt APPENDHISTORY
@@ -100,6 +99,8 @@ setopt HIST_EXPIRE_DUPS_FIRST    # delete duplicates first when HISTFILE size ex
 # setopt hist_find_no_dups         # Do not display a line previously found
 # setopt hist_ignore_space         # ignore commands that start with space
 # setopt INC_APPEND_HISTORY        # add commands to HISTFILE in order of execution
+export SAVEHIST=1000000000
+setopt SHARE_HISTORY
 
 autoload -U add-zsh-hook
 
@@ -136,22 +137,23 @@ bindkey -s '^f' "tmux-sessionizer\n"
 # }
 eval "$(zoxide init zsh)"
 
-autoload -U promptinit && promptinit
-setopt PROMPTSUBST
+eval "$(starship init zsh)"
+# autoload -U promptinit && promptinit
+# setopt PROMPTSUBST
 # B.
-zinit wait lucid for \
-  OMZL::git.zsh \
-  atload"unalias grv" \
-  OMZP::git
+# zinit wait lucid for \
+#   OMZL::git.zsh \
+#   atload"unalias grv" \
+#   OMZP::git
 
-PS1="READY >" # provide a simple prompt till the theme loads
+# PS1="READY >" # provide a simple prompt till the theme loads
 
 # C.
-zinit wait'!' lucid for \
-  OMZL::prompt_info_functions.zsh \
-  OMZL::spectrum.zsh \
-  OMZL::theme-and-appearance.zsh \
-  OMZT::robbyrussell
+# zinit wait'!' lucid for \
+#   OMZL::prompt_info_functions.zsh \
+#   OMZL::spectrum.zsh \
+#   OMZL::theme-and-appearance.zsh \
+#   OMZT::robbyrussell
 
 # D.
 zinit wait lucid for \
@@ -161,23 +163,24 @@ zinit wait lucid for \
   as"completion" \
   OMZP::docker/_docker \
   OMZP::bazel/_bazel \
-  OMZP::fzf
+  OMZP::fzf 
 
-_prompt_nix() {
-  [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
-}
-RPS1='$(_prompt_nix)%F{blue}%~%f'
-if [ -n "$IN_NIX_SANDBOX" ]; then
-  PS1+='%F{red}[sandbox]%f '
-fi
+# _prompt_nix() {
+#   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
+# }
+# RPS1='$(_prompt_nix)%F{blue}%~%f'
+# if [ -n "$IN_NIX_SANDBOX" ]; then
+#   PS1+='%F{red}[sandbox]%f '
+# fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh)" 
 # Copied from "direnv hook zsh" output:
+# export DEV_SHELL_NO_SPLASH=1
 _direnv_hook_enabled=1
 _direnv_hook() {
   if [ $_direnv_hook_enabled -eq 1 ]; then
-      # eval "$("direnv" export zsh)";
-      eval "$(direnv export $SHELL 2> >( egrep -v -e '^direnv: (loading|export|unloading)' ))";
+      eval "$("direnv" export zsh)";
+      # eval "$(direnv export zsh 2> >( egrep -v -e '^direnv: (loading|export|unloading)' ))"
   fi
 }
 direnv-freeze() {
@@ -194,5 +197,3 @@ direnv-thaw() {
     echo "direnv: enabling shell hook"
     _direnv_hook_enabled=1
 }
-
-# complete -F _cd direnv-freeze

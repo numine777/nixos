@@ -11,6 +11,7 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       helix
+      pyright
     ];
     home.file.".config/helix".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/helix";

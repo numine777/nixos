@@ -6,6 +6,7 @@ lvim.keys.normal_mode["<C-s>"] = ":lua require('harpoon.ui').nav_file(4)<CR>"
 lvim.keys.normal_mode["<C-j>"] = ":lprev<CR>"
 lvim.keys.normal_mode["<C-k>"] = ":lnext<CR>"
 lvim.keys.normal_mode["<C-f>"] = ':lua require("harpoon.term").sendCommand(1, "tmux-sessionizer\\n"); require("harpoon.term").gotoTerminal(1)<CR>'
+lvim.keys.visual_block_mode["<C-c>"] = '<Esc>'
 lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", "Clang Debugger" }
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
@@ -52,3 +53,4 @@ lvim.builtin.which_key.mappings["P"] = {
   S = { "<cmd>PackerStatus<cr>", "Status" },
   u = { "<cmd>PackerUpdate<cr>", "Update" },
 }
+

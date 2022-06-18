@@ -5,7 +5,7 @@
   setw -g mode-keys vi
   set -g base-index 1
   setw -g pane-base-index 1
-  set-option -g default-shell /nix/store/d0b9377f17fdxq1ji61a3j4vbyxi4viz-home-manager-path/bin/fish
+  set-option -g default-shell $SHELL
   # cheat sheet
   bind -r i run-shell "tmux neww tmux-cht.sh"
   # Kitty

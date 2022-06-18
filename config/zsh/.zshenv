@@ -3,11 +3,11 @@
 # exports
 export EDITOR=nvim
 export MANPAGER="less -R --use-color -Dd+r -Du+b -DS+ky -DP+kg -DE+kR"
-export VISUAL=/bin/vim
+export VISUAL=/usr/bin/vim
 export DOTFILES=$HOME/nixos
 export PROJECTS_DIR=$HOME/work
-export NPM_PREFIX_DIR=$HOME/.node_modules
-# export NVM_DIR="$HOME/.nvm"
+# export NPM_PREFIX_DIR=$HOME/.node_modules
+export NVM_DIR="$HOME/.nvm"
 
 
 typeset -U PATH path
@@ -30,7 +30,7 @@ export PATH="$PATH:$HOME/bin/flutter/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/Library/Android/sdk"
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:$GRADLE_HOME/bin"
 export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools"

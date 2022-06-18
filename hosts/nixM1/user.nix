@@ -25,7 +25,7 @@
       clojure.enable = true;
       lua.enable = true;
       nix.enable = true;
-      node.enable = true;
+      node.enable = false;
       python.enable = true;
       rust.enable = true;
     };

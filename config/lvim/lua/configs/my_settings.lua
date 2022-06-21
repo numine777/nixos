@@ -44,6 +44,7 @@ lvim.builtin.lualine.options.theme = "tokyonight"
 lvim.builtin.terminal.active = true
 lvim.builtin.autopairs.active = true
 lvim.builtin.notify.active = true
+lvim.builtin.dap.active = true
 -- lvim.builtin.bufferline.active = false
 -- lvim.builtin.project.active = false
 -- lvim.builtin.nvimtree.active = false

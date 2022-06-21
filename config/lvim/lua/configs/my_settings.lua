@@ -2,7 +2,7 @@ CACHE_PATH = vim.fn.stdpath("cache")
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+-- lvim.format_on_save = true
 -- lvim.colorscheme = "nord"
 lvim.transparent_window = true
 -- lvim.builtin.nvimtree.setup.nvim_tree_ignore = {}
@@ -44,9 +44,9 @@ lvim.builtin.lualine.options.theme = "tokyonight"
 lvim.builtin.terminal.active = true
 lvim.builtin.autopairs.active = true
 lvim.builtin.notify.active = true
-lvim.builtin.bufferline.active = false
-lvim.builtin.project.active = false
-lvim.builtin.nvimtree.active = false
+-- lvim.builtin.bufferline.active = false
+-- lvim.builtin.project.active = false
+-- lvim.builtin.nvimtree.active = false
 lvim.builtin.terminal.open_mapping = [[<c-\>]]
 lvim.builtin.nvimtree.setup.view.side = "left"
 

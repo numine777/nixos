@@ -22,6 +22,11 @@
   ];
 
   config = {
+    home.stateVersion = "22.11";
+    programs.home-manager.enable = true;
+    home.keyboard = null;
+    home.homeDirectory = "/home/scott";
+    home.username = "scott";
     modules = {
       desktop = {
         picom.enable = true;

@@ -82,8 +82,9 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.oci-containers.backend = "docker";
   services.openssh.enable = true;
   programs.mosh.enable = true;
   networking.firewall.allowedUDPPorts = [ 60001 ];
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.11";
 }

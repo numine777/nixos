@@ -14,144 +14,139 @@
 
   };
   outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, flake-utils, darwin, nixgl, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        # system = "x86_64-linux";
+    flake-utils.lib.eachDefaultSystem
+      (system:
+        let
+          # system = "x86_64-linux";
 
-        pkgs = import nixpkgs {
-          inherit system;
-          config = { allowUnfree = true; }; # Forgive me Mr. Stallman
-        };
+          pkgs = import nixpkgs {
+            inherit system;
+            config = { allowUnfree = true; }; # Forgive me Mr. Stallman
+          };
 
-        lib = nixpkgs.lib.extend
-          (final: prev:
-            let
-              inherit (lib) mkOption types;
-            in
-            {
-
-              mkOpt = type: default:
-                mkOption { inherit type default; };
-
-              mkOpt' = type: default: description:
-                mkOption { inherit type default description; };
-
-              mkBoolOpt = default: mkOption {
-                inherit default;
-                type = types.bool;
-                example = true;
-              };
-            });
-
-
-        extraSpecialArgs = {
-          inherit inputs self;
-          bling = inputs.bling;
-          rubato = inputs.rubato;
-        };
-
-        overlays = [
-          nixpkgs-f2k.overlay
-          neovim-nightly.overlay
-          nixgl.overlay
-        ];
-      in
-      {
-        homemanagerConfigurations = {
-          nixosThelio = home-manager.lib.homeManagerConfiguration {
-            inherit extraSpecialArgs;
-            configuration = { pkgs, config, ... }:
+          lib = nixpkgs.lib.extend
+            (final: prev:
+              let
+                inherit (lib) mkOption types;
+              in
               {
-                home.stateVersion = "21.11";
-                programs.home-manager.enable = true;
-                home.packages =
-                  let
-                    nixGLNvidiaScript = pkgs.writeShellScriptBin "nixGLNvidia" ''
-                      $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixGLNvidia --no-out-link)/bin/* "$@"
-                    '';
-                    nixGLIntelScript = pkgs.writeShellScriptBin "nixGLIntel" ''
-                      $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixGLIntel --no-out-link)/bin/* "$@"
-                    '';
-                    nixVulkanIntelScript =
-                      pkgs.writeShellScriptBin "nixVulkanIntel" ''
-                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixVulkanIntel --no-out-link)/bin/* "$@"
-                      '';
-                    nixVulkanNvidiaScript =
-                      pkgs.writeShellScriptBin "nixVulkanNvidia" ''
-                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixVulkanNvidia --no-out-link)/bin/* "$@"
-                      '';
-                  in
-                  with pkgs; [
-                    nixGLNvidiaScript
-                    nixGLIntelScript
-                    nixVulkanIntelScript
-                    nixVulkanNvidiaScript
-                  ];
-                home.keyboard = null;
-                home.sessionVariables = {
-                  LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
-                  NIXPKGS_ALLOW_UNFREE = true;
+
+                mkOpt = type: default:
+                  mkOption { inherit type default; };
+
+                mkOpt' = type: default: description:
+                  mkOption { inherit type default description; };
+
+                mkBoolOpt = default: mkOption {
+                  inherit default;
+                  type = types.bool;
+                  example = true;
                 };
-                nixpkgs.overlays = overlays;
-                imports = [ ./hosts/nixWork/user.nix ];
-              };
-            system = "x86_64-linux";
-            homeDirectory = "/home/mwalls";
-            username = "mwalls";
-            stateVersion = "21.11";
+              });
+
+
+          extraSpecialArgs = {
+            inherit inputs self;
+            bling = inputs.bling;
+            rubato = inputs.rubato;
           };
-          nixos = home-manager.lib.homeManagerConfiguration {
-            inherit extraSpecialArgs;
-            configuration = { pkgs, config, ... }:
+
+          overlays = [
+            nixpkgs-f2k.overlays.default
+            neovim-nightly.overlay
+            nixgl.overlay
+          ];
+        in
+        {
+          homemanagerConfigurations = {
+            nixosThelio = home-manager.lib.homeManagerConfiguration {
+              inherit extraSpecialArgs;
+              configuration = { pkgs, config, ... }:
+                {
+                  home.stateVersion = "21.11";
+                  programs.home-manager.enable = true;
+                  home.packages =
+                    let
+                      nixGLNvidiaScript = pkgs.writeShellScriptBin "nixGLNvidia" ''
+                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixGLNvidia --no-out-link)/bin/* "$@"
+                      '';
+                      nixGLIntelScript = pkgs.writeShellScriptBin "nixGLIntel" ''
+                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixGLIntel --no-out-link)/bin/* "$@"
+                      '';
+                      nixVulkanIntelScript =
+                        pkgs.writeShellScriptBin "nixVulkanIntel" ''
+                          $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixVulkanIntel --no-out-link)/bin/* "$@"
+                        '';
+                      nixVulkanNvidiaScript =
+                        pkgs.writeShellScriptBin "nixVulkanNvidia" ''
+                          $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixVulkanNvidia --no-out-link)/bin/* "$@"
+                        '';
+                    in
+                    with pkgs; [
+                      nixGLNvidiaScript
+                      nixGLIntelScript
+                      nixVulkanIntelScript
+                      nixVulkanNvidiaScript
+                    ];
+                  home.keyboard = null;
+                  home.sessionVariables = {
+                    LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
+                    NIXPKGS_ALLOW_UNFREE = true;
+                  };
+                  nixpkgs.overlays = overlays;
+                  imports = [ ./hosts/nixWork/user.nix ];
+                };
+              system = "x86_64-linux";
+              homeDirectory = "/home/mwalls";
+              username = "mwalls";
+              stateVersion = "21.11";
+            };
+            nixos = home-manager.lib.homeManagerConfiguration
               {
-                home.stateVersion = "21.11";
-                programs.home-manager.enable = true;
-                home.keyboard = null;
-                nixpkgs.overlays = [
-                  nixpkgs-f2k.overlay
-                  neovim-nightly.overlay
+                inherit extraSpecialArgs;
+                pkgs =
+                  let
+                    inherit pkgs;
+                  in
+                  import pkgs.path { overlays = [ inputs.nixpkgs-f2k.overlays.default inputs.neovim-nightly.overlay ]; };
+                modules = [
+                  ./hosts/nixos/user.nix
                 ];
-                imports = [ ./hosts/nixos/user.nix ];
               };
-            system = "x86_64-linux";
-            homeDirectory = "/home/scott";
-            username = "scott";
-            stateVersion = "21.11";
+            nixM1 = home-manager.lib.homeManagerConfiguration {
+              inherit extraSpecialArgs;
+              configuration = { pkgs, config, ... }:
+                {
+                  programs.home-manager.enable = true;
+                  nixpkgs.overlays = overlays;
+                  imports = [ ./hosts/nixM1/user.nix ];
+                };
+              system = "aarch64-darwin";
+              homeDirectory = "/Users/scott";
+              username = "scott";
+            };
           };
-          nixM1 = home-manager.lib.homeManagerConfiguration {
-            inherit extraSpecialArgs;
-            configuration = { pkgs, config, ... }:
-              {
-                programs.home-manager.enable = true;
-                nixpkgs.overlays = overlays;
-                imports = [ ./hosts/nixM1/user.nix ];
-              };
-            system = "aarch64-darwin";
-            homeDirectory = "/Users/scott";
-            username = "scott";
+          nixosConfigurations = {
+            nixos = nixpkgs.lib.nixosSystem {
+              inherit system;
+              modules = [
+                {
+                  nixpkgs.overlays = overlays;
+                }
+                ./hosts/nixos/configuration.nix
+              ];
+            };
           };
-        };
-        nixosConfigurations = {
-          nixosThelio = nixpkgs.lib.nixosSystem {
-            inherit system;
-            modules = [
-              {
-                nixpkgs.overlays = overlays;
-              }
-              ./hosts/nixosThelio/configuration.nix
-            ];
+          darwinConfigurations = {
+            Scotts-MacBook-Pro = darwin.lib.darwinSystem {
+              inherit system;
+              modules = [
+                {
+                  nixpkgs.overlays = overlays;
+                }
+                ./hosts/nixM1/configuration.nix
+              ];
+            };
           };
-        };
-        darwinConfigurations = {
-          Scotts-MacBook-Pro = darwin.lib.darwinSystem {
-            inherit system;
-            modules = [
-              {
-                nixpkgs.overlays = overlays;
-              }
-              ./hosts/nixM1/configuration.nix
-            ];
-          };
-        };
-      });
+        });
 }

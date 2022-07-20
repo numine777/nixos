@@ -11,7 +11,7 @@ lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", "Clang Debugger" }
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
 
--- lvim.builtin.which_key.mappings["e"] = { ":Ex<CR>", "Explorer" }
+lvim.builtin.which_key.mappings["e"] = { ":Ex<CR>", "Explorer" }
 lvim.builtin.which_key.mappings["y"] = { '"+y', "Yank to clipboard" }
 lvim.builtin.which_key.vmappings["y"] = { '"+y', "Yank to clipboard" }
 lvim.builtin.which_key.mappings["d"] = { '"_d', "Delete" }
@@ -31,6 +31,10 @@ lvim.builtin.which_key.mappings["g"]["w"] = {
 lvim.builtin.which_key.mappings["g"]["m"] = {
   "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
   "New Git Worktree",
+}
+lvim.builtin.which_key.mappings["g"]["n"] = {
+  "<cmd>lua require('neogit').open({kind = 'vsplit'})<cr>",
+  "Open Neogit",
 }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Harpoon",

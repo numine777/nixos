@@ -1,6 +1,7 @@
 alias vim="lvim"
 alias ls="exa"
-alias la="exa -a"
+alias la="exa -la"
+alias ll="exa -l"
 alias li="exa --icons"
 alias lg="lazygit"
 alias btctl="bluetoothctl"

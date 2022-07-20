@@ -18,8 +18,8 @@ lvim.builtin.which_key.mappings["d"] = { '"_d', "Delete" }
 lvim.builtin.which_key.vmappings["d"] = { '"_d', "Delete" }
 lvim.builtin.which_key.mappings["p"] = { '"+p', "Put from clipboard" }
 lvim.builtin.which_key.vmappings["p"] = { '"+p', "Put from clipboard" }
-lvim.builtin.which_key.mappings["J"] = { ":cprev<CR>", "Globalist Prev" }
-lvim.builtin.which_key.mappings["K"] = { ":cnext<CR>", "Globalist Next" }
+-- lvim.builtin.which_key.mappings["J"] = { ":cprev<CR>", "Globalist Prev" }
+-- lvim.builtin.which_key.mappings["K"] = { ":cnext<CR>", "Globalist Next" }
 lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon Add File" }
 lvim.builtin.which_key.mappings["S"] = { ":Scratch<CR>", "Scratch" }
 lvim.builtin.which_key.mappings["b"]["n"] = { ":lua print(vim.fn.bufname())<cr>", "Print bufname" }
@@ -31,6 +31,10 @@ lvim.builtin.which_key.mappings["g"]["w"] = {
 lvim.builtin.which_key.mappings["g"]["m"] = {
   "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
   "New Git Worktree",
+}
+lvim.builtin.which_key.mappings["g"]["n"] = {
+  "<cmd>lua require('neogit').open({kind = 'vsplit'})<cr>",
+  "Open Neogit",
 }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Harpoon",
@@ -53,4 +57,3 @@ lvim.builtin.which_key.mappings["P"] = {
   S = { "<cmd>PackerStatus<cr>", "Status" },
   u = { "<cmd>PackerUpdate<cr>", "Update" },
 }
-

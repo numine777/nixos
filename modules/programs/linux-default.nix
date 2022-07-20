@@ -10,6 +10,7 @@
     gcc
     firefox
     flameshot
+    jdk8
     rofi
     notion-app-enhanced
     nix-top

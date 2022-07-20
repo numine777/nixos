@@ -61,73 +61,38 @@
           homemanagerConfigurations = {
             nixosThelio = home-manager.lib.homeManagerConfiguration {
               inherit extraSpecialArgs;
-              configuration = { pkgs, config, ... }:
+              inherit pkgs;
+              modules = [
+                ./hosts/nixWork/user.nix
                 {
-                  home.stateVersion = "21.11";
-                  programs.home-manager.enable = true;
-                  home.packages =
-                    let
-                      nixGLNvidiaScript = pkgs.writeShellScriptBin "nixGLNvidia" ''
-                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixGLNvidia --no-out-link)/bin/* "$@"
-                      '';
-                      nixGLIntelScript = pkgs.writeShellScriptBin "nixGLIntel" ''
-                        $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixGLIntel --no-out-link)/bin/* "$@"
-                      '';
-                      nixVulkanIntelScript =
-                        pkgs.writeShellScriptBin "nixVulkanIntel" ''
-                          $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixVulkanIntel --no-out-link)/bin/* "$@"
-                        '';
-                      nixVulkanNvidiaScript =
-                        pkgs.writeShellScriptBin "nixVulkanNvidia" ''
-                          $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixVulkanNvidia --no-out-link)/bin/* "$@"
-                        '';
-                    in
-                    with pkgs; [
-                      nixGLNvidiaScript
-                      nixGLIntelScript
-                      nixVulkanIntelScript
-                      nixVulkanNvidiaScript
-                    ];
-                  home.keyboard = null;
-                  home.sessionVariables = {
-                    LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
-                    NIXPKGS_ALLOW_UNFREE = true;
-                  };
                   nixpkgs.overlays = overlays;
-                  imports = [ ./hosts/nixWork/user.nix ];
-                };
-              system = "x86_64-linux";
-              homeDirectory = "/home/mwalls";
-              username = "mwalls";
-              stateVersion = "21.11";
+                }
+              ];
             };
             nixos = home-manager.lib.homeManagerConfiguration
               {
                 inherit extraSpecialArgs;
-                pkgs =
-                  let
-                    inherit pkgs;
-                  in
-                  import pkgs.path { overlays = [ inputs.nixpkgs-f2k.overlays.default inputs.neovim-nightly.overlay ]; };
+                inherit pkgs;
                 modules = [
                   ./hosts/nixos/user.nix
+                  {
+                    nixpkgs.overlays = [ inputs.nixpkgs-f2k.overlays.default inputs.neovim-nightly.overlay ];
+                  }
                 ];
               };
             nixM1 = home-manager.lib.homeManagerConfiguration {
               inherit extraSpecialArgs;
-              configuration = { pkgs, config, ... }:
+              inherit pkgs;
+              modules = [
+                ./hosts/nixM1/user.nix
                 {
-                  programs.home-manager.enable = true;
                   nixpkgs.overlays = overlays;
-                  imports = [ ./hosts/nixM1/user.nix ];
-                };
-              system = "aarch64-darwin";
-              homeDirectory = "/Users/scott";
-              username = "scott";
+                }
+              ];
             };
           };
           nixosConfigurations = {
-            nixos = nixpkgs.lib.nixosSystem {
+            x86_64-linux.nixos = nixpkgs.lib.nixosSystem {
               inherit system;
               modules = [
                 {
@@ -138,11 +103,11 @@
             };
           };
           darwinConfigurations = {
-            Scotts-MacBook-Pro = darwin.lib.darwinSystem {
+            aarch64-dawin.Scotts-MacBook-Pro = darwin.lib.darwinSystem {
               inherit system;
               modules = [
                 {
-                  nixpkgs.overlays = overlays;
+                  nixpkgs.overlays = [ inputs.nixpkgs-f2k.overlays.default inputs.neovim-nightly.overlay ];
                 }
                 ./hosts/nixM1/configuration.nix
               ];

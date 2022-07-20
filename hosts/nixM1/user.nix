@@ -15,34 +15,39 @@
     ../../modules/desktop/windowManagers/yabai.nix
   ];
 
-  config.modules = {
-    desktop = {
-      windowManager = {
-        yabai.enable = true;
+  config = {
+    programs.home-manager.enable = true;
+    home.homeDirectory = "/Users/scott";
+    home.username = "scott";
+    modules = {
+      desktop = {
+        windowManager = {
+          yabai.enable = true;
+        };
       };
-    };
-    dev = {
-      clojure.enable = true;
-      lua.enable = true;
-      nix.enable = true;
-      node.enable = true;
-      python.enable = true;
-      rust.enable = true;
-    };
-    editors = {
-      neovim.enable = true;
-      vim.enable = false;
-      helix.enable = true;
-    };
-    programs = {
-      bottom.enable = true;
-      kitty.enable = true;
-      alacritty.enable = true;
-      graphics = {
-        aseprite.enable = false;
-        gimp.enable = false;
-        inkscape.enable = false;
-        krita.enable = false;
+      dev = {
+        clojure.enable = true;
+        lua.enable = true;
+        nix.enable = true;
+        node.enable = true;
+        python.enable = true;
+        rust.enable = true;
+      };
+      editors = {
+        neovim.enable = true;
+        vim.enable = false;
+        helix.enable = true;
+      };
+      programs = {
+        bottom.enable = true;
+        kitty.enable = true;
+        alacritty.enable = true;
+        graphics = {
+          aseprite.enable = false;
+          gimp.enable = false;
+          inkscape.enable = false;
+          krita.enable = false;
+        };
       };
     };
   };

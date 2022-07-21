@@ -26,8 +26,6 @@
           yabai.enable = true;
         };
       };
-    };
-    modules = {
       dev = {
         clojure.enable = true;
         lua.enable = true;

@@ -49,7 +49,7 @@ while [ "$1" ]; do
       notify-send -i "$HOME/nixos/nixos.png" "pls" "nixos config rebuilt "
       exit ;;
     rebuild-mac)
-      darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#"
+      darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#aarch64-darwin.Scotts-MacBook-Pro"
       exit ;;
     repl)
       [ ! -r /tmp/nixos-repl.nix ] && echo "builtins.getFlake (toString $HOME/nixos)" > /tmp/nixos-repl

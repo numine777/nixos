@@ -1,4 +1,4 @@
-theme = "gruvbox"
+theme = "tokyonight_storm"
 
 [editor]
 true-color = true

@@ -23,6 +23,38 @@
   ];
 
   config = {
+    programs.home-manager.enable = true;
+    home.homeDirectory = "/home/mwalls";
+    home.username = "mwalls";
+    home.stateVersion = "22.11";
+    home.packages =
+      let
+        nixGLNvidiaScript = pkgs.writeShellScriptBin "nixGLNvidia" ''
+          $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixGLNvidia --no-out-link)/bin/* "$@"
+        '';
+        nixGLIntelScript = pkgs.writeShellScriptBin "nixGLIntel" ''
+          $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixGLIntel --no-out-link)/bin/* "$@"
+        '';
+        nixVulkanIntelScript =
+          pkgs.writeShellScriptBin "nixVulkanIntel" ''
+            $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A nixVulkanIntel --no-out-link)/bin/* "$@"
+          '';
+        nixVulkanNvidiaScript =
+          pkgs.writeShellScriptBin "nixVulkanNvidia" ''
+            $(NIX_PATH=nixpkgs=${inputs.nixpkgs} nix-build ${inputs.nixgl} -A auto.nixVulkanNvidia --no-out-link)/bin/* "$@"
+          '';
+      in
+      with pkgs; [
+        nixGLNvidiaScript
+        nixGLIntelScript
+        nixVulkanIntelScript
+        nixVulkanNvidiaScript
+      ];
+    home.keyboard = null;
+    home.sessionVariables = {
+      LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
+      NIXPKGS_ALLOW_UNFREE = true;
+    };
     modules = {
       desktop = {
         picom.enable = true;

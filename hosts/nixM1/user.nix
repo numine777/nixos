@@ -15,10 +15,15 @@
     ../../modules/desktop/windowManagers/yabai.nix
   ];
 
-  config.modules = {
-    desktop = {
-      windowManager = {
-        yabai.enable = true;
+  config = {
+    programs.home-manager.enable = true;
+    home.homeDirectory = "/Users/scott";
+    home.username = "scott";
+    modules = {
+      desktop = {
+        windowManager = {
+          yabai.enable = true;
+        };
       };
     };
     dev = {

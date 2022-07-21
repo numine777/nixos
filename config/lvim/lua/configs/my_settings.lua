@@ -50,7 +50,6 @@ lvim.builtin.project.active = false
 lvim.builtin.nvimtree.active = false
 lvim.builtin.terminal.open_mapping = [[<c-\>]]
 -- lvim.builtin.nvimtree.setup.view.side = "left"
--- lvim.builtin.nvimtree.setup.hijack_directories.auto_open = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -123,25 +122,26 @@ linters.setup({
 lvim.format_on_save = false
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
 local function config(_config)
-	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-		on_attach = function()
-			Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
-			Nnoremap("K", ":lua vim.lsp.buf.hover()<CR>")
-			Nnoremap("<leader>vws", ":lua vim.lsp.buf.workspace_symbol()<CR>")
-			Nnoremap("<leader>vd", ":lua vim.diagnostic.open_float()<CR>")
-			Nnoremap("[d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
-			Nnoremap("]d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
-			Nnoremap("<leader>vca", ":lua vim.lsp.buf.code_action()<CR>")
-			Nnoremap("<leader>vrr", ":lua vim.lsp.buf.references()<CR>")
-			Nnoremap("<leader>vrn", ":lua vim.lsp.buf.rename()<CR>")
-			Inoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-		end,
-	}, _config or {})
+  return vim.tbl_deep_extend("force", {
+    capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    on_attach = function()
+      Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
+      Nnoremap("K", ":lua vim.lsp.buf.hover()<CR>")
+      Nnoremap("<leader>vws", ":lua vim.lsp.buf.workspace_symbol()<CR>")
+      Nnoremap("<leader>vd", ":lua vim.diagnostic.open_float()<CR>")
+      Nnoremap("[d", ":lua vim.lsp.diagnostic.goto_next()<CR>")
+      Nnoremap("]d", ":lua vim.lsp.diagnostic.goto_prev()<CR>")
+      Nnoremap("<leader>vca", ":lua vim.lsp.buf.code_action()<CR>")
+      Nnoremap("<leader>vrr", ":lua vim.lsp.buf.references()<CR>")
+      Nnoremap("<leader>vrn", ":lua vim.lsp.buf.rename()<CR>")
+      Inoremap("<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+    end,
+  }, _config or {})
 end
+
 require("lspconfig").rust_analyzer.setup(config({
-	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-	--[[
+  cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+  --[[
     settings = {
         rust = {
             unstable_features = true,
@@ -152,7 +152,7 @@ require("lspconfig").rust_analyzer.setup(config({
     --]]
 }))
 
-vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-  pattern = {"*Jenkinsfile"},
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*Jenkinsfile" },
   command = ":set ft=groovy"
 })

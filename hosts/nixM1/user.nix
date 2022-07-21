@@ -19,6 +19,7 @@
     programs.home-manager.enable = true;
     home.homeDirectory = "/Users/scott";
     home.username = "scott";
+    home.stateVersion = "22.11";
     modules = {
       desktop = {
         windowManager = {
@@ -26,28 +27,30 @@
         };
       };
     };
-    dev = {
-      clojure.enable = true;
-      lua.enable = true;
-      nix.enable = true;
-      node.enable = false;
-      python.enable = true;
-      rust.enable = true;
-    };
-    editors = {
-      neovim.enable = true;
-      vim.enable = false;
-      helix.enable = true;
-    };
-    programs = {
-      bottom.enable = true;
-      kitty.enable = true;
-      alacritty.enable = true;
-      graphics = {
-        aseprite.enable = false;
-        gimp.enable = false;
-        inkscape.enable = false;
-        krita.enable = false;
+    modules = {
+      dev = {
+        clojure.enable = true;
+        lua.enable = true;
+        nix.enable = true;
+        node.enable = false;
+        python.enable = true;
+        rust.enable = true;
+      };
+      editors = {
+        neovim.enable = true;
+        vim.enable = false;
+        helix.enable = true;
+      };
+      programs = {
+        bottom.enable = true;
+        kitty.enable = true;
+        alacritty.enable = true;
+        graphics = {
+          aseprite.enable = false;
+          gimp.enable = false;
+          inkscape.enable = false;
+          krita.enable = false;
+        };
       };
     };
   };

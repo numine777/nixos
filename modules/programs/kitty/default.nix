@@ -25,8 +25,9 @@ in
         tab_bar_style = "fade";
         tab_fade = 1;
         tab_bar_margin_width = 5;
-        tab_bar_margin_height = 5;
+        # tab_bar_margin_height = 5;
         allow_remote_control = "yes";
+        hide_window_decorations = "titlebar-only";
         listen_on = "unix:/tmp/mykitty";
       };
     };

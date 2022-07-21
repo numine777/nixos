@@ -103,8 +103,8 @@
             };
           };
           darwinConfigurations = {
-            aarch64-dawin.Scotts-MacBook-Pro = darwin.lib.darwinSystem {
-              inherit system;
+            Scotts-MacBook-Pro = darwin.lib.darwinSystem {
+              system = "aarch64-darwin";
               modules = [
                 {
                   nixpkgs.overlays = [ inputs.nixpkgs-f2k.overlays.default inputs.neovim-nightly.overlay ];

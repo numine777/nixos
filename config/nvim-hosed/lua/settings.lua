@@ -2,7 +2,7 @@ local o = vim.opt
 local g = vim.g
 
 o.relativenumber = true
-o.clipboard = "unnamed"
+o.clipboard = "unnamedplus"
 o.timeoutlen = 500
 o.shiftwidth = 4
 o.tabstop = 4
@@ -46,7 +46,7 @@ g.netrw_browse_split = 0
 g.netrw_banner = 0
 g.netrw_winsize = 25
 g.netrw_localrmdir = "rm -rf"
-g.mapleader = O.leader
+g.mapleader = " "
 -- markdown
 -- Use proper syntax highlighting in code blocks
 local fences = {

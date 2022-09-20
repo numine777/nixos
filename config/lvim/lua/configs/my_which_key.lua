@@ -12,10 +12,11 @@ lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", 
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
 
 lvim.builtin.which_key.mappings["e"] = { ":Ex<CR>", "Explorer" }
+lvim.builtin.which_key.mappings["u"] = { ":UndotreeToggle<CR>", "Undo Tree" }
+lvim.builtin.which_key.mappings["x"] = { '"_dd', "Delete" }
+lvim.builtin.which_key.vmappings["x"] = { '"_d', "Delete" }
 lvim.builtin.which_key.mappings["y"] = { '"+y', "Yank to clipboard" }
 lvim.builtin.which_key.vmappings["y"] = { '"+y', "Yank to clipboard" }
-lvim.builtin.which_key.mappings["d"] = { '"_d', "Delete" }
-lvim.builtin.which_key.vmappings["d"] = { '"_d', "Delete" }
 lvim.builtin.which_key.mappings["p"] = { '"+p', "Put from clipboard" }
 lvim.builtin.which_key.vmappings["p"] = { '"+p', "Put from clipboard" }
 -- lvim.builtin.which_key.mappings["J"] = { ":cprev<CR>", "Globalist Prev" }
@@ -33,8 +34,8 @@ lvim.builtin.which_key.mappings["g"]["m"] = {
   "New Git Worktree",
 }
 lvim.builtin.which_key.mappings["g"]["n"] = {
-  "<cmd>lua require('neogit').open({kind = 'vsplit'})<cr>",
-  "Open Neogit",
+  ":G<cr>",
+  "Open Fugitive",
 }
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Harpoon",

@@ -72,7 +72,7 @@ in
             # i3 config
 
             # mod key
-            set $mod Mod4
+            set $mod Mod1
             floating_modifier $mod
 
             # font
@@ -104,7 +104,7 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec kitty
+            bindsym $mod+Return exec nixGL kitty
             bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often

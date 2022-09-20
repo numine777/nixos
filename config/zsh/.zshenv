@@ -6,11 +6,13 @@ export SHELL=$(which zsh)
 export MANPAGER="less -R --use-color -Dd+r -Du+b -DS+ky -DP+kg -DE+kR"
 export VISUAL=/bin/vim
 export DOTFILES=$HOME/nixos
+export NVIM_DOTFILES=$HOME/nixos/config/nvim
 export PROJECTS_DIR=$HOME/work
 export NPM_PREFIX_DIR=$HOME/.node_modules
 export XDG_DATA_HOME="${HOME}/.local/share"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$HOME/go"
 # export NVM_DIR="$HOME/.nvm"
 
 
@@ -41,3 +43,4 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
+export PATH="$PATH:$GOPATH/bin"

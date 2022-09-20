@@ -10,5 +10,9 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [ pkgs.go_1_18 ];
+    home.sessionVariables = {
+      GOPATH = "$HOME/go";
+    };
+    home.sessionPath = [ "$GOPATH/bin" ];
   };
 }

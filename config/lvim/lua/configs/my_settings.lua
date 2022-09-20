@@ -41,6 +41,7 @@ lvim.builtin.project.active = false
 lvim.builtin.nvimtree.active = false
 lvim.builtin.terminal.active = false
 lvim.builtin.terminal.open_mapping = [[c-\]]
+-- lvim.builtin.nvimtree.setup.view.side = "left"
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {

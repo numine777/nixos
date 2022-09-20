@@ -1,7 +1,7 @@
 { config, pkgs, libs, ... }:
 {
   programs.kitty.settings = {
-    background_opacity 	= "0.80";
+    # background_opacity 	= "0.80";
     foreground = "#a9b1d6";
     background = "#1a1b26";
     cursor = "#a9b1d6";

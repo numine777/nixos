@@ -30,15 +30,15 @@ while [ "$1" ]; do
       notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
       exit ;;
     home-work)
-      nix build "$HOME/nixos#homemanagerConfigurations.x86_64-linux.nixosThelio.activationPackage" --impure && ./result/activate
+      nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
       exit ;;
     home-vm)
-      nix build "$HOME/nixos#homemanagerConfigurations.x86_64-linux.nixos.activationPackage" --impure && ./result/activate
+      nix build "$HOME/nixos#homemanagerConfigurations.nixos.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
       exit ;;
     home-mac)
-      nix build "$HOME/nixos#homemanagerConfigurations.aarch64-darwin.nixM1.activationPackage" --impure && ./result/activate
+      nix build "$HOME/nixos#homemanagerConfigurations.nixM1.activationPackage" --impure && ./result/activate
       exit ;;
     rebuild)
       nixos-rebuild --use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
@@ -49,7 +49,7 @@ while [ "$1" ]; do
       notify-send -i "$HOME/nixos/nixos.png" "pls" "nixos config rebuilt "
       exit ;;
     rebuild-mac)
-      darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#aarch64-darwin.Scotts-MacBook-Pro"
+      darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#Scotts-MacBook-Pro"
       exit ;;
     repl)
       [ ! -r /tmp/nixos-repl.nix ] && echo "builtins.getFlake (toString $HOME/nixos)" > /tmp/nixos-repl

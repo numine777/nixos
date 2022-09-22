@@ -32,6 +32,11 @@
     interfaces.ens33.useDHCP = true;
   };
 
+  fileSystems."/mnt/nfs_clientshare" = {
+    device = "192.168.43.0:/mnt/nfs_share";
+    fsType = "nfs";
+  };
+
   services.avahi = {
     enable = true;
     nssmdns = true;

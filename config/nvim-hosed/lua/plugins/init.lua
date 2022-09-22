@@ -27,8 +27,8 @@ require("packer").startup({
 
 		-- Colorschemes --------------------------------------------
 		use("sainnhe/gruvbox-material")
-		use("folke/tokyonight.nvim")
 		use("shaunsingh/nord.nvim")
+        use("folke/tokyonight.nvim")
 		use("b4skyx/serenade")
 		use("mcchrish/zenbones.nvim")
 		use("rktjmp/lush.nvim")
@@ -75,46 +75,47 @@ require("packer").startup({
 		})
 
 		--  LSP ----------------------------------------------------
-		use({
-			"jose-elias-alvarez/null-ls.nvim",
-			module = "null-ls",
-			after = "nvim-lspconfig",
-		})
-		use({
-			"folke/trouble.nvim",
-			after = "nvim-lspconfig",
-			cmd = { "Trouble", "TroubleToggle" },
-			config = function()
-				require("trouble").setup({
-					auto_close = true,
-				})
-			end,
-		})
-		use({
-			"lspcontainers/lspcontainers.nvim",
-			requires = {
-				"neovim/nvim-lspconfig",
-				"nvim-lua/lsp_extensions.nvim",
-			},
-			config = function()
-				require("lspcontainers").setup({
-					ensure_installed = {
-						"bashls",
-						"dockerls",
-						"gopls",
-						"html",
-						"pyright",
-						"rust_analyzer",
-						"sumneko_lua",
-						"terraformls",
-						"tsserver",
-						"yamlls",
-					},
-				})
+		-- use({
+		-- 	"jose-elias-alvarez/null-ls.nvim",
+		-- 	module = "null-ls",
+		-- 	after = "nvim-lspconfig",
+		-- })
+		-- use({
+		-- 	"folke/trouble.nvim",
+		-- 	after = "nvim-lspconfig",
+		-- 	cmd = { "Trouble", "TroubleToggle" },
+		-- 	config = function()
+		-- 		require("trouble").setup({
+		-- 			auto_close = true,
+		-- 		})
+		-- 	end,
+		-- })
+		-- use({
+		-- 	"lspcontainers/lspcontainers.nvim",
+		-- 	requires = {
+		-- 		"neovim/nvim-lspconfig",
+		-- 		"nvim-lua/lsp_extensions.nvim",
+		-- 	},
+		-- 	config = function()
+		-- 		require("lspcontainers").setup({
+		-- 			ensure_installed = {
+		-- 				"bashls",
+		-- 				"dockerls",
+		-- 				"gopls",
+		-- 				"html",
+		-- 				"pyright",
+		-- 				"rust_analyzer",
+		-- 				"sumneko_lua",
+		-- 				"terraformls",
+		-- 				"tsserver",
+		-- 				"yamlls",
+		-- 			},
+		-- 		})
 
-				require("plugins.lspconfig").init()
-			end,
-		})
+		-- 		require("plugins.lspconfig").init()
+		-- 	end,
+		-- })
+        use("neoclide/coc.nvim")
 
 		-- Treesitter ----------------------------------------------
 		use({

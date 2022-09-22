@@ -5,19 +5,13 @@
     _1password-gui
     brave
     discord
-    firefox
-    flameshot
     gcc
-    firefox
     flameshot
     jdk8
     rofi
-    notion-app-enhanced
     nix-top
     nix-output-monitor
-    rofi
     notion-app-enhanced
-    rofi
     synergy
   ];
   home.file.".config/rofi".source =

@@ -9,6 +9,7 @@
     bash_5
     bash-completion
     brightnessctl
+    ccls
     direnv
     efibootmgr
     feh

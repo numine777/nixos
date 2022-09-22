@@ -197,3 +197,9 @@ direnv-thaw() {
     echo "direnv: enabling shell hook"
     _direnv_hook_enabled=1
 }
+
+# complete -F _cd direnv-freeze
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

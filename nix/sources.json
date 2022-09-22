@@ -1,0 +1,98 @@
+{
+    "Comment.nvim": {
+        "branch": "master",
+        "description": ":brain: :muscle: // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more",
+        "homepage": "",
+        "owner": "numToStr",
+        "repo": "Comment.nvim",
+        "rev": "30d23aa2e1ba204a74d5dfb99777e9acbe9dd2d6",
+        "sha256": "1nr66wjb4y1m5dp4vr9c1x4ygm45f4j3c2dy7cvin1abaj0bz06y",
+        "type": "tarball",
+        "url": "https://github.com/numToStr/Comment.nvim/archive/30d23aa2e1ba204a74d5dfb99777e9acbe9dd2d6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "cmp-tabnine": {
+        "branch": "main",
+        "description": "TabNine plugin for hrsh7th/nvim-cmp",
+        "homepage": "",
+        "owner": "tzachar",
+        "repo": "cmp-tabnine",
+        "rev": "01653a5934b242e8ca517e079419c3b151ce2b00",
+        "sha256": "03nvx8rmdi23iiga5c3fnyaxl46jhv0hkqkcvcx10jjk34v1x9b0",
+        "type": "tarball",
+        "url": "https://github.com/tzachar/cmp-tabnine/archive/01653a5934b242e8ca517e079419c3b151ce2b00.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "git-worktree.nvim": {
+        "branch": "master",
+        "description": null,
+        "homepage": null,
+        "owner": "ThePrimeagen",
+        "repo": "git-worktree.nvim",
+        "rev": "d7f4e2584e81670154f07ca9fa5dd791d9c1b458",
+        "sha256": "1k446mah5dlqddxwdm7l009251ly8l99ysamncs5q2wpvmv68hm6",
+        "type": "tarball",
+        "url": "https://github.com/ThePrimeagen/git-worktree.nvim/archive/d7f4e2584e81670154f07ca9fa5dd791d9c1b458.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "gitsigns.nvim": {
+        "branch": "main",
+        "description": "Git integration for buffers",
+        "homepage": "",
+        "owner": "lewis6991",
+        "repo": "gitsigns.nvim",
+        "rev": "f98c85e7c3d65a51f45863a34feb4849c82f240f",
+        "sha256": "0ljzja43jdkv77nh4253x3gwk2hjx968yk7b5ag4y1mvyp1540qn",
+        "type": "tarball",
+        "url": "https://github.com/lewis6991/gitsigns.nvim/archive/f98c85e7c3d65a51f45863a34feb4849c82f240f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "harpoon": {
+        "branch": "master",
+        "description": null,
+        "homepage": null,
+        "owner": "ThePrimeagen",
+        "repo": "harpoon",
+        "rev": "f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971",
+        "sha256": "0jfc9d4dkx331567aic36mbqv3p2rq5nds35n33qg4f4mwqy8n6b",
+        "type": "tarball",
+        "url": "https://github.com/ThePrimeagen/harpoon/archive/f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "release-21.05",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5f244caea76105b63d826911b2a1563d33ff1cdc",
+        "sha256": "1xlgynfw9svy7nvh9nkxsxdzncv9hg99gbvbwv3gmrhmzc3sar75",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/5f244caea76105b63d826911b2a1563d33ff1cdc.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nvim-treesitter": {
+        "branch": "master",
+        "description": "Nvim Treesitter configurations and abstraction layer",
+        "homepage": "",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter",
+        "rev": "8ec59aee8097c64fcf27d1dbd77ea181c50846c5",
+        "sha256": "1fn5v6s8xlqg19vimh49a3r6gr2g4ypnvpjr3axkidc66ivgwyps",
+        "type": "tarball",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/8ec59aee8097c64fcf27d1dbd77ea181c50846c5.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "refactoring.nvim": {
+        "branch": "master",
+        "description": "The Refactoring library based off the Refactoring book by Martin Fowler",
+        "homepage": null,
+        "owner": "ThePrimeagen",
+        "repo": "refactoring.nvim",
+        "rev": "c9ca8e3bbf7218101f16e6a03b15bf72b99b2cae",
+        "sha256": "10b7235ia2klad1vdriw24g4vvjb8lcbw8z878h5hd1q9nryn7bs",
+        "type": "tarball",
+        "url": "https://github.com/ThePrimeagen/refactoring.nvim/archive/c9ca8e3bbf7218101f16e6a03b15bf72b99b2cae.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

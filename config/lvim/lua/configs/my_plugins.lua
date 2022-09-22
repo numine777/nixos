@@ -2,15 +2,22 @@ lvim.plugins = {
 	{
 		{ "akinsho/flutter-tools.nvim", commit = "d9697b913a7e199e48b09403755774bed7063a90" },
 		"ThePrimeagen/git-worktree.nvim",
-		-- "tpope/vim-fugitive",
+		"tpope/vim-fugitive",
+		"mbbill/undotree",
+		-- {
+		-- 	"TimUntersberger/neogit",
+		-- 	requires = "nvim-lua/plenary.nvim",
+		-- 	config = function()
+		-- 		require("neogit").setup({})
+		-- 	end,
+		-- },
+		"ThePrimeagen/harpoon",
 		{
-			"TimUntersberger/neogit",
-			requires = "nvim-lua/plenary.nvim",
+			"Shatur/neovim-cmake",
 			config = function()
-				require("neogit").setup({})
+				require("cmake").setup({})
 			end,
 		},
-		"ThePrimeagen/harpoon",
 		"mtth/scratch.vim",
 		"Shatur/neovim-ayu",
 		"romgrk/nvim-treesitter-context",
@@ -18,14 +25,22 @@ lvim.plugins = {
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
 		"folke/tokyonight.nvim",
-		{ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" },
-		-- { "github/copilot.vim" },
 		{
-			"akinsho/git-conflict.nvim",
+			"catppuccin/nvim",
+			as = "catppuccin",
 			config = function()
-				require("git-conflict").setup()
+				require("catppuccin").setup()
 			end,
 		},
+		{ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" },
+		-- { "github/copilot.vim" },
+		-- {
+		-- 	"akinsho/git-conflict.nvim",
+		-- 	config = function()
+		-- 		require("git-conflict").setup()
+		-- 	end,
+		-- },
+		-- "vimwiki/vimwiki",
 		-- {
 		--   "ggandor/lightspeed.nvim",
 		--   event = "BufRead",

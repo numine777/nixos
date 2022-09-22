@@ -19,6 +19,7 @@
     programs.home-manager.enable = true;
     home.homeDirectory = "/Users/scott";
     home.username = "scott";
+    home.stateVersion = "22.11";
     modules = {
       desktop = {
         windowManager = {
@@ -29,7 +30,7 @@
         clojure.enable = true;
         lua.enable = true;
         nix.enable = true;
-        node.enable = true;
+        node.enable = false;
         python.enable = true;
         rust.enable = true;
       };

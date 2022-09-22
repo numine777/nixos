@@ -11,9 +11,9 @@
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-
+    nixpkgs-git-lfs.url = "github:nixos/nixpkgs/83667ff60a88e22b76ef4b0bdf5334670b39c2b6";
   };
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, flake-utils, darwin, nixgl, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, flake-utils, darwin, nixgl, nixpkgs-git-lfs, ... }@inputs:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -23,6 +23,7 @@
             inherit system;
             config = { allowUnfree = true; }; # Forgive me Mr. Stallman
           };
+          pkgs-git-lfs = import nixpkgs-git-lfs { inherit system; };
 
           lib = nixpkgs.lib.extend
             (final: prev:
@@ -55,6 +56,8 @@
             nixpkgs-f2k.overlays.default
             neovim-nightly.overlay
             nixgl.overlay
+            (import ./overlays/customVim.nix)
+            (_: _: { git-lfs-2_13 = pkgs-git-lfs.git-lfs; })
           ];
         in
         {
@@ -103,8 +106,8 @@
             };
           };
           darwinConfigurations = {
-            aarch64-dawin.Scotts-MacBook-Pro = darwin.lib.darwinSystem {
-              inherit system;
+            Scotts-MacBook-Pro = darwin.lib.darwinSystem {
+              system = "aarch64-darwin";
               modules = [
                 {
                   nixpkgs.overlays = [ inputs.nixpkgs-f2k.overlays.default inputs.neovim-nightly.overlay ];

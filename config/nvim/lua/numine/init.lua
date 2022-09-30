@@ -6,6 +6,7 @@ M.init = function()
     require("numine.autocmds")
     require("numine.mapper")
     require("numine.telescope")
+    require("numine.comment")
 end
 
 return M

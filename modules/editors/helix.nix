@@ -12,6 +12,7 @@ in
     home.packages = with pkgs; [
       helix
       pyright
+      clang-tools
     ];
     home.file.".config/helix".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/helix";

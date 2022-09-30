@@ -8,7 +8,7 @@ in
     enable = mkEnableOption "kitty";
   };
 
-  imports = [ ./colors/gruvbox.nix ];
+  imports = [ ./colors/catppuccin.nix ];
 
 
   config = mkIf cfg.enable {

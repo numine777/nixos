@@ -11,7 +11,7 @@
     obsidian
     postman
     rnix-lsp
-    slack-dark
+    slack
     tree-sitter
   ];
 }

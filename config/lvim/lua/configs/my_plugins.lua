@@ -4,13 +4,6 @@ lvim.plugins = {
 		"ThePrimeagen/git-worktree.nvim",
 		"tpope/vim-fugitive",
 		"mbbill/undotree",
-		-- {
-		-- 	"TimUntersberger/neogit",
-		-- 	requires = "nvim-lua/plenary.nvim",
-		-- 	config = function()
-		-- 		require("neogit").setup({})
-		-- 	end,
-		-- },
 		"ThePrimeagen/harpoon",
 		{
 			"Shatur/neovim-cmake",
@@ -22,9 +15,10 @@ lvim.plugins = {
 		"Shatur/neovim-ayu",
 		"romgrk/nvim-treesitter-context",
 		{ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } },
+        -- {'shaunsingh/oxocarbon.nvim', run = './install.sh'},
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
-		"folke/tokyonight.nvim",
+		-- "folke/tokyonight.nvim",
 		{
 			"catppuccin/nvim",
 			as = "catppuccin",
@@ -33,18 +27,6 @@ lvim.plugins = {
 			end,
 		},
 		{ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" },
-		-- { "github/copilot.vim" },
-		-- {
-		-- 	"akinsho/git-conflict.nvim",
-		-- 	config = function()
-		-- 		require("git-conflict").setup()
-		-- 	end,
-		-- },
-		-- "vimwiki/vimwiki",
-		-- {
-		--   "ggandor/lightspeed.nvim",
-		--   event = "BufRead",
-		-- },
 		{
 			"kevinhwang91/nvim-bqf",
 			event = { "BufRead", "BufNew" },

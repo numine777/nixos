@@ -26,7 +26,6 @@ in
           vimPlugins.vim-nix
 
           # treesitter
-          # vimPlugins.nvim-treesitter
           customVim.nvim-treesitter
 
           # completion
@@ -51,7 +50,6 @@ in
 
           # extras
           vimPlugins.gitsigns-nvim
-          # customVim.lsp_lines-nvim
           vimPlugins.lsp-colors-nvim
           vimPlugins.lualine-nvim
           vimPlugins.nerdcommenter
@@ -67,8 +65,6 @@ in
           vimPlugins.null-ls-nvim
           # customVim.git-worktree-nvim
 
-          # configuration
-          # customVim.numine
         ];
         extraConfig = "lua require(\"numine\").init()";
       };

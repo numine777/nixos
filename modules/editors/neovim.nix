@@ -20,8 +20,8 @@ in
       {
         enable = true;
         package = pkgs.neovim-nightly;
-        # languages
         plugins = with pkgs; [
+          # languages
           vimPlugins.nvim-lspconfig
           vimPlugins.vim-nix
 
@@ -51,6 +51,7 @@ in
           # extras
           vimPlugins.gitsigns-nvim
           vimPlugins.lsp-colors-nvim
+          customVim.lir-nvim
           vimPlugins.lualine-nvim
           vimPlugins.nerdcommenter
           vimPlugins.nvim-treesitter-context

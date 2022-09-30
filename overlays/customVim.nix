@@ -40,6 +40,13 @@ in
       # buildInputs = [ pkgs.neovim-nightly pkgs.vimPlugins.plenary-nvim ];
     };
 
+    lir-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "lir.nvim";
+      src = sources."lir.nvim";
+      buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
+      # buildInputs = [ pkgs.neovim-nightly pkgs.vimPlugins.plenary-nvim ];
+    };
+
     numine = pkgs.vimUtils.buildVimPlugin {
       name = "Numine777";
       src = ../config/nvim;

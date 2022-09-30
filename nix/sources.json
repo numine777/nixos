@@ -59,6 +59,18 @@
         "url": "https://github.com/ThePrimeagen/harpoon/archive/f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "lir.nvim": {
+        "branch": "master",
+        "description": "Neovim file explorer",
+        "homepage": "",
+        "owner": "tamago324",
+        "repo": "lir.nvim",
+        "rev": "c1aeb96fae55bb6cac3d01ce5123a843d7235396",
+        "sha256": "03fia0m7w2q20m9jvm4wdm6w5bfh976fm0d7h4n055hbqgy73qf9",
+        "type": "tarball",
+        "url": "https://github.com/tamago324/lir.nvim/archive/c1aeb96fae55bb6cac3d01ce5123a843d7235396.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
         "branch": "release-21.05",
         "description": "Nix Packages collection",

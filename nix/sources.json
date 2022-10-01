@@ -94,5 +94,17 @@
         "type": "tarball",
         "url": "https://github.com/ThePrimeagen/refactoring.nvim/archive/c9ca8e3bbf7218101f16e6a03b15bf72b99b2cae.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "xbase": {
+        "branch": "master",
+        "description": "Develop Apple software products within your favorite editor. ",
+        "homepage": "",
+        "owner": "xbase-lab",
+        "repo": "xbase",
+        "rev": "a1d44a4e280124d4778e0ef6b7dfddb46e5ef3f3",
+        "sha256": "0k121jdq81xrhm40y0dsz148f70n4ps1pv7lwzrhxxbrnsxpm4ns",
+        "type": "tarball",
+        "url": "https://github.com/xbase-lab/xbase/archive/a1d44a4e280124d4778e0ef6b7dfddb46e5ef3f3.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

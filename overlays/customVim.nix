@@ -40,6 +40,11 @@ in
       # buildInputs = [ pkgs.neovim-nightly pkgs.vimPlugins.plenary-nvim ];
     };
 
+    xbase = pkgs.vimUtils.buildVimPlugin {
+      name = "xbase";
+      src = sources."xbase";
+      buildInputs = [ pkgs.rustup ];
+    };
     numine = pkgs.vimUtils.buildVimPlugin {
       name = "Numine777";
       src = ../config/nvim;

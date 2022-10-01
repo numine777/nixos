@@ -39,6 +39,7 @@ lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = false
 lvim.builtin.project.active = false
 lvim.builtin.nvimtree.active = false
+lvim.builtin.lir.active = false
 lvim.builtin.terminal.active = false
 lvim.builtin.terminal.open_mapping = [[c-\]]
 -- lvim.builtin.nvimtree.setup.view.side = "left"

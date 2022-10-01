@@ -4,13 +4,6 @@ lvim.plugins = {
 		"ThePrimeagen/git-worktree.nvim",
 		"tpope/vim-fugitive",
 		"mbbill/undotree",
-		-- {
-		-- 	"TimUntersberger/neogit",
-		-- 	requires = "nvim-lua/plenary.nvim",
-		-- 	config = function()
-		-- 		require("neogit").setup({})
-		-- 	end,
-		-- },
 		"ThePrimeagen/harpoon",
 		{
 			"Shatur/neovim-cmake",
@@ -24,7 +17,7 @@ lvim.plugins = {
 		{ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } },
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
-		"folke/tokyonight.nvim",
+		-- "folke/tokyonight.nvim",
 		{
 			"catppuccin/nvim",
 			as = "catppuccin",
@@ -33,18 +26,18 @@ lvim.plugins = {
 			end,
 		},
 		{ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" },
-		-- { "github/copilot.vim" },
-		-- {
-		-- 	"akinsho/git-conflict.nvim",
-		-- 	config = function()
-		-- 		require("git-conflict").setup()
-		-- 	end,
-		-- },
-		-- "vimwiki/vimwiki",
-		-- {
-		--   "ggandor/lightspeed.nvim",
-		--   event = "BufRead",
-		-- },
+		{
+			"xbase-lab/xbase",
+			run = "make install", -- make free_space (not recommended, longer build time)
+			requires = {
+				"nvim-lua/plenary.nvim",
+				"nvim-telescope/telescope.nvim",
+				"neovim/nvim-lspconfig",
+			},
+			config = function()
+				require("xbase").setup({}) -- see default configuration bellow
+			end,
+		},
 		{
 			"kevinhwang91/nvim-bqf",
 			event = { "BufRead", "BufNew" },

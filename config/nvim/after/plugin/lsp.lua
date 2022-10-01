@@ -95,10 +95,10 @@ local function config(_config)
 			nnoremap("K", function()
 				vim.lsp.buf.hover()
 			end)
-			nnoremap("<leader>vws", function()
+			nnoremap("<leader>lws", function()
 				vim.lsp.buf.workspace_symbol()
 			end)
-			nnoremap("<leader>vd", function()
+			nnoremap("gl", function()
 				vim.diagnostic.open_float()
 			end)
 			nnoremap("[d", function()
@@ -107,10 +107,10 @@ local function config(_config)
 			nnoremap("]d", function()
 				vim.diagnostic.goto_prev()
 			end)
-			nnoremap("<leader>vca", function()
+			nnoremap("<leader>la", function()
 				vim.lsp.buf.code_action()
 			end)
-			nnoremap("<leader>vco", function()
+			nnoremap("<leader>lo", function()
 				vim.lsp.buf.code_action({
 					filter = function(code_action)
 						if not code_action or not code_action.data then
@@ -123,10 +123,10 @@ local function config(_config)
 					apply = true,
 				})
 			end)
-			nnoremap("<leader>vrr", function()
+			nnoremap("gr", function()
 				vim.lsp.buf.references()
 			end)
-			nnoremap("<leader>vrn", function()
+			nnoremap("<leader>lr", function()
 				vim.lsp.buf.rename()
 			end)
 			inoremap("<C-h>", function()
@@ -236,13 +236,31 @@ require("luasnip.loaders.from_vscode").lazy_load({
 	exclude = {},
 })
 
+local root_files = {
+	"tsconfig.json",
+	".eslintrc.js",
+	"package.json",
+	".git",
+	"BUILD.bazel",
+	"CMakeList.txt",
+    "Makefile",
+}
+-- local util = require("lspconfig.util")
 require("null-ls").setup({
 	sources = {
 		require("null-ls").builtins.formatting.stylua,
 		require("null-ls").builtins.formatting.black,
-		require("null-ls").builtins.formatting.prettier,
+		require("null-ls").builtins.formatting.prettier.with({
+			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+			prefer_local = "node_modules/.bin",
+		}),
 		require("null-ls").builtins.formatting.buildifier,
-		require("null-ls").builtins.diagnostics.eslint,
+		require("null-ls").builtins.diagnostics.eslint.with({
+			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+			prefer_local = "node_modules/.bin",
+
+		}),
 		require("null-ls").builtins.completion.spell,
 	},
+    root_dir = require("null-ls.utils").root_pattern(root_files),
 })

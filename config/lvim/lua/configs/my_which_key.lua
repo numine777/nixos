@@ -6,6 +6,7 @@ lvim.keys.normal_mode["<C-s>"] = ":lua require('harpoon.ui').nav_file(4)<CR>"
 lvim.keys.normal_mode["<C-j>"] = ":cprev<CR>"
 lvim.keys.normal_mode["<C-k>"] = ":cnext<CR>"
 lvim.keys.normal_mode["<C-f>"] = ':lua require("harpoon.term").sendCommand(1, "tmux-sessionizer\\n"); require("harpoon.term").gotoTerminal(1)<CR>'
+lvim.keys.normal_mode["<C-p>"] = ':lua require("telescope.builtin").git_files()<CR>'
 lvim.keys.visual_block_mode["<C-c>"] = '<Esc>'
 lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", "Clang Debugger" }

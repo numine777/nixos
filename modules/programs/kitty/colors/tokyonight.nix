@@ -1,33 +1,53 @@
 { config, pkgs, libs, ... }:
 {
   programs.kitty.settings = {
-    background_opacity 	= "0.80";
-    foreground = "#a9b1d6";
+    # vim:ft=kitty
+
+## name: Tokyo Night
+## license: MIT
+## author: Folke Lemaitre
+## upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/kitty/tokyonight_night.conf
+
+    background_opacity 	= "0.90";
+    foreground = "#c0caf5";
     background = "#1a1b26";
-    cursor = "#a9b1d6";
+    selection_background = "#33467c";
+    selection_foreground = "#c0caf5";
+    url_color = "#73daca";
 
-    color0 = "#1a1b26";
-    color8 = "#4e5173";
+    cursor = "#c0caf5";
+    cursor_text_color = "#1a1b26";
 
-    color1 = "#F7768E";
-    color9 = "#F7768E";
+# Tabs
+    active_tab_background = "#7aa2f7";
+    active_tab_foreground = "#16161e";
+    inactive_tab_background = "#292e42";
+    inactive_tab_foreground = "#545c7e";
+    tab_bar_background = "#15161e";
 
-    color2 = "#9ECE6A";
-    color10 = "#9ECE6A";
+# normal
+    color0 = "#15161e";
+    color1 = "#f7768e";
+    color2 = "#9ece6a";
+    color3 = "#e0af68";
+    color4 = "#7aa2f7";
+    color5 = "#bb9af7";
+    color6 = "#7dcfff";
+    color7 = "#a9b1d6";
 
-    color3 = "#E0AF68";
-    color11 = "#E0AF68";
+# bright
+    color8 = "#414868";
+    color9 = "#f7768e";
+    color10 = "#9ece6a";
+    color11 = "#e0af68";
+    color12 = "#7aa2f7";
+    color13 = "#bb9af7";
+    color14 = "#7dcfff";
+    color15 = "#c0caf5";
 
-    color4 = "#7AA2F7";
-    color12 = "#7AA2F7";
-
-    color5 = "#9a7ecc";
-    color13 = "#9a7ecc";
-
-    color6 = "#4abaaf";
-    color14 = "#4abaaf";
-
-    color7 = "#acb0d0";
-    color15 = "#acb0d0";
+# extended colors
+    color16 = "#ff9e64";
+    color17 = "#db4b4b";
   };
 }
+

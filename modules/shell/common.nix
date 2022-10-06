@@ -9,6 +9,7 @@
   ];
   home.packages = with pkgs; [
     bottom
+    delta
     exa
     fd
     ffmpeg
@@ -31,6 +32,7 @@
     jq
     kubectl
     lsof
+    nethogs
     nix-index
     starship
     stow

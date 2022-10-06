@@ -44,7 +44,7 @@ in
                     format_up = " lan: %ip %speed "
                     format_down = " no lan "
             }
-            
+
             battery all {
                     format = " %status %percentage"
                     format_down = "No battery"
@@ -66,7 +66,7 @@ in
             tztime local {
                     format = " %d.%m. %H:%M "
             }
-            
+
     '';
     home.file.".config/i3/config".text = ''
             # i3 config
@@ -104,7 +104,7 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec nixGL kitty
+            bindsym $mod+Return exec nixGLNvidia-430.50 kitty
             bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
@@ -122,7 +122,7 @@ in
             # Use pactl to adjust volume in PulseAudio.
             set $refresh_i3status killall -SIGUSR1 i3status
             bindsym XF86AudioRaiseVolume exec --no-startup-id setvol +5%
-            bindsym XF86AudioLowerVolume exec --no-startup-id setvol 5%- 
+            bindsym XF86AudioLowerVolume exec --no-startup-id setvol 5%-
             bindsym XF86AudioMute exec --no-startup-id setvol 0%
 
             # use brightnessctl to adjust actual brightness
@@ -275,7 +275,7 @@ in
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
@@ -316,12 +316,13 @@ smart_borders on
           client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
           client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
           client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-          client.placeholder      #000000 #0c0c0c #ffffff #000000 
+          client.placeholder      #000000 #0c0c0c #ffffff #000000
 
           client.background       #2B2C2B
 
             # picom
-            exec --no-startup-id nixGLNvidia picom
+            exec_always --no-startup-id nixGLNvidia-430.50 picom
+            exec_always --no-startup-id nixGLNvidia-430.50 flameshot
 
             # set wallpaper (ft. feh)
             # exec --no-startup-id ~/.fehbg

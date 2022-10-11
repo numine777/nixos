@@ -41,7 +41,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
 
 autocmd({ "BufNewFile", "BufRead" }, {
 	group = NumineGroup,
-	pattern = "BUILD*",
+	pattern = { "*.bazel.tpl", "*.bzl*" },
 	command = ":set ft=bzl",
 })
 

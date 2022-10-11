@@ -5,7 +5,7 @@ local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
-nnoremap("<leader>e", ":Ex<CR>")
+nnoremap("<leader>e", ":lua require'lir.float'.init()<CR>")
 nnoremap("<leader>u", ":UndotreeShow<CR>")
 
 vnoremap("J", ":m '>+1<CR>gv=gv")

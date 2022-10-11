@@ -15,6 +15,7 @@ lvim.plugins = {
 		"Shatur/neovim-ayu",
 		"romgrk/nvim-treesitter-context",
 		{ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } },
+        -- {'shaunsingh/oxocarbon.nvim', run = './install.sh'},
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
 		-- "folke/tokyonight.nvim",

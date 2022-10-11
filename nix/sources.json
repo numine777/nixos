@@ -23,6 +23,18 @@
         "url": "https://github.com/tzachar/cmp-tabnine/archive/01653a5934b242e8ca517e079419c3b151ce2b00.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "git-conflict.nvim": {
+        "branch": "main",
+        "description": "A plugin to visualise and resolve merge conflicts in neovim",
+        "homepage": null,
+        "owner": "akinsho",
+        "repo": "git-conflict.nvim",
+        "rev": "80bc8931d4ed8c8c4d289a08e1838fcf4741408d",
+        "sha256": "07zk1fh1ira2ynfxql1c7z3qimp0wkl7dq7libnjgzca6a7qc4ml",
+        "type": "tarball",
+        "url": "https://github.com/akinsho/git-conflict.nvim/archive/80bc8931d4ed8c8c4d289a08e1838fcf4741408d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "git-worktree.nvim": {
         "branch": "master",
         "description": null,
@@ -57,6 +69,54 @@
         "sha256": "0jfc9d4dkx331567aic36mbqv3p2rq5nds35n33qg4f4mwqy8n6b",
         "type": "tarball",
         "url": "https://github.com/ThePrimeagen/harpoon/archive/f4aff5bf9b512f5a85fe20eb1dcf4a87e512d971.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "lir.nvim": {
+        "branch": "master",
+        "description": "Neovim file explorer",
+        "homepage": "",
+        "owner": "tamago324",
+        "repo": "lir.nvim",
+        "rev": "c1aeb96fae55bb6cac3d01ce5123a843d7235396",
+        "sha256": "03fia0m7w2q20m9jvm4wdm6w5bfh976fm0d7h4n055hbqgy73qf9",
+        "type": "tarball",
+        "url": "https://github.com/tamago324/lir.nvim/archive/c1aeb96fae55bb6cac3d01ce5123a843d7235396.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "mason-lspconfig.nvim": {
+        "branch": "main",
+        "description": "Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim",
+        "homepage": "",
+        "owner": "williamboman",
+        "repo": "mason-lspconfig.nvim",
+        "rev": "0051870dd728f4988110a1b2d47f4a4510213e31",
+        "sha256": "02agp9ssi56kfy12ya3bqmzmdh78pbwj8799m786zidavg8j57nj",
+        "type": "tarball",
+        "url": "https://github.com/williamboman/mason-lspconfig.nvim/archive/0051870dd728f4988110a1b2d47f4a4510213e31.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "mason.nvim": {
+        "branch": "main",
+        "description": "Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.",
+        "homepage": "",
+        "owner": "williamboman",
+        "repo": "mason.nvim",
+        "rev": "d0072bef1af32bd1211e92f5230e0fb59548b53f",
+        "sha256": "0zhi2c75x3amj3m1pimk3wjj4jwlv0x7q1ic2kcx5w2830n5zzg5",
+        "type": "tarball",
+        "url": "https://github.com/williamboman/mason.nvim/archive/d0072bef1af32bd1211e92f5230e0fb59548b53f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "neotest": {
+        "branch": "master",
+        "description": "An extensible framework for interacting with tests within NeoVim.",
+        "homepage": "",
+        "owner": "nvim-neotest",
+        "repo": "neotest",
+        "rev": "6669f6dda2385ed358ffc90108e574ccccc71f32",
+        "sha256": "1ns6jf1x1y3plw3qfqgy8ag1iqlgdd4gz7cl6xam62i8ywada1hw",
+        "type": "tarball",
+        "url": "https://github.com/nvim-neotest/neotest/archive/6669f6dda2385ed358ffc90108e574ccccc71f32.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -95,6 +155,18 @@
         "url": "https://github.com/ThePrimeagen/refactoring.nvim/archive/c9ca8e3bbf7218101f16e6a03b15bf72b99b2cae.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "telescope.nvim": {
+        "branch": "master",
+        "description": "Find, Filter, Preview, Pick. All lua, all the time.",
+        "homepage": "",
+        "owner": "nvim-telescope",
+        "repo": "telescope.nvim",
+        "rev": "d4204618dddf1628e7a19ad4a7b910864d1120a5",
+        "sha256": "0pi9279v507b46n3q7m259nflkm6s7ydnzl7wgdid6dgsydrg86p",
+        "type": "tarball",
+        "url": "https://github.com/nvim-telescope/telescope.nvim/archive/d4204618dddf1628e7a19ad4a7b910864d1120a5.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "xbase": {
         "branch": "master",
         "description": "Develop Apple software products within your favorite editor. ",
@@ -104,7 +176,6 @@
         "rev": "a1d44a4e280124d4778e0ef6b7dfddb46e5ef3f3",
         "sha256": "0k121jdq81xrhm40y0dsz148f70n4ps1pv7lwzrhxxbrnsxpm4ns",
         "type": "tarball",
-        "url": "https://github.com/xbase-lab/xbase/archive/a1d44a4e280124d4778e0ef6b7dfddb46e5ef3f3.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+        "url": "https://github.com/xbase-lab/xbase/archive/a1d44a4e280124d4778e0ef6b7dfddb46e5ef3f3.tar.gz"
     }
 }

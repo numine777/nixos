@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     acpi
     alsa-utils
-    bash_5
+    bash
     bash-completion
     brightnessctl
     ccls

@@ -24,13 +24,12 @@ in
       {
         enable = true;
         package = pkgs.neovim-nightly;
-        # languages
         plugins = with pkgs; [
+          # languages
           vimPlugins.nvim-lspconfig
           vimPlugins.vim-nix
 
           # treesitter
-          # vimPlugins.nvim-treesitter
           customVim.nvim-treesitter
 
           # completion
@@ -52,11 +51,12 @@ in
 
           # theme
           vimPlugins.gruvbox-community
+          vimPlugins.tokyonight-nvim
 
           # extras
           vimPlugins.gitsigns-nvim
-          # customVim.lsp_lines-nvim
           vimPlugins.lsp-colors-nvim
+          customVim.lir-nvim
           vimPlugins.lualine-nvim
           vimPlugins.comment-nvim
           vimPlugins.nvim-treesitter-context
@@ -66,14 +66,14 @@ in
           vimPlugins.undotree
           customVim.harpoon
           customVim.refactoring-nvim
+          customVim.git-conflict-nvim
           # customVim.xbase
           vimPlugins.symbols-outline-nvim
           vimPlugins.luasnip
           vimPlugins.null-ls-nvim
+          # customVim.mason-nvim
           # customVim.git-worktree-nvim
 
-          # configuration
-          # customVim.numine
         ];
         extraConfig = "lua require(\"numine\").init()";
       };

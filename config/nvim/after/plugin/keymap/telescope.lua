@@ -18,8 +18,12 @@ end)
 nnoremap("<leader>sb", function()
     require('telescope.builtin').buffers()
 end)
+
 nnoremap("<leader>sh", function()
     require('telescope.builtin').help_tags()
+end)
+nnoremap("<leader>sc", function()
+    require('telescope.builtin').colorscheme()
 end)
 
 nnoremap("<leader>src", function()

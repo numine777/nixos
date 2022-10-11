@@ -8,7 +8,7 @@
 ## author: Folke Lemaitre
 ## upstream: https://github.com/folke/tokyonight.nvim/raw/main/extras/kitty/tokyonight_night.conf
 
-    background_opacity 	= "0.80";
+    background_opacity 	= "0.90";
     foreground = "#c0caf5";
     background = "#1a1b26";
     selection_background = "#33467c";
@@ -50,3 +50,4 @@
     color17 = "#db4b4b";
   };
 }
+

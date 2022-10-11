@@ -109,6 +109,8 @@ require("lspconfig").rust_analyzer.setup(config({
     --]]
 }))
 
+require'lspconfig'.rnix.setup(config({}))
+
 require("lspconfig").sumneko_lua.setup(config({
 	-- cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {

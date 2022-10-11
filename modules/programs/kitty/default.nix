@@ -8,6 +8,7 @@ in
     enable = mkEnableOption "kitty";
   };
 
+  # imports = [ ./colors/gruvbox.nix ];
   imports = [ ./colors/tokyonight.nix ];
 
 

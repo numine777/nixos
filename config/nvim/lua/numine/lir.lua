@@ -29,6 +29,7 @@ require("lir").setup({
         ["l"] = actions.edit,
         ["<C-s>"] = actions.split,
         ["<C-v>"] = actions.vsplit,
+        -- ["<C-t>"] = actions.tabedit,
 
         ["h"] = actions.up,
         ["q"] = actions.quit,

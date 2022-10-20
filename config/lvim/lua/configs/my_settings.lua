@@ -27,8 +27,8 @@ vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
 -- Load the colorscheme
-lvim.colorscheme = "tokyonight"
-lvim.builtin.lualine.options.theme = "tokyonight"
+lvim.colorscheme = "gruvbox"
+lvim.builtin.lualine.options.theme = "gruvbox"
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -145,7 +145,7 @@ lvim.format_on_save = false
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer", "clangd", "rnix-lsp" })
 local function config(_config)
 	return vim.tbl_deep_extend("force", {
-		capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+		-- capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 		on_attach = function()
 			Nnoremap("gd", ":lua vim.lsp.buf.definition()<CR>")
 			Nnoremap("K", ":lua vim.lsp.buf.hover()<CR>")
@@ -221,6 +221,16 @@ lvim.autocommands = {
 					highgroup = "IncSearch",
 					timeout = 40,
 				})
+			end,
+		},
+	},
+
+	{
+		"ColorScheme",
+		{
+			pattern = "*",
+			callback = function()
+				require("configs.colors").ColorMyPencils()
 			end,
 		},
 	},

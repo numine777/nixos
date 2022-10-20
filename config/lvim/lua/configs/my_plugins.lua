@@ -15,7 +15,6 @@ lvim.plugins = {
 		"Shatur/neovim-ayu",
 		"romgrk/nvim-treesitter-context",
 		{ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } },
-        -- {'shaunsingh/oxocarbon.nvim', run = './install.sh'},
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
 		-- "folke/tokyonight.nvim",
@@ -63,6 +62,13 @@ lvim.plugins = {
 						},
 					},
 				})
+			end,
+		},
+		{
+			"akinsho/git-conflict.nvim",
+			tag = "*",
+			config = function()
+				require("git-conflict").setup()
 			end,
 		},
 	},

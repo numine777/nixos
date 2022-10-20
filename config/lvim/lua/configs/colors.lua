@@ -12,6 +12,8 @@ function ColorMyPencils()
     vim.g.tokyonight_transparent = true
     vim.opt.background = "dark"
 
+    lvim.colorscheme = vim.g.numine_colorscheme
+    lvim.builtin.lualine.options.theme = vim.g.numine_colorscheme
     vim.cmd("colorscheme " .. vim.g.numine_colorscheme)
 
     local hl = function(thing, opts)

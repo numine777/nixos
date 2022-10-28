@@ -18,6 +18,7 @@ lvim.plugins = {
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
 		-- "folke/tokyonight.nvim",
+        {'shaunsingh/oxocarbon.nvim', branch = 'fennel'},
 		{
 			"catppuccin/nvim",
 			as = "catppuccin",

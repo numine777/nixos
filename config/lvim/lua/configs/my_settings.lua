@@ -14,7 +14,6 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.g.netrw_localrmdir = "rm -rf"
 vim.opt.laststatus = 3
-vim.api.nvim_set_hl(0, "WinSeparator", { background = nil })
 
 lvim.leader = "space"
 
@@ -27,14 +26,14 @@ vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
 -- Load the colorscheme
-lvim.colorscheme = "gruvbox"
-lvim.builtin.lualine.options.theme = "gruvbox"
+lvim.colorscheme = "tokyonight"
+lvim.builtin.lualine.options.theme = "tokyonight"
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.terminal.active = true
 lvim.builtin.autopairs.active = false
-lvim.builtin.notify.active = false
+-- lvim.builtin.notify.active = false
 lvim.builtin.dap.active = true
 lvim.builtin.bufferline.active = false
 lvim.builtin.project.active = false

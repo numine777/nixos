@@ -43,6 +43,7 @@ function ColorMyPencils()
         fg = "#5eacd3"
     })
 
+    hl("WinSeparator", { background = nil })
 end
 M.ColorMyPencils = ColorMyPencils
 return M

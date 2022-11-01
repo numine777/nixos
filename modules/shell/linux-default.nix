@@ -22,5 +22,6 @@
     pass
     playerctl
     slop
+    nethogs
   ];
 }

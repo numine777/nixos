@@ -11,8 +11,8 @@ in
   config = mkIf cfg.enable {
     home.packages = [ pkgs.rustup ];
     home.sessionVariables = {
-      RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
-      CARGO_HOME = "$XDG_DATA_HOME/cargo";
+      RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
+      CARGO_HOME = "${config.home.homeDirectory}/.local/share/cargo";
     };
     home.sessionPath = [ "$CARGO_HOME/bin" ];
   };

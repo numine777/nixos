@@ -83,6 +83,18 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5f244caea76105b63d826911b2a1563d33ff1cdc.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nvim-oxi": {
+        "branch": "master",
+        "description": ":link: Rust bindings to all things Neovim",
+        "homepage": "https://crates.io/crates/nvim-oxi",
+        "owner": "noib3",
+        "repo": "nvim-oxi",
+        "rev": "3d38d48c25c20b006ee763f7a743a15ff675191e",
+        "sha256": "1ih562xhlkg3wy9nlvhp7gj78jn6lmdbq7xqhhf2kgzmiwwii9k2",
+        "type": "tarball",
+        "url": "https://github.com/noib3/nvim-oxi/archive/3d38d48c25c20b006ee763f7a743a15ff675191e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nvim-treesitter": {
         "branch": "master",
         "description": "Nvim Treesitter configurations and abstraction layer",
@@ -93,6 +105,18 @@
         "sha256": "1fn5v6s8xlqg19vimh49a3r6gr2g4ypnvpjr3axkidc66ivgwyps",
         "type": "tarball",
         "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/8ec59aee8097c64fcf27d1dbd77ea181c50846c5.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "oxocarbon.nvim": {
+        "branch": "rust",
+        "description": "A dark and light Neovim theme written in Rust, inspired by IBM Carbon.",
+        "homepage": "",
+        "owner": "shaunsingh",
+        "repo": "oxocarbon.nvim",
+        "rev": "eb13bed72b2ad85957895037d04f582c9c6e0f60",
+        "sha256": "1030sy2938pl7g0hj83r7n6a0qcp0kr34bag4i7h3y3bazv9ka57",
+        "type": "tarball",
+        "url": "https://github.com/shaunsingh/oxocarbon.nvim/archive/eb13bed72b2ad85957895037d04f582c9c6e0f60.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "refactoring.nvim": {

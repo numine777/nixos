@@ -14,8 +14,17 @@ lvim.plugins = {
 		"mtth/scratch.vim",
 		"Shatur/neovim-ayu",
 		"romgrk/nvim-treesitter-context",
-		{ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } },
-        -- {'shaunsingh/oxocarbon.nvim', run = './install.sh'},
+		{
+			"npxbr/gruvbox.nvim",
+			requires = { "rktjmp/lush.nvim" },
+			config = function()
+				require("gruvbox").setup({
+					contrast = "hard", -- can be "hard", "soft" or empty string
+					transparent_mode = true,
+				})
+			end,
+		},
+		{ "shaunsingh/oxocarbon.nvim", branch = "fennel" },
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
 		-- "folke/tokyonight.nvim",

@@ -1,4 +1,4 @@
-vim.g.numine_colorscheme = "tokyonight"
+vim.g.numine_colorscheme = "gruvbox"
 local M = {}
 
 function ColorMyPencils()

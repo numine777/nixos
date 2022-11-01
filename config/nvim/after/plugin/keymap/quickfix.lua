@@ -1,6 +1,7 @@
-local nnoremap = require("numine.mapper").nnoremap
+local init = function()
+    local nnoremap = require("numine.mapper").nnoremap
 
-vim.cmd [[
+    vim.cmd([[
   function! QuickFixToggle()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
       copen
@@ -8,6 +9,11 @@ vim.cmd [[
       cclose
     endif
   endfunction
-]]
+]]   )
 
-nnoremap("<c-q>", ":call QuickFixToggle()<CR>", { silent = true})
+    nnoremap("<c-q>", ":call QuickFixToggle()<CR>", { silent = true })
+end
+
+if not vim.g.vscode then
+    init()
+end

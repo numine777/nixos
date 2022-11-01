@@ -14,6 +14,7 @@ Nnoremap = CreateNoremap("n", { noremap = true })
 Inoremap = CreateNoremap("i", { noremap = true })
 
 NnoremapGlobal = CreateNoremapGlobal("n", { noremap = true })
+require("configs.colors")
 require("configs.my_settings")
 require("configs.my_plugins")
 require("configs.my_which_key")

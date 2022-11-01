@@ -7,9 +7,9 @@ local M = {}
 
 function ColorMyPencils()
     vim.g.gruvbox_contrast_dark = 'hard'
+    vim.g.gruvbox_invert_selection = '0'
     vim.g.tokyonight_transparent_sidebar = true
     vim.g.tokyonight_transparent = true
-    vim.g.gruvbox_invert_selection = '0'
     vim.opt.background = "dark"
 
     vim.cmd("colorscheme " .. vim.g.numine_colorscheme)
@@ -43,6 +43,7 @@ function ColorMyPencils()
         fg = "#5eacd3"
     })
 
+    hl("WinSeparator", { background = nil })
 end
 M.ColorMyPencils = ColorMyPencils
 return M

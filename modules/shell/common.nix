@@ -32,7 +32,6 @@
     jq
     kubectl
     lsof
-    nethogs
     nix-index
     starship
     stow

@@ -1,9 +1,9 @@
 vim.g.numine_colorscheme = "gruvbox"
 local M = {}
 
-require("tokyonight").setup({
-    transparent = true,
-})
+--[[ require("tokyonight").setup({ ]]
+--[[     transparent = true, ]]
+--[[ }) ]]
 
 function ColorMyPencils()
     vim.g.gruvbox_contrast_dark = 'hard'

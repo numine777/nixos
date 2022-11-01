@@ -12,7 +12,7 @@
       ../../modules/system/sound.nix
       ../../modules/system/xorg.nix
     ];
-  nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.allowUnfree = true;
   virtualisation.vmware.guest.enable = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -32,10 +32,10 @@
     interfaces.ens33.useDHCP = true;
   };
 
-  fileSystems."/mnt/nfs_clientshare" = {
-    device = "192.168.43.0:/mnt/nfs_share";
-    fsType = "nfs";
-  };
+  # fileSystems."/mnt/nfs_clientshare" = {
+  #   device = "192.168.43.0:/mnt/nfs_share";
+  #   fsType = "nfs";
+  # };
 
   services.avahi = {
     enable = true;
@@ -80,7 +80,7 @@
 
   nix = {
     package = pkgs.nixUnstable;
-    trustedUsers = [ "root" "scott" "@wheel" ];
+    settings.trusted-users = [ "root" "scott" "@wheel" ];
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -90,6 +90,7 @@
   virtualisation.oci-containers.backend = "docker";
   services.openssh.enable = true;
   programs.mosh.enable = true;
-  networking.firewall.allowedUDPPorts = [ 60001 ];
+  networking.firewall.allowedUDPPorts = [ 60001 24800 ];
+  networking.firewall.allowedTCPPorts = [ 60001 24800 ];
   system.stateVersion = "22.11";
 }

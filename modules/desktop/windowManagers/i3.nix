@@ -88,9 +88,10 @@ in
             # decorations
             #title_align center
 
-            #default_border pixel 1
+            default_border pixel 1
+            for_window [class="^.*"] border pixel 1
 
-            exec_always feh --bg-scale /home/scott/altf4-dots/roles/nitrogen/files/sunset.png
+            exec feh --bg-scale /home/scott/personal/anime/moon-upside.jpg
             exec_always xrandr --output Virtual-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output Virtual-2 --off --output Virtual-3 --off --output Virtual-4 --off --output Virtual-5 --off --output Virtual-6 --off --output Virtual-7 --off --output Virtual-8 --off
             set $fg_focus   #abb2bf
             set $bg_focus   #c678dd
@@ -104,13 +105,13 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec nixGLNvidia-430.50 kitty
+            bindsym $mod+Return exec kitty
             bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave
             bindsym $mod+b exec firefox
-            bindsym $mod+Shift+s exec nixGL slack
+            bindsym $mod+Shift+s exec slack
             bindsym $mod+Shift+e exec emacs
 
             # kill focused window
@@ -321,8 +322,8 @@ smart_borders on
           client.background       #2B2C2B
 
             # picom
-            exec_always --no-startup-id nixGLNvidia-430.50 picom
-            exec_always --no-startup-id nixGLNvidia-430.50 flameshot
+            exec_always --no-startup-id picom
+            exec_always --no-startup-id flameshot
 
             # set wallpaper (ft. feh)
             # exec --no-startup-id ~/.fehbg

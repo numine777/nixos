@@ -25,6 +25,7 @@ in
         scrollback_lines = 5000;
         tab_bar_style = "powerline";
         tab_bar_margin_width = 5;
+        disable_ligatures = "always";
         # tab_bar_margin_height = 5;
         allow_remote_control = "yes";
         hide_window_decorations = "titlebar-only";

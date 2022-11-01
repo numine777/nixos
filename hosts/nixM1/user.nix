@@ -23,7 +23,7 @@
     modules = {
       desktop = {
         windowManager = {
-          yabai.enable = true;
+          yabai.enable = false;
         };
       };
       dev = {

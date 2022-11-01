@@ -40,11 +40,54 @@ in
       # buildInputs = [ pkgs.neovim-nightly pkgs.vimPlugins.plenary-nvim ];
     };
 
+    xbase = pkgs.vimUtils.buildVimPlugin {
+      name = "xbase";
+      src = sources."xbase";
+      buildInputs = [ pkgs.cargo pkgs.rustc ];
+    };
+
     lir-nvim = pkgs.vimUtils.buildVimPlugin {
       name = "lir.nvim";
       src = sources."lir.nvim";
       buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
-      # buildInputs = [ pkgs.neovim-nightly pkgs.vimPlugins.plenary-nvim ];
+    };
+
+    git-conflict-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "git-conflict.nvim";
+      src = sources."git-conflict.nvim";
+      buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
+    };
+
+    neotest = pkgs.vimUtils.buildVimPlugin {
+      name = "neotest";
+      src = sources."neotest";
+      buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
+    };
+
+    mason-lspconfig-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "mason-lspconfig.nvim";
+      src = sources."mason-lspconfig.nvim";
+      buildInputs = [ pkgs.git pkgs.curl pkgs.neovim-nightly ];
+      # buildInputs = [ (pkgs.neovim.override {
+      #   configure = {
+      #     packages.myPlugins = with pkgs; {
+      #       start = [ vimPlugins.plenary-nvim vimPlugins.nvim-lspconfig customVim.neotest customVim.mason-nvim ];
+      #     };
+      #   };
+      # }) pkgs.git pkgs.curl ];
+    };
+
+    mason-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "mason.nvim";
+      src = sources."mason.nvim";
+      buildInputs = [ pkgs.git pkgs.curl pkgs.neovim-nightly ];
+      # buildInputs = [ (pkgs.neovim.override {
+      #   configure = {
+      #     packages.myPlugins = with pkgs; {
+      #       start = [ vimPlugins.plenary-nvim customVim.neotest customVim.mason-lspconfig-nvim ];
+      #     };
+      #   };
+      # }) pkgs.git pkgs.curl ];
     };
 
     numine = pkgs.vimUtils.buildVimPlugin {

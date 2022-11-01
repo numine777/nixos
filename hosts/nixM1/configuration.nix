@@ -61,9 +61,9 @@
     zsh
   ];
 
-  services.yabai.enable = true;
+  services.yabai.enable = false;
   services.yabai.package = pkgs.yabai;
-  services.skhd.enable = true;
+  services.skhd.enable = false;
 
   services.nix-daemon.enable = true;
 

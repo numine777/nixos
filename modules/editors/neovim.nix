@@ -13,8 +13,12 @@ in
       stylua
       shellcheck
       black
-      python39Packages.isort
+      # python39Packages.isort
       rnix-lsp
+      nodePackages.typescript-language-server
+      nodePackages.prettier
+      nodePackages.eslint
+      ccls
     ];
     programs.neovim =
       {
@@ -47,13 +51,14 @@ in
 
           # theme
           vimPlugins.gruvbox-community
+          vimPlugins.tokyonight-nvim
 
           # extras
           vimPlugins.gitsigns-nvim
           vimPlugins.lsp-colors-nvim
           customVim.lir-nvim
           vimPlugins.lualine-nvim
-          vimPlugins.nerdcommenter
+          vimPlugins.comment-nvim
           vimPlugins.nvim-treesitter-context
           vimPlugins.nvim-web-devicons
           vimPlugins.nvim-bqf
@@ -61,9 +66,12 @@ in
           vimPlugins.undotree
           customVim.harpoon
           customVim.refactoring-nvim
+          customVim.git-conflict-nvim
+          # customVim.xbase
           vimPlugins.symbols-outline-nvim
           vimPlugins.luasnip
           vimPlugins.null-ls-nvim
+          # customVim.mason-nvim
           # customVim.git-worktree-nvim
 
         ];

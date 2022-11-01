@@ -1,6 +1,7 @@
 local M = {}
 
 M.init = function()
+  -- require("plugins")
     require("numine.sets")
     require("numine.highlights").init()
     require("numine.autocmds")

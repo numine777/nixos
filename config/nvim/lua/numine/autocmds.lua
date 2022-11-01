@@ -41,6 +41,12 @@ autocmd({ "BufNewFile", "BufRead" }, {
 
 autocmd({ "BufNewFile", "BufRead" }, {
 	group = NumineGroup,
+	pattern = "*.gradle",
+	command = ":set ft=java",
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
+	group = NumineGroup,
 	pattern = { "*.bazel.tpl", "*.bzl*" },
 	command = ":set ft=bzl",
 })

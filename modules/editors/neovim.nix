@@ -57,6 +57,7 @@ in
           vimPlugins.gitsigns-nvim
           vimPlugins.lsp-colors-nvim
           customVim.lir-nvim
+          customVim.rose-pine-nvim
           vimPlugins.lualine-nvim
           vimPlugins.comment-nvim
           vimPlugins.nvim-treesitter-context
@@ -131,14 +132,19 @@ in
           endfunction
 
           " Better Navigation
-          nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
-          xnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
-          nnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
-          xnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
-          nnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
-          xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
-          nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
-          xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+          "nnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
+          "xnoremap <silent> <C-j> :call VSCodeNotify('workbench.action.navigateDown')<CR>
+          "nnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
+          "xnoremap <silent> <C-k> :call VSCodeNotify('workbench.action.navigateUp')<CR>
+          "nnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
+          "xnoremap <silent> <C-h> :call VSCodeNotify('workbench.action.navigateLeft')<CR>
+          "nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+          "xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
+          nnoremap <silent> <C-h> :call VSCodeNotify('vscode-harpoon.gotoEditor1')<CR>
+          nnoremap <silent> <C-t> :call VSCodeNotify('vscode-harpoon.gotoEditor2')<CR>
+          nnoremap <silent> <C-n> :call VSCodeNotify('vscode-harpoon.gotoEditor3')<CR>
+          nnoremap <silent> <C-s> :call VSCodeNotify('vscode-harpoon.gotoEditor4')<CR>
+          nnoremap <silent> <C-e> :call VSCodeNotify('vscode-harpoon.editEditors')<CR>
 
           nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
 

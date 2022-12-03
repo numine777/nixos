@@ -58,6 +58,12 @@ in
       buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
     };
 
+    rose-pine-nvim = pkgs.vimUtils.buildVimPlugin {
+      name = "rose-pine.nvim";
+      src = sources."rose-pine";
+      buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
+    };
+
     neotest = pkgs.vimUtils.buildVimPlugin {
       name = "neotest";
       src = sources."neotest";

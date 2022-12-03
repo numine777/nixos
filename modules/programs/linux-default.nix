@@ -5,6 +5,7 @@
     _1password-gui
     brave
     discord
+    firefox
     gcc
     flameshot
     jdk8

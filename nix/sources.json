@@ -179,6 +179,18 @@
         "url": "https://github.com/ThePrimeagen/refactoring.nvim/archive/c9ca8e3bbf7218101f16e6a03b15bf72b99b2cae.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "rose-pine": {
+        "branch": "main",
+        "description": "Soho vibes for Neovim",
+        "homepage": "",
+        "owner": "rose-pine",
+        "repo": "neovim",
+        "rev": "bfc2aa0006ad56f1a9792d6c52dc7f04fb4af94d",
+        "sha256": "088wwwsqwxhii7n88k3kd6mqf7jajiva9a4a3g87nflf4g11fh57",
+        "type": "tarball",
+        "url": "https://github.com/rose-pine/neovim/archive/bfc2aa0006ad56f1a9792d6c52dc7f04fb4af94d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "telescope.nvim": {
         "branch": "master",
         "description": "Find, Filter, Preview, Pick. All lua, all the time.",

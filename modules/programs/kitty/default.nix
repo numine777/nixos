@@ -9,7 +9,8 @@ in
   };
 
   # imports = [ ./colors/gruvbox.nix ];
-  imports = [ ./colors/tokyonight.nix ];
+  # imports = [ ./colors/tokyonight.nix ];
+  imports = [ ./colors/rosepine.nix ];
 
 
   config = mkIf cfg.enable {

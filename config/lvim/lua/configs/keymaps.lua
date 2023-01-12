@@ -5,6 +5,8 @@ local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
+lvim.keys.normal_mode["H"] = "<cmd>BufferLineCyclePrev<cr>"
+lvim.keys.normal_mode["L"] = "<cmd>BufferLineCycleNext<cr>"
 lvim.keys.normal_mode["<C-e>"] = ":lua require('harpoon.ui').toggle_quick_menu()<CR>"
 lvim.keys.normal_mode["<C-h>"] = ":lua require('harpoon.ui').nav_file(1)<CR>"
 lvim.keys.normal_mode["<C-t>"] = ":lua require('harpoon.ui').nav_file(2)<CR>"
@@ -14,21 +16,19 @@ lvim.keys.normal_mode["<C-j>"] = ":cprev<CR>"
 lvim.keys.normal_mode["<C-k>"] = ":cnext<CR>"
 lvim.keys.normal_mode["<C-f>"] =
 	':lua require("harpoon.term").sendCommand(1, "tmux-sessionizer\\n"); require("harpoon.term").gotoTerminal(1)<CR>'
-lvim.keys.normal_mode["<C-p>"] = ':lua require("telescope.builtin").git_files()<CR>'
+lvim.keys.normal_mode["<C-p>"] = require("lvim.core.telescope.custom-finders").find_project_files
 inoremap("<C-c>", "<Esc>")
 lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", "Clang Debugger" }
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
 
 -- lvim.builtin.which_key.mappings["e"] = { ":Ex<CR>", "Explorer" }
-lvim.builtin.which_key.mappings["e"] = { ":lua require'lir.float'.init()<CR>", "Lir" }
+-- lvim.builtin.which_key.mappings["e"] = { ":lua require'lir.float'.init()<CR>", "Lir" }
 lvim.builtin.which_key.mappings["u"] = { ":UndotreeToggle<CR>", "Undo Tree" }
 lvim.builtin.which_key.mappings["x"] = { '"_dd', "Delete" }
 lvim.builtin.which_key.vmappings["x"] = { '"_d', "Delete" }
 lvim.builtin.which_key.mappings["y"] = { '"+y', "Yank to clipboard" }
 lvim.builtin.which_key.vmappings["y"] = { '"+y', "Yank to clipboard" }
-lvim.builtin.which_key.mappings["p"] = { '"+p', "Put from clipboard" }
-lvim.builtin.which_key.vmappings["p"] = { '"+p', "Put from clipboard" }
 -- lvim.builtin.which_key.mappings["J"] = { ":cprev<CR>", "Globalist Prev" }
 -- lvim.builtin.which_key.mappings["K"] = { ":cnext<CR>", "Globalist Next" }
 lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon Add File" }
@@ -59,12 +59,3 @@ lvim.builtin.which_key.mappings["t"] = {
 -- 	name = "+Flutter",
 -- 	c = { "<cmd>lua require('telescope').extensions.flutter.commands()<cr>", "View Flutter Commands" },
 -- }
-lvim.builtin.which_key.mappings["P"] = {
-	name = "Packer",
-	c = { "<cmd>PackerCompile<cr>", "Compile" },
-	i = { "<cmd>PackerInstall<cr>", "Install" },
-	r = { "<cmd>lua require('utils').reload_lv_config()<cr>", "Reload" },
-	s = { "<cmd>PackerSync<cr>", "Sync" },
-	S = { "<cmd>PackerStatus<cr>", "Status" },
-	u = { "<cmd>PackerUpdate<cr>", "Update" },
-}

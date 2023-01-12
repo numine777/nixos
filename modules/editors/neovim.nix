@@ -15,6 +15,9 @@ in
       black
       # python39Packages.isort
       rnix-lsp
+      nil
+      nodePackages.yaml-language-server
+      nodePackages.bash-language-server
       nodePackages.typescript-language-server
       nodePackages.prettier
       nodePackages.eslint
@@ -30,7 +33,8 @@ in
           vimPlugins.vim-nix
 
           # treesitter
-          customVim.nvim-treesitter
+          (vimPlugins.nvim-treesitter.withPlugins(_: pkgs.tree-sitter.allGrammars))
+
 
           # completion
           customVim.cmp-tabnine
@@ -181,7 +185,7 @@ in
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim/after";
     home.file.".config/nvim/lua".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim/lua";
-    # home.file.".config/lvim".source =
-    #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/lvim";
+    home.file.".config/lvim".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/lvim";
   };
 }

@@ -1,21 +1,18 @@
 lvim.plugins = {
 	{
-		{ "akinsho/flutter-tools.nvim", commit = "d9697b913a7e199e48b09403755774bed7063a90" },
+		-- { "akinsho/flutter-tools.nvim", commit = "d9697b913a7e199e48b09403755774bed7063a90" },
+		-- "ThePrimeagen/git-worktree.nvim",
+		"tpope/vim-fugitive",
+		"mbbill/undotree",
 		{
-			"~/personal/py-bazel.nvim",
+			"ThePrimeagen/harpoon",
 			config = function()
-				require("py-bazel").setup({
-					library_path_marker = "python",
-					pip_deps_marker = "npip",
-					global_pyright_config = "/home/mwalls/.config/lvim/lsp-settings/pyright.json",
+				-- Harpoon settings
+				require("harpoon").setup({
+					nav_first_in_list = true,
 				})
 			end,
 		},
-		"ThePrimeagen/git-worktree.nvim",
-		"tpope/vim-fugitive",
-		"mbbill/undotree",
-		"ThePrimeagen/harpoon",
-		"lakshayg/vim-bazel",
 		{
 			"Shatur/neovim-cmake",
 			config = function()
@@ -25,38 +22,28 @@ lvim.plugins = {
 		"mtth/scratch.vim",
 		"Shatur/neovim-ayu",
 		"romgrk/nvim-treesitter-context",
-		{
-			"npxbr/gruvbox.nvim",
-			requires = { "rktjmp/lush.nvim" },
-			config = function()
-				require("gruvbox").setup({
-					contrast = "hard", -- can be "hard", "soft" or empty string
-					transparent_mode = true,
-				})
-			end,
-		},
+		{ "npxbr/gruvbox.nvim", dependencies = { "rktjmp/lush.nvim" } },
 		"shaunsingh/nord.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
-		-- "folke/tokyonight.nvim",
 		{
 			"rose-pine/neovim",
-			as = "rose-pine",
+			name = "rose-pine",
 			config = function()
 				vim.cmd("colorscheme rose-pine")
 			end,
 		},
-		{ "shaunsingh/oxocarbon.nvim", branch = "fennel" },
+		-- "folke/tokyonight.nvim",
 		{
 			"catppuccin/nvim",
-			as = "catppuccin",
+			name = "catppuccin",
 			config = function()
 				require("catppuccin").setup()
 			end,
 		},
-		{ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" },
+		{ "tzachar/cmp-tabnine", build = "./install.sh", dependencies = "hrsh7th/nvim-cmp" },
 		{
 			"zbirenbaum/copilot.lua",
-			event = { "VimEnter" },
+			-- event = { "VimEnter" },
 			config = function()
 				vim.defer_fn(function()
 					require("copilot").setup({
@@ -67,15 +54,15 @@ lvim.plugins = {
 		},
 		{
 			"zbirenbaum/copilot-cmp",
-			after = { "copilot.lua", "nvim-cmp" },
+			dependencies = { "copilot.lua", "nvim-cmp" },
 			config = function()
 				require("copilot_cmp").setup()
 			end,
 		},
 		{
 			"xbase-lab/xbase",
-			run = "make install", -- make free_space (not recommended, longer build time)
-			requires = {
+			build = "make install", -- make free_space (not recommended, longer build time)
+			dependencies = {
 				"nvim-lua/plenary.nvim",
 				"nvim-telescope/telescope.nvim",
 				"neovim/nvim-lspconfig",
@@ -86,7 +73,7 @@ lvim.plugins = {
 		},
 		{
 			"kevinhwang91/nvim-bqf",
-			event = { "BufRead", "BufNew" },
+			-- event = { "BufRead", "BufNew" },
 			config = function()
 				require("bqf").setup({
 					auto_enable = true,
@@ -112,7 +99,7 @@ lvim.plugins = {
 		},
 		{
 			"akinsho/git-conflict.nvim",
-			tag = "*",
+			version = "*",
 			config = function()
 				require("git-conflict").setup()
 			end,
@@ -121,11 +108,11 @@ lvim.plugins = {
 }
 
 -- Harpoon settings
-require("harpoon").setup({
-	nav_first_in_list = true,
-})
+-- require("harpoon").setup({
+-- 	nav_first_in_list = true,
+-- })
 
-vim.g.scratch_persistence_file = CACHE_PATH .. "/.vim/scratch_file"
-require("telescope").load_extension("git_worktree")
-require("telescope").load_extension("flutter")
-require("colorizer").setup()
+-- vim.g.scratch_persistence_file = CACHE_PATH .. "/.vim/scratch_file"
+-- require("telescope").load_extension("git_worktree")
+-- require("telescope").load_extension("flutter")
+-- require("colorizer").setup()

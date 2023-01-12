@@ -143,6 +143,18 @@
         "url": "https://github.com/nvim-neotest/neotest/archive/6669f6dda2385ed358ffc90108e574ccccc71f32.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "neovim": {
+        "branch": "main",
+        "description": "Soho vibes for Neovim",
+        "homepage": "",
+        "owner": "rose-pine",
+        "repo": "neovim",
+        "rev": "bfc2aa0006ad56f1a9792d6c52dc7f04fb4af94d",
+        "sha256": "088wwwsqwxhii7n88k3kd6mqf7jajiva9a4a3g87nflf4g11fh57",
+        "type": "tarball",
+        "url": "https://github.com/rose-pine/neovim/archive/bfc2aa0006ad56f1a9792d6c52dc7f04fb4af94d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs": {
         "branch": "release-21.05",
         "description": "Nix Packages collection",

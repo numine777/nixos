@@ -6,6 +6,7 @@ local M = {}
 --[[ }) ]]
 
 function ColorMyPencils()
+    require("numine.rosepine").config()
     vim.g.gruvbox_contrast_dark = "hard"
     vim.g.gruvbox_invert_selection = "0"
     vim.g.tokyonight_transparent_sidebar = true

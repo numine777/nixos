@@ -4,7 +4,6 @@
   imports = [
     ./dircolors.nix
     ./fish.nix
-    ./git.nix
     ./zsh.nix
   ];
   home.packages = with pkgs; [

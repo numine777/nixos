@@ -98,7 +98,7 @@ local init = function()
 
     -- who even uses this?
     require("lspconfig").rust_analyzer.setup(config({
-        -- cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+        cmd = { "rustup", "run", "nightly", "rust-analyzer" },
         --[[
     settings = {
         rust = {
@@ -110,7 +110,9 @@ local init = function()
     --]]
     }))
 
-    require("lspconfig").rnix.setup(config({}))
+    require("lspconfig").nil_ls.setup(config({}))
+    require("lspconfig").bashls.setup(config({}))
+    require("lspconfig").yamlls.setup(config({}))
 
     local default_workspace = {
         library = {

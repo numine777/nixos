@@ -3,6 +3,8 @@
 # pls
 # inspired by hlissner's hey
 
+host=$(hostname)
+
 while [ "$1" ]; do
   case $1 in
     help)
@@ -23,30 +25,30 @@ while [ "$1" ]; do
       exit ;;
     gc)
       nix-collect-garbage
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "Finished garbage collection"
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host Finished garbage collection"
       exit ;;
     home)
       nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" --impure && ./result/activate
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host home-manager config rebuilt "
       exit ;;
     home-work)
       nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" --impure && ./result/activate
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host home-manager config rebuilt "
       exit ;;
     home-vm)
       nix build "$HOME/nixos#homemanagerConfigurations.nixos.activationPackage" --impure --show-trace && ./result/activate
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "home-manager config rebuilt "
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host home-manager config rebuilt "
       exit ;;
     home-mac)
       nix build "$HOME/nixos#homemanagerConfigurations.nixM1.activationPackage" --impure && ./result/activate
       exit ;;
     rebuild)
       nixos-rebuild --use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "nixos config rebuilt "
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host nixos config rebuilt "
       exit ;;
     rebuild-vm)
       nixos-rebuild --use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "nixos config rebuilt "
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host nixos config rebuilt "
       exit ;;
     rebuild-mac)
       darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#Scotts-MacBook-Pro"
@@ -57,21 +59,21 @@ while [ "$1" ]; do
       exit ;;
     update)
       if [ "$2" ]; then
-        nix flake lock --update-input "$2" "$HOME/nixos"
+        nix flake lock --update-input "$2" "$HOME/nixos" --show-trace
       else
-        nix flake update "$HOME/nixos"
+        nix flake update "$HOME/nixos" --show-trace
       fi
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "Finished update"
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host Finished update"
       exit ;;
     upgrade)
       nix flake update "$HOME/nixos"
       nixos-rebuild --use-remote-sudo "${2:-switch}" --flake "$HOME/nixos#"
       nix build "$HOME/nixos#homemanagerConfigurations.nixos.activationPackage" --impure && ./result/activate
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "Finished upgrade"
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host Finished upgrade"
       exit ;;
     optimise)
       nix-store --optimise
-      notify-send -i "$HOME/nixos/nixos.png" "pls" "Finished optimising nix store"
+      notify-send -i "$HOME/nixos/nixos.png" "pls" "$host Finished optimising nix store"
       exit ;;
     *)
       printf "\033[0;31merr: invalid command\n"

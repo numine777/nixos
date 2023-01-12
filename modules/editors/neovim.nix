@@ -34,6 +34,8 @@ in
 
           # completion
           customVim.cmp-tabnine
+          customVim.copilot-lua
+          customVim.copilot-cmp
           vimPlugins.cmp-buffer
           vimPlugins.cmp-cmdline
           vimPlugins.cmp-nvim-lsp
@@ -54,6 +56,8 @@ in
           vimPlugins.tokyonight-nvim
 
           # extras
+          vimPlugins.neodev-nvim
+          vimPlugins.nvim-navic
           vimPlugins.gitsigns-nvim
           vimPlugins.lsp-colors-nvim
           customVim.lir-nvim
@@ -177,7 +181,7 @@ in
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim/after";
     home.file.".config/nvim/lua".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim/lua";
-    home.file.".config/lvim".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/lvim";
+    # home.file.".config/lvim".source =
+    #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/lvim";
   };
 }

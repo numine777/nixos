@@ -9,6 +9,9 @@ local init = function()
     nnoremap("<leader>e", ":lua require'lir.float'.init()<CR>")
     nnoremap("<leader>u", ":UndotreeShow<CR>")
 
+    vnoremap("<", "<gv")
+    vnoremap(">", ">gv")
+
     vnoremap("J", ":m '>+1<CR>gv=gv")
     vnoremap("K", ":m '<-2<CR>gv=gv")
 

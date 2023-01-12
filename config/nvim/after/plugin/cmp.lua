@@ -11,39 +11,14 @@ local init = function()
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     }
-    local kind_icons = {
-        Class = " ",
-        Color = " ",
-        Constant = "ﲀ ",
-        Constructor = " ",
-        Enum = "練",
-        EnumMember = " ",
-        Event = " ",
-        Field = " ",
-        File = "",
-        Folder = " ",
-        Function = " ",
-        Interface = "ﰮ ",
-        Keyword = " ",
-        Method = " ",
-        Module = " ",
-        Operator = "",
-        Property = " ",
-        Reference = " ",
-        Snippet = " ",
-        Struct = " ",
-        Text = " ",
-        TypeParameter = " ",
-        Unit = "塞",
-        Value = " ",
-        Variable = " ",
-    }
+    local kind_icons = require("numine.icons").kind
     local source_names = {
         nvim_lsp = "(LSP)",
         emoji = "(Emoji)",
         path = "(Path)",
         calc = "(Calc)",
         cmp_tabnine = "(Tabnine)",
+        copilot = "(Copilot)",
         vsnip = "(Snippet)",
         luasnip = "(Snippet)",
         buffer = "(Buffer)",
@@ -55,6 +30,7 @@ local init = function()
         nvim_lsp = 0,
         luasnip = 1,
     }
+    local icons = require("numine.icons")
     local formatting = {
         fields = { "kind", "abbr", "menu" },
         max_width = 0,
@@ -65,11 +41,37 @@ local init = function()
         format = function(entry, vim_item)
             local max_width = 0
             if max_width ~= 0 and #vim_item.abbr > max_width then
-                vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. "…"
+                vim_item.abbr = string.sub(vim_item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
             end
-            vim_item.kind = kind_icons[vim_item.kind]
-            vim_item.menu = source_names[entry.source.name]
-            vim_item.dup = duplicates[entry.source.name] or 0
+            vim_item.kind = icons.kind[vim_item.kind]
+
+            if entry.source.name == "copilot" then
+                vim_item.kind = icons.git.Octoface
+                vim_item.kind_hl_group = "CmpItemKindCopilot"
+            end
+
+            if entry.source.name == "cmp_tabnine" then
+                vim_item.kind = icons.misc.Robot
+                vim_item.kind_hl_group = "CmpItemKindTabnine"
+            end
+
+            if entry.source.name == "crates" then
+                vim_item.kind = icons.misc.Package
+                vim_item.kind_hl_group = "CmpItemKindCrate"
+            end
+
+            if entry.source.name == "lab.quick_data" then
+                vim_item.kind = icons.misc.CircuitBoard
+                vim_item.kind_hl_group = "CmpItemKindConstant"
+            end
+
+            if entry.source.name == "emoji" then
+                vim_item.kind = icons.misc.Smiley
+                vim_item.kind_hl_group = "CmpItemKindEmoji"
+            end
+            -- vim_item.menu = lvim.builtin.cmp.formatting.source_names[entry.source.name]
+            -- vim_item.dup = lvim.builtin.cmp.formatting.duplicates[entry.source.name]
+            --     or lvim.builtin.cmp.formatting.duplicates_default
             return vim_item
         end,
     }
@@ -180,6 +182,7 @@ local init = function()
             documentation = cmp.config.window.bordered(),
         },
         sources = {
+            { name = "copilot" },
             { name = "nvim_lsp" },
             { name = "path" },
             { name = "luasnip" },

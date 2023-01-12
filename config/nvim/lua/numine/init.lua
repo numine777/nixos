@@ -9,6 +9,7 @@ M.init = function()
     require("numine.telescope")
     require("numine.comment")
     require("numine.lir")
+    require("numine.icons")
 end
 
 return M

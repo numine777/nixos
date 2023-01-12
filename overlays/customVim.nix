@@ -70,6 +70,18 @@ in
       buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
     };
 
+    copilot-lua = pkgs.vimUtils.buildVimPlugin {
+      name = "copilot.lua";
+      src = sources."copilot.lua";
+      buildInputs = [ ];
+    };
+
+    copilot-cmp = pkgs.vimUtils.buildVimPlugin {
+      name = "copilot-cmp";
+      src = sources."copilot-cmp";
+      buildInputs = [ ];
+    };
+
     mason-lspconfig-nvim = pkgs.vimUtils.buildVimPlugin {
       name = "mason-lspconfig.nvim";
       src = sources."mason-lspconfig.nvim";

@@ -14,7 +14,6 @@ in
       enable = true;
       package = pkgs.picom-git;
       fade = false;
-      experimentalBackends = false;
       shadow = true;
       shadowExclude = [
         "name = 'Notification'"

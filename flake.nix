@@ -4,8 +4,15 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
+    };
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+    crane.url = "github:ipetkov/crane";
+    nixpkgs-fmt.url = "github:nix-community/nixpkgs-fmt";
+    nixpkgs-f2k.inputs.crane.follows = "crane";
+    nixpkgs-f2k.inputs.nixpkgs-fmt.follows = "nixpkgs-fmt";
     nixgl.url = "github:guibou/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";

@@ -16,6 +16,7 @@
     fzf
     github-cli
     gnumake
+    keychain
     ranger
     (ripgrep.override { withPCRE2 = true; })
     tmux

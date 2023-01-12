@@ -53,7 +53,7 @@
     home.keyboard = null;
     home.sessionVariables = {
       LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
-      NIXPKGS_ALLOW_UNFREE = true;
+      # NIXPKGS_ALLOW_UNFREE = true;
     };
     modules = {
       desktop = {

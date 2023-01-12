@@ -19,13 +19,13 @@ autocmd("TextYankPost", {
 	end,
 })
 
-autocmd({ "BufEnter", "BufWinEnter", "TabEnter" }, {
-	group = NumineGroup,
-	pattern = "*.rs",
-	callback = function()
-		require("lsp_extensions").inlay_hints({})
-	end,
-})
+-- autocmd({ "BufEnter", "BufWinEnter", "TabEnter" }, {
+-- 	group = NumineGroup,
+-- 	pattern = "*.rs",
+-- 	callback = function()
+-- 		require("lsp_extensions").inlay_hints({})
+-- 	end,
+-- })
 
 autocmd({ "BufWritePre" }, {
 	group = NumineGroup,

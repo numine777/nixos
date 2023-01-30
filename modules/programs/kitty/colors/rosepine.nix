@@ -1,10 +1,11 @@
 { config, pkgs, libs, ... }:
+## name: Rosé Pine
+## author: mvllow
+## license: MIT
+## upstream: https://github.com/rose-pine/kitty/blob/main/dist/rose-pine.conf
+## blurb: All natural pine, faux fur and a bit of soho vibes for the classy minimalist
+
 {
-  ## name: Rosé Pine Moon
-  ## author: mvllow
-  ## license: MIT
-  ## upstream: https://github.com/rose-pine/kitty/blob/main/dist/rose-pine-moon.conf
-  ## blurb: All natural pine, faux fur and a bit of soho vibes for the classy minimalist
   programs.kitty.settings = {
     foreground = "#e0def4";
     background = "#191724";

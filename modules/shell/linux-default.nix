@@ -23,6 +23,8 @@
     pass
     playerctl
     slop
+    tree-sitter
     nethogs
+    (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" "Iosevka" "JetBrainsMono" ]; })
   ];
 }

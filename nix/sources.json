@@ -191,6 +191,18 @@
         "url": "https://github.com/nvim-treesitter/nvim-treesitter/archive/8ec59aee8097c64fcf27d1dbd77ea181c50846c5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nvim-treesitter-context": {
+        "branch": "master",
+        "description": "Show code context",
+        "homepage": "",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-context",
+        "rev": "5fda0b9a2a9049ecc9900e2d86d9ddebab95b0c5",
+        "sha256": "084j8bbvs0f1rah92ddbb5qpj4y4m7nq5rn0ga8bsjpyqnx04q7j",
+        "type": "tarball",
+        "url": "https://github.com/nvim-treesitter/nvim-treesitter-context/archive/5fda0b9a2a9049ecc9900e2d86d9ddebab95b0c5.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "oxocarbon.nvim": {
         "branch": "rust",
         "description": "A dark and light Neovim theme written in Rust, inspired by IBM Carbon.",

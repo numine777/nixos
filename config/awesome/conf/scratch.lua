@@ -3,7 +3,7 @@ local bling = require "modules.bling"
 Scratch = {}
 
 Scratch.term = bling.module.scratchpad {
-  command = "kitty --class=scratch",
+  command = "nixGLNvidia-470-141.03 kitty --class=scratch",
   rule = { instance = "scratch" },
   sticky = true,
   autoclose = false,

@@ -15,6 +15,7 @@
     ../../modules/dev/python.nix
     ../../modules/programs/ubuntu-default.nix
     ../../modules/desktop
+    ../../modules/desktop/gtk.nix
     ../../modules/desktop/windowManagers/awesome.nix
     ../../modules/desktop/windowManagers/berry.nix
     ../../modules/desktop/windowManagers/herbstluftwm.nix
@@ -27,40 +28,16 @@
     home.homeDirectory = "/home/mwalls";
     home.username = "mwalls";
     home.stateVersion = "22.11";
-    # home.packages =
-    #   let
-    #     nixGLNvidiaScript = pkgs.writeShellScriptBin "nixGLNvidia" ''
-    #       $(NIX_PATH=nixpkgs=${nixpkgs} nix-build ${pkgs.nixgl} -A auto.nixGLNvidia --no-out-link)/bin/* "$@"
-    #     '';
-    #     nixGLIntelScript = pkgs.writeShellScriptBin "nixGLIntel" ''
-    #       $(NIX_PATH=nixpkgs=${nixpkgs} nix-build ${pkgs.nixgl} -A nixGLIntel --no-out-link)/bin/* "$@"
-    #     '';
-    #     nixVulkanIntelScript =
-    #       pkgs.writeShellScriptBin "nixVulkanIntel" ''
-    #         $(NIX_PATH=nixpkgs=${nixpkgs} nix-build ${pkgs.nixgl} -A nixVulkanIntel --no-out-link)/bin/* "$@"
-    #       '';
-    #     nixVulkanNvidiaScript =
-    #       pkgs.writeShellScriptBin "nixVulkanNvidia" ''
-    #         $(NIX_PATH=nixpkgs=${nixpkgs} nix-build ${pkgs.nixgl} -A auto.nixVulkanNvidia --no-out-link)/bin/* "$@"
-    #       '';
-    #   in
-    #   with pkgs; [
-    #     nixGLNvidiaScript
-    #     nixGLIntelScript
-    #     nixVulkanIntelScript
-    #     nixVulkanNvidiaScript
-    #   ];
     home.keyboard = null;
     home.sessionVariables = {
       LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
-      # NIXPKGS_ALLOW_UNFREE = true;
     };
     modules = {
       desktop = {
         picom.enable = true;
         dunst.enable = true;
         windowManager = {
-          awesome.enable = false;
+          awesome.enable = true;
           berry.enable = false;
           herbstluftwm.enable = false;
           i3.enable = true;
@@ -71,7 +48,7 @@
         clojure.enable = true;
         lua.enable = true;
         nix.enable = true;
-        node.enable = true;
+        node.enable = false;
         python.enable = true;
         rust.enable = true;
         golang.enable = true;

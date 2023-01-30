@@ -174,6 +174,10 @@ zinit wait lucid for \
 # fi
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(direnv hook zsh)" 
+if [ $(which keychain) ]; then
+    eval $(keychain --eval --agents ssh id_rsa)
+    eval $(keychain --eval --agents ssh id_ecdsa)
+fi
 # Copied from "direnv hook zsh" output:
 # export DEV_SHELL_NO_SPLASH=1
 _direnv_hook_enabled=1

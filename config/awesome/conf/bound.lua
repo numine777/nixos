@@ -1,7 +1,7 @@
 local awful = require "awful"
 local modkey = C.modkey
 local bling = require "modules.bling"
-local hotkeys_popup = require('awful.hotkeys_popup').widget
+local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings {
@@ -9,7 +9,7 @@ awful.keyboard.append_global_keybindings {
   awful.key({ modkey, "Shift" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
   awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
   awful.key({ modkey }, "Return", function()
-    awful.spawn(C.terminal)
+    awful.spawn("/home/mwalls/.nix-profile/bin/nixGLNvidia-470.141.03 " .. C.terminal)
   end, { description = "open a terminal", group = "launcher" }),
   awful.key({ modkey }, "d", function()
     awful.spawn "rofi -show drun"

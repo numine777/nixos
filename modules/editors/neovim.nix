@@ -15,6 +15,7 @@ in
       black
       # python39Packages.isort
       rnix-lsp
+      nixpkgs-fmt
       nil
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
@@ -22,6 +23,7 @@ in
       nodePackages.prettier
       nodePackages.eslint
       ccls
+      tree-sitter
     ];
     programs.neovim =
       {
@@ -35,12 +37,12 @@ in
           # treesitter
           (vimPlugins.nvim-treesitter.withPlugins(_: pkgs.tree-sitter.allGrammars))
 
-
           # completion
           customVim.cmp-tabnine
           customVim.copilot-lua
           customVim.copilot-cmp
           vimPlugins.cmp-buffer
+          customVim.copilot-cmp
           vimPlugins.cmp-cmdline
           vimPlugins.cmp-nvim-lsp
           vimPlugins.cmp-path
@@ -73,7 +75,10 @@ in
           vimPlugins.nvim-bqf
           vimPlugins.fugitive
           vimPlugins.undotree
+          vimPlugins.neodev-nvim
+          vimPlugins.nvim-navic
           customVim.harpoon
+          customVim.rose-pine-nvim
           customVim.refactoring-nvim
           customVim.git-conflict-nvim
           # customVim.xbase

@@ -149,7 +149,7 @@ M.search_dotfiles = function()
 end
 
 local function set_background(content)
-    vim.fn.system("feh --bg-scale " .. content)
+      vim.fn.system("dconf write /org/mate/desktop/background/picture-filename \"'" .. content .. "'\"")
 end
 
 local function select_background(prompt_bufnr, map)

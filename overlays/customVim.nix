@@ -30,14 +30,31 @@ in
     nvim-treesitter = pkgs.vimUtils.buildVimPlugin {
       name = "nvim-treesiter";
       src = sources."nvim-treesitter";
-      buildInputs = [ tree-sitter curl git gcc ];
+      buildInputs = [ (pkgs.tree-sitter.withPlugins (_: pkgs.tree-sitter.allGrammars)) pkgs.curl pkgs.git pkgs.gcc ];
+    };
+
+    nvim-treesitter-context = pkgs.vimUtils.buildVimPlugin {
+      name = "nvim-treesiter-context";
+      src = sources."nvim-treesitter-context";
+      buildInputs = [ (pkgs.tree-sitter.withPlugins (_: pkgs.tree-sitter.allGrammars)) pkgs.neovim-nightly pkgs.curl pkgs.git pkgs.gcc ];
     };
 
     refactoring-nvim = pkgs.vimUtils.buildVimPlugin {
       name = "refactoring.nvim";
       src = sources."refactoring.nvim";
-      buildInputs = [ pkgs.stylua ];
-      # buildInputs = [ pkgs.neovim-nightly pkgs.vimPlugins.plenary-nvim ];
+      buildInputs = [ pkgs.stylua (pkgs.tree-sitter.withPlugins (_: pkgs.tree-sitter.allGrammars)) ];
+    };
+
+    copilot-lua = pkgs.vimUtils.buildVimPlugin {
+      name = "copilot.lua";
+      src = sources."copilot.lua";
+      buildInputs = [];
+    };
+
+    copilot-cmp = pkgs.vimUtils.buildVimPlugin {
+      name = "copilot-cmp";
+      src = sources."copilot-cmp";
+      buildInputs = [];
     };
 
     xbase = pkgs.vimUtils.buildVimPlugin {
@@ -70,17 +87,6 @@ in
       buildInputs = [ pkgs.stylua pkgs.luaPackages.luacheck ];
     };
 
-    copilot-lua = pkgs.vimUtils.buildVimPlugin {
-      name = "copilot.lua";
-      src = sources."copilot.lua";
-      buildInputs = [ ];
-    };
-
-    copilot-cmp = pkgs.vimUtils.buildVimPlugin {
-      name = "copilot-cmp";
-      src = sources."copilot-cmp";
-      buildInputs = [ ];
-    };
 
     mason-lspconfig-nvim = pkgs.vimUtils.buildVimPlugin {
       name = "mason-lspconfig.nvim";

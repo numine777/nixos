@@ -1,7 +1,7 @@
 lvim.plugins = {
 	{
 		-- { "akinsho/flutter-tools.nvim", commit = "d9697b913a7e199e48b09403755774bed7063a90" },
-		-- "ThePrimeagen/git-worktree.nvim",
+		"ThePrimeagen/git-worktree.nvim",
 		"tpope/vim-fugitive",
 		"mbbill/undotree",
 		{
@@ -116,3 +116,10 @@ lvim.plugins = {
 -- require("telescope").load_extension("git_worktree")
 -- require("telescope").load_extension("flutter")
 -- require("colorizer").setup()
+lvim.builtin.telescope.on_config_done = function(telescope)
+	pcall(telescope.load_extension, "git_worktree")
+	require("configs.telescope")
+	-- pcall(telescope.load_extension, "frecency")
+	-- pcall(telescope.load_extension, "neoclip")
+	-- any other extensions loading
+end

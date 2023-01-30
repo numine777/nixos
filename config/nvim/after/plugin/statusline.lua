@@ -68,7 +68,7 @@ local init = function()
     require("lualine").setup({
         options = {
             -- icons_enabled = false,
-            theme = "rose-pine",
+            theme = vim.g.numine_colorscheme,
             component_separators = "|",
             section_separators = "",
         },

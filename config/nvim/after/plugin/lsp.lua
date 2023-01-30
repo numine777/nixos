@@ -1,4 +1,15 @@
 local init = function()
+    local lsp = require("lsp-zero")
+    lsp.preset("recommended")
+
+    lsp.set_preferences({
+        set_lsp_keymaps = false, -- set to false if you want to configure your own keybindings
+        manage_nvim_cmp = false, -- set to false if you want to configure nvim-cmp on your own
+    })
+    -- (Optional) Configure lua language server for neovim
+    lsp.nvim_workspace()
+
+    lsp.setup()
     local Remap = require("numine.mapper")
     local nnoremap = Remap.nnoremap
     local inoremap = Remap.inoremap

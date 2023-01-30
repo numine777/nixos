@@ -1,8 +1,9 @@
 local augroup = vim.api.nvim_create_augroup
-NumineGroup = augroup("Numine", {})
-
 local autocmd = vim.api.nvim_create_autocmd
+local NumineGroup = augroup("Numine", {})
+
 local yank_group = augroup("HighlightYank", {})
+local ColorGroup = augroup("Colors", {})
 
 function R(name)
 	require("plenary.reload").reload_module(name)
@@ -62,6 +63,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 autocmd("ColorScheme", {
+    group = ColorGroup,
 	pattern = "*",
 	callback = function()
 		require("numine.colors").ColorMyPencils()

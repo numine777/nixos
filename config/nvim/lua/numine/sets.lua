@@ -43,7 +43,7 @@ o.shortmess:append("c")
 
 o.colorcolumn = "80"
 
-g.mapleader = " "
+-- g.mapleader = " "
 o.laststatus = 3
 vim.api.nvim_set_hl(0, "WinSeparator", { background = nil })
 

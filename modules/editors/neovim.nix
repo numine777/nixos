@@ -27,63 +27,63 @@ in
       {
         enable = true;
         package = pkgs.neovim-nightly;
-        plugins = with pkgs; [
-          # languages
-          vimPlugins.nvim-lspconfig
-          vimPlugins.vim-nix
+        # plugins = with pkgs; [
+          # vimPlugins.lazy-nvim
+          # # languages
+          # vimPlugins.nvim-lspconfig
+          # vimPlugins.vim-nix
 
-          # treesitter
-          (vimPlugins.nvim-treesitter.withPlugins(_: pkgs.tree-sitter.allGrammars))
+          # # treesitter
+          # vimPlugins.nvim-treesitter
 
+          # # completion
+          # customVim.cmp-tabnine
+          # customVim.copilot-lua
+          # customVim.copilot-cmp
+          # vimPlugins.cmp-buffer
+          # vimPlugins.cmp-cmdline
+          # vimPlugins.cmp-nvim-lsp
+          # vimPlugins.cmp-path
+          # vimPlugins.cmp-treesitter
+          # vimPlugins.cmp-vsnip
+          # vimPlugins.lspkind-nvim
+          # vimPlugins.nvim-cmp
+          # vimPlugins.vim-vsnip
 
-          # completion
-          customVim.cmp-tabnine
-          customVim.copilot-lua
-          customVim.copilot-cmp
-          vimPlugins.cmp-buffer
-          vimPlugins.cmp-cmdline
-          vimPlugins.cmp-nvim-lsp
-          vimPlugins.cmp-path
-          vimPlugins.cmp-treesitter
-          vimPlugins.cmp-vsnip
-          vimPlugins.lspkind-nvim
-          vimPlugins.nvim-cmp
-          vimPlugins.vim-vsnip
+          # # telescope
+          # vimPlugins.plenary-nvim
+          # vimPlugins.popup-nvim
+          # vimPlugins.telescope-nvim
 
-          # telescope
-          vimPlugins.plenary-nvim
-          vimPlugins.popup-nvim
-          vimPlugins.telescope-nvim
+          # # theme
+          # vimPlugins.gruvbox-community
+          # vimPlugins.tokyonight-nvim
 
-          # theme
-          vimPlugins.gruvbox-community
-          vimPlugins.tokyonight-nvim
-
-          # extras
-          vimPlugins.neodev-nvim
-          vimPlugins.nvim-navic
-          vimPlugins.gitsigns-nvim
-          vimPlugins.lsp-colors-nvim
-          customVim.lir-nvim
-          customVim.rose-pine-nvim
-          vimPlugins.lualine-nvim
-          vimPlugins.comment-nvim
-          vimPlugins.nvim-treesitter-context
-          vimPlugins.nvim-web-devicons
-          vimPlugins.nvim-bqf
-          vimPlugins.fugitive
-          vimPlugins.undotree
-          customVim.harpoon
-          customVim.refactoring-nvim
-          customVim.git-conflict-nvim
-          # customVim.xbase
-          vimPlugins.symbols-outline-nvim
-          vimPlugins.luasnip
-          vimPlugins.null-ls-nvim
+          # # extras
+          # vimPlugins.neodev-nvim
+          # vimPlugins.nvim-navic
+          # vimPlugins.gitsigns-nvim
+          # vimPlugins.lsp-colors-nvim
+          # customVim.lir-nvim
+          # customVim.rose-pine-nvim
+          # vimPlugins.lualine-nvim
+          # vimPlugins.comment-nvim
+          # vimPlugins.nvim-treesitter-context
+          # vimPlugins.nvim-web-devicons
+          # vimPlugins.nvim-bqf
+          # vimPlugins.fugitive
+          # vimPlugins.undotree
+          # customVim.harpoon
+          # customVim.refactoring-nvim
+          # customVim.git-conflict-nvim
+          # # customVim.xbase
+          # vimPlugins.symbols-outline-nvim
+          # vimPlugins.luasnip
+          # vimPlugins.null-ls-nvim
           # customVim.mason-nvim
           # customVim.git-worktree-nvim
 
-        ];
+        # ];
         extraConfig = ''
           if exists('g:vscode')
           " packadd quickscope

@@ -5,77 +5,18 @@ local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 
-local my_pickers = {
-    find_files = {
-        theme = "dropdown",
-        hidden = true,
-        previewer = false,
-    },
-    live_grep = {
-        --@usage don't include the filename in the search results
-        only_sort_text = true,
-        theme = "dropdown",
-    },
-    grep_string = {
-        only_sort_text = true,
-        theme = "dropdown",
-    },
-    buffers = {
-        theme = "dropdown",
-        previewer = false,
-        initial_mode = "normal",
-    },
-    planets = {
-        show_pluto = true,
-        show_moon = true,
-    },
-    git_files = {
-        theme = "dropdown",
-        hidden = true,
-        previewer = false,
-        show_untracked = true,
-    },
-    lsp_references = {
-        theme = "dropdown",
-        initial_mode = "normal",
-    },
-    lsp_definitions = {
-        theme = "dropdown",
-        initial_mode = "normal",
-    },
-    lsp_declarations = {
-        theme = "dropdown",
-        initial_mode = "normal",
-    },
-    lsp_implementations = {
-        theme = "dropdown",
-        initial_mode = "normal",
-    },
-}
+local icons = require("numine.icons")
 
 require("telescope").setup({
     defaults = {
-        prompt_prefix = " ",
-        selection_caret = " ",
+        prompt_prefix = icons.ui.Telescope .. " ",
+        selection_caret = icons.ui.Forward .. " ",
         entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
-        sorting_strategy = "descending",
-        layout_strategy = "horizontal",
-        layout_config = {
-            width = 0.75,
-            preview_cutoff = 120,
-            horizontal = {
-                preview_width = function(_, cols, _)
-                    if cols < 120 then
-                        return math.floor(cols * 0.5)
-                    end
-                    return math.floor(cols * 0.6)
-                end,
-                mirror = false,
-            },
-            vertical = { mirror = false },
-        },
+        sorting_strategy = nil,
+        layout_strategy = nil,
+        layout_config = {},
         vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -87,6 +28,7 @@ require("telescope").setup({
             "--hidden",
             "--glob=!.git/",
         },
+        ---@usage Mappings are fully customizable. Many familiar mapping patterns are setup as defaults.
         mappings = {
             i = {
                 ["<C-n>"] = actions.move_selection_next,
@@ -96,25 +38,55 @@ require("telescope").setup({
                 ["<C-k>"] = actions.cycle_history_prev,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                 ["<CR>"] = actions.select_default,
-                ["<C-d>"] = require("telescope.actions").delete_buffer,
             },
             n = {
                 ["<C-n>"] = actions.move_selection_next,
                 ["<C-p>"] = actions.move_selection_previous,
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                ["dd"] = require("telescope.actions").delete_buffer,
             },
         },
-        pickers = my_pickers,
         file_ignore_patterns = {},
         path_display = { "smart" },
         winblend = 0,
         border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        borderchars = nil,
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     },
-    pickers = my_pickers,
+    pickers = {
+        find_files = {
+            hidden = true,
+        },
+        live_grep = {
+            --@usage don't include the filename in the search results
+            only_sort_text = true,
+        },
+        grep_string = {
+            only_sort_text = true,
+        },
+        buffers = {
+            initial_mode = "normal",
+            mappings = {
+                i = {
+                    ["<C-d>"] = actions.delete_buffer,
+                },
+                n = {
+                    ["dd"] = actions.delete_buffer,
+                },
+            },
+        },
+        planets = {
+            show_pluto = true,
+            show_moon = true,
+        },
+        git_files = {
+            hidden = true,
+            show_untracked = true,
+        },
+        colorscheme = {
+            enable_preview = true,
+        },
+    },
     extensions = {
         fzf = {
             fuzzy = true, -- false will only do exact matching
@@ -140,6 +112,14 @@ function M.reload_modules()
     end
 end
 
+function M.find_project_files(opts)
+    opts = opts or {}
+    local ok = pcall(require("telescope.builtin").git_files, opts)
+    if not ok then
+        require("telescope.builtin").find_files(opts)
+    end
+end
+
 M.search_dotfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< VimRC >",
@@ -149,7 +129,11 @@ M.search_dotfiles = function()
 end
 
 local function set_background(content)
-    vim.fn.system("feh --bg-scale " .. content)
+    vim.fn.system(
+        'osascript -e \'tell application "System Events" to tell every desktop to set picture to "\''
+        .. content
+        .. '" as POSIX file\''
+    )
 end
 
 local function select_background(prompt_bufnr, map)

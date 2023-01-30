@@ -1,12 +1,6 @@
-vim.g.numine_colorscheme = "rose-pine"
 local M = {}
 
---[[ require("tokyonight").setup({ ]]
---[[     transparent = true, ]]
---[[ }) ]]
-
-function ColorMyPencils()
-    require("numine.rosepine").config()
+function M.ColorMyPencils()
     vim.g.gruvbox_contrast_dark = "hard"
     vim.g.gruvbox_invert_selection = "0"
     vim.g.tokyonight_transparent_sidebar = true
@@ -47,6 +41,10 @@ function ColorMyPencils()
         bg = "none",
     })
 
+    hl("NormalFloat", {
+        bg = "none",
+    })
+
     hl("LineNr", {
         fg = "#5eacd3",
     })
@@ -61,5 +59,4 @@ function ColorMyPencils()
 
 end
 
-M.ColorMyPencils = ColorMyPencils
 return M

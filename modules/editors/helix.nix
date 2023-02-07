@@ -11,7 +11,6 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       helix
-      pyright
       clang-tools
     ];
     home.file.".config/helix".source =

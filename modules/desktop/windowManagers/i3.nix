@@ -79,8 +79,8 @@ in
             font pango:JetBrainsMono Nerd Font 12
 
             # gaps
-            gaps inner 4
-            gaps outer 4
+            # gaps inner 4
+            # gaps outer 4
 
             # Hide titlebar
             new_window pixel
@@ -91,8 +91,9 @@ in
             default_border pixel 1
             for_window [class="^.*"] border pixel 1
 
-            exec feh --bg-scale /home/scott/personal/anime/moon-upside.jpg
-            exec_always xrandr --output Virtual-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output Virtual-2 --off --output Virtual-3 --off --output Virtual-4 --off --output Virtual-5 --off --output Virtual-6 --off --output Virtual-7 --off --output Virtual-8 --off
+            exec feh --bg-scale /home/mwalls/personal/anime/RETF.jpg
+            # exec_always xrandr --output Virtual-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output Virtual-2 --off --output Virtual-3 --off --output Virtual-4 --off --output Virtual-5 --off --output Virtual-6 --off --output Virtual-7 --off --output Virtual-8 --off
+            exec_always xrandr --output HDMI-0 --off --output DP-0 --off --output DP-1 --off --output eDP-1-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1-1 --off --output HDMI-1-1 --off --output DP-1-2 --off --output HDMI-1-2 --off --output HDMI-1-3 --off
             set $fg_focus   #abb2bf
             set $bg_focus   #c678dd
             set $fg_unfocus #545862
@@ -105,13 +106,13 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec kitty
+            bindsym $mod+Return exec nixGLNvidia-470.141.03 kitty
             bindsym $mod+Shift+Return exec alacritty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave
             bindsym $mod+b exec firefox
-            bindsym $mod+Shift+s exec slack
+            bindsym $mod+Shift+s exec nixGLNvidia-470.141.03 slack
             bindsym $mod+Shift+e exec emacs
 
             # kill focused window
@@ -243,8 +244,8 @@ in
             # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
             bindsym $mod+Shift+r restart
             # exit i3 (logs you out of your X session)
-            # bindsym $mod+Shift+q exec "i3-msg exit"
-            bindsym $mod+Shift+q exec mate-session-save --logout-dialog
+            bindsym $mod+Shift+q exec "i3-msg exit"
+            # bindsym $mod+Shift+q exec mate-session-save --logout-dialog
 
             # resize window (you can also use the mouse for that)
             mode "resize" {
@@ -274,11 +275,11 @@ in
             bindsym $mod+r mode "resize"
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+# smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+# smart_borders on
 
             # bar
             # exec --no-startup-id tint2 -c ~/.config/tint2/nord
@@ -322,8 +323,8 @@ smart_borders on
           client.background       #2B2C2B
 
             # picom
-            exec_always --no-startup-id picom
-            exec_always --no-startup-id flameshot
+            exec_always --no-startup-id nixGLNvidia-470.141.03 picom
+            exec_always --no-startup-id nixGLNvidia-470.141.03 flameshot
 
             # set wallpaper (ft. feh)
             # exec --no-startup-id ~/.fehbg

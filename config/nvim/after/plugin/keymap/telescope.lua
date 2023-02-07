@@ -1,6 +1,7 @@
 local init = function()
     local Remap = require("numine.mapper")
     local nnoremap = Remap.nnoremap
+    local vnoremap = Remap.vnoremap
 
     nnoremap("<C-p>", function()
         require("numine.telescope").find_project_files()
@@ -40,6 +41,9 @@ local init = function()
     end)
     nnoremap("<leader>sg", function()
         require("numine.telescope").git_branches()
+    end)
+    vnoremap("<leader>rr", function()
+        require("numine.telescope").refactors()
     end)
     -- nnoremap("<leader>gw", function()
     --     require('telescope').extensions.git_worktree.git_worktrees()

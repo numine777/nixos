@@ -18,6 +18,10 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-git-lfs.url = "github:nixos/nixpkgs/83667ff60a88e22b76ef4b0bdf5334670b39c2b6";
+
+    # awesomewm modules
+    bling = { url = "github:BlingCorp/bling"; flake = false; };
+    rubato = { url = "github:andOrlando/rubato"; flake = false; };
   };
   outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, darwin, nixgl, nixpkgs-git-lfs, ... }@inputs:
     let

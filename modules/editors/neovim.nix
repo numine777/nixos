@@ -15,6 +15,7 @@ in
       black
       # python39Packages.isort
       rnix-lsp
+      nixpkgs-fmt
       nil
       nodePackages.yaml-language-server
       nodePackages.bash-language-server
@@ -22,6 +23,7 @@ in
       nodePackages.prettier
       nodePackages.eslint
       ccls
+      tree-sitter
     ];
     programs.neovim =
       {

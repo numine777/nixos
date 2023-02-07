@@ -3,6 +3,7 @@
   imports = [ ./common.nix ];
   home.packages = with pkgs; [
     _1password-gui
+    arandr
     brave
     discord
     firefox
@@ -10,6 +11,7 @@
     flameshot
     jdk8
     rofi
+    mosh
     nix-top
     nix-output-monitor
     notion-app-enhanced

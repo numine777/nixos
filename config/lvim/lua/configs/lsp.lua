@@ -9,6 +9,7 @@ formatters.setup({
 	-- { exe = "clang-format", filetypes = { "cpp" } },
 	{ exe = "black", filetypes = { "python" } },
 	{ exe = "buildifier", filetypes = { "bzl" } },
+	{ exe = "nixpkgs-fmt", filetypes = { "nix" } },
 })
 
 local root_files = {

@@ -7,6 +7,7 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b -DS+ky -DP+kg -DE+kR"
 export VISUAL=/usr/bin/vim
 export DOTFILES=$HOME/nixos
 export NVIM_DOTFILES=$HOME/nixos/config/nvim
+export LVIM_DOTFILES=$HOME/nixos/config/lvim
 export PROJECTS_DIR=$HOME/work
 # export NPM_PREFIX_DIR=$HOME/.node_modules
 export NVM_DIR="$HOME/.nvm"

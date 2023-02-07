@@ -1,4 +1,4 @@
-vim.g.numine_colorscheme = "rose-pine"
+vim.g.numine_colorscheme = "lunar"
 local M = {}
 
 require("tokyonight").setup({

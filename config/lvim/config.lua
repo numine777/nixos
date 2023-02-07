@@ -20,8 +20,6 @@ lvim.format_on_save = {
 
 -- keymappings <https://www.lunarvim.org/docs/configuration/keybindings>
 lvim.leader = "space"
--- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.autopairs.active = false

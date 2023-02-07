@@ -19,6 +19,7 @@ lvim.keys.normal_mode["<C-f>"] =
 lvim.keys.normal_mode["<C-p>"] = require("lvim.core.telescope.custom-finders").find_project_files
 inoremap("<C-c>", "<Esc>")
 lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
+lvim.keys.term_mode["<C-j>"] = "<C-\\><C-n><C-w>q"
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", "Clang Debugger" }
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
 
@@ -49,10 +50,14 @@ lvim.builtin.which_key.mappings["g"]["n"] = {
 }
 lvim.builtin.which_key.mappings["t"] = {
 	name = "+Harpoon",
-	u = { "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", "Go to Terminal 1" },
-	e = { "<cmd>lua require('harpoon.term').gotoTerminal(2)<cr>", "Go to Terminal 2" },
+	u = { "<C-w>s<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", "Go to Terminal 1" },
+	e = { "<C-w>s<cmd>lua require('harpoon.term').gotoTerminal(2)<cr>", "Go to Terminal 2" },
 	-- o = {"<cmd>lua require('harpoon.term').sendCommand(1, 1)<cr>", "Send Command 1"},
 	-- i = {"<cmd>lua require('harpoon.term').sendCommand(1, 2)<cr>", "Send Command 2"},
+}
+lvim.builtin.which_key.mappings["s"]["y"] = {
+	'<cmd>lua require("telescope.builtin").live_grep({ type_filter = vim.fn.input("File Type > ") })<CR>',
+	"Search by file type",
 }
 
 -- lvim.builtin.which_key.mappings["F"] = {

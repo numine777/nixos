@@ -4,4 +4,4 @@ config/awesome/modules/
 config/nvim/plugin/
 result
 config/zsh/.zsh/zinit
-
+config/nushell/history.txt

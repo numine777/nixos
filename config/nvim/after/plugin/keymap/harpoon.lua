@@ -1,5 +1,6 @@
 local init = function()
     local nnoremap = require("numine.mapper").nnoremap
+    local tnoremap = require("numine.mapper").tnoremap
 
     local silent = { silent = true }
 
@@ -38,6 +39,13 @@ local init = function()
     end, silent)
     nnoremap("<leader>tu", function()
         require("harpoon.tmux").gotoTerminal(3)
+    end, silent)
+    nnoremap("<leader>tt", function()
+        vim.cmd("wincmd s")
+        require("harpoon.term").gotoTerminal(1)
+    end, silent)
+    tnoremap("<C-j>", function()
+        vim.cmd("wincmd q")
     end, silent)
 end
 

@@ -53,8 +53,6 @@ font:
 
   scale_with_dpi: true
 
-  use_thin_strokes: false
-
 draw_bold_text_with_bright_colors: true
 
 # Colors (Monokai Dark)
@@ -184,7 +182,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: zsh
+  program: nu
 
 key_bindings:
   - { key: Y,        mods: Control, action: Paste                        }

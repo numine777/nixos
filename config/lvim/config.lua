@@ -7,6 +7,7 @@ vim.opt.relativenumber = true
 lvim.transparent_window = true
 vim.opt.clipboard = "unnamed"
 vim.opt.timeoutlen = 200
+vim.opt.guicursor = ""
 
 -- general
 lvim.log.level = "info"

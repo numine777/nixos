@@ -38,6 +38,10 @@ function ColorMyPencils()
 		bg = "none",
 	})
 
+	hl("NormalFloat", {
+		bg = "none",
+	})
+
 	hl("LineNr", {
 		fg = "#5eacd3",
 	})

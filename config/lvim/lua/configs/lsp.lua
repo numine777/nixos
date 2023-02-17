@@ -61,7 +61,7 @@ manager.setup(
 	})
 )
 
-manager.setup("pyright", config())
+manager.setup("pyright", config({}))
 manager.setup("sourcekit", config())
 -- some settings can only passed as commandline flags `clangd --help`
 local clangd_flags = {

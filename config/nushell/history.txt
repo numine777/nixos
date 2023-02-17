@@ -1,0 +1,104 @@
+la
+ls
+...
+la
+ls
+ls -la
+ls -la *.nu
+ls -la | where $it ~= config
+ls -la | where $it =~ config
+ls -la | where $it.name =~ config
+.config
+ls -la | where $it.name =~ config
+ls -la
+nushell
+nushell/
+cd nushell
+la
+ls -la
+hx .
+starship init nu | save ~/.cache/starship/init.nu
+hx .
+source ~/.config/nushell/config.nu
+man rg
+hx .
+rg -t cpp -iname main
+rg -t cpp main
+hx build/scripts/host/gen_power_config_crc/src/gen_power_config_crc.cpp
+rg -t cpp static
+hx build/scripts/host/gen_power_config_crc/src/gen_power_config_crc.cpp
+ox exec matlab
+ls bazel-bin/framework/app/matlab_sys/slimshell.runfiles/spider_build/build/output/
+ls bazel-bin/framework/app/matlab_sys/slimshell.runfiles/spider_build/build/output/matlab_cache
+exa
+./run/SlimShell.sh
+ox exec slimshell
+hx .
+BAZEL_BUILD_MODE=1 ./run/SlimShell.sh
+nixos
+nixos/
+cd nixos/
+hx .
+echo $SHELL
+echo $env.SHELL
+tmux
+hx .
+hx $nu.config
+    eval $(keychain --eval --agents ssh id_rsa)
+keychain --eval --agents ssh id_rsa
+source ~/.config/nushell/config.nu
+which keychain
+source ~/.config/nushell/config.nu
+work/sysg8x-bare/sti-7850/
+cd work/sysg8x-bare/sti-7850/
+source ~/.config/nushell/config.nu
+direnv-freeze
+source ~/.config/nushell/config.nu
+direnv-freeze
+build/toolz/ox
+cd build/toolz/ox
+which rust-analyzer
+..
+which rust-analyzer
+$env._direnv_hook_enabled
+direnv-freeze
+$env._direnv_hook_enabled
+source ~/.config/nushell/config.nu
+direnv-freeze
+$env._direnv_hook_enabled
+ox
+cd ox/
+..
+source ~/.config/nushell/config.nu
+$env._direnv_hook_enabled
+source ~/.config/nushell/config.nu
+$env._direnv_hook_enabled
+direnv-freeze
+$env._direnv_hook_enabled
+source ~/.config/nushell/config.nu
+$env._direnv_hook_enabled
+cd work/sysg8x-bare/sti-7850/build/toolz
+direnv-freeze
+ox
+cd ox
+$env._direnv_hook_enabled
+cd work/sysg8x-bare/sti-7850/build/toolz
+direnv-freeze
+ox
+cd ox
+$env._direnv_hook_enabled
+..
+direnv-freeze
+$env._direnv_hook_enabled
+direnv-freeze
+$env._direnv_hook_enabled
+let-env _direnv_hook_enabled = 0
+$env._direnv_hook_enabled
+cd work/sysg8x-bare/sti-7850/build/toolz
+direnv-freeze
+$env._direnv_hook_enabled
+cd work/sysg8x-bare/sti-7850/build/toolz
+direnv-thaw
+hx $nu.config-path
+...
+cp .config/nushell nixos/config/

@@ -4,6 +4,7 @@
   imports = [
     ./dircolors.nix
     ./fish.nix
+    ./nush.nix
     ./zsh.nix
   ];
   home.packages = with pkgs; [
@@ -33,6 +34,7 @@
     kubectl
     lsof
     nix-index
+    nushell
     starship
     stow
     tabnine

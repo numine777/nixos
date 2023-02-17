@@ -56,7 +56,10 @@ function M.ColorMyPencils()
 
     hl("WinSeparator", { background = nil })
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6b462660e854fd4bc0497c9ca8264c49063fa4b2
 end
 
 return M

@@ -47,5 +47,7 @@ o.colorcolumn = "80"
 
 -- g.mapleader = " "
 o.laststatus = 3
+o.splitbelow = true
+o.splitright = true
 vim.api.nvim_set_hl(0, "WinSeparator", { background = nil })
 

@@ -32,6 +32,8 @@
     home.sessionVariables = {
       LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
     };
+    programs.bash.enable = true;
+    targets.genericLinux.enable = true;
     modules = {
       desktop = {
         picom.enable = true;
@@ -48,7 +50,7 @@
         clojure.enable = true;
         lua.enable = true;
         nix.enable = true;
-        node.enable = false;
+        node.enable = true;
         python.enable = true;
         rust.enable = true;
         golang.enable = true;

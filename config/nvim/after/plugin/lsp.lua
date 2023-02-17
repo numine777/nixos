@@ -45,7 +45,7 @@ local init = function()
 		"BUILD.bazel",
 		"CMakeList.txt",
 		"Makefile",
-        "Cargo.toml",
+		"Cargo.toml",
 	}
 
 	local function config(_config)

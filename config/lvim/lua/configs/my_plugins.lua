@@ -80,7 +80,7 @@ lvim.plugins = {
 				"neovim/nvim-lspconfig",
 			},
 			config = function()
-				require("xbase").setup({}) -- see default configuration bellow
+				require("xbase").setup({ sourcekit = require("configs.lsp").config() }) -- see default configuration bellow
 			end,
 		},
 		{

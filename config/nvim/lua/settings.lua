@@ -2,7 +2,7 @@ local o = vim.opt
 local g = vim.g
 
 o.relativenumber = true
-o.clipboard = "unnamed"
+o.clipboard = "unnamedplus"
 o.timeoutlen = 500
 o.shiftwidth = 4
 o.tabstop = 4
@@ -41,6 +41,7 @@ o.undolevels = 10000
 o.wildmode = "longest:full,full" -- Command-line completion mode
 o.wrap = false -- Disable line wrap
 o.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+o.scrolloff = 8
 
 g.netrw_browse_split = 0
 g.netrw_banner = 0

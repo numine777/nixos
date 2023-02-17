@@ -15,12 +15,8 @@ return require("lazy").setup({
     {
         "rose-pine/neovim",
         name = "rose-pine",
-        lazy = false,
-        priority = 1000,
         config = function()
-            vim.g.numine_colorscheme = "rose-pine"
             require("numine.rosepine").config()
-            require("numine.colors").ColorMyPencils()
         end
     },
     "sbdchd/neoformat",

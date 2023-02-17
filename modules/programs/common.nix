@@ -6,7 +6,7 @@
     k9s
     lazygit
     lazydocker
-    niv
+    # niv
     nnn
     obsidian
     postman

@@ -40,6 +40,8 @@ o.updatetime = 50
 
 -- Don't pass messages to |ins-completion-menu|.
 o.shortmess:append("c")
+o.splitbelow = true
+o.splitright = true
 
 o.colorcolumn = "80"
 

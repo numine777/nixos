@@ -14,6 +14,22 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 return require("lazy").setup({
 	"wbthomason/packer.nvim",
 
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "kyazdani42/nvim-web-devicons" },
+    },
+
+    {
+        "numine777/py-bazel.nvim",
+        config = function()
+            require("py-bazel").setup({
+                library_path_marker = "python",
+                pip_deps_marker = "npip",
+                -- global_pyright_config = "~/.config/lvim/lsp-settings/pyright.json",
+            })
+        end,
+    },
+
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
@@ -47,6 +63,7 @@ return require("lazy").setup({
 	"theprimeagen/refactoring.nvim",
 	"mbbill/undotree",
 	"tpope/vim-fugitive",
+    "lewis6991/gitsigns.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
 
 	{

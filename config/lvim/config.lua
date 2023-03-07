@@ -1,5 +1,3 @@
-require("configs")
-
 -- vim options
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -32,3 +30,4 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = false
 lvim.builtin.treesitter.parser_install_dir = vim.fn.stdpath("data") .. "/nvim/site/parser"
+require("configs")

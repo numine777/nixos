@@ -67,8 +67,8 @@
 
   services.nix-daemon.enable = true;
 
-  nix.useSandbox = true;
-  nix.sandboxPaths = [ "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
+  nix.settings.sandbox = true;
+  nix.settings.extra-sandbox-paths = [ "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
 
   programs.nix-index.enable = true;
 
@@ -92,6 +92,6 @@
 
   environment.variables.LANG = "en_US.UTF-8";
 
-  users.nix.configureBuildUsers = true;
-  users.nix.nrBuildUsers = 32;
+  nix.configureBuildUsers = true;
+  nix.nrBuildUsers = 32;
 }

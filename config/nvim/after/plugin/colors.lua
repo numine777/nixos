@@ -1,5 +1,5 @@
 local init = function()
-    vim.g.numine_colorscheme = "rose-pine"
+    vim.g.numine_colorscheme = "gruvbuddy"
     require("numine.colors").ColorMyPencils()
 end
 

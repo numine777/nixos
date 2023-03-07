@@ -62,9 +62,7 @@ manager.setup(
 )
 
 manager.setup("pyright", config())
-local function sourcekit_config()
-	manager.setup("sourcekit", config())
-end
+manager.setup("sourcekit", config())
 -- some settings can only passed as commandline flags `clangd --help`
 local clangd_flags = {
 	"--all-scopes-completion",
@@ -96,4 +94,3 @@ local opts = {
 }
 
 require("lvim.lsp.manager").setup("clangd", config(opts))
-return { config = sourcekit_config }

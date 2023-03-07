@@ -24,12 +24,14 @@ lvim.plugins = {
 		"romgrk/nvim-treesitter-context",
 		{ "npxbr/gruvbox.nvim", dependencies = { "rktjmp/lush.nvim" } },
 		"shaunsingh/nord.nvim",
+		"tjdevries/gruvbuddy.nvim",
+		"tjdevries/colorbuddy.nvim",
 		{ "norcalli/nvim-colorizer.lua" },
 		{
 			"rose-pine/neovim",
 			name = "rose-pine",
 			config = function()
-				vim.cmd("colorscheme rose-pine")
+				require("configs.rosepine")
 			end,
 		},
 		-- "folke/tokyonight.nvim",
@@ -68,7 +70,7 @@ lvim.plugins = {
 				"neovim/nvim-lspconfig",
 			},
 			config = function()
-				require("xbase").setup({}) -- see default configuration bellow
+				require("configs.xbase")
 			end,
 		},
 		{

@@ -1,4 +1,4 @@
-vim.g.numine_colorscheme = "lunar"
+vim.g.numine_colorscheme = "rose-pine"
 local M = {}
 
 require("tokyonight").setup({
@@ -13,9 +13,12 @@ function ColorMyPencils()
 	vim.opt.background = "dark"
 
 	lvim.colorscheme = vim.g.numine_colorscheme
-	lvim.builtin.lualine.options.theme = vim.g.numine_colorscheme
-	require("configs.rosepine")
-	vim.cmd("colorscheme " .. vim.g.numine_colorscheme)
+	-- require("colorbuddy").colorscheme("gruvbuddy")
+	if vim.g.numine_colorscheme == "gruvbuddy" then
+		require("colorbuddy").colorscheme("gruvbuddy")
+	else
+		lvim.builtin.lualine.options.theme = vim.g.numine_colorscheme
+	end
 
 	local hl = function(thing, opts)
 		vim.api.nvim_set_hl(0, thing, opts)

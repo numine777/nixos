@@ -19,6 +19,8 @@ return require("lazy").setup({
             require("numine.rosepine").config()
         end
     },
+    "tjdevries/gruvbuddy.nvim",
+    "tjdevries/colorbuddy.nvim",
     "sbdchd/neoformat",
 
     -- Simple plugins can be specified as strings

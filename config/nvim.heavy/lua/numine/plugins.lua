@@ -18,11 +18,11 @@ return require("lazy").setup({
         lazy = false,
         priority = 1000,
         config = function()
-            vim.g.numine_colorscheme = "rose-pine"
             require("numine.rosepine").config()
-            require("numine.colors").ColorMyPencils()
         end
     },
+    "tjdevries/gruvbuddy.nvim",
+    "tjdevries/colorbuddy.nvim",
     "sbdchd/neoformat",
 
     -- Simple plugins can be specified as strings

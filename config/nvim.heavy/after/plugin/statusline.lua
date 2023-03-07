@@ -65,10 +65,20 @@ local init = function()
         cond = conditions.hide_in_width,
     }
 
+    local function get_theme()
+		if vim.g.numine_colorscheme ~= "gruvbuddy" then
+			return vim.g.numine_colorscheme
+		else
+			return "auto"
+		end
+	end
+
+	local theme = get_theme()
+
     require("lualine").setup({
         options = {
             -- icons_enabled = false,
-            theme = vim.g.numine_colorscheme,
+            theme = theme,
             component_separators = "|",
             section_separators = "",
         },

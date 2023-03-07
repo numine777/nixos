@@ -412,9 +412,9 @@ let-env config = {
         if $env._direnv_hook_enabled == 1 {
           let direnv = (direnv export json | from json)
           let direnv = if ($direnv | length) == 1 { $direnv } else { {} }
-          $direnv | load-env 
+          $direnv | load-env
         }
-      "    
+      "
     }]
     pre_execution: [{
       null  # replace with source code to run before the repl input is run
@@ -648,6 +648,16 @@ let-env config = {
       mode: [emacs, vi_normal, vi_insert]
       event: { send: menu name: commands_with_description }
     }
+    {
+      name: tmux_sessionizer
+      modifier: control
+      keycode: char_f
+      mode: [emacs, vi_normal, vi_insert]
+      event: {
+          send: executehostcommand,
+          cmd: "tmux-sessionizer"
+      }
+    }
   ]
 }
 
@@ -667,3 +677,5 @@ def-env direnv-thaw [] {
   $"direnv: enabling shell hook"
   let-env _direnv_hook_enabled = 1
 }
+
+alias vim = nvim

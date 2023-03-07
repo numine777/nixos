@@ -102,3 +102,228 @@ direnv-thaw
 hx $nu.config-path
 ...
 cp .config/nushell nixos/config/
+source ~/.config/nushell/config.nu
+help chsh
+bat /etc/shells
+which nu
+ls -la (which nu).path
+ls -la ((which nu).path)
+(which nu).path | ls -la
+(which nu).path | ls -l
+which nu
+(which nu).path
+ls -l ~/.nix-profile/bin | where $it.name =~ nu
+open /etc/passwd
+open /etc/passwd | where it =~ mwalls
+open /etc/passwd | where $it =~ mwalls
+shells
+shells
+git status
+hx .
+lvim .
+git status
+lvim config/lvim/lazy-lock.json
+git add config/lvim/lazy-lock.json
+git add config/nvim
+git add config/lvim
+lvim .
+git add .gitignore
+git status
+lvim .
+git add .gitignore
+git status
+git add config/helix
+git add config/alacritty/
+git add modules/shell modules/programs
+git status
+git add flake.lock
+git commit -m "Add nushell"
+git push
+lvim .
+help nix-collect-garbage
+man nix-collect-garbage
+cargo b
+target/debug/ox clean
+target/debug/ox maintain
+target/debug/ox doctor
+git status
+crates/lib
+cd crates/lib
+cargo add sysinfo
+...
+cargo b
+target/debug/ox doctor
+bazel run antilope
+vim .
+cargo b
+target/debug/ox doctor
+target/debug/ox doctor --fix
+cargo b
+cargo clippy
+cargo b
+target/debug/ox doctor
+cargo nextest --all
+cargo nextest --help
+cargo nextest run --all
+ox exec dry_dock run example
+ox exec dry_dock -- run example
+target/debug/ox exec dry_dock -- run example
+ssh mwalls@drydocklab-ud5
+cargo nextest run --all
+direnv-thaw
+direnv allow
+cargo nextest run --all
+cargo clippy
+git merge --continue
+git status
+git push
+git status
+nvim .
+vpn
+BAZEL_BUILD_MODE=1 ./run/SlimShell.sh
+BAZEL_BUILD_MODE=1 ./run/activate.sh
+BAZEL_BUILD_MODE=1 ./run/SlimShell.sh
+vpn
+ox test //_orion2/app/node_discovery_test:pytests --test_output=streamed
+lvim .
+cd Downloads
+la
+ls -la
+sudo dpkg -i synergy-linux_x64-libssl1.1-v3.0.66.22-beta.deb
+nix-env -qaP synergy
+cd ../personal
+wget https://www.openssl.org/source/old/1.1.1/openssl-1.1.1q.tar.gz
+tar xzvf openssl-1.1.1q.tar.gz
+cd openssl-1.1.1q/
+./config
+make
+htop
+sudo make install
+vim .
+source $nu.config-path
+source ~/.config/nushell/config.nu
+direnv allow
+cd ../../Downloads/
+sudo dpkg -i synergy-linux_x64-libssl1.1-v3.0.66.22-beta.deb
+openssl --version
+openssl version
+sudo dpkg -i synergy-linux_x64-libssl3-v3.0.66.22-beta.deb
+which openssl
+ls -la ((which openssl).path)
+ls -la (which openssl).path
+ls -la /home/mwalls/.nix-profile/bin/openssl
+ls -la /nix/store/pvwzc3r7lld3can2fjk5yf58ihkqkr1q-openssl-3.0.7-bin/
+ls -la /nix/store | where $it.name =~ openssl
+ls -la /nix/store/zpwhl35d2dkj0p4bli5wp6sw1vfsyab5-openssl-3.0.7
+ls -la /nix/store/zpwhl35d2dkj0p4bli5wp6sw1vfsyab5-openssl-3.0.7/lib
+$LD_LIBRARY_PATH
+$env.LD_LIBRARY_PATH
+let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | append /nix/store/zpwhl35d2dkj0p4bli5wp6sw1vfsyab5-openssl-3.0.7)
+sudo dpkg -i synergy-linux_x64-libssl3-v3.0.66.22-beta.deb
+sudo LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/nix/store/zpwhl35d2dkj0p4bli5wp6sw1vfsyab5-openssl-3.0.7" dpkg -i synergy-linux_x64-libssl3-v3.0.66.22-beta.deb
+let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | append /nix/store/zpwhl35d2dkj0p4bli5wp6sw1vfsyab5-openssl-3.0.7/lib)
+sudo dpkg -i synergy-linux_x64-libssl3-v3.0.66.22-beta.deb
+sudo LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/nix/store/zpwhl35d2dkj0p4bli5wp6sw1vfsyab5-openssl-3.0.7/lib" dpkg -i synergy-linux_x64-libssl3-v3.0.66.22-beta.deb
+$env.LD_LIBRARY_PATH
+let-env LD_LIBRARY_PATH = ($env.LD_LIBRARY_PATH | append /nix/store/sxgs416j8z3x9mj97939syyp8cv6064b-openssl-1.1.1q/lib)
+sudo dpkg -i synergy-linux_x64-libssl1.1-v3.0.66.22-beta.deb
+vim .
+source ~/.config/nushell/config.nu
+vim .
+ox test //_orion2/app/node_discovery_test:pytests --test_output=streamed
+direnv allow
+git pull origin develop
+ox test //_orion2/app/node_discovery_test:pytests --test_output=streamed
+ox exec dry_dock -- run example
+git status
+git diff
+git checkout develop run/activate.sh
+ox exec dry_dock -- run example
+ox test //_orion2/app/node_discovery_test:pytests --test_output=streamed
+git status
+ox test //_orion2/app/node_discovery_test:pytests --test_output=streamed
+git reset --hard
+git diff develop
+git diff develop run/activate.sh
+BAZEL_BUILD_MODE=1 ./run/SlimShell.sh
+ox test //_orion2/app/node_discovery_test:pytests --test_output=streamed
+ox exec dry_dock -- stop
+ox exec dry_dock -- run example
+ox run dry_dock -- run example
+ox test //_orion2/app/node_discovery_test:pytests --test_output=streamed
+git pull origin develop
+bazel run deployabel
+bazel run deployable
+bazel build //build/bazel/deployable
+bazel run //build/bazel/deployable
+docker ps
+docker exec -it deployable_build_1 /bin/bash
+docker stop deployable_build_1
+docker start deployable_build_1
+docker exec -it deployable_build_1 /bin/bash
+which python
+vim .
+ox clean
+vim .
+nixos
+cd nixos
+vim .
+source ~/.config/nushell/config.nu
+ox run //build/bazel/deployable:container_tests
+docker stop deployable_build_1
+ox exec //build/bazel/deployable:container_tests
+docker start deployable_build_1
+docker exec -it deployable_build_1 /bin/bash
+bazel test //build/bazel/deployable:container_tests
+docker start deployable_build_1
+docker exec -it deployable_build_1 /bin/bash
+docker stop deployable_build_1
+vim .
+ox test //build/bazel/deployable:container_tests --test_output=streamed
+arandr
+vim .
+ox build //build/bazel/deployable
+arandr
+vim .
+ox test //build/bazel/deployable:container_tests --test_output=streamed
+docker ps
+docker ps -a
+docker start deployable_build_1
+docker ps -a
+docker rm deployable_build_1
+git status
+git stash
+git pull origin develop
+ox doctor --fix
+git diff develop
+bazel test //build/bazel/deployable:container_tests
+git stash pop
+bazel test //build/bazel/deployable:container_tests
+git stash pop
+bazel test //build/bazel/deployable:container_tests
+alsamixer
+git diff
+git fetch origin feature/STI-7886-integrate-container-structure-test:feature/STI-7886-integrate-container-structure-test
+git switch feature/STI-7886-integrate-container-structure-test
+git status
+git add .
+git push origin // ==UserScript==
+// @name            BetterTTV
+// @namespace       BTTV
+// @description     Enhances Twitch with new features, emotes, and more.
+// @copyright       NightDev, LLC
+// @icon            https://cdn.betterttv.net/assets/logos/bttv_logo.png
+//
+// @grant           none
+//
+// @match           https://*.twitch.tv/*
+// @match           https://*.youtube.com/*
+//
+// @version         0.0.2
+// ==/UserScript==
+cd -
+lvim .
+pavucontrol
+..nixos
+cd ../nixos
+lvim .

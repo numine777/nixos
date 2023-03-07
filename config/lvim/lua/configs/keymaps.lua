@@ -23,8 +23,10 @@ lvim.keys.term_mode["<C-j>"] = "<C-\\><C-n><C-w>q"
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", "Clang Debugger" }
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
 
+lvim.builtin.which_key.mappings["E"] = { "<cmd>lua require('lir.float').init()<cr>", "Open float explorer" }
 -- lvim.builtin.which_key.mappings["e"] = { ":Ex<CR>", "Explorer" }
 -- lvim.builtin.which_key.mappings["e"] = { ":lua require'lir.float'.init()<CR>", "Lir" }
+lvim.builtin.which_key.mappings["f"] = { "<cmd>lua require('lvim.lsp.utils').format()<cr>", "Format" }
 lvim.builtin.which_key.mappings["u"] = { ":UndotreeToggle<CR>", "Undo Tree" }
 lvim.builtin.which_key.mappings["x"] = { '"_dd', "Delete" }
 lvim.builtin.which_key.vmappings["x"] = { '"_d', "Delete" }
@@ -34,7 +36,7 @@ lvim.builtin.which_key.vmappings["y"] = { '"+y', "Yank to clipboard" }
 -- lvim.builtin.which_key.mappings["K"] = { ":cnext<CR>", "Globalist Next" }
 lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon Add File" }
 lvim.builtin.which_key.mappings["S"] = { ":Scratch<CR>", "Scratch" }
-lvim.builtin.which_key.mappings["b"]["n"] = { ":lua print(vim.fn.bufname())<cr>", "Print bufname" }
+lvim.builtin.which_key.mappings["b"]["p"] = { ":lua print(vim.fn.bufname())<cr>", "Print file path" }
 -- lvim.builtin.which_key.mappings["g"]["g"] = { ":G<cr>", "Fugitive" }
 lvim.builtin.which_key.mappings["g"]["w"] = {
 	"<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",

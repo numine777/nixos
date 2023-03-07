@@ -1,1 +1,2 @@
-require("numine").init()
+require("numine")
+

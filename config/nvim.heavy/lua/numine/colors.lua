@@ -16,6 +16,11 @@ function M.ColorMyPencils()
         require("colorbuddy").colorscheme("gruvbuddy")
     end
     vim.cmd("colorscheme " .. vim.g.numine_colorscheme)
+    if vim.g.numine_colorscheme == "gruvbuddy" then
+		require("colorbuddy").colorscheme("gruvbuddy")
+	end
+
+
     local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
     local cursorline_hl = vim.api.nvim_get_hl_by_name("CursorLine", true)
     local normal_hl = vim.api.nvim_get_hl_by_name("Normal", true)

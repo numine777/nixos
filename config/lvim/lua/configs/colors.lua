@@ -1,4 +1,3 @@
-vim.g.numine_colorscheme = "rose-pine"
 local M = {}
 
 require("tokyonight").setup({
@@ -6,6 +5,7 @@ require("tokyonight").setup({
 })
 
 function ColorMyPencils()
+	vim.g.numine_colorscheme = "rose-pine"
 	vim.g.gruvbox_contrast_dark = "hard"
 	vim.g.gruvbox_invert_selection = "0"
 	vim.g.tokyonight_transparent_sidebar = true
@@ -13,12 +13,12 @@ function ColorMyPencils()
 	vim.opt.background = "dark"
 
 	lvim.colorscheme = vim.g.numine_colorscheme
+	lvim.builtin.lualine.options.theme = vim.g.numine_colorscheme
+	vim.cmd("colorscheme " .. vim.g.numine_colorscheme)
 	-- require("colorbuddy").colorscheme("gruvbuddy")
-	if vim.g.numine_colorscheme == "gruvbuddy" then
-		require("colorbuddy").colorscheme("gruvbuddy")
-	else
-		lvim.builtin.lualine.options.theme = vim.g.numine_colorscheme
-	end
+	-- if vim.g.numine_colorscheme == "gruvbuddy" then
+	-- 	require("colorbuddy").colorscheme("gruvbuddy")
+	-- end
 
 	local hl = function(thing, opts)
 		vim.api.nvim_set_hl(0, thing, opts)

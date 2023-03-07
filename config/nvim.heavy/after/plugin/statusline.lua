@@ -65,7 +65,7 @@ local init = function()
 		cond = conditions.hide_in_width,
 	}
 
-	local function get_theme()
+    local function get_theme()
 		if vim.g.numine_colorscheme ~= "gruvbuddy" then
 			return vim.g.numine_colorscheme
 		else
@@ -75,37 +75,30 @@ local init = function()
 
 	local theme = get_theme()
 
-	require("lualine").setup({
-		options = {
-			-- icons_enabled = false,
-			-- theme = function()
-			--     if vim.g.numine_colorscheme ~= "gruvbuddy" then
-			--         return vim.g.numine_colorscheme
-			--     else
-			--         return "auto"
-			--     end
-			-- end,
-			theme = theme,
-			component_separators = "|",
-			section_separators = "",
-		},
-		sections = {
-			lualine_a = { "mode" },
-			lualine_b = { "branch" },
-			lualine_c = { "filename", "diagnostics" },
-			lualine_x = { lsp, "fileformat", "filetype" },
-			lualine_y = { "progress" },
-			lualine_z = { "location" },
-		},
-		inactive_sections = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = { "filename" },
-			lualine_x = { "location" },
-			lualine_y = {},
-			lualine_z = {},
-		},
-	})
+    require("lualine").setup({
+        options = {
+            -- icons_enabled = false,
+            theme = theme,
+            component_separators = "|",
+            section_separators = "",
+        },
+        sections = {
+            lualine_a = { "mode" },
+            lualine_b = { "branch" },
+            lualine_c = { "filename", "diagnostics" },
+            lualine_x = { lsp, "fileformat", "filetype" },
+            lualine_y = { "progress" },
+            lualine_z = { "location" },
+        },
+        inactive_sections = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = { "filename" },
+            lualine_x = { "location" },
+            lualine_y = {},
+            lualine_z = {},
+        },
+    })
 end
 
 if not vim.g.vscode then

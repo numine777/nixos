@@ -36,7 +36,7 @@ lvim.builtin.which_key.vmappings["y"] = { '"+y', "Yank to clipboard" }
 -- lvim.builtin.which_key.mappings["K"] = { ":cnext<CR>", "Globalist Next" }
 lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon Add File" }
 lvim.builtin.which_key.mappings["S"] = { ":Scratch<CR>", "Scratch" }
-lvim.builtin.which_key.mappings["b"]["n"] = { ":lua print(vim.fn.bufname())<cr>", "Print bufname" }
+lvim.builtin.which_key.mappings["b"]["p"] = { ":lua print(vim.fn.bufname())<cr>", "Print file path" }
 -- lvim.builtin.which_key.mappings["g"]["g"] = { ":G<cr>", "Fugitive" }
 lvim.builtin.which_key.mappings["g"]["w"] = {
 	"<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>",

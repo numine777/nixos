@@ -132,4 +132,22 @@ if not vim.g.vscode then
     vim.diagnostic.config({
         virtual_text = true
     })
+
+	require("null-ls").setup({
+		sources = {
+			require("null-ls").builtins.formatting.stylua,
+			require("null-ls").builtins.formatting.black,
+			require("null-ls").builtins.formatting.prettier.with({
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+				prefer_local = "node_modules/.bin",
+			}),
+			require("null-ls").builtins.formatting.buildifier,
+			require("null-ls").builtins.diagnostics.eslint.with({
+				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+				prefer_local = "node_modules/.bin",
+			}),
+			require("null-ls").builtins.completion.spell,
+		},
+		root_dir = require("null-ls.utils").root_pattern(root_files),
+	})
 end

@@ -58,10 +58,14 @@ autocmd({ "BufNewFile", "BufRead" }, {
 	command = ":set ft=cmake",
 })
 
-autocmd("ColorScheme", {
-    group = ColorGroup,
-	pattern = "*",
-	callback = function()
-		require("numine.colors").ColorMyPencils()
-	end,
+autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "Podfile", "Gemfile", "Gymfile", "Fastfile", "Appfile", "Matchfile", "Pluginfile" },
+	command = ":set ft=ruby",
 })
+-- autocmd("ColorScheme", {
+--     group = ColorGroup,
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		require("numine.colors").ColorMyPencils()
+-- 	end,
+-- })

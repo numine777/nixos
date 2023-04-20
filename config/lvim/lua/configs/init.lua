@@ -1,7 +1,0 @@
-require("configs.plugins")
--- require("configs.treesitter")
-require("configs.lsp")
-require("configs.lir")
-require("configs.colors")
-require("configs.autocmds")
-require("configs.keymaps")

@@ -5,6 +5,8 @@ vim.opt.relativenumber = true
 lvim.transparent_window = true
 vim.opt.clipboard = "unnamed"
 vim.opt.timeoutlen = 200
+vim.opt.guicursor = ""
+vim.opt.colorcolumn = "80"
 
 -- general
 lvim.log.level = "info"
@@ -21,10 +23,11 @@ lvim.leader = "space"
 
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.autopairs.active = false
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 
 -- Automatically install missing parsers when entering buffer
 lvim.builtin.treesitter.auto_install = false
 lvim.builtin.treesitter.parser_install_dir = vim.fn.stdpath("data") .. "/nvim/site/parser"
-require("configs")
+require("numine")

@@ -82,13 +82,13 @@ end
 
 M.anime_selector = image_selector("< Anime Bobs > ", "~/personal/anime")
 
-lvim.builtin.which_key.mappings["s"]["a"] = { ':lua require("configs.telescope").anime_selector()<CR>', "Anime Bobs" }
-lvim.builtin.which_key.mappings["s"]["d"] = { ':lua require("configs.telescope").search_dotfiles()<CR>', "Dotfiles" }
+lvim.builtin.which_key.mappings["s"]["a"] = { ':lua require("numine.plugin_configs.telescope").anime_selector()<CR>', "Anime Bobs" }
+lvim.builtin.which_key.mappings["s"]["d"] = { ':lua require("numine.plugin_configs.telescope").search_dotfiles()<CR>', "Dotfiles" }
 lvim.builtin.which_key.mappings["r"] = {
 	name = "Refactor",
-	r = { ':lua require("configs.telescope").refactors()<CR>', "Telescope" },
+	r = { ':lua require("numine.plugin_configs.telescope").refactors()<CR>', "Telescope" },
 }
-lvim.builtin.which_key.vmappings["r"] = { r = { ':lua require("configs.telescope").refactors()<CR>', "Refactor" } }
+lvim.builtin.which_key.vmappings["r"] = { r = { ':lua require("numine.plugin_configs.telescope").refactors()<CR>', "Refactor" } }
 -- vim.cmd('nnoremap <leader>rr :lua require("lv-telescope").refactors()<CR>')
 -- vim.cmd('vnoremap <leader>rr :lua require("lv-telescope").refactors()<CR>')
 -- vim.cmd(

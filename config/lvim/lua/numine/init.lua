@@ -1,0 +1,6 @@
+require("numine.plugins")
+require("numine.lsp")
+require("numine.lir")
+require("numine.colors")
+require("numine.autocmds")
+require("numine.keymaps")

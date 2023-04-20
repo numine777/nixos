@@ -1,12 +1,8 @@
 local M = {}
-vim.g.numine_colorscheme = "rose-pine"
+vim.g.numine_colorscheme = "lunar"
 lvim.colorscheme = vim.g.numine_colorscheme
 
 function ColorMyPencils()
-    require("tokyonight").setup({
-        transparent = true,
-    })
-
 	vim.g.gruvbox_contrast_dark = "hard"
 	vim.g.gruvbox_invert_selection = "0"
 	vim.g.tokyonight_transparent_sidebar = true
@@ -27,10 +23,10 @@ function ColorMyPencils()
 		bg = "none",
 	})
 
-	-- hl("ColorColumn", {
-	-- 	ctermbg = 0,
-	-- 	bg = "#555555",
-	-- })
+	hl("ColorColumn", {
+		ctermbg = 0,
+		bg = "#555555",
+	})
 
 	hl("CursorLineNR", {
 		bg = "None",
@@ -44,13 +40,13 @@ function ColorMyPencils()
 		bg = "none",
 	})
 
-	-- hl("LineNr", {
-	-- 	fg = "#5eacd3",
-	-- })
+	hl("LineNr", {
+		fg = "#5eacd3",
+	})
 
-	-- hl("netrwDir", {
-	-- 	fg = "#5eacd3",
-	-- })
+	hl("netrwDir", {
+		fg = "#5eacd3",
+	})
 
 	hl("WinSeparator", { background = nil })
 end

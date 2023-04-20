@@ -27,7 +27,7 @@ lvim.autocommands = {
 		{
 			pattern = "*",
 			callback = function()
-				require("configs.colors").ColorMyPencils()
+				require("numine.colors").ColorMyPencils()
 			end,
 		},
 	},

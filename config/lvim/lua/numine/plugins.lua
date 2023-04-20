@@ -31,10 +31,15 @@ lvim.plugins = {
 			"rose-pine/neovim",
 			name = "rose-pine",
 			config = function()
-				require("configs.rosepine")
+				require("numine.plugin_configs.rosepine")
 			end,
 		},
-		-- "folke/tokyonight.nvim",
+		{
+			"folke/tokyonight.nvim",
+			config = function()
+				require("numine.plugin_configs.tokyonight")
+			end,
+		},
 		{
 			"catppuccin/nvim",
 			name = "catppuccin",
@@ -70,33 +75,14 @@ lvim.plugins = {
 				"neovim/nvim-lspconfig",
 			},
 			config = function()
-				require("configs.xbase")
+				require("numine.plugin_configs.xbase")
 			end,
 		},
 		{
 			"kevinhwang91/nvim-bqf",
 			-- event = { "BufRead", "BufNew" },
 			config = function()
-				require("bqf").setup({
-					auto_enable = true,
-					preview = {
-						win_height = 12,
-						win_vheight = 12,
-						delay_syntax = 80,
-						border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
-					},
-					func_map = {
-						vsplit = "",
-						ptogglemode = "z,",
-						stoggleup = "",
-					},
-					filter = {
-						fzf = {
-							action_for = { ["ctrl-s"] = "split" },
-							extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
-						},
-					},
-				})
+				require("numine.plugin_configs.bqf")
 			end,
 		},
 		{
@@ -111,5 +97,5 @@ lvim.plugins = {
 
 lvim.builtin.telescope.on_config_done = function(telescope)
 	pcall(telescope.load_extension, "git_worktree")
-	require("configs.telescope")
+	require("numine.plugin_configs.telescope")
 end

@@ -1,4 +1,4 @@
-local Remap = require("configs.mapper")
+local Remap = require("numine.mapper")
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
 local inoremap = Remap.inoremap
@@ -21,7 +21,7 @@ inoremap("<C-c>", "<Esc>")
 lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
 lvim.keys.term_mode["<C-j>"] = "<C-\\><C-n><C-w>q"
 lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lldb", "tg", "Clang Debugger" }
-lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
+-- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "lazydocker", "<leader>zd", "LazyDocker" }
 
 lvim.builtin.which_key.mappings["E"] = { "<cmd>lua require('lir.float').init()<cr>", "Open float explorer" }
 -- lvim.builtin.which_key.mappings["e"] = { ":Ex<CR>", "Explorer" }
@@ -50,13 +50,13 @@ lvim.builtin.which_key.mappings["g"]["n"] = {
 	":G<cr>",
 	"Open Fugitive",
 }
-lvim.builtin.which_key.mappings["t"] = {
-	name = "+Harpoon",
-	t = { "<C-w>s<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", "Go to Terminal 1" },
-	e = { "<C-w>s<cmd>lua require('harpoon.term').gotoTerminal(2)<cr>", "Go to Terminal 2" },
-	-- o = {"<cmd>lua require('harpoon.term').sendCommand(1, 1)<cr>", "Send Command 1"},
-	-- i = {"<cmd>lua require('harpoon.term').sendCommand(1, 2)<cr>", "Send Command 2"},
-}
+-- lvim.builtin.which_key.mappings["t"] = {
+-- 	name = "+Harpoon",
+-- 	t = { "<C-w>s<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>", "Go to Terminal 1" },
+-- 	e = { "<C-w>s<cmd>lua require('harpoon.term').gotoTerminal(2)<cr>", "Go to Terminal 2" },
+-- 	-- o = {"<cmd>lua require('harpoon.term').sendCommand(1, 1)<cr>", "Send Command 1"},
+-- 	-- i = {"<cmd>lua require('harpoon.term').sendCommand(1, 2)<cr>", "Send Command 2"},
+-- }
 lvim.builtin.which_key.mappings["s"]["y"] = {
 	'<cmd>lua require("telescope.builtin").live_grep({ type_filter = vim.fn.input("File Type > ") })<CR>',
 	"Search by file type",

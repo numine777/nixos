@@ -42,22 +42,7 @@ return require("lazy").setup({
 		-- or                            , branch = '0.1.x',
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 		config = function()
-			require("telescope").setup({
-				defaults = {
-					mappings = {
-						i = {
-							["<C-j>"] = require("telescope.actions").move_selection_next,
-							["<C-k>"] = require("telescope.actions").move_selection_previous,
-						},
-					},
-				},
-				pickers = {
-					git_files = {
-						hidden = true,
-						show_untracked = true,
-					},
-				},
-			})
+            require("numine.configs.telescope")
 		end,
 	},
 
@@ -71,7 +56,12 @@ return require("lazy").setup({
 			})
 		end,
 	},
-	"folke/tokyonight.nvim",
+    {
+        "folke/tokyonight.nvim",
+        config = function()
+            require("numine.configs.tokyonight")
+        end,
+    },
 
 	{
 		"folke/trouble.nvim",

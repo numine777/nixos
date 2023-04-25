@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 return require("lazy").setup({
-    "NvChad/extensions",
+	"NvChad/extensions",
 
 	{
 		"nvim-lualine/lualine.nvim",
@@ -42,7 +42,7 @@ return require("lazy").setup({
 		-- or                            , branch = '0.1.x',
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 		config = function()
-            require("numine.configs.telescope")
+			require("numine.configs.telescope")
 		end,
 	},
 
@@ -56,12 +56,12 @@ return require("lazy").setup({
 			})
 		end,
 	},
-    {
-        "folke/tokyonight.nvim",
-        config = function()
-            require("numine.configs.tokyonight")
-        end,
-    },
+	{
+		"folke/tokyonight.nvim",
+		config = function()
+			require("numine.configs.tokyonight")
+		end,
+	},
 
 	{
 		"folke/trouble.nvim",
@@ -83,7 +83,20 @@ return require("lazy").setup({
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
-	"hkupty/iron.nvim",
+	-- {
+	-- 	"akinsho/bufferline.nvim",
+	-- 	version = "*",
+	-- 	dependencies = "nvim-tree/nvim-web-devicons",
+	-- 	config = function()
+	-- 		require("bufferline").setup()
+	-- 	end,
+	-- },
+	{
+		"RRethy/vim-illuminate",
+		config = function()
+			require("numine.configs.illuminate")
+		end,
+	},
 
 	"jose-elias-alvarez/null-ls.nvim",
 	{
@@ -108,12 +121,23 @@ return require("lazy").setup({
 			{ "rafamadriz/friendly-snippets" },
 		},
 	},
-
+	{
+		"SmiteshP/nvim-navic",
+		dependencies = "neovim/nvim-lspconfig",
+		config = function()
+			require("numine.configs.navic").setup()
+		end,
+	},
 	"folke/zen-mode.nvim",
 	"github/copilot.vim",
 	"eandrju/cellular-automaton.nvim",
 	"laytan/cloak.nvim",
-
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("numine.configs.indent_blankline")
+		end,
+	},
 	{
 		"numToStr/Comment.nvim",
 		config = function()
@@ -140,7 +164,6 @@ return require("lazy").setup({
 							bo = {
 								-- if the file type is one of following, the window will be ignored
 								filetype = { "neo-tree", "neo-tree-popup", "notify" },
-
 								-- if the buffer type is one of following, the window will be ignored
 								buftype = { "terminal", "quickfix" },
 							},

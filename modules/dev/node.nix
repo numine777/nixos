@@ -9,13 +9,13 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.nodejs-16_x ];
+    home.packages = [ pkgs.nodejs ];
     home.sessionVariables = {
-      NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";
-      NPM_CONFIG_CACHE = "$XDG_CACHE_HOME/npm";
-      NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
-      NPM_CONFIG_PREFIX = "$XDG_CACHE_HOME/npm";
-      NODE_REPL_HISTORY = "$XDG_CACHE_HOME/node/repl_history";
+      NPM_CONFIG_USERCONFIG = "$HOME/.config/npm/config";
+      NPM_CONFIG_CACHE = "$HOME/.cache/npm";
+      NPM_CONFIG_TMP = "/tmp/npm";
+      NPM_CONFIG_PREFIX = "$HOME/.cache/npm";
+      NODE_REPL_HISTORY = "$HOME/.cache/node/repl_history";
     };
   };
 }

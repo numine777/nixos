@@ -12,12 +12,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 return require("lazy").setup({
-	"NvChad/extensions",
-
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
+	-- {
+	-- 	"nvim-lualine/lualine.nvim",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- },
 
 	{
 		"numine777/py-bazel.nvim",
@@ -30,12 +28,6 @@ return require("lazy").setup({
 		end,
 	},
 
-	{
-		"NvChad/nvterm",
-		config = function()
-			require("nvterm").setup()
-		end,
-	},
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
@@ -83,20 +75,7 @@ return require("lazy").setup({
 	"tpope/vim-fugitive",
 	"lewis6991/gitsigns.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
-	-- {
-	-- 	"akinsho/bufferline.nvim",
-	-- 	version = "*",
-	-- 	dependencies = "nvim-tree/nvim-web-devicons",
-	-- 	config = function()
-	-- 		require("bufferline").setup()
-	-- 	end,
-	-- },
-	{
-		"RRethy/vim-illuminate",
-		config = function()
-			require("numine.configs.illuminate")
-		end,
-	},
+	"kevinhwang91/nvim-bqf",
 
 	"jose-elias-alvarez/null-ls.nvim",
 	{
@@ -128,16 +107,13 @@ return require("lazy").setup({
 			require("numine.configs.navic").setup()
 		end,
 	},
-	"folke/zen-mode.nvim",
 	"github/copilot.vim",
-	"eandrju/cellular-automaton.nvim",
-	"laytan/cloak.nvim",
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("numine.configs.indent_blankline")
-		end,
-	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	config = function()
+	-- 		require("numine.configs.indent_blankline")
+	-- 	end,
+	-- },
 	{
 		"numToStr/Comment.nvim",
 		config = function()
@@ -145,33 +121,11 @@ return require("lazy").setup({
 		end,
 	},
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			{
-				-- only needed if you want to use the commands with "_with_window_picker" suffix
-				"s1n7ax/nvim-window-picker",
-				-- tag = "v1.*",
-				config = function()
-					require("window-picker").setup({
-						autoselect_one = true,
-						include_current = false,
-						filter_rules = {
-							-- filter using buffer options
-							bo = {
-								-- if the file type is one of following, the window will be ignored
-								filetype = { "neo-tree", "neo-tree-popup", "notify" },
-								-- if the buffer type is one of following, the window will be ignored
-								buftype = { "terminal", "quickfix" },
-							},
-						},
-						other_win_hl_color = "#e35e4f",
-					})
-				end,
-			},
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		event = "LspAttach",
+		opts = {
+			-- options
 		},
 	},
 })

@@ -22,7 +22,7 @@ window:
 
   decorations: full
   dynamic_title: true
-  # opacity: 0.9
+  opacity: 0.9
 
 scrolling:
   multiplier: 1
@@ -264,7 +264,7 @@ cursor:
 live_config_reload: true
 
 shell:
-  program: nu
+  program: zsh
 
 key_bindings:
   - { key: Y,        mods: Control, action: Paste                        }

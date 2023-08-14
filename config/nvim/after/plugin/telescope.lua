@@ -1,8 +1,8 @@
 if not vim.g.vscode then
     local builtin = require('telescope.builtin')
-    local telescope = require('telescope')
+    -- local telescope = require('telescope')
 
-    telescope.load_extension('terms')
+    -- telescope.load_extension('terms')
     local function find_project_files(opts)
         opts = opts or {}
         local ok = pcall(builtin.git_files, opts)

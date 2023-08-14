@@ -106,13 +106,13 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec nixGLNvidia-430.50 kitty
-            bindsym $mod+Shift+Return exec nixGLNvidia-430.50 alacritty
+            bindsym $mod+Return exec nixGLNvidia-470.141.03 kitty
+            bindsym $mod+Shift+Return exec nixGLNvidia-470.141.03 alacritty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave
             bindsym $mod+b exec firefox
-            bindsym $mod+Shift+s exec nixGLNvidia-430.50 slack
+            bindsym $mod+Shift+s exec nixGLNvidia-470.141.03 slack
             bindsym $mod+Shift+e exec emacs
 
             # kill focused window
@@ -323,8 +323,8 @@ in
           client.background       #2B2C2B
 
             # picom
-            # exec_always --no-startup-id nixGLNvidia-430.50 picom
-            exec_always --no-startup-id nixGLNvidia-430.50 flameshot
+            # exec_always --no-startup-id nixGLNvidia-470.141.03 picom
+            exec_always --no-startup-id nixGLNvidia-470.141.03 flameshot
 
             # set wallpaper (ft. feh)
             # exec --no-startup-id ~/.fehbg

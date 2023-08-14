@@ -29,6 +29,7 @@
     brotli
     cmake
     curl
+    gdu
     htop
     jq
     kubectl

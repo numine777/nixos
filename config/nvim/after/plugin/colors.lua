@@ -1,7 +1,7 @@
 if not vim.g.vscode then
 
 	function ColorMyPencils(color)
-		color = color or "tokyonight-night"
+		color = color or "rose-pine"
 		vim.cmd.colorscheme(color)
 
 		local hl = function(thing, opts)

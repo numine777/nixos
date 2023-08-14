@@ -1,5 +1,5 @@
 local M = {}
-vim.g.numine_colorscheme = "lunar"
+vim.g.numine_colorscheme = "rose-pine"
 lvim.colorscheme = vim.g.numine_colorscheme
 
 function ColorMyPencils()

@@ -26,10 +26,10 @@ if not vim.g.vscode then
 			bg = "none",
 		})
 
-		hl("ColorColumn", {
-		    ctermbg = 0,
-		    bg = "#555555",
-		})
+		-- hl("ColorColumn", {
+		--     ctermbg = 0,
+		--     bg = "#555555",
+		-- })
 
 		hl("CursorLineNR", {
 			bg = "None",
@@ -43,13 +43,13 @@ if not vim.g.vscode then
 			bg = "none",
 		})
 
-		hl("LineNr", {
-		    fg = "#5eacd3",
-		})
+		-- hl("LineNr", {
+		--     fg = "#5eacd3",
+		-- })
 
-		hl("netrwDir", {
-		    fg = "#5eacd3",
-		})
+		-- hl("netrwDir", {
+		--     fg = "#5eacd3",
+		-- })
 
 		hl("WinSeparator", { background = nil })
 	end

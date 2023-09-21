@@ -144,6 +144,12 @@ if not vim.g.vscode then
 		})
 	)
 
+    lsp.configure("bzl", config({
+        config({
+            cmd = { "bzl", "lsp" },
+            filetypes = { "bzl" },
+        })
+    }))
 	lsp.setup()
 
 	vim.diagnostic.config({

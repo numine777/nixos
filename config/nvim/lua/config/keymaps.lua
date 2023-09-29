@@ -24,6 +24,14 @@ end)
 -- Telescope
 local builtin = require("telescope.builtin")
 
+local function search_dotfiles()
+  require("telescope.builtin").find_files({
+    prompt_title = "< VimRC >",
+    cwd = vim.env.NVIM_DOTFILES,
+    hidden = true,
+  })
+end
+
 local function find_project_files(opts)
   opts = opts or {}
   local ok = pcall(builtin.git_files, opts)
@@ -31,8 +39,14 @@ local function find_project_files(opts)
     builtin.find_files(opts)
   end
 end
+vim.keymap.set("n", "<leader>sd", search_dotfiles, {})
+vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
 vim.keymap.set("n", "<C-p>", find_project_files, {})
-vim.keymap.set("n", "<leader>fy", function()
+vim.keymap.set("n", "<leader>st", function()
+  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
+vim.keymap.set("n", "<leader>sh", builtin.help_tags, {})
+vim.keymap.set("n", "<leader>sy", function()
   require("telescope.builtin").live_grep({ type_filter = vim.fn.input("File Type > ") })
 end)
 
@@ -60,3 +74,16 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
+
+-- Quickfix
+vim.cmd([[
+  function! QuickFixToggle()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+      copen
+    else
+      cclose
+    endif
+  endfunction
+]])
+
+vim.keymap.set("n", "<C-q>", "<cmd>call QuickFixToggle()<CR>")

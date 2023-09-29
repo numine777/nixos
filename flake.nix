@@ -4,14 +4,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
-    };
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     crane.url = "github:ipetkov/crane";
     nixpkgs-fmt.url = "github:nix-community/nixpkgs-fmt";
-    nixpkgs-f2k.inputs.crane.follows = "crane";
     nixpkgs-f2k.inputs.nixpkgs-fmt.follows = "nixpkgs-fmt";
     nixgl.url = "github:guibou/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
@@ -19,11 +15,15 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-git-lfs.url = "github:nixos/nixpkgs/83667ff60a88e22b76ef4b0bdf5334670b39c2b6";
 
+    neovim-flake = {
+      url = "github:neovim/neovim?dir=contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # awesomewm modules
     bling = { url = "github:BlingCorp/bling"; flake = false; };
     rubato = { url = "github:andOrlando/rubato"; flake = false; };
   };
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, darwin, nixgl, nixpkgs-git-lfs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-f2k, darwin, nixgl, nixpkgs-git-lfs, neovim-flake, ... }@inputs:
     let
       pkgs-git-lfs = import nixpkgs-git-lfs { system = "x86_64-linux"; };
       gitLfsOverlay = (_: _: { git-lfs-2_13 = pkgs-git-lfs.git-lfs; });
@@ -36,9 +36,17 @@
         rubato = inputs.rubato;
       };
 
+      darwinPkgs = import nixpkgs {
+        system = "aarch64-darwin";
+      };
+      lib = nixpkgs.lib;
+      liblpeg = import ./packages/liblpeg-darwin.nix { pkgs = darwinPkgs; };
+      neovim-flake-darwin = neovim-flake.packages.aarch64-darwin;
+      neovim-nightly-darwin = import ./packages/neovim-nightly-darwin.nix { inherit (neovim-flake-darwin) neovim; inherit liblpeg lib; };
+      darwinNvimNightlyOverlay = (_: _: { neovim-nightly = neovim-nightly-darwin; });
+
       overlays = [
         nixpkgs-f2k.overlays.default
-        neovim-nightly.overlay
         customVimOverlay
         # customPkgsOverlay
       ];
@@ -51,7 +59,7 @@
           modules = [
             ./hosts/nixWork/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay ];
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay neovim-nightly.overlay ];
             }
           ];
         };
@@ -62,7 +70,7 @@
             modules = [
               ./hosts/nixos/user.nix
               {
-                nixpkgs.overlays = overlays;
+                nixpkgs.overlays = overlays ++ [ neovim-nightly.overlay ];
               }
             ];
           };
@@ -72,7 +80,7 @@
           modules = [
             ./hosts/nixM1/user.nix
             {
-              nixpkgs.overlays = overlays;
+              nixpkgs.overlays = overlays ++ [ darwinNvimNightlyOverlay ];
             }
           ];
         };
@@ -82,7 +90,7 @@
           system = "x86_64-linux";
           modules = [
             {
-              nixpkgs.overlays = overlays;
+              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlay ];
             }
             ./hosts/nixos/configuration.nix
           ];
@@ -93,7 +101,7 @@
           system = "aarch64-darwin";
           modules = [
             {
-              nixpkgs.overlays = overlays;
+              nixpkgs.overlays = overlays ++ [ darwinNvimNightlyOverlay ];
             }
             ./hosts/nixM1/configuration.nix
           ];

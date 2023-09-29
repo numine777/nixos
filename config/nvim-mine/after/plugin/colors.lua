@@ -45,13 +45,13 @@ if not vim.g.vscode then
 			bg = "none",
 		})
 
-		hl("LineNr", {
-		    fg = "#5eacd3",
-		})
+		-- hl("LineNr", {
+		--     fg = "#5eacd3",
+		-- })
 
-		hl("netrwDir", {
-		    fg = "#5eacd3",
-		})
+		-- hl("netrwDir", {
+		--     fg = "#5eacd3",
+		-- })
 
 		hl("WinSeparator", { background = nil })
 	end

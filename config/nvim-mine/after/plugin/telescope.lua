@@ -25,7 +25,7 @@ if not vim.g.vscode then
     vim.keymap.set('n', '<leader>st', function()
         builtin.grep_string({ search = vim.fn.input("Grep > ") })
     end)
-    vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+    vim.keymap.set('n', '<leader>sh', builtin.help_tags, {})
     vim.keymap.set('n', '<leader>sy', function()
         require('telescope.builtin').live_grep({ type_filter = vim.fn.input('File Type > ') })
     end)

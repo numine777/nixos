@@ -28,6 +28,7 @@
       pkgs-git-lfs = import nixpkgs-git-lfs { system = "x86_64-linux"; };
       gitLfsOverlay = (_: _: { git-lfs-2_13 = pkgs-git-lfs.git-lfs; });
       customVimOverlay = import ./overlays/customVim.nix;
+      # customPkgsOverlay = import ./overlays/customPkgs.nix;
 
       extraSpecialArgs = {
         inherit inputs self;
@@ -39,6 +40,7 @@
         nixpkgs-f2k.overlays.default
         neovim-nightly.overlay
         customVimOverlay
+        # customPkgsOverlay
       ];
     in
     {

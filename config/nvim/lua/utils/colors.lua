@@ -7,19 +7,19 @@ function M.ColorMyPencils(color)
     vim.api.nvim_set_hl(0, thing, opts)
   end
 
-  local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
-  local cursorline_hl = vim.api.nvim_get_hl_by_name("CursorLine", true)
-  local normal_hl = vim.api.nvim_get_hl_by_name("Normal", true)
-  hl("Normal", { bg = "none" })
-  hl("NormalFloat", { bg = "none" })
-  hl("CmpItemKindCopilot", { fg = "#6CC644" })
-  hl("CmpItemKindTabnine", { fg = "#CA42F0" })
-  hl("CmpItemKindCrate", { fg = "#F64D00" })
-  hl("CmpItemKindEmoji", { fg = "#FDE030" })
-  hl("SLCopilot", { fg = "#6CC644", bg = statusline_hl.background })
-  hl("SLGitIcon", { fg = "#E8AB53", bg = cursorline_hl.background })
-  hl("SLBranchName", { fg = normal_hl.foreground, bg = cursorline_hl.background })
-  hl("SLSeparator", { fg = cursorline_hl.background, bg = statusline_hl.background })
+  -- local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
+  -- local cursorline_hl = vim.api.nvim_get_hl_by_name("CursorLine", true)
+  -- local normal_hl = vim.api.nvim_get_hl_by_name("Normal", true)
+  -- hl("Normal", { bg = "none" })
+  -- hl("NormalFloat", { bg = "none" })
+  -- hl("CmpItemKindCopilot", { fg = "#6CC644" })
+  -- hl("CmpItemKindTabnine", { fg = "#CA42F0" })
+  -- hl("CmpItemKindCrate", { fg = "#F64D00" })
+  -- hl("CmpItemKindEmoji", { fg = "#FDE030" })
+  -- hl("SLCopilot", { fg = "#6CC644", bg = statusline_hl.background })
+  -- hl("SLGitIcon", { fg = "#E8AB53", bg = cursorline_hl.background })
+  -- hl("SLBranchName", { fg = normal_hl.foreground, bg = cursorline_hl.background })
+  -- hl("SLSeparator", { fg = cursorline_hl.background, bg = statusline_hl.background })
 
   hl("SignColumn", {
     bg = "none",
@@ -42,14 +42,14 @@ function M.ColorMyPencils(color)
     bg = "none",
   })
 
-  hl("LineNr", {
-    fg = "#5eacd3",
-  })
+  -- hl("LineNr", {
+  --   fg = "#5eacd3",
+  -- })
 
-  hl("netrwDir", {
-    fg = "#5eacd3",
-  })
-
+  -- hl("netrwDir", {
+  --   fg = "#5eacd3",
+  -- })
+  --
   hl("WinSeparator", { background = nil })
   require("notify").setup({
     background_colour = "#000000",

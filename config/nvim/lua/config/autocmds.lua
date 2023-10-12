@@ -59,6 +59,12 @@ autocmd({ "BufNewFile", "BufRead" }, {
   command = ":set ft=ruby",
 })
 
+autocmd({ "BufNewFile", "BufRead" }, {
+  group = NumineGroup,
+  pattern = ".envrc",
+  command = ":set ft=bash",
+})
+
 -- autocmd("ColorScheme", {
 --   group = ColorGroup,
 --   pattern = "*",

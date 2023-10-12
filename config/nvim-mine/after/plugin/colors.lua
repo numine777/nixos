@@ -13,6 +13,8 @@ if not vim.g.vscode then
 		local normal_hl = vim.api.nvim_get_hl_by_name("Normal", true)
 		hl("Normal", { bg = "none" })
 		hl("NormalFloat", { bg = "none" })
+		hl("FidgetTask", { fg = "none", bg = "none" })
+		hl("FidgetTitle", { fg = "none", bg = "none" })
 		hl("CmpItemKindCopilot", { fg = "#6CC644" })
 		hl("CmpItemKindTabnine", { fg = "#CA42F0" })
 		hl("CmpItemKindCrate", { fg = "#F64D00" })

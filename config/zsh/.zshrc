@@ -163,7 +163,7 @@ zinit wait lucid for \
   as"completion" \
   OMZP::docker/_docker \
   OMZP::bazel/_bazel \
-  OMZP::fzf 
+  OMZP::fzf
 
 # _prompt_nix() {
 #   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "
@@ -176,10 +176,9 @@ zinit wait lucid for \
 if [ $(which keychain) ]; then
     eval $(keychain --eval --agents ssh id_rsa)
 fi
-eval "$(direnv hook zsh)" 
+eval "$(direnv hook zsh)"
 if [ $(which keychain) ]; then
     eval $(keychain --eval --agents ssh id_rsa)
-    eval $(keychain --eval --agents ssh id_ecdsa)
 fi
 # Copied from "direnv hook zsh" output:
 # export DEV_SHELL_NO_SPLASH=1
@@ -215,3 +214,4 @@ export NVM_DIR="$HOME/.nvm"
 export PNPM_HOME="/Users/scott/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+eval "$(rbenv init - zsh)"

@@ -31,7 +31,7 @@
         lua.enable = true;
         nix.enable = true;
         node.enable = false;
-        python.enable = true;
+        python.enable = false;
         rust.enable = true;
       };
       editors = {

@@ -1,3 +1,4 @@
+local null_ls = require("null-ls")
 -- customize mason plugins
 return {
   -- use mason-lspconfig to configure LSP installations
@@ -13,7 +14,11 @@ return {
     "jay-babu/mason-null-ls.nvim",
     -- overrides `require("mason-null-ls").setup(...)`
     opts = {
-      -- ensure_installed = { "prettier", "stylua" },
+      ensure_installed = { "prettier", "stylua", "eslint" },
+      sources = {
+        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.diagnostics.eslint,
+      }
     },
   },
   {

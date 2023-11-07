@@ -15,7 +15,7 @@
     nix-top
     nix-output-monitor
     notion-app-enhanced
-    synergy
+    # synergy
   ];
   home.file.".config/rofi".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/rofi";

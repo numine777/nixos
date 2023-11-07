@@ -9,7 +9,6 @@
     # niv
     nnn
     obsidian
-    postman
     rnix-lsp
     slack
     tree-sitter

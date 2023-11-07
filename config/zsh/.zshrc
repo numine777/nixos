@@ -48,9 +48,11 @@ zinit wait lucid light-mode for \
     zsh-users/zsh-history-substring-search \
 
 zstyle :compinstall filename '$HOME/.zshrc'
-autoload -Uz compinit promptinit
+autoload -Uz compinit promptinit bashcompinit
 compinit -i
 promptinit
+bashcompinit
+source "${HOME}/.bash_completion"
 
 # zsh options
 # setopt case_glob              # Use Case-Insensitve Globbing.
@@ -127,6 +129,8 @@ bindkey '^[[5~' beginning-of-buffer-or-history    # page up
 bindkey '^[[6~' end-of-buffer-or-history          # page down
 bindkey '^[[H' beginning-of-line                  # home
 bindkey '^[[F' end-of-line                        # end
+bindkey '^H' backward-kill-word
+bindkey '5~' kill-word
 bindkey -s '^f' "tmux-sessionizer\n"
 
 # # prompt
@@ -177,9 +181,6 @@ if [ $(which keychain) ]; then
     eval $(keychain --eval --agents ssh id_rsa)
 fi
 eval "$(direnv hook zsh)"
-if [ $(which keychain) ]; then
-    eval $(keychain --eval --agents ssh id_rsa)
-fi
 # Copied from "direnv hook zsh" output:
 # export DEV_SHELL_NO_SPLASH=1
 _direnv_hook_enabled=1

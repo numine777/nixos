@@ -106,6 +106,7 @@ return {
           nls.builtins.formatting.yapf,
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.shfmt,
+          nls.builtins.formatting.buildifier,
         },
       }
     end,

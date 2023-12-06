@@ -31,6 +31,7 @@
     curl
     gdu
     htop
+    btop
     jq
     kubectl
     lsof

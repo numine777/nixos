@@ -216,3 +216,10 @@ export PNPM_HOME="/Users/scott/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 eval "$(rbenv init - zsh)"
+precmd() {
+  fpath_string=$(print -l $fpath)
+  if [[ ! $fpath_string =~ "$ZSH_COMPLETION_USER_DIR" ]]; then
+    fpath=("$ZSH_COMPLETION_USER_DIR" $fpath)
+    compinit
+  fi
+}

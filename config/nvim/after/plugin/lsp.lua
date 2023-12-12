@@ -127,28 +127,22 @@ if not vim.g.vscode then
         _on_attach(opts)
     end)
 
-    lsp.configure(
-        "rust_analyzer",
-        config({
-            cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-            settings = {
-                ["rust-analyzer"] = {
-                    checkOnSave = {
-                        command = "clippy",
-                    },
-                },
-            },
-            --[[
-    settings = {
-        rust = {
-            unstable_features = true,
-            build_on_save = false,
-            all_features = true,
-        },
-    }
-    --]]
-        })
-    )
+    -- lsp.configure(
+    --     "rust_analyzer",
+    --     config({
+    --         -- cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+    --         settings = {
+    --             ["rust-analyzer"] = {
+    --                 checkOnSave = {
+    --                     command = "clippy",
+    --                 },
+    --             },
+    --         },
+    --         root_dir = function(filename)
+    --             return util.root_pattern(unpack(root_files))(filename) or util.path.dirname(filename)
+    --         end,
+    --     })
+    -- )
 
     lsp.configure(
         "bzl",

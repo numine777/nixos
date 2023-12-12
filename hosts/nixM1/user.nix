@@ -11,6 +11,7 @@
     ../../modules/dev/rust.nix
     ../../modules/dev/nix.nix
     ../../modules/dev/python.nix
+    ../../modules/dev/ocaml.nix
     ../../modules/programs/mac-default.nix
     ../../modules/desktop/windowManagers/yabai.nix
   ];
@@ -33,6 +34,7 @@
         node.enable = false;
         python.enable = false;
         rust.enable = true;
+        ocaml.enable = true;
       };
       editors = {
         neovim.enable = true;

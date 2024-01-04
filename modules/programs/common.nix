@@ -8,9 +8,9 @@
     lazydocker
     # niv
     nnn
-    obsidian
+    # obsidian
     rnix-lsp
-    slack
+    # slack
     tree-sitter
   ];
 }

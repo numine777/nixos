@@ -2,10 +2,10 @@
 {
   imports = [ ./common.nix ];
   home.packages = with pkgs; [
-    _1password-gui
+    # _1password-gui
     arandr
-    brave
-    discord
+    # brave
+    # discord
     firefox
     gcc
     flameshot
@@ -14,7 +14,7 @@
     mosh
     nix-top
     nix-output-monitor
-    notion-app-enhanced
+    # notion-app-enhanced
     # synergy
   ];
   home.file.".config/rofi".source =

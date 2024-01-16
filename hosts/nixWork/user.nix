@@ -25,9 +25,9 @@
 
   config = {
     programs.home-manager.enable = true;
-    home.homeDirectory = "/home/scott";
-    home.username = "scott";
-    home.stateVersion = "22.11";
+    home.homeDirectory = "/home/mwalls";
+    home.username = "mwalls";
+    home.stateVersion = "23.11";
     home.keyboard = null;
     home.sessionVariables = {
       LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;

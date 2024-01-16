@@ -43,7 +43,7 @@
 
 (nyoom-module-p! telescope
                  (do
-                   (map! [n] :<leader><space> "<cmd>Telescope find_files<CR>"
+                   (map! [n] :<C-p> "<cmd>Telescope find_files<CR>"
                          {:desc "Find file in project"})
                    (map! [n] "<leader>'" "<cmd>Telescope resume<CR>"
                          {:desc "Resume last search"})

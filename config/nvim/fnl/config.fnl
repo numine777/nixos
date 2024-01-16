@@ -31,6 +31,16 @@
 
 (map! [n] :<esc> :<esc><cmd>noh<cr> {:desc "No highlight escape"})
 (map! [i] :<C-c> :<esc> {:desc "Cancellable offense"})
+(map! [v] :J ":m '>+1<CR>gv=gv")
+(map! [v] :K ":m '<-2<CR>gv=gv")
+(map! [v] :< :<gv)
+(map! [v] :> :>gv)
+
+(map! [n] :J "mzJ`z")
+(map! [n] :<C-d> :<C-d>zz)
+(map! [n] :<C-u> :<C-u>zz)
+(map! [n] :n :nzzzv)
+(map! [n] :N :Nzzzv)
 
 ;; sometimes you want to modify a plugin thats loaded from within a module. For 
 ;; this you can use the `after` function

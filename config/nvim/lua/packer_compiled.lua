@@ -237,19 +237,16 @@ _G.packer_plugins = {
     path = "/home/scott/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  harpoon = {
+    config = { 'require("modules.ui.harpoon.config")' },
+    loaded = true,
+    path = "/home/scott/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["hotpot.nvim"] = {
     loaded = true,
     path = "/home/scott/.local/share/nvim/site/pack/packer/start/hotpot.nvim",
     url = "https://github.com/rktjmp/hotpot.nvim"
-  },
-  ["hydra.nvim"] = {
-    config = { 'require("modules.ui.hydra.config")' },
-    keys = { { "", "<leader>g" }, { "", "<leader>v" }, { "", "<leader>f" }, { "", "<leader>d" }, { "", "<leader>m" }, { "", "<leader>t" } },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/scott/.local/share/nvim/site/pack/packer/opt/hydra.nvim",
-    url = "https://github.com/anuvyklack/hydra.nvim"
   },
   ["leap-ast.nvim"] = {
     loaded = false,
@@ -349,7 +346,7 @@ _G.packer_plugins = {
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
   },
   ["nvim-cmp"] = {
-    after = { "cmp_luasnip", "cmp-nvim-lsp", "cmp-nvim-lsp-signature-help", "cmp-buffer", "cmp-cmdline", "cmp-path" },
+    after = { "cmp-nvim-lsp-signature-help", "cmp_luasnip", "cmp-nvim-lsp", "cmp-cmdline", "cmp-buffer", "cmp-path" },
     config = { 'require("modules.completion.cmp.config")' },
     loaded = false,
     needs_bufread = false,
@@ -402,7 +399,7 @@ _G.packer_plugins = {
     url = "https://github.com/mfussenegger/nvim-jdtls"
   },
   ["nvim-lspconfig"] = {
-    after = { "noice.nvim", "null-ls.nvim", "lsp_lines.nvim" },
+    after = { "lsp_lines.nvim", "noice.nvim", "null-ls.nvim" },
     config = { 'require("modules.tools.lsp.config")' },
     loaded = false,
     needs_bufread = false,
@@ -724,7 +721,6 @@ time([[Defining packer_plugins]], false)
 local module_lazy_loads = {
   ["^cmp"] = "nvim-cmp",
   ["^gitsigns"] = "gitsigns.nvim",
-  ["^hydra"] = "hydra.nvim",
   ["^nui"] = "nui.nvim",
   ["^nvim%-web%-devicons"] = "nvim-web-devicons",
   ["^plenary"] = "plenary.nvim",
@@ -756,6 +752,10 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
+-- Setup for: nvim-lspconfig
+time([[Setup for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\n'\0\3\4\0\0\0\b\5\0\1\0X\3\4€\5\1\2\0X\3\2€+\3\1\0X\4\1€+\3\2\0L\3\2\0Œ\1\0\0\3\0\a\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1'\0\3\0\a\0\3\0X\0\5€6\0\4\0009\0\5\0'\2\6\0D\0\2\0X\0\2€+\0\0\0L\0\2\0K\0\1\0\24silent! do FileType\bcmd\bvim\19nvim-lspconfig\vloader\vpacker\frequirew\1\0\5\0\b\0\0213\0\0\0006\2\1\0009\2\2\0029\2\3\2'\3\4\0'\4\5\0B\0\4\2\15\0\0\0X\1\b€3\0\6\0006\1\1\0009\1\a\1\18\3\0\0)\4\0\0002\0\0€D\1\3\0X\0\3€+\0\0\0002\0\0€L\0\2\0K\0\1\0\rdefer_fn\0\5\6%\vexpand\afn\bvim\0¼\1\1\0\t\0\n\0\0163\0\0\0006\1\1\0009\1\2\0019\1\3\0015\3\4\0005\4\5\0=\0\6\0046\5\1\0009\5\2\0059\5\a\5'\a\b\0004\b\0\0B\5\3\2=\5\t\0042\0\0€D\1\3\0\ngroup\19nvim-lspconfig\24nvim_create_augroup\rcallback\1\0\0\1\4\0\0\fBufRead\16BufWinEnter\15BufNewFile\24nvim_create_autocmd\bapi\bvim\0\0", "setup", "nvim-lspconfig")
+time([[Setup for nvim-lspconfig]], false)
 -- Setup for: nvim-treesitter
 time([[Setup for nvim-treesitter]], true)
 try_loadstring("\27LJ\2\nh\0\0\3\0\a\0\0156\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\2\6\0\4\0X\1\4€\6\0\5\0X\1\2€\a\0\6\0X\1\2€+\1\1\0X\2\1€+\1\2\0L\1\2\0\5\r[packer]\15NvimTree_1\6%\vexpand\afn\bvim \1\1\0\4\0\b\0\0203\0\0\0\15\0\0\0X\1\r€6\1\1\0009\1\2\0019\1\3\1'\3\4\0B\1\2\0016\1\5\0'\3\6\0B\1\2\0029\1\a\1'\3\4\0002\0\0€D\1\2\0X\1\3€+\1\0\0002\0\0€L\1\2\0K\0\1\0\vloader\vpacker\rautoload\20nvim-treesitter\29nvim_del_augroup_by_name\bapi\bvim\0¦\1\1\0\t\0\n\0\0163\0\0\0006\1\1\0009\1\2\0019\1\3\0015\3\4\0005\4\a\0006\5\1\0009\5\2\0059\5\5\5'\a\6\0004\b\0\0B\5\3\2=\5\b\4=\0\t\0042\0\0€D\1\3\0\rcallback\ngroup\1\0\0\20nvim-treesitter\24nvim_create_augroup\1\2\0\0\fBufRead\24nvim_create_autocmd\bapi\bvim\0\0", "setup", "nvim-treesitter")
@@ -768,18 +768,14 @@ time([[Setup for nvim-dap]], false)
 time([[Setup for gitsigns.nvim]], true)
 try_loadstring("\27LJ\2\nC\0\0\3\0\4\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0D\0\2\0\18gitsigns.nvim\vloader\vpacker\frequire¾\1\1\0\6\0\v\1\0286\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3'\5\5\0B\3\2\2'\4\6\0&\2\4\2B\0\2\0016\0\0\0009\0\a\0009\0\b\0\t\0\0\0X\0\a€3\0\t\0006\1\0\0009\1\n\1\18\3\0\0002\0\0€D\1\2\0X\0\3€+\0\0\0002\0\0€L\0\2\0K\0\1\0\rschedule\0\16shell_error\6v\15 rev-parse\n%:p:h\vexpand\fgit -C \vsystem\afn\bvim\0\20\1\0\1\0\1\0\0033\0\0\0002\0\0€L\0\2\0\0¡\2\1\0\5\0\a\0\t3\0\0\0006\1\1\0009\1\2\0019\1\3\1'\3\4\0005\4\5\0=\0\6\0042\0\0€D\1\3\0\rcallback\1\0\2\fpattern\6*\tdesc¹\1'(fn [] (vim.fn.system (.. \"git -C \" (vim.fn.expand \"%:p:h\") \" rev-parse\")) (when (= vim.v.shell_error 0) (vim.schedule (fn [] ((. (require \"packer\") \"loader\") \"gitsigns.nvim\")))))\fBufRead\24nvim_create_autocmd\bapi\bvim\0\0", "setup", "gitsigns.nvim")
 time([[Setup for gitsigns.nvim]], false)
--- Setup for: nvim-lspconfig
-time([[Setup for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\n'\0\3\4\0\0\0\b\5\0\1\0X\3\4€\5\1\2\0X\3\2€+\3\1\0X\4\1€+\3\2\0L\3\2\0Œ\1\0\0\3\0\a\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1'\0\3\0\a\0\3\0X\0\5€6\0\4\0009\0\5\0'\2\6\0D\0\2\0X\0\2€+\0\0\0L\0\2\0K\0\1\0\24silent! do FileType\bcmd\bvim\19nvim-lspconfig\vloader\vpacker\frequirew\1\0\5\0\b\0\0213\0\0\0006\2\1\0009\2\2\0029\2\3\2'\3\4\0'\4\5\0B\0\4\2\15\0\0\0X\1\b€3\0\6\0006\1\1\0009\1\a\1\18\3\0\0)\4\0\0002\0\0€D\1\3\0X\0\3€+\0\0\0002\0\0€L\0\2\0K\0\1\0\rdefer_fn\0\5\6%\vexpand\afn\bvim\0¼\1\1\0\t\0\n\0\0163\0\0\0006\1\1\0009\1\2\0019\1\3\0015\3\4\0005\4\5\0=\0\6\0046\5\1\0009\5\2\0059\5\a\5'\a\b\0004\b\0\0B\5\3\2=\5\t\0042\0\0€D\1\3\0\ngroup\19nvim-lspconfig\24nvim_create_augroup\rcallback\1\0\0\1\4\0\0\fBufRead\16BufWinEnter\15BufNewFile\24nvim_create_autocmd\bapi\bvim\0\0", "setup", "nvim-lspconfig")
-time([[Setup for nvim-lspconfig]], false)
+-- Config for: nyoom.ce9ac7f6
+time([[Config for nyoom.ce9ac7f6]], true)
+require("modules.editor.hotpot.+reflect.config")
+time([[Config for nyoom.ce9ac7f6]], false)
 -- Config for: vim-fugitive
 time([[Config for vim-fugitive]], true)
 require("modules.tools.fugitive.config")
 time([[Config for vim-fugitive]], false)
--- Config for: nyoom.bc4ecd1d
-time([[Config for nyoom.bc4ecd1d]], true)
-require("modules.editor.word-wrap.config")
-time([[Config for nyoom.bc4ecd1d]], false)
 -- Config for: nyoom.5e06be48
 time([[Config for nyoom.5e06be48]], true)
 require("modules.tools.antifennel.config")
@@ -788,168 +784,39 @@ time([[Config for nyoom.5e06be48]], false)
 time([[Config for leap.nvim]], true)
 require("modules.config.default.+bindings.config")
 time([[Config for leap.nvim]], false)
--- Config for: nyoom.ce9ac7f6
-time([[Config for nyoom.ce9ac7f6]], true)
-require("modules.editor.hotpot.+reflect.config")
-time([[Config for nyoom.ce9ac7f6]], false)
--- Config for: nyoom.8af4af0e
-time([[Config for nyoom.8af4af0e]], true)
-require("modules.config.default.config")
-time([[Config for nyoom.8af4af0e]], false)
+-- Config for: nyoom.bc4ecd1d
+time([[Config for nyoom.bc4ecd1d]], true)
+require("modules.editor.word-wrap.config")
+time([[Config for nyoom.bc4ecd1d]], false)
 -- Config for: nyoom.e69e8fc3
 time([[Config for nyoom.e69e8fc3]], true)
 require("modules.editor.format.config")
 time([[Config for nyoom.e69e8fc3]], false)
--- Config for: nyoom.5ea6febe
-time([[Config for nyoom.5ea6febe]], true)
-require("modules.ui.modeline.config")
-time([[Config for nyoom.5ea6febe]], false)
+-- Config for: nyoom.8af4af0e
+time([[Config for nyoom.8af4af0e]], true)
+require("modules.config.default.config")
+time([[Config for nyoom.8af4af0e]], false)
 -- Config for: alpha-nvim
 time([[Config for alpha-nvim]], true)
 require("modules.ui.dashboard.config")
 time([[Config for alpha-nvim]], false)
+-- Config for: nyoom.5ea6febe
+time([[Config for nyoom.5ea6febe]], true)
+require("modules.ui.modeline.config")
+time([[Config for nyoom.5ea6febe]], false)
+-- Config for: harpoon
+time([[Config for harpoon]], true)
+require("modules.ui.harpoon.config")
+time([[Config for harpoon]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'CccHighlighterEnable', function(cmdargs)
-          require('packer.load')({'ccc.nvim'}, { cmd = 'CccHighlighterEnable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'ccc.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('CccHighlighterEnable ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'CccHighlighterToggle', function(cmdargs)
-          require('packer.load')({'ccc.nvim'}, { cmd = 'CccHighlighterToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'ccc.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('CccHighlighterToggle ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'Mason', function(cmdargs)
-          require('packer.load')({'mason.nvim'}, { cmd = 'Mason', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'mason.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Mason ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'copen', function(cmdargs)
-          require('packer.load')({'nvim-pqf'}, { cmd = 'copen', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-pqf'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('copen ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'cclose', function(cmdargs)
-          require('packer.load')({'nvim-pqf'}, { cmd = 'cclose', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-pqf'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('cclose ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
-          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-tree.lua'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('NvimTreeToggle ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'ToggleTerm', function(cmdargs)
-          require('packer.load')({'toggleterm.nvim'}, { cmd = 'ToggleTerm', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'toggleterm.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('ToggleTerm ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerBuild', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerBuild', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerBuild ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerImageRun', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerImageRun', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerImageRun ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'TSInstall', function(cmdargs)
-          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSInstall', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TSInstall ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerLogs', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerLogs', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerLogs ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerBuildAndRun', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerBuildAndRun', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerBuildAndRun ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'TSUpdate', function(cmdargs)
-          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSUpdate', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TSUpdate ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'DevcontainerBuildRunAndAttach', function(cmdargs)
           require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerBuildRunAndAttach', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('DevcontainerBuildRunAndAttach ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'Scratch', function(cmdargs)
-          require('packer.load')({'editor.scratch'}, { cmd = 'Scratch', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'editor.scratch'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Scratch ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'TSUpdateSync', function(cmdargs)
-          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSUpdateSync', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TSUpdateSync ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerEditNearestConfig', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerEditNearestConfig', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerEditNearestConfig ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'TSBufEnable', function(cmdargs)
-          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSBufEnable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TSBufEnable ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'TZAtaraxis', function(cmdargs)
-          require('packer.load')({'true-zen.nvim', 'true-zen.nvim'}, { cmd = 'TZAtaraxis', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'true-zen.nvim', 'true-zen.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TZAtaraxis ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerComposeRm', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerComposeRm', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerComposeRm ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'TSBufDisable', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, { cmd = 'TSBufDisable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -958,12 +825,12 @@ pcall(vim.api.nvim_create_user_command, 'TSBufDisable', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('TSBufDisable ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'Telescope', function(cmdargs)
-          require('packer.load')({'telescope.nvim'}, { cmd = 'Telescope', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'DevcontainerComposeUp', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerComposeUp', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'telescope.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Telescope ', 'cmdline')
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerComposeUp ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'TSEnable', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, { cmd = 'TSEnable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -972,12 +839,12 @@ pcall(vim.api.nvim_create_user_command, 'TSEnable', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('TSEnable ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerStartAutoAndAttach', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStartAutoAndAttach', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'DevcontainerComposeDown', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerComposeDown', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerStartAutoAndAttach ', 'cmdline')
+          return vim.fn.getcompletion('DevcontainerComposeDown ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'TSDisable', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, { cmd = 'TSDisable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -986,12 +853,12 @@ pcall(vim.api.nvim_create_user_command, 'TSDisable', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('TSDisable ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerAttachAuto', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerAttachAuto', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'DevcontainerComposeRm', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerComposeRm', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerAttachAuto ', 'cmdline')
+          return vim.fn.getcompletion('DevcontainerComposeRm ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'TSModuleInfo', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, { cmd = 'TSModuleInfo', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1000,33 +867,19 @@ pcall(vim.api.nvim_create_user_command, 'TSModuleInfo', function(cmdargs)
           require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('TSModuleInfo ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerStopAuto', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStopAuto', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'Neorg', function(cmdargs)
+          require('packer.load')({'neorg'}, { cmd = 'Neorg', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerStopAuto ', 'cmdline')
+          require('packer.load')({'neorg'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Neorg ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerStopAll', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStopAll', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'CccPick', function(cmdargs)
+          require('packer.load')({'ccc.nvim'}, { cmd = 'CccPick', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerStopAll ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerRemoveAll', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerRemoveAll', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerRemoveAll ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerOpenNearestConfig', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerOpenNearestConfig', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerOpenNearestConfig ', 'cmdline')
+          require('packer.load')({'ccc.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('CccPick ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'TSPlayground', function(cmdargs)
           require('packer.load')({'playground'}, { cmd = 'TSPlayground', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1035,33 +888,89 @@ pcall(vim.api.nvim_create_user_command, 'TSPlayground', function(cmdargs)
           require('packer.load')({'playground'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('TSPlayground ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerStartAuto', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStartAuto', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'DevcontainerAttachAuto', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerAttachAuto', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerStartAuto ', 'cmdline')
+          return vim.fn.getcompletion('DevcontainerAttachAuto ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerComposeDown', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerComposeDown', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'CccHighlighterEnable', function(cmdargs)
+          require('packer.load')({'ccc.nvim'}, { cmd = 'CccHighlighterEnable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'ccc.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('CccHighlighterEnable ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerStopAuto', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStopAuto', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerComposeDown ', 'cmdline')
+          return vim.fn.getcompletion('DevcontainerStopAuto ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'DevcontainerComposeUp', function(cmdargs)
-          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerComposeUp', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'CccHighlighterToggle', function(cmdargs)
+          require('packer.load')({'ccc.nvim'}, { cmd = 'CccHighlighterToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'ccc.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('CccHighlighterToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerStopAll', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStopAll', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('DevcontainerComposeUp ', 'cmdline')
+          return vim.fn.getcompletion('DevcontainerStopAll ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'TSInstallSync', function(cmdargs)
-          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSInstallSync', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'Telescope', function(cmdargs)
+          require('packer.load')({'telescope.nvim'}, { cmd = 'Telescope', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TSInstallSync ', 'cmdline')
+          require('packer.load')({'telescope.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Telescope ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerLogs', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerLogs', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerLogs ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TZAtaraxis', function(cmdargs)
+          require('packer.load')({'true-zen.nvim', 'true-zen.nvim'}, { cmd = 'TZAtaraxis', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'true-zen.nvim', 'true-zen.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TZAtaraxis ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TZNarrow', function(cmdargs)
+          require('packer.load')({'true-zen.nvim'}, { cmd = 'TZNarrow', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'true-zen.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TZNarrow ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerOpenNearestConfig', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerOpenNearestConfig', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerOpenNearestConfig ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TZFocus', function(cmdargs)
+          require('packer.load')({'true-zen.nvim'}, { cmd = 'TZFocus', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'true-zen.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TZFocus ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerEditNearestConfig', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerEditNearestConfig', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerEditNearestConfig ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'PP', function(cmdargs)
           require('packer.load')({'paperplanes.nvim'}, { cmd = 'PP', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1069,6 +978,27 @@ pcall(vim.api.nvim_create_user_command, 'PP', function(cmdargs)
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'paperplanes.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('PP ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'ToggleTerm', function(cmdargs)
+          require('packer.load')({'toggleterm.nvim'}, { cmd = 'ToggleTerm', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'toggleterm.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('ToggleTerm ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'NvimTreeToggle', function(cmdargs)
+          require('packer.load')({'nvim-tree.lua'}, { cmd = 'NvimTreeToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-tree.lua'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('NvimTreeToggle ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Mason', function(cmdargs)
+          require('packer.load')({'mason.nvim'}, { cmd = 'Mason', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'mason.nvim'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Mason ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'Trouble', function(cmdargs)
           require('packer.load')({'trouble.nvim'}, { cmd = 'Trouble', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1084,12 +1014,47 @@ pcall(vim.api.nvim_create_user_command, 'MasonLog', function(cmdargs)
           require('packer.load')({'mason.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('MasonLog ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'TZFocus', function(cmdargs)
-          require('packer.load')({'true-zen.nvim'}, { cmd = 'TZFocus', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'copen', function(cmdargs)
+          require('packer.load')({'nvim-pqf'}, { cmd = 'copen', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'true-zen.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TZFocus ', 'cmdline')
+          require('packer.load')({'nvim-pqf'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('copen ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Scratch', function(cmdargs)
+          require('packer.load')({'editor.scratch'}, { cmd = 'Scratch', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'editor.scratch'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Scratch ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'cclose', function(cmdargs)
+          require('packer.load')({'nvim-pqf'}, { cmd = 'cclose', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-pqf'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('cclose ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TSBufEnable', function(cmdargs)
+          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSBufEnable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TSBufEnable ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TSUpdateSync', function(cmdargs)
+          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSUpdateSync', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TSUpdateSync ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerStartAuto', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStartAuto', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerStartAuto ', 'cmdline')
       end})
 pcall(vim.api.nvim_create_user_command, 'TZMinimalist', function(cmdargs)
           require('packer.load')({'true-zen.nvim'}, { cmd = 'TZMinimalist', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
@@ -1098,26 +1063,61 @@ pcall(vim.api.nvim_create_user_command, 'TZMinimalist', function(cmdargs)
           require('packer.load')({'true-zen.nvim'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('TZMinimalist ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'CccPick', function(cmdargs)
-          require('packer.load')({'ccc.nvim'}, { cmd = 'CccPick', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'DevcontainerImageRun', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerImageRun', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'ccc.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('CccPick ', 'cmdline')
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerImageRun ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'Neorg', function(cmdargs)
-          require('packer.load')({'neorg'}, { cmd = 'Neorg', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'TSInstall', function(cmdargs)
+          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSInstall', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'neorg'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Neorg ', 'cmdline')
+          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TSInstall ', 'cmdline')
       end})
-pcall(vim.api.nvim_create_user_command, 'TZNarrow', function(cmdargs)
-          require('packer.load')({'true-zen.nvim'}, { cmd = 'TZNarrow', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+pcall(vim.api.nvim_create_user_command, 'DevcontainerBuild', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerBuild', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
         {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'true-zen.nvim'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('TZNarrow ', 'cmdline')
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerBuild ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TSUpdate', function(cmdargs)
+          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSUpdate', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TSUpdate ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerRemoveAll', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerRemoveAll', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerRemoveAll ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'TSInstallSync', function(cmdargs)
+          require('packer.load')({'nvim-treesitter'}, { cmd = 'TSInstallSync', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-treesitter'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('TSInstallSync ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerStartAutoAndAttach', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerStartAutoAndAttach', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerStartAutoAndAttach ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'DevcontainerBuildAndRun', function(cmdargs)
+          require('packer.load')({'nvim-dev-container'}, { cmd = 'DevcontainerBuildAndRun', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'nvim-dev-container'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('DevcontainerBuildAndRun ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
 
@@ -1126,46 +1126,40 @@ time([[Defining lazy-load keymaps]], true)
 vim.cmd [[noremap <silent> <space>w <cmd>lua require("packer.load")({'nvim-window-picker'}, { keys = "<lt>space>w", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> ` <cmd>lua require("packer.load")({'which-key.nvim'}, { keys = "`", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> ' <cmd>lua require("packer.load")({'which-key.nvim'}, { keys = "'", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> " <cmd>lua require("packer.load")({'which-key.nvim'}, { keys = "\"", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <leader> <cmd>lua require("packer.load")({'which-key.nvim'}, { keys = "<lt>leader>", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> gb <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "gb", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <leader>f <cmd>lua require("packer.load")({'hydra.nvim'}, { keys = "<lt>leader>f", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <leader>g <cmd>lua require("packer.load")({'hydra.nvim'}, { keys = "<lt>leader>g", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> <leader>c <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "<lt>leader>c", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <leader>v <cmd>lua require("packer.load")({'hydra.nvim'}, { keys = "<lt>leader>v", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <leader>m <cmd>lua require("packer.load")({'hydra.nvim'}, { keys = "<lt>leader>m", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <leader>d <cmd>lua require("packer.load")({'hydra.nvim'}, { keys = "<lt>leader>d", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> <leader>t <cmd>lua require("packer.load")({'hydra.nvim'}, { keys = "<lt>leader>t", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> <leader> <cmd>lua require("packer.load")({'which-key.nvim'}, { keys = "<lt>leader>", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> " <cmd>lua require("packer.load")({'which-key.nvim'}, { keys = "\"", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType gitcommit ++once lua require("packer.load")({'gitsigns.nvim'}, { ft = "gitcommit" }, _G.packer_plugins)]]
-vim.cmd [[au FileType fennel ++once lua require("packer.load")({'nvim-parinfer-rust', 'conjure'}, { ft = "fennel" }, _G.packer_plugins)]]
-vim.cmd [[au FileType python ++once lua require("packer.load")({'conjure'}, { ft = "python" }, _G.packer_plugins)]]
-vim.cmd [[au FileType clojure ++once lua require("packer.load")({'nvim-parinfer-rust', 'conjure'}, { ft = "clojure" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'clangd_extensions.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType bib ++once lua require("packer.load")({'vimtex'}, { ft = "bib" }, _G.packer_plugins)]]
+vim.cmd [[au FileType fennel ++once lua require("packer.load")({'conjure', 'nvim-parinfer-rust'}, { ft = "fennel" }, _G.packer_plugins)]]
+vim.cmd [[au FileType clojure ++once lua require("packer.load")({'conjure', 'nvim-parinfer-rust'}, { ft = "clojure" }, _G.packer_plugins)]]
 vim.cmd [[au FileType java ++once lua require("packer.load")({'nvim-jdtls'}, { ft = "java" }, _G.packer_plugins)]]
 vim.cmd [[au FileType julia ++once lua require("packer.load")({'conjure'}, { ft = "julia" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'clangd_extensions.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType scheme ++once lua require("packer.load")({'nvim-parinfer-rust'}, { ft = "scheme" }, _G.packer_plugins)]]
-vim.cmd [[au FileType lisp ++once lua require("packer.load")({'nvim-parinfer-rust', 'nvlime', 'conjure'}, { ft = "lisp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType norg ++once lua require("packer.load")({'nabla.nvim', 'neorg'}, { ft = "norg" }, _G.packer_plugins)]]
+vim.cmd [[au FileType lisp ++once lua require("packer.load")({'nvlime', 'conjure', 'nvim-parinfer-rust'}, { ft = "lisp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType racket ++once lua require("packer.load")({'nvim-parinfer-rust'}, { ft = "racket" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'clangd_extensions.nvim'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType janet ++once lua require("packer.load")({'nvim-parinfer-rust'}, { ft = "janet" }, _G.packer_plugins)]]
+vim.cmd [[au FileType nim ++once lua require("packer.load")({'nim.nvim'}, { ft = "nim" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'conjure'}, { ft = "python" }, _G.packer_plugins)]]
+vim.cmd [[au FileType gitcommit ++once lua require("packer.load")({'gitsigns.nvim'}, { ft = "gitcommit" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'conjure', 'rust-tools.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
+vim.cmd [[au FileType scheme ++once lua require("packer.load")({'nvim-parinfer-rust'}, { ft = "scheme" }, _G.packer_plugins)]]
 vim.cmd [[au FileType guile ++once lua require("packer.load")({'nvim-parinfer-rust'}, { ft = "guile" }, _G.packer_plugins)]]
 vim.cmd [[au FileType lua ++once lua require("packer.load")({'conjure'}, { ft = "lua" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tex ++once lua require("packer.load")({'vimtex', 'nabla.nvim'}, { ft = "tex" }, _G.packer_plugins)]]
-vim.cmd [[au FileType bib ++once lua require("packer.load")({'vimtex'}, { ft = "bib" }, _G.packer_plugins)]]
-vim.cmd [[au FileType norg ++once lua require("packer.load")({'nabla.nvim', 'neorg'}, { ft = "norg" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'clangd_extensions.nvim'}, { ft = "c" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'conjure', 'rust-tools.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
-vim.cmd [[au FileType racket ++once lua require("packer.load")({'nvim-parinfer-rust'}, { ft = "racket" }, _G.packer_plugins)]]
-vim.cmd [[au FileType nim ++once lua require("packer.load")({'nim.nvim'}, { ft = "nim" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufRead Cargo.toml ++once lua require("packer.load")({'crates.nvim'}, { event = "BufRead Cargo.toml" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.lua', 'modes.nvim', 'LuaSnip', 'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'LuaSnip', 'copilot.lua', 'modes.nvim', 'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au CmdLineEnter * ++once lua require("packer.load")({'LuaSnip', 'nvim-cmp'}, { event = "CmdLineEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au CmdlineEnter * ++once lua require("packer.load")({'noice.nvim'}, { event = "CmdlineEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
@@ -1180,12 +1174,12 @@ time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/pack
 time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tikz.vim]], true)
 vim.cmd [[source /home/scott/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tikz.vim]]
 time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/vimtex/ftdetect/tikz.vim]], false)
-time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/nim.nvim/ftdetect/nim.vim]], true)
-vim.cmd [[source /home/scott/.local/share/nvim/site/pack/packer/opt/nim.nvim/ftdetect/nim.vim]]
-time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/nim.nvim/ftdetect/nim.vim]], false)
 time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/neorg/ftdetect/norg.lua]], true)
 vim.cmd [[source /home/scott/.local/share/nvim/site/pack/packer/opt/neorg/ftdetect/norg.lua]]
 time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/neorg/ftdetect/norg.lua]], false)
+time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/nim.nvim/ftdetect/nim.vim]], true)
+vim.cmd [[source /home/scott/.local/share/nvim/site/pack/packer/opt/nim.nvim/ftdetect/nim.vim]]
+time([[Sourcing ftdetect script at: /home/scott/.local/share/nvim/site/pack/packer/opt/nim.nvim/ftdetect/nim.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

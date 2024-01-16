@@ -53,6 +53,16 @@
     in
     {
       homemanagerConfigurations = {
+        minimalConfig = home-manager.lib.homeManagerConfiguration {
+          inherit extraSpecialArgs;
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          modules = [
+            ./hosts/nixMinimal/user.nix
+            {
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlay ];
+            }
+          ];
+        };
         nixosThelio = home-manager.lib.homeManagerConfiguration {
           inherit extraSpecialArgs;
           pkgs = import nixpkgs { system = "x86_64-linux"; config = { allowUnfree = true; }; };

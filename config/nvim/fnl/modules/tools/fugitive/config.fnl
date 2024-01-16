@@ -3,4 +3,4 @@
 ;; (augroup! Numine_Fugitive (autocmd! FileType fugitive
 ;;                                  `(local-set! nolist))
 
-(map! [n] :<leader>gn :G<CR> {:desc "Open fugitive"})
+(map! [n] :<leader>gn :<cmd>G<CR> {:desc "Open fugitive"})

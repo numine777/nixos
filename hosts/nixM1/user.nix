@@ -4,6 +4,7 @@
     ../../modules/shell/mac-default.nix
     ../../modules/editors/neovim.nix
     ../../modules/editors/vim.nix
+    ../../modules/editors/emacs.nix
     ../../modules/editors/helix.nix
     ../../modules/dev/clojure.nix
     ../../modules/dev/lua.nix
@@ -39,6 +40,7 @@
       editors = {
         neovim.enable = true;
         vim.enable = false;
+        emacs.enable = true;
         helix.enable = true;
       };
       programs = {

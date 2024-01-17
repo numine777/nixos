@@ -6,12 +6,16 @@
 (set! background :dark)
 (colorscheme oxocarbon)
 
-;; (custom-set-face! "Normal" [] {:bg "none"})
-;; (custom-set-face! "NormalFloat" [] {:bg "none"})
-;; (custom-set-face! "SignColumn" [] {:bg "none"})
-;; (custom-set-face! "Column" [] {:bg "none"})
-;; (custom-set-face! "CursorLineNR" [] {:bg "none"})
-    
+(custom-set-face! "Normal" [] {:bg "none"})
+(custom-set-face! "NormalFloat" [] {:bg "none"})
+(custom-set-face! "SignColumn" [] {:bg "none"})
+(custom-set-face! "Column" [] {:bg "none"})
+(custom-set-face! "LineNR" [] {:bg "none"})
+(custom-set-face! "CursorLineNR" [] {:bg "none"})
+(custom-set-face! "SignColumn" [] {:bg "none"})
+;;(custom-set-face! "FloatTitle" [] {:bg "none"})
+;;(custom-set-face! "FloatFooter" [] {:bg "none"})
+(custom-set-face! "NormalNC" [] {:bg "none"})
 
 ;; The set! macro sets vim.opt options. By default it sets the option to true 
 ;; Appending `no` in front sets it to false. This determines the style of line 

@@ -73,6 +73,7 @@ return require("lazy").setup({
 	"nvim-treesitter/playground",
 	{
 		"theprimeagen/harpoon",
+        branch = "harpoon2",
 		config = function()
 			require("numine.configs.harpoon")
 		end,

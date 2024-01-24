@@ -59,7 +59,7 @@ return require("lazy").setup({
 	{
 		"folke/trouble.nvim",
 		config = function()
-            require("numine.configs.trouble")
+			require("numine.configs.trouble")
 		end,
 	},
 
@@ -78,12 +78,12 @@ return require("lazy").setup({
 		end,
 	},
 	"theprimeagen/refactoring.nvim",
-    {
-        "mbbill/undotree",
-        config = function()
-            vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-        end,
-    },
+	{
+		"mbbill/undotree",
+		config = function()
+			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+		end,
+	},
 	"tpope/vim-fugitive",
 	{
 		"lewis6991/gitsigns.nvim",
@@ -148,6 +148,30 @@ return require("lazy").setup({
 			-- options
 		},
 	},
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("notify").setup({
+				-- Animation style (see below for details)
+				stages = "fade_in_slide_out",
+
+				-- Default timeout for notifications
+				timeout = 5000,
+
+				-- For stages that change opacity this is treated as the highlight behind the window
+				background_colour = "#000000",
+
+				-- Icons for the different levels
+				icons = {
+					ERROR = "",
+					WARN = "",
+					INFO = "",
+					DEBUG = "",
+					TRACE = "✎",
+				},
+			})
+		end,
+	},
 	-- lazy.nvim
 	{
 		"folke/noice.nvim",
@@ -161,7 +185,6 @@ return require("lazy").setup({
 			-- OPTIONAL:
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
 		},
 	},
 })

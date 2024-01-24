@@ -1,5 +1,6 @@
 function ColorMyPencils(color)
-    color = color or "rose-pine"
+    vim.opt.background = "dark"
+    color = color or "oxocarbon"
     vim.cmd.colorscheme(color)
 
     local hl = function(thing, opts)
@@ -21,6 +22,12 @@ function ColorMyPencils(color)
     hl("SLGitIcon", { fg = "#E8AB53", bg = cursorline_hl.background })
     hl("SLBranchName", { fg = normal_hl.foreground, bg = cursorline_hl.background })
     hl("SLSeparator", { fg = cursorline_hl.background, bg = statusline_hl.background })
+    hl("Column", { bg = "none" })
+    hl("LineNR", { bg = "none" })
+    hl("LineNR", { bg = "none" })
+    hl("FloatTitle", { bg = "none" })
+    hl("FloatFooter", { bg = "none" })
+    hl("NormalNC", { bg = "none" })
 
     hl("SignColumn", {
         bg = "none",

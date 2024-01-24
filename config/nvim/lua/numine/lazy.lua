@@ -93,6 +93,7 @@ return require("lazy").setup({
 	},
 	"nvim-treesitter/nvim-treesitter-context",
 	"kevinhwang91/nvim-bqf",
+    "nyoom-engineering/oxocarbon.nvim",
 
 	"jose-elias-alvarez/null-ls.nvim",
 	{

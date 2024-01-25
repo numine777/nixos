@@ -11,6 +11,7 @@
     bash-completion
     brightnessctl
     ccls
+    btop
     # direnv
     efibootmgr
     feh

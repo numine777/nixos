@@ -73,7 +73,7 @@ return require("lazy").setup({
 	"nvim-treesitter/playground",
 	{
 		"theprimeagen/harpoon",
-        branch = "harpoon2",
+		branch = "harpoon2",
 		config = function()
 			require("numine.configs.harpoon")
 		end,
@@ -94,7 +94,7 @@ return require("lazy").setup({
 	},
 	"nvim-treesitter/nvim-treesitter-context",
 	"kevinhwang91/nvim-bqf",
-    "nyoom-engineering/oxocarbon.nvim",
+	"nyoom-engineering/oxocarbon.nvim",
 
 	"jose-elias-alvarez/null-ls.nvim",
 	{
@@ -187,6 +187,20 @@ return require("lazy").setup({
 			-- OPTIONAL:
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
+		},
+	},
+    -- Hate myself for bringing this back
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+        config = function()
+            require("numine.configs.neotree")
+        end,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 		},
 	},
 })

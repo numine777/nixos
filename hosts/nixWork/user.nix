@@ -33,10 +33,10 @@
       LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
     };
     programs.bash = {
-        enable = true;
-        bashrcExtra = ''
-            eval "$(direnv hook bash)"
-        '';
+      enable = true;
+      bashrcExtra = ''
+        eval "$(direnv hook bash)"
+      '';
     };
     targets.genericLinux.enable = true;
     modules = {
@@ -70,6 +70,7 @@
         bottom.enable = true;
         irssi.enable = false;
         kitty.enable = true;
+        wezterm.enable = false;
         alacritty.enable = true;
         graphics = {
           aseprite.enable = false;

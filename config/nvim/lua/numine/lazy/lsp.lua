@@ -28,8 +28,8 @@ return {
             ensure_installed = {
                 "clangd",
                 "lua_ls",
-                "rnix-lsp",
-                "nil",
+                "rnix",
+                "nil_ls",
                 "pyright",
                 "rust_analyzer",
                 "tsserver",

@@ -1,7 +1,7 @@
 return {
     "tpope/vim-fugitive",
-    config = function() 
-        vim.keymap.set("n", "<leader>gn", vim.cmd.Git)
+    config = function()
+        vim.keymap.set("n", "<leader>gn", ":vertical G<cr>")
 
         local Numine_Fugitive = vim.api.nvim_create_augroup("Numine_Fugitive", {})
 

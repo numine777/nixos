@@ -14,8 +14,20 @@ return {
     },
 
     config = function()
+        local root_files = {
+            "tsconfig.json",
+            ".eslintrc.js",
+            "package.json",
+            ".git",
+            "BUILD.bazel",
+            "CMakeList.txt",
+            "Makefile",
+            "Cargo.toml",
+        }
+
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
+        local util = require("lspconfig/util")
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
@@ -36,9 +48,23 @@ return {
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
+                        capabilities = capabilities,
+                    }
+                end,
+
+                ["pyright"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.pyright.setup {
+                        capabilities = capabilities,
+                        root_dir = function(filename)
+                            local root = util.root_pattern(unpack(root_files))(filename)
+                            if root == nil then
+                                print("pyright: no root found")
+                                root = util.path.dirname(filename)
+                            end
+                            return root
+                        end,
                     }
                 end,
 

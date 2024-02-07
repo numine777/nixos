@@ -2,7 +2,6 @@ return {
     "lewis6991/gitsigns.nvim",
     config = function()
         require("gitsigns").setup()
-        vim.keymap.set("n", "<leader>gn", vim.cmd.Git)
         vim.keymap.set("n", "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", silent)
         vim.keymap.set("n", "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", silent)
         vim.keymap.set("n", "<leader>gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>", silent)

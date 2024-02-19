@@ -11,6 +11,9 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
+        "nvimtools/none-ls.nvim",
+        "jose-elias-alvarez/typescript.nvim",
+        "pmizio/typescript-tools.nvim",
     },
 
     config = function()
@@ -44,12 +47,21 @@ return {
                 "nil_ls",
                 "pyright",
                 "rust_analyzer",
-                "tsserver",
+                -- replaced by typescript-tools
+                -- "tsserver",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities,
+                        root_dir = function(filename)
+                            local root = util.root_pattern(unpack(root_files))(filename)
+                            if root == nil then
+                                print("no root found")
+                                root = util.path.dirname(filename)
+                            end
+                            return root
+                        end,
                     }
                 end,
 
@@ -86,6 +98,11 @@ return {
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+        require("typescript-tools").setup({
+            on_attach = require("numine.utils").on_attach,
+            capabilities = capabilities,
+        })
+
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -116,6 +133,31 @@ return {
                 source = "always",
                 header = "",
                 prefix = "",
+            },
+        })
+
+        local none_ls = require("null-ls")
+        local find_cwd = function(params)
+			local root = util.root_pattern(unpack(root_files))(params.bufname) or util.path.dirname(params.bufname)
+            return root
+        end
+
+        none_ls.setup({
+            sources = {
+                none_ls.builtins.formatting.stylua,
+                none_ls.builtins.formatting.prettier.with({
+                    prefer_local = "parksmarter/node_modules/.bin",
+                    cwd = find_cwd,
+                }),
+                none_ls.builtins.formatting.nixpkgs_fmt,
+                none_ls.builtins.formatting.buildifier,
+                none_ls.builtins.formatting.yapf,
+                none_ls.builtins.diagnostics.eslint_d.with({
+                    -- prefer_local = "parksmarter/node_modules/.bin",
+                    cwd = find_cwd,
+                }),
+                none_ls.builtins.completion.spell,
+                require("typescript.extensions.null-ls.code-actions"),
             },
         })
     end

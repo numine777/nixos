@@ -54,3 +54,5 @@ end)
 
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
 
+vim.api.nvim_create_user_command("CopyRelPath", function() vim.api.nvim_call_function("setreg", {"+", vim.fn.fnamemodify(vim.fn.expand("%"), ":.")}) end, {})
+vim.keymap.set("n", "<leader>cp", "<cmd>CopyRelPath<CR>")

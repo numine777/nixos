@@ -7,11 +7,12 @@
   home.packages = with pkgs; [
     acpi
     alsa-utils
-    bash
+    # bash
     bash-completion
     brightnessctl
     ccls
-    direnv
+    btop
+    # direnv
     efibootmgr
     feh
     fortune

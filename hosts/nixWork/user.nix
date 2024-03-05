@@ -25,8 +25,8 @@
 
   config = {
     programs.home-manager.enable = true;
-    home.homeDirectory = "/home/scott";
-    home.username = "scott";
+    home.homeDirectory = "/home/scot";
+    home.username = "scot";
     home.stateVersion = "22.11";
     home.keyboard = null;
     home.sessionVariables = {

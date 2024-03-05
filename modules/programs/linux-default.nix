@@ -8,6 +8,7 @@
     discord
     firefox
     gcc
+    gdb
     flameshot
     jdk8
     rofi

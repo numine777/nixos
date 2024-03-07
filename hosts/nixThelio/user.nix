@@ -13,7 +13,7 @@
     ../../modules/dev/go.nix
     ../../modules/dev/nix.nix
     ../../modules/dev/python.nix
-    ../../modules/programs/ubuntu-default.nix
+    ../../modules/programs/linux-gui.nix
     ../../modules/desktop
     ../../modules/desktop/gtk.nix
     ../../modules/desktop/windowManagers/awesome.nix
@@ -25,8 +25,8 @@
 
   config = {
     programs.home-manager.enable = true;
-    home.homeDirectory = "/home/scott";
-    home.username = "scott";
+    home.homeDirectory = "/home/scot";
+    home.username = "scot";
     home.stateVersion = "23.11";
     home.keyboard = null;
     home.sessionVariables = {

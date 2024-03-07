@@ -24,7 +24,7 @@ config.font = wezterm.font_with_fallback({
     "JetBrains Mono Nerd Font LF",
 })
 
-config.font_size = 20.0
+config.font_size = 16.0
 config.window_decorations = "None"
 
 -- and finally, return the configuration to wezterm

@@ -28,11 +28,11 @@ while [ "$1" ]; do
       notify-send -i "$HOME/nixos/nixos.png" "pls" "$host Finished garbage collection"
       exit ;;
     home)
-      nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" --impure && ./result/activate
+      nix build "$HOME/nixos#homemanagerConfigurations.nixThelio.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "$host home-manager config rebuilt "
       exit ;;
     home-work)
-      nix build "$HOME/nixos#homemanagerConfigurations.nixosThelio.activationPackage" --impure && ./result/activate
+      nix build "$HOME/nixos#homemanagerConfigurations.nixWork.activationPackage" --impure && ./result/activate
       notify-send -i "$HOME/nixos/nixos.png" "pls" "$host home-manager config rebuilt "
       exit ;;
     home-min)

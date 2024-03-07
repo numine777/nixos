@@ -64,11 +64,21 @@
             }
           ];
         };
-        nixosThelio = home-manager.lib.homeManagerConfiguration {
+        nixWork = home-manager.lib.homeManagerConfiguration {
           inherit extraSpecialArgs;
           pkgs = import nixpkgs { system = "x86_64-linux"; config = { allowUnfree = true; }; };
           modules = [
             ./hosts/nixWork/user.nix
+            {
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlay ];
+            }
+          ];
+        };
+        nixThelio = home-manager.lib.homeManagerConfiguration {
+          inherit extraSpecialArgs;
+          pkgs = import nixpkgs { system = "x86_64-linux"; config = { allowUnfree = true; }; };
+          modules = [
+            ./hosts/nixThelio/user.nix
             {
               nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlay ];
             }

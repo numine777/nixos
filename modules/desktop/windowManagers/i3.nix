@@ -108,10 +108,10 @@ in
             # start a terminal
             bindsym $mod+Return exec wezterm
             bindsym $mod+Shift+Return exec kitty
+            
+            bindsym $mod+Shift+b exec firefox
+            bindsym $mod+b exec brave
 
-            # keybinding for apps that i use often
-            bindsym $mod+Shift+b exec brave
-            bindsym $mod+b exec firefox
             bindsym $mod+Shift+s exec slack
             bindsym $mod+Shift+e exec emacs
 

@@ -165,9 +165,9 @@ zinit wait lucid for \
   z-shell/fast-syntax-highlighting \
   OMZP::colored-man-pages \
   as"completion" \
-  OMZP::docker/_docker \
   OMZP::bazel/_bazel \
   OMZP::fzf
+  # OMZP::docker/_docker \
 
 # _prompt_nix() {
 #   [ -z "$IN_NIX_SHELL" ] || echo "%F{yellow}%B[''${name:+$name}]%b%f "

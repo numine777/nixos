@@ -70,7 +70,7 @@
           modules = [
             ./hosts/nixWork/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlay ];
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay neovim-nightly.overlay ];
             }
           ];
         };

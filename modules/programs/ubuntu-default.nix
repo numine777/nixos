@@ -2,6 +2,7 @@
 {
   imports = [ ./linux-default.nix ];
   home.packages = with pkgs; [
+    nixgl.auto.nixGLNvidia
     git-lfs-2_13
     openssl
   ];

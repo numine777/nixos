@@ -69,13 +69,13 @@
       programs = {
         bottom.enable = true;
         irssi.enable = false;
-        kitty.enable = false;
+        kitty.enable = true;
         wezterm.enable = false;
-        alacritty.enable = false;
+        alacritty.enable = true;
         graphics = {
           aseprite.enable = false;
-          gimp.enable = false;
-          inkscape.enable = false;
+          gimp.enable = true;
+          inkscape.enable = true;
           krita.enable = false;
         };
       };

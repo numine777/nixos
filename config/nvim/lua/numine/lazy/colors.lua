@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
     vim.opt.background = "dark"
-    color = color or "monokai-pro"
+    color = color or "rose-pine"
     vim.cmd.colorscheme(color)
 
     local hl = function(thing, opts)
@@ -69,7 +69,16 @@ return {
             ColorMyPencils()
         end,
     },
-
+	{
+		"rose-pine/neovim",
+		as = "rose-pine",
+		config = function()
+			require("rose-pine").setup({
+				disable_background = true,
+				disable_float_background = true,
+			})
+		end,
+	},
     {
         "loctvl842/monokai-pro.nvim",
         config = function()

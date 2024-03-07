@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-let cfg = config.modules.programs.kitty;
+let
+  cfg = config.modules.programs.kitty;
+  nixGLWrap = import ../../../utils/nixGLWrap.nix { pkgs = pkgs; };
 in
 {
   options.modules.programs.kitty = {
@@ -15,6 +17,7 @@ in
 
   config = mkIf cfg.enable {
     programs.kitty = {
+      package = nixGLWrap pkgs.kitty;
       enable = true;
       font = {
         name = "JetBrainsMono Nerd Font";

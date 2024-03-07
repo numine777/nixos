@@ -1,19 +1,25 @@
 { config, pkgs, libs, ... }:
+let
+  nixGLWrap = import ../../utils/nixGLWrap.nix { inherit pkgs; };
+  my_slack = nixGLWrap pkgs.slack;
+  my_flameshot = nixGLWrap pkgs.flameshot;
+in
 {
   imports = [ ./common.nix ];
   home.packages = with pkgs; [
     # _1password-gui
     arandr
-    # brave
+    brave
     # discord
     firefox
     gcc
-    flameshot
+    my_flameshot
     jdk8
     rofi
     mosh
     nix-top
     nix-output-monitor
+    my_slack
     # notion-app-enhanced
     # synergy
   ];

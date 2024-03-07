@@ -3,6 +3,7 @@
 with lib;
 let
   cfg = config.modules.desktop.picom;
+  nixGLWrap = import ../../utils/nixGLWrap.nix { inherit pkgs; };
 in
 {
   options.modules.desktop.picom = {
@@ -12,7 +13,7 @@ in
   config = mkIf cfg.enable {
     services.picom = {
       enable = true;
-      package = pkgs.picom-git;
+      package = nixGLWrap pkgs.picom-git;
       fade = false;
       shadow = true;
       shadowExclude = [

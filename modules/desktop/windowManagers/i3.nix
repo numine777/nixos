@@ -76,7 +76,7 @@ in
             floating_modifier $mod
 
             # font
-            font pango:JetBrainsMono Nerd Font 12
+            font pango:Berkeley Mono 16
 
             # gaps
             # gaps inner 4
@@ -106,13 +106,13 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec nixGLNvidia-470.141.03 kitty
-            bindsym $mod+Shift+Return exec nixGLNvidia-470.141.03 alacritty
+            bindsym $mod+Return exec wezterm
+            bindsym $mod+Shift+Return exec kitty
 
             # keybinding for apps that i use often
             bindsym $mod+Shift+b exec brave
             bindsym $mod+b exec firefox
-            bindsym $mod+Shift+s exec nixGLNvidia-470.141.03 slack
+            bindsym $mod+Shift+s exec slack
             bindsym $mod+Shift+e exec emacs
 
             # kill focused window
@@ -323,8 +323,8 @@ in
           client.background       #2B2C2B
 
             # picom
-            # exec_always --no-startup-id nixGLNvidia-470.141.03 picom
-            exec_always --no-startup-id nixGLNvidia-470.141.03 flameshot
+            # exec_always --no-startup-id picom
+            exec_always --no-startup-id flameshot
 
             # set wallpaper (ft. feh)
             # exec --no-startup-id ~/.fehbg

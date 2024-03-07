@@ -41,6 +41,41 @@ autocmd('LspAttach', {
     callback = require("numine.utils").on_attach,
 })
 
+autocmd({ "BufWritePre" }, {
+	group = NumineGroup,
+	pattern = "*",
+	command = "%s/\\s\\+$//e",
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
+	group = NumineGroup,
+	pattern = "*Jenkinsfile",
+	command = ":set ft=groovy",
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
+	group = NumineGroup,
+	pattern = "*.gradle",
+	command = ":set ft=java",
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
+	group = NumineGroup,
+	pattern = { "*.bazel.tpl", "*.bzl*" },
+	command = ":set ft=bzl",
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
+	group = NumineGroup,
+	pattern = "CMakeLists*",
+	command = ":set ft=cmake",
+})
+
+autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "Podfile", "Gemfile", "Gymfile", "Fastfile", "Appfile", "Matchfile", "Pluginfile" },
+	command = ":set ft=ruby",
+})
+
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25

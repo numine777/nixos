@@ -39,6 +39,7 @@
     starship
     stow
     tabnine
+    tldr
     tree
     tmux
     unzip

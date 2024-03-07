@@ -107,11 +107,11 @@ in
 
             # start a terminal
             bindsym $mod+Return exec wezterm
-            bindsym $mod+Shift+Return exec nixGLNvidia-470.141.03 alacritty
-
-            # keybinding for apps that i use often
+            bindsym $mod+Shift+Return exec kitty
+            
             bindsym $mod+Shift+b exec firefox
             bindsym $mod+b exec brave
+
             bindsym $mod+Shift+s exec slack
             bindsym $mod+Shift+e exec emacs
 
@@ -323,8 +323,8 @@ in
           client.background       #2B2C2B
 
             # picom
-            # exec_always --no-startup-id nixGLNvidia-470.141.03 picom
-            exec_always --no-startup-id nixGLNvidia-470.141.03 flameshot
+            # exec_always --no-startup-id picom
+            exec_always --no-startup-id flameshot
 
             # set wallpaper (ft. feh)
             # exec --no-startup-id ~/.fehbg

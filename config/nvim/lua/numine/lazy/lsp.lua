@@ -166,11 +166,8 @@ return {
                 none_ls.builtins.formatting.nixpkgs_fmt,
                 none_ls.builtins.formatting.buildifier,
                 none_ls.builtins.formatting.yapf,
-                none_ls.builtins.diagnostics.eslint_d.with({
-                    -- prefer_local = "parksmarter/node_modules/.bin",
-                    cwd = find_cwd,
-                }),
                 none_ls.builtins.completion.spell,
+                none_ls.builtins.formatting.shfmt,
                 require("typescript.extensions.null-ls.code-actions"),
             },
         })

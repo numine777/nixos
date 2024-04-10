@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
     vim.opt.background = "dark"
-    color = color or "rose-pine"
+    color = color or "gruvbox"
     vim.cmd.colorscheme(color)
 
     local hl = function(thing, opts)
@@ -63,6 +63,7 @@ function ColorMyPencils(color)
 end
 
 return {
+    "gruvbox-community/gruvbox",
     {
         "nyoom-engineering/oxocarbon.nvim",
         config = function()

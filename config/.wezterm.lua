@@ -20,8 +20,7 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
 config.font = wezterm.font_with_fallback({
-    "Berkeley Mono",
-    "JetBrains Mono Nerd Font LF",
+    "BerkeleyMono Nerd Font",
 })
 
 config.font_size = 16.0

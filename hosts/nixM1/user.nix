@@ -25,7 +25,7 @@
     modules = {
       desktop = {
         windowManager = {
-          yabai.enable = false;
+          yabai.enable = true;
         };
       };
       dev = {
@@ -45,8 +45,8 @@
       };
       programs = {
         bottom.enable = true;
-        kitty.enable = true;
-        alacritty.enable = true;
+        kitty.enable = false;
+        alacritty.enable = false;
         graphics = {
           aseprite.enable = false;
           gimp.enable = false;

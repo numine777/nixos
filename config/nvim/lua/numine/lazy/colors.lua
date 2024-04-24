@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
     vim.opt.background = "dark"
-    color = color or "gruvbox"
+    color = color or "catppuccin"
     vim.cmd.colorscheme(color)
 
     local hl = function(thing, opts)
@@ -64,22 +64,29 @@ end
 
 return {
     "gruvbox-community/gruvbox",
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {
         "nyoom-engineering/oxocarbon.nvim",
         config = function()
             ColorMyPencils()
         end,
     },
-	{
-		"rose-pine/neovim",
-		as = "rose-pine",
-		config = function()
-			require("rose-pine").setup({
-				disable_background = true,
-				disable_float_background = true,
-			})
-		end,
-	},
+    {
+        "rose-pine/neovim",
+        as = "rose-pine",
+        config = function()
+            require("rose-pine").setup({
+                disable_background = true,
+                disable_float_background = true,
+            })
+        end,
+    },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
     {
         "loctvl842/monokai-pro.nvim",
         config = function()

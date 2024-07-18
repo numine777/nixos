@@ -25,18 +25,12 @@
 
   config = {
     programs.home-manager.enable = true;
-    home.homeDirectory = "/home/scott";
-    home.username = "scott";
+    home.homeDirectory = "/home/mwalls";
+    home.username = "mwalls";
     home.stateVersion = "23.11";
     home.keyboard = null;
     home.sessionVariables = {
       LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
-    };
-    programs.bash = {
-      enable = true;
-      bashrcExtra = ''
-        eval "$(direnv hook bash)"
-      '';
     };
     targets.genericLinux.enable = true;
     modules = {
@@ -53,10 +47,10 @@
       };
       dev = {
         clojure.enable = true;
-        lua.enable = true;
-        nix.enable = true;
+        lua.enable = false;
+        nix.enable = false;
         node.enable = true;
-        python.enable = true;
+        python.enable = false;
         rust.enable = true;
         golang.enable = true;
       };

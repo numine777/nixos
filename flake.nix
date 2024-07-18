@@ -16,15 +16,11 @@
     nixpkgs-git-lfs.url = "github:nixos/nixpkgs/83667ff60a88e22b76ef4b0bdf5334670b39c2b6";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    neovim-flake = {
-      url = "github:neovim/neovim?dir=contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # awesomewm modules
     bling = { url = "github:BlingCorp/bling"; flake = false; };
     rubato = { url = "github:andOrlando/rubato"; flake = false; };
   };
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, emacs-overlay, nixpkgs-f2k, darwin, nixgl, nixpkgs-git-lfs, neovim-flake, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, emacs-overlay, nixpkgs-f2k, darwin, nixgl, nixpkgs-git-lfs, ... }@inputs:
     let
       pkgs-git-lfs = import nixpkgs-git-lfs { system = "x86_64-linux"; };
       gitLfsOverlay = (_: _: { git-lfs-2_13 = pkgs-git-lfs.git-lfs; });
@@ -60,7 +56,7 @@
           modules = [
             ./hosts/nixMinimal/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlay ];
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlays.default ];
             }
           ];
         };
@@ -70,7 +66,7 @@
           modules = [
             ./hosts/nixWork/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay neovim-nightly.overlay ];
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay neovim-nightly.overlays.default ];
             }
           ];
         };
@@ -80,7 +76,7 @@
           modules = [
             ./hosts/nixThelio/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlay ];
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlays.default ];
             }
           ];
         };
@@ -91,7 +87,7 @@
             modules = [
               ./hosts/nixos/user.nix
               {
-                nixpkgs.overlays = overlays ++ [ neovim-nightly.overlay ];
+                nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default ];
               }
             ];
           };
@@ -101,7 +97,7 @@
           modules = [
             ./hosts/nixM1/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlay emacs-overlay.overlay ];
+              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default emacs-overlay.overlay ];
             }
           ];
         };
@@ -111,7 +107,7 @@
           system = "x86_64-linux";
           modules = [
             {
-              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlay ];
+              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default ];
             }
             ./hosts/nixos/configuration.nix
           ];
@@ -122,7 +118,7 @@
           system = "aarch64-darwin";
           modules = [
             {
-              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlay ];
+              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default ];
             }
             ./hosts/nixM1/configuration.nix
           ];

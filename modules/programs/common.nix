@@ -9,7 +9,6 @@
     # niv
     nnn
     # obsidian
-    rnix-lsp
     # slack
     tree-sitter
   ];

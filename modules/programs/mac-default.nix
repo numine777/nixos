@@ -1,5 +1,5 @@
 { config, pkgs, libs, ... }:
 {
   imports = [ ./common.nix ];
-  home.packages = with pkgs; [ watchman pscale mosh imagemagick ];
+  home.packages = with pkgs; [ pscale mosh imagemagick ];
 }

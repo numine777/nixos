@@ -7,8 +7,8 @@ return {
   "theprimeagen/refactoring.nvim",
   "mbbill/undotree",
   "lewis6991/gitsigns.nvim",
-  "github/copilot.vim",
-  "nvim-treesitter/nvim-treesitter-context",
+  -- "github/copilot.vim",
+  -- "nvim-treesitter/nvim-treesitter-context",
   {
     "numine777/py-bazel.nvim",
     config = function()

@@ -4,25 +4,25 @@
 
 # focus window
 #alt - x : yabai -m window --focus recent
-cmd - h : yabai -m window --focus west
-cmd - j : yabai -m window --focus south
-cmd - k : yabai -m window --focus north
-cmd - l : yabai -m window --focus east
-cmd - s : yabai -m window --focus stack.prev
-cmd - n : yabai -m window --focus stack.next
+# cmd - h : yabai -m window --focus west
+# cmd - j : yabai -m window --focus south
+# cmd - k : yabai -m window --focus north
+# cmd - l : yabai -m window --focus east
+# cmd - s : yabai -m window --focus stack.prev
+# cmd - n : yabai -m window --focus stack.next
 
 # swap window
 #ctrl + alt - x : yabai -m window --swap recent
-shift + cmd - h : yabai -m window --swap west
-shift + cmd - j : yabai -m window --swap south
-shift + cmd - k : yabai -m window --swap north
-shift + cmd - l : yabai -m window --swap east
+# shift + cmd - h : yabai -m window --swap west
+# shift + cmd - j : yabai -m window --swap south
+# shift + cmd - k : yabai -m window --swap north
+# shift + cmd - l : yabai -m window --swap east
 
 # move window
-alt + cmd - h : yabai -m window --move rel:-20:0
-alt + cmd - j : yabai -m window --move rel:0:20
-alt + cmd - k : yabai -m window --move rel:0:-20
-alt + cmd - l : yabai -m window --move rel:20:0
+# alt + cmd - h : yabai -m window --move rel:-20:0
+# alt + cmd - j : yabai -m window --move rel:0:20
+# alt + cmd - k : yabai -m window --move rel:0:-20
+# alt + cmd - l : yabai -m window --move rel:20:0
 
 # balance size of windows
 cmd + alt - 0 : yabai -m space --balance

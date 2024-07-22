@@ -2,7 +2,11 @@ M = {}
 
 function M.setup()
     require("trouble").setup({
-        icons = false,
+        modes = {
+            lsp = {
+                win = { position = "right" }
+            }
+        }
     })
 
     vim.keymap.set("n", "<leader>tt", function()

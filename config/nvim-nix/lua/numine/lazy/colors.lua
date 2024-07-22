@@ -67,6 +67,9 @@ function M.setup()
     require("rose-pine").setup({
         disable_background = true,
         disable_float_background = true,
+        styles = {
+            italic = false
+        },
     })
     ColorMyPencils()
 end

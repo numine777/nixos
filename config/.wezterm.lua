@@ -25,6 +25,8 @@ config.font = wezterm.font_with_fallback({
 
 config.font_size = 16.0
 config.window_decorations = "None"
+-- config.color_scheme = 'Gruvbox Material (Gogh)'
+config.color_scheme = 'GruvboxDarkHard'
 
 -- and finally, return the configuration to wezterm
 return config

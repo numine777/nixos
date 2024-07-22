@@ -1,6 +1,6 @@
 function ColorMyPencils(color)
     vim.opt.background = "dark"
-    color = color or "catppuccin"
+    color = color or "gruvbox"
     vim.cmd.colorscheme(color)
 
     local hl = function(thing, opts)

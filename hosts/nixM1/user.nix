@@ -7,6 +7,7 @@
     ../../modules/editors/emacs.nix
     ../../modules/editors/helix.nix
     ../../modules/dev/clojure.nix
+    ../../modules/dev/go.nix
     ../../modules/dev/lua.nix
     ../../modules/dev/node.nix
     ../../modules/dev/rust.nix
@@ -31,11 +32,12 @@
       dev = {
         clojure.enable = true;
         lua.enable = true;
-        nix.enable = true;
+        nix.enable = false;
         node.enable = false;
         python.enable = false;
         rust.enable = true;
         ocaml.enable = true;
+        golang.enable = true;
       };
       editors = {
         neovim.enable = true;

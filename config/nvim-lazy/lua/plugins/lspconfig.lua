@@ -1,6 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
-  opts = function()
+  opts = function(_, opts)
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
     keys[#keys + 1] = {
       "gd",
@@ -67,13 +67,13 @@ return {
       end,
     }
     local lspconfig = require("lspconfig")
-    local cmp_lsp = require("cmp_nvim_lsp")
-    local capabilities =
-      vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
+    -- local cmp_lsp = require("cmp_nvim_lsp")
+    -- local capabilities =
+    --   vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), cmp_lsp.default_capabilities())
     lspconfig.starpls.setup({
-      capabilities = capabilities,
       cmd = { "starpls", "server" },
       filetypes = { "bzl" },
     })
+    opts.inlay_hints.enabled = false
   end,
 }

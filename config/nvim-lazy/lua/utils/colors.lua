@@ -51,9 +51,9 @@ function M.ColorMyPencils(color)
   -- })
   --
   hl("WinSeparator", { background = nil })
-  require("notify").setup({
-    background_colour = "#000000",
-  })
+  -- require("notify").setup({
+  --   background_colour = "#000000",
+  -- })
 end
 
 return M

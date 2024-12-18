@@ -8,8 +8,26 @@ return {
         disable_float_background = true,
         disable_italics = true,
       })
-      require("utils.colors").ColorMyPencils()
     end,
+  },
+  {
+    "navarasu/onedark.nvim",
+    config = function()
+      require("onedark").setup({
+        transparent = true,
+        -- style = 'darker',
+      })
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
   {
     "LazyVim/LazyVim",

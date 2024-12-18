@@ -4,6 +4,7 @@ return {
     require("py-bazel").setup({
       library_path_marker = "python",
       pip_deps_marker = "npip",
+      lsp_root_markers = { "BUILD.bazel", "setup.py" },
       -- global_pyright_config = "~/.config/lvim/lsp-settings/pyright.json",
     })
   end,

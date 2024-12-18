@@ -13,10 +13,11 @@ return {
         ".git"
       ),
       sources = {
-        nls.builtins.formatting.yapf,
+        nls.builtins.formatting.ruff,
         nls.builtins.formatting.stylua,
         nls.builtins.formatting.shfmt,
         nls.builtins.formatting.buildifier,
+        nls.builtins.formatting.nixpkgs_fmt,
       },
     }
   end,

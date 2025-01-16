@@ -102,17 +102,17 @@
           ];
         };
       };
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            {
-              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default ];
-            }
-            ./hosts/nixos/configuration.nix
-          ];
-        };
-      };
+      # nixosConfigurations = {
+      #   nixos = nixpkgs.lib.nixosSystem {
+      #     system = "x86_64-linux";
+      #     modules = [
+      #       {
+      #         nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default ];
+      #       }
+      #       ./hosts/nixos/configuration.nix
+      #     ];
+      #   };
+      # };
       darwinConfigurations = {
         Scotts-MacBook-Pro = darwin.lib.darwinSystem {
           system = "aarch64-darwin";

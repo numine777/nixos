@@ -26,17 +26,17 @@
     modules = {
       desktop = {
         windowManager = {
-          yabai.enable = true;
+          yabai.enable = false;
         };
       };
       dev = {
-        clojure.enable = true;
+        clojure.enable = false;
         lua.enable = true;
         nix.enable = false;
         node.enable = false;
         python.enable = false;
         rust.enable = true;
-        ocaml.enable = true;
+        ocaml.enable = false;
         golang.enable = true;
       };
       editors = {
@@ -49,6 +49,7 @@
         bottom.enable = true;
         kitty.enable = false;
         alacritty.enable = false;
+        ghostty.enable = true;
         graphics = {
           aseprite.enable = false;
           gimp.enable = false;

@@ -12,7 +12,6 @@ in
     firefox
     gcc
     my_flameshot
-    jdk8
     rofi
     mosh
     nix-top

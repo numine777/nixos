@@ -50,6 +50,7 @@
 
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
+  system.stateVersion = 5;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -61,9 +62,9 @@
     zsh
   ];
 
-  services.yabai.enable = true;
+  services.yabai.enable = false;
   services.yabai.package = pkgs.yabai;
-  services.skhd.enable = true;
+  services.skhd.enable = false;
   services.skhd.package = pkgs.skhd;
 
   services.nix-daemon.enable = true;
@@ -89,7 +90,7 @@
           (with no-sandbox))
   '';
 
-  programs.bash.enableCompletion = true;
+  programs.bash.completion.enable = true;
 
   environment.variables.LANG = "en_US.UTF-8";
 

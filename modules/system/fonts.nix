@@ -3,7 +3,7 @@
   fonts.fonts = with pkgs; [
     cascadia-code
     ibm-plex
-    (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" "Iosevka" "JetBrainsMono" ]; })
+    # (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" "Iosevka" "JetBrainsMono" ]; })
     noto-fonts-emoji-blob-bin
   ];
 

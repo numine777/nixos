@@ -9,7 +9,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      ((emacsPackagesFor emacsGit).emacsWithPackages (epkgs: [
+      ((emacsPackagesFor emacs-git).emacsWithPackages (epkgs: [
         epkgs.vterm
       ]))
     ];

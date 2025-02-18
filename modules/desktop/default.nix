@@ -20,7 +20,7 @@
   };
 
   xsession = {
-    enable = true;
+    enable = false;
     initExtra = "~/.fehbg\nXDG_DATA_DIRS DEFAULT=@{HOME}/.nix-profile/share:/usr/local/share:/usr/share";
   };
 

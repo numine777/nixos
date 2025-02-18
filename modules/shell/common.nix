@@ -27,7 +27,7 @@
 
     awscli
     brotli
-    cmake
+    # cmake
     curl
     gdu
     htop

@@ -66,7 +66,7 @@
           modules = [
             ./hosts/nixWork/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay neovim-nightly.overlays.default ];
+              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay neovim-nightly.overlays.default emacs-overlay.overlay ];
             }
           ];
         };

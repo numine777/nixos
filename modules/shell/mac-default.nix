@@ -7,7 +7,7 @@
     direnv
     cascadia-code
     ibm-plex
-    # (nerdfonts.override { fonts = [ "CascadiaCode" "FiraCode" "Iosevka" "JetBrainsMono" ]; })
+    # (nerd-fonts.override { fonts = [ "CascadiaCode" "FiraCode" "Iosevka" "JetBrainsMono" ]; })
     noto-fonts-emoji-blob-bin
   ];
 }

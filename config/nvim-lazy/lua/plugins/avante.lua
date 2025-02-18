@@ -52,8 +52,8 @@ return {
             hints = { enabled = false },
 
             ---@alias AvanteProvider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-            provider = "vllm_qwen_14",                        -- Recommend using Claude
-            auto_suggestions_provider = "vllm_qwen_14", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+            provider = "claude",                     -- Recommend using Claude
+            auto_suggestions_provider = "vllm_zeta", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
             claude = {
                 endpoint = "https://api.anthropic.com",
                 model = "claude-3-5-sonnet-20241022",
@@ -114,11 +114,20 @@ return {
                     __inherited_from = "openai",
                     api_key_name = "",
                     endpoint = "http://192.168.4.26:8000/v1",
-                    model = "Qwen/Qwen2.5-Coder-32B-Instruct",
+                    model = "Qwen2.5-Coder-32B-Instruct-awq",
                     max_tokens = 4096,
                     temperature = 0,
                     timeout = 30000,
                 },
+                vllm_zeta = {
+                    __inherited_from = "openai",
+                    api_key_name = "",
+                    endpoint = "http://192.168.4.26:8000/v1",
+                    model = "zed-industries/zeta",
+                    max_tokens = 4096,
+                    temperature = 0,
+                    timeout = 30000,
+                }
             },
             -- ollama = {
             --     temperature = 0,
@@ -141,7 +150,7 @@ return {
         dependencies = { "saghen/blink.compat" },
         opts = {
             sources = {
-                default = { "avante_commands", "avante_mentions", "avante_files" },
+                default = { "avante_commands", "avante_mentions", "avante_files", "minuet" },
                 compat = {
                     "avante_commands",
                     "avante_mentions",
@@ -149,6 +158,11 @@ return {
                 },
                 -- LSP score_offset is typically 60
                 providers = {
+                    minuet = {
+                        name = 'minuet',
+                        module = 'minuet.blink',
+                        score_offset = 100,
+                    },
                     avante_commands = {
                         name = "avante_commands",
                         module = "blink.compat.source",
@@ -191,4 +205,3 @@ return {
         },
     },
 }
-

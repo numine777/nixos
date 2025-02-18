@@ -1,6 +1,9 @@
 {
   "extras": [
     "lazyvim.plugins.extras.editor.navic",
+    "lazyvim.plugins.extras.lang.java",
+    "lazyvim.plugins.extras.lang.kotlin",
+    "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lsp.none-ls"
   ],
   "install_version": 7,

@@ -18,6 +18,7 @@ return {
         nls.builtins.formatting.shfmt,
         nls.builtins.formatting.buildifier,
         nls.builtins.formatting.nixpkgs_fmt,
+        nls.builtins.formatting.biome,
       },
     }
   end,

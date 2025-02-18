@@ -42,7 +42,7 @@
       editors = {
         neovim.enable = true;
         vim.enable = false;
-        emacs.enable = true;
+        emacs.enable = false;
         helix.enable = true;
       };
       programs = {

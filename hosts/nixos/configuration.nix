@@ -9,7 +9,6 @@
       # Other Modules
       ../../modules/system/env.nix
       ../../modules/system/fonts.nix
-      ../../modules/system/sound.nix
       ../../modules/system/xorg.nix
     ];
   nixpkgs.config.allowUnfree = true;
@@ -79,7 +78,7 @@
   ];
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.git;
     settings.trusted-users = [ "root" "scott" "@wheel" ];
     extraOptions = ''
       experimental-features = nix-command flakes

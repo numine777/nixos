@@ -10,13 +10,18 @@ in
     arandr
     brave
     firefox
-    gcc
+    # gcc
     my_flameshot
+    jdk21
+    bazelisk
+    maven
+    niv
     rofi
     mosh
     nix-top
     nix-output-monitor
     my_slack
+    nasm
   ];
   home.file.".config/rofi".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/rofi";

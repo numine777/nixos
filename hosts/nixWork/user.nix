@@ -35,7 +35,7 @@
     targets.genericLinux.enable = true;
     modules = {
       desktop = {
-        picom.enable = true;
+        picom.enable = false;
         dunst.enable = true;
         windowManager = {
           awesome.enable = true;
@@ -55,7 +55,7 @@
         golang.enable = true;
       };
       editors = {
-        emacs.enable = false;
+        emacs.enable = true;
         neovim.enable = true;
         vim.enable = false;
         helix.enable = true;

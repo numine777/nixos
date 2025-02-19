@@ -201,6 +201,8 @@ in
     #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim-nix/lua";
     home.file.".config/nvim".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim-lazy";
+    # home.file.".config/nvim".source =
+    #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/nvim";
     # home.file.".config/lvim".source =
     #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/lvim";
     # home.file.".config/astronvim".source =

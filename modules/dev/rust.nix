@@ -9,7 +9,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.rustup ];
+    home.packages = [ pkgs.rustup pkgs.cargo-nextest ];
     home.sessionVariables = {
       RUSTUP_HOME = "${config.home.homeDirectory}/.local/share/rustup";
       CARGO_HOME = "${config.home.homeDirectory}/.local/share/cargo";

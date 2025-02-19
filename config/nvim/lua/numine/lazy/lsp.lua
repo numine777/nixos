@@ -53,10 +53,10 @@ return {
 			ensure_installed = {
 				"clangd",
 				"lua_ls",
-				"rnix",
 				"nil_ls",
 				"pyright",
 				"rust_analyzer",
+                "starpls",
 				-- replaced by typescript-tools
 				-- "tsserver",
 			},

@@ -1,6 +1,6 @@
 M = {}
 function M.ColorMyPencils(color)
-  color = color or "tokyonight-night"
+  color = color or "gruvbuddy"
   vim.cmd.colorscheme(color)
 
   local hl = function(thing, opts)
@@ -42,9 +42,9 @@ function M.ColorMyPencils(color)
     bg = "none",
   })
 
-  -- hl("LineNr", {
-  --   fg = "#5eacd3",
-  -- })
+  hl("LineNr", {
+    fg = "#5eacd3",
+  })
 
   -- hl("netrwDir", {
   --   fg = "#5eacd3",

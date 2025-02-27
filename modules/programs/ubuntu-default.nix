@@ -5,6 +5,7 @@
     nixgl.auto.nixGLNvidia
     git-lfs-2_13
     openssl
+    zed-editor
   ];
   home.file.".config/rofi".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/rofi";

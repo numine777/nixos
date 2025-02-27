@@ -9,6 +9,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ clojure leiningen jre8 ];
+    home.packages = with pkgs; [ clojure leiningen ];
   };
 }

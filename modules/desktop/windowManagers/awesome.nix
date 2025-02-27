@@ -9,6 +9,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    xsession.windowManager.awesome = {
+      enable = true;
+      package = pkgs.awesome-git;
+    };
     home.file = {
       ".config/awesome".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/awesome";
       "nixos/config/awesome/modules/bling".source = inputs.bling.outPath;

@@ -49,11 +49,11 @@ return {
         },
         opts = {
             -- Default configuration
-            hints = { enabled = false },
+            hints = { enabled = true },
 
             ---@alias AvanteProvider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-            provider = "claude",                     -- Recommend using Claude
-            auto_suggestions_provider = "vllm_zeta", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
+            provider = "ollama_qwen_32",                     -- Recommend using Claude
+            auto_suggestions_provider = "ollama_qwen_32", -- Since auto-suggestions are a high-frequency operation and therefore expensive, it is recommended to specify an inexpensive provider or even a free provider: copilot
             claude = {
                 endpoint = "https://api.anthropic.com",
                 model = "claude-3-5-sonnet-20241022",
@@ -64,7 +64,7 @@ return {
                 ollama_qwen_32 = {
                     __inherited_from = "openai",
                     api_key_name = "",
-                    endpoint = "http://192.168.4.26/v1",
+                    endpoint = "http://192.168.4.26:11435/v1",
                     model = "qwen2.5-coder:32b",
                     max_tokens = 128000,
                     temperature = 0,

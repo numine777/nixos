@@ -8,10 +8,13 @@ return {
             provider_options = {
                 openai_fim_compatible = {
                     api_key = 'TERM',
-                    name = 'Vllm',
-                    end_point = 'http://192.168.4.26/v1/completions',
+                    -- name = 'Vllm',
+                    name = 'Ollama',
+                    -- end_point = 'http://192.168.4.26/v1/completions',
+                    end_point = 'http://192.168.4.26:11435/v1/completions',
                     -- model = 'zed-industries/zeta',
-                    model = 'Qwen/Qwen2.5-Coder-14B-Instruct',
+                    -- model = 'Qwen/Qwen2.5-Coder-14B-Instruct',
+                    model = 'qwen2.5-coder:32b',
                     optional = {
                         max_tokens = 256,
                         top_p = 0.9,

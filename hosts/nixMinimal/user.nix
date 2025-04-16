@@ -2,6 +2,7 @@
 {
   imports = [
     ../../modules/shell/linux-default.nix
+    ../../modules/editors/emacs.nix
     ../../modules/editors/neovim.nix
     ../../modules/dev/lua.nix
     ../../modules/dev/node.nix
@@ -20,7 +21,7 @@
       LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
     };
     programs.bash = {
-        enable = true;
+        enable = false;
         bashrcExtra = ''
             eval "$(direnv hook bash)"
         '';
@@ -28,13 +29,14 @@
     targets.genericLinux.enable = true;
     modules = {
       dev = {
-        lua.enable = true;
-        nix.enable = true;
+        lua.enable = false;
+        nix.enable = false;
         node.enable = true;
-        python.enable = true;
+        python.enable = false;
         rust.enable = true;
       };
       editors = {
+        emacs.enable = true;
         neovim.enable = true;
       };
     };

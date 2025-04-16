@@ -65,7 +65,7 @@ autocmd({ "BufNewFile", "BufRead" }, {
   command = ":set ft=bash",
 })
 
-autocmd("ColorScheme", {
+autocmd({ "BufNewFile", "BufRead", "ColorScheme" }, {
   group = ColorGroup,
   pattern = "*",
   callback = function()

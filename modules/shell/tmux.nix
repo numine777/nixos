@@ -16,6 +16,7 @@
   # vim style yank
   bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -i -sel clip > /dev/null"
   bind-key p run "xclip -o -sel clip | tmux load-buffer - ; tmux paste-buffer"
+  set -g set-clipboard external
   # Mouse
   set-option -g mouse on
   # reload tmux config

@@ -8,7 +8,8 @@
     lazydocker
     # niv
     nnn
-    # obsidian
+    obsidian
+    nemo
     # slack
     tree-sitter
   ];

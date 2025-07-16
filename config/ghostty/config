@@ -1,10 +1,14 @@
 font-family = BerkeleyMono Nerd Font
-font-size = 20
+font-size = 16
 cursor-style = block
 # macos-titlebar-style = hidden
+shell-integration = zsh
 window-padding-x = 2
 window-padding-y = 2
 shell-integration = zsh
-# background-opacity = 0.90
-# background-blur-radius = 15
+background-opacity = 0.90
+background-blur-radius = 15
 # theme = tokyonight
+background = #111111
+confirm-close-surface = false
+window-decoration = none

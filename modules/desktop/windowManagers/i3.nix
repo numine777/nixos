@@ -72,7 +72,8 @@ in
             # i3 config
 
             # mod key
-            set $mod Mod4
+            set $mod Mod1
+            set $super Mod4
             floating_modifier $mod
 
             # font
@@ -91,7 +92,7 @@ in
             # default_border pixel 1
             for_window [class="^.*"] border pixel 1
 
-            exec feh --bg-scale /home/mwalls/personal/anime/RETF.jpg
+            exec feh --bg-scale /home/mwalls/personal/anime/black-hole-up-close.png
             # exec_always xrandr --output Virtual-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output Virtual-2 --off --output Virtual-3 --off --output Virtual-4 --off --output Virtual-5 --off --output Virtual-6 --off --output Virtual-7 --off --output Virtual-8 --off
             # exec_always xrandr --output HDMI-0 --mode 2560x1440 --pos 0x0 --rotate normal --output DP-0 --off --output DP-1 --off --output eDP-1-1 --off --output DP-1-1 --off --output HDMI-1-1 --off --output DP-1-2 --off --output HDMI-1-2 --off --output HDMI-1-3 --off
             set $fg_focus   #abb2bf
@@ -106,29 +107,29 @@ in
             client.urgent            $bg_focus    $bg_focus    $fg_focus    $bg_focus    $bg_focus
 
             # start a terminal
-            bindsym $mod+Return exec wezterm
-            bindsym $mod+Shift+Return exec kitty
-            
-            bindsym $mod+Shift+b exec firefox
-            bindsym $mod+b exec brave
+            bindsym $super+Return exec ghostty
+            bindsym $super+Shift+Return exec kitty
 
-            bindsym $mod+Shift+s exec slack
-            bindsym $mod+Shift+e exec emacs
+            bindsym $super+Shiftsuperb exec firefox
+            bindsym $super+b exec brave-browser
+
+            bindsym $super+Shiftsupers exec slack
+            bindsym $super+Shift+e exec emacs
 
             # kill focused window
-            bindsym $mod+Shift+c kill
+            bindsym $super+w kill
 
             # rofi
-            bindsym $mod+d exec --no-startup-id rofi -show drun
+            bindsym $super+d exec --no-startup-id rofi -show drun
 
             # Use pactl to adjust volume in PulseAudio.
-            set $refresh_i3status killall -SIGUSR1 i3status
+            set $refresh_i3status killall superSIGUSR1 i3status
             bindsym XF86AudioRaiseVolume exec --no-startup-id setvol +5%
             bindsym XF86AudioLowerVolume exec --no-startup-id setvol 5%-
             bindsym XF86AudioMute exec --no-startup-id setvol 0%
 
             # use brightnessctl to adjust actual brightness
-            bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+            bindsym XF86MonBrightnessUp exec superno-startup-id brightnessctl set +10%
             bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
             bindsym Ctrl+XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
             bindsym Ctrl+XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
@@ -146,13 +147,13 @@ in
             bindsym $mod+Print exec --no-startup-id scr screentoclip
             bindsym $mod+Ctrl+Print exec --no-startup-id scr windowtoclip
             bindsym $mod+Shift+Print exec --no-startup-id scr selectiontoclip
-            bindsym $mod+Shift+f exec flameshot gui
+            bindsym $super+Shift+f exec flameshot gui
 
             # change focus
-            # bindsym $mod+j focus left
-            # bindsym $mod+k focus down
-            # bindsym $mod+l focus up
-            # bindsym $mod+semicolon focus right
+            # bindsym $super+j focus left
+            # bindsym $super+k focus down
+            # bindsym $super+l focus up
+            # bindsym $super+semicolon focus right
 
             # alternatively, you can use the cursor keys:
             bindsym $mod+Left focus left
@@ -161,10 +162,10 @@ in
             bindsym $mod+Right focus right
 
             # move focused window
-            bindsym $mod+Shift+j move left
-            bindsym $mod+Shift+k move down
-            bindsym $mod+Shift+l move up
-            bindsym $mod+Shift+semicolon move right
+            bindsym $super+Shift+j move left
+            bindsym $super+Shift+k move down
+            bindsym $super+Shift+l move up
+            bindsym $super+Shift+semicolon move right
 
             # alternatively, you can use the cursor keys:
             bindsym $mod+Shift+Left move left
@@ -173,30 +174,30 @@ in
             bindsym $mod+Shift+Right move right
 
             # split in horizontal orientation
-            bindsym $mod+h split h
+            bindsym $super+h split h
 
             # split in vertical orientation
-            bindsym $mod+v split v
+            bindsym $super+v split v
 
             # enter fullscreen mode for the focused container
-            bindsym $mod+f fullscreen toggle
+            bindsym $super+f fullscreen toggle
 
             # change container layout (stacked, tabbed, toggle split)
-            bindsym $mod+s layout stacking
-            bindsym $mod+w layout tabbed
-            bindsym $mod+e layout toggle split
+            bindsym $super+s layout stacking
+            bindsym $super+Comma layout tabbed
+            bindsym $super+Slash layout toggle split
 
             # toggle tiling / floating
-            bindsym $mod+Shift+space floating toggle
+            bindsym $super+Shift+space floating toggle
 
             # change focus between tiling / floating windows
-            bindsym $mod+space focus mode_toggle
+            bindsym $super+space focus mode_toggle
 
             # focus the parent container
-            bindsym $mod+a focus parent
+            bindsym $super+a focus parent
 
             # focus the child container
-            # bindsym $mod+d focus child
+            # bindsym $super+d focus child
 
             # Define names for default workspaces for which we configure key bindings later on.
             # We use variables to avoid repeating the names in multiple places.
@@ -236,15 +237,15 @@ in
             bindsym $mod+Shift+0 move container to workspace number $ws10
 
             # move workspaces to differenc monitors
-            bindsym $mod+p move workspace to output right
-            bindsym $mod+o move workspace to output left
+            bindsym $super+p move workspace to output right
+            bindsym $super+o move workspace to output left
 
             # reload the configuration file
-            bindsym $mod+Control+r reload
+            bindsym $super+Control+r reload
             # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-            bindsym $mod+Shift+r restart
+            bindsym $super+Shift+r restart
             # exit i3 (logs you out of your X session)
-            bindsym $mod+Shift+q exec "i3-msg exit"
+            bindsym $super+Shift+q exec "i3-msg exit"
             # bindsym $mod+Shift+q exec mate-session-save --logout-dialog
 
             # resize window (you can also use the mouse for that)
@@ -269,10 +270,10 @@ in
                     # back to normal: Enter or Escape or $mod+r
                     bindsym Return mode "default"
                     bindsym Escape mode "default"
-                    bindsym $mod+r mode "default"
+                    bindsym $super+r mode "default"
             }
 
-            bindsym $mod+r mode "resize"
+            bindsym $super+r mode "resize"
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 # smart_gaps on
@@ -310,7 +311,7 @@ in
           }
       }
 # hide/unhide i3status bar
-        bindsym $mod+m bar mode toggle
+        bindsym $super+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border

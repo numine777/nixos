@@ -29,13 +29,10 @@
     home.username = "mwalls";
     home.stateVersion = "23.11";
     home.keyboard = null;
-    home.sessionVariables = {
-      LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
-    };
     targets.genericLinux.enable = true;
     modules = {
       desktop = {
-        picom.enable = false;
+        picom.enable = true;
         dunst.enable = true;
         windowManager = {
           awesome.enable = true;
@@ -64,6 +61,7 @@
         bottom.enable = true;
         irssi.enable = false;
         kitty.enable = true;
+        ghostty.enable = true;
         wezterm.enable = false;
         alacritty.enable = true;
         graphics = {

@@ -1,7 +1,9 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-let cfg = config.modules.programs.ghostty;
+let
+  cfg = config.modules.programs.ghostty;
+  nixGLWrap = import ../../utils/nixGLWrap.nix { pkgs = pkgs; };
 in
 {
   options.modules.programs.ghostty = {
@@ -10,6 +12,7 @@ in
 
   config = mkIf cfg.enable {
     programs.ghostty = {
+      package = nixGLWrap pkgs.ghostty;
       enable = true;
     };
     home.file.".config/ghostty".source =

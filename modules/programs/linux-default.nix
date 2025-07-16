@@ -8,8 +8,6 @@ in
   imports = [ ./common.nix ];
   home.packages = with pkgs; [
     arandr
-    brave
-    firefox
     # gcc
     my_flameshot
     jdk21

@@ -1,12 +1,7 @@
-theme = "tokyonight"
+theme = "rose_pine_transparent"
 
 [editor]
 true-color = true
 line-number = "relative"
 auto-pairs = false
-
-[keys.normal]
-C-p = "file_picker"
-
-[keys.insert]
-C-c = "normal_mode"
+clipboard-provider = "termcode"

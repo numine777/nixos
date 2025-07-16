@@ -3,7 +3,7 @@
   imports = [ ./linux-default.nix ];
   home.packages = with pkgs; [
     _1password-gui
-    brave
+    # brave
     discord
     firefox
     notion-app-enhanced

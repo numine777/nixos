@@ -2,7 +2,7 @@
 {
   programs.kitty.settings = {
     # gruvbox material --------------------------------------------
-    background = "#1d2021";
+    background = "#111111";
     foreground = "#d4be98";
     selection_background = "#d4be98";
     selection_foreground = "#1d2021";

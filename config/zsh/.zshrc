@@ -1,5 +1,6 @@
 # .zshrc
 
+ZSH_DISABLE_COMPFIX=true
 ### Added by Zinit's installer
 declare -A ZINIT
 ZINIT[HOME_DIR]=$HOME/.zsh/zinit

@@ -20,7 +20,7 @@ in
       package = nixGLWrap pkgs.kitty;
       enable = true;
       font = {
-        name = "JetBrainsMono Nerd Font";
+        name = "BerkeleyMono Nerd Font";
         size = 16;
       };
       settings = {

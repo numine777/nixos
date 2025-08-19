@@ -49,7 +49,7 @@
         bottom.enable = true;
         kitty.enable = false;
         alacritty.enable = false;
-        ghostty.enable = true;
+        ghostty.enable = false;
         graphics = {
           aseprite.enable = false;
           gimp.enable = false;

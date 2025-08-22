@@ -1,9 +1,76 @@
+##########################
+# Language server definitions
+##########################
+[language-server.vtsls]
+command = "vtsls"
+args = ["--stdio"]
+
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
+# Example config (optional):
+[language-server.basedpyright.config]
+basedpyright.analysis.diagnosticMode = "openFilesOnly"
+
 [language-server.starlark-lsp]
 # command = "$XDG_DATA_HOME/nvim/mason/bin/starpls server"
-command = "/home/mwalls/.local/share/nvim/mason/bin/starpls"
+command = "starpls"
 args = [ "server" ]
- 
+
+##########################
+# Bazel lsp
+##########################
 [[language]]
 name = "starlark"
+scope = "source.bzl"
+file-types = ["bzl", "bazel", "BUILD", "WORKSPACE"]
+roots = ["package.json", "tsconfig.json"]
 language-servers = [ "starlark-lsp" ]
 formatter = { command = "buildifier", args = ["-type", "auto"] }
+
+##########################
+# TypeScript with vtsls
+##########################
+[[language]]
+name = "typescript"
+scope = "source.ts"
+file-types = ["ts"]
+roots = ["package.json", "tsconfig.json"]
+language-servers = ["vtsls"]
+formatter = { command = "node", args = ["./node_modules/.bin/biome", "lint", "--apply", "--stdin-file-path", "{file}"] }
+
+[[language]]
+name = "tsx"
+language-id = "typescriptreact"
+scope = "source.tsx"
+file-types = ["tsx"]
+roots = ["package.json", "tsconfig.json"]
+language-servers = ["vtsls"]
+formatter = { command = "node", args = ["./node_modules/.bin/biome", "lint", "--apply", "--stdin-file-path", "{file}"] }
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+file-types = ["js", "mjs", "cjs"]
+roots = ["package.json"]
+language-servers = ["vtsls"]
+formatter = { command = "node", args = ["./node_modules/.bin/biome", "lint", "--apply", "--stdin-file-path", "{file}"] }
+
+[[language]]
+name = "jsx"
+language-id = "javascriptreact"
+scope = "source.jsx"
+file-types = ["jsx"]
+roots = ["package.json"]
+language-servers = ["vtsls"]
+formatter = { command = "node", args = ["./node_modules/.bin/biome", "lint", "--apply", "--stdin-file-path", "{file}"] }
+
+##########################
+# Python with basedpyright
+##########################
+[[language]]
+name = "python"
+scope = "source.python"
+file-types = ["py"]
+roots = ["pyproject.toml", "requirements.txt"]
+language-servers = ["basedpyright"]

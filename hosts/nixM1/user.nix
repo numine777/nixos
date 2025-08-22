@@ -6,6 +6,7 @@
     ../../modules/editors/vim.nix
     ../../modules/editors/emacs.nix
     ../../modules/editors/helix.nix
+    ../../modules/editors/lsps.nix
     ../../modules/dev/clojure.nix
     ../../modules/dev/go.nix
     ../../modules/dev/lua.nix
@@ -33,7 +34,7 @@
         clojure.enable = false;
         lua.enable = true;
         nix.enable = false;
-        node.enable = false;
+        node.enable = true;
         python.enable = false;
         rust.enable = true;
         ocaml.enable = false;
@@ -44,6 +45,7 @@
         vim.enable = false;
         emacs.enable = false;
         helix.enable = true;
+        lsp.enable = true;
       };
       programs = {
         bottom.enable = true;

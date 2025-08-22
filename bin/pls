@@ -56,7 +56,7 @@ while [ "$1" ]; do
       exit ;;
     rebuild-mac)
       if [ $(which darwin-rebuild) ]; then
-	      darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#Scotts-MacBook-Pro"
+	      sudo darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#Scotts-MacBook-Pro"
       else
         sudo nix run --experimental-features "nix-command flakes" nix-darwin/master#darwin-rebuild -- switch --flake "$HOME/nixos#Scotts-MacBook-Pro"
       fi

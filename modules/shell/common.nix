@@ -44,6 +44,8 @@
     tmux
     unzip
     zellij
+    mergiraf
+    difftastic
   ];
 
   # not big enough for their own modules

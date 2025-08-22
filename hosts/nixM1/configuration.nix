@@ -24,13 +24,13 @@
         NSAutomaticSpellingCorrectionEnabled = false;
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
       };
 
       dock = {
         autohide = true;
         mru-spaces = false;
-        orientation = "left";
+        orientation = "bottom";
         showhidden = true;
       };
 
@@ -56,7 +56,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    coreutils
+    # coreutils
     git
     gnupg
     vim

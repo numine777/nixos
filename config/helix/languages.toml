@@ -1,0 +1,9 @@
+[language-server.starlark-lsp]
+# command = "$XDG_DATA_HOME/nvim/mason/bin/starpls server"
+command = "/home/mwalls/.local/share/nvim/mason/bin/starpls"
+args = [ "server" ]
+ 
+[[language]]
+name = "starlark"
+language-servers = [ "starlark-lsp" ]
+formatter = { command = "buildifier", args = ["-type", "auto"] }

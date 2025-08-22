@@ -1,7 +1,7 @@
-theme = "tokyonight"
+theme = "rose_pine_transparent"
 
 [editor]
 true-color = true
 line-number = "relative"
 auto-pairs = false
-
+clipboard-provider = "termcode"

@@ -8,6 +8,7 @@
     ./zsh.nix
   ];
   home.packages = with pkgs; [
+    postgresql
     bottom
     delta
     eza

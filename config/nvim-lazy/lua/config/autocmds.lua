@@ -65,10 +65,3 @@ autocmd({ "BufNewFile", "BufRead" }, {
   command = ":set ft=bash",
 })
 
-autocmd({ "BufNewFile", "BufRead", "ColorScheme" }, {
-  group = ColorGroup,
-  pattern = "*",
-  callback = function()
-    require("utils.colors").ColorMyPencils()
-  end,
-})

@@ -11,7 +11,7 @@ pkgs.buildEnv {
   paths =
     [ pkg ] ++
     (map
-      (bin: pkgs.hiPrio (
+      (bin: pkgs.lib.hiPrio (
         pkgs.writeShellScriptBin bin ''
           exec -a "$0" "${nixGL.auto.nixGLDefault}/bin/nixGL" "${bins}/${bin}" "$@"
         ''

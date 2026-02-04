@@ -34,9 +34,15 @@ return {
         "tjdevries/colorbuddy.nvim",
     },
     {
+        "ellisonleao/gruvbox.nvim",
+        opts = {
+            transparent_mode = true,
+        },
+    },
+    {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "gruvbuddy",
+            colorscheme = "rose-pine",
         },
     },
 }

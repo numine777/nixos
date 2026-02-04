@@ -66,7 +66,7 @@
         alacritty.enable = true;
         graphics = {
           aseprite.enable = false;
-          gimp.enable = true;
+          gimp.enable = false;
           inkscape.enable = true;
           krita.enable = false;
         };

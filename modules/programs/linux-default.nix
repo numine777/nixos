@@ -16,6 +16,7 @@ in
     niv
     rofi
     mosh
+    eternal-terminal
     nix-top
     nix-output-monitor
     my_slack

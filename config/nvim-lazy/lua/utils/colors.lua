@@ -1,7 +1,10 @@
 M = {}
 function M.ColorMyPencils(color)
-  color = color or "gruvbuddy"
+  color = color or "rose-pine"
   vim.cmd.colorscheme(color)
+  vim.schedule(function()
+    require("lualine").refresh()
+  end)
 
   local hl = function(thing, opts)
     vim.api.nvim_set_hl(0, thing, opts)
@@ -10,8 +13,10 @@ function M.ColorMyPencils(color)
   -- local statusline_hl = vim.api.nvim_get_hl_by_name("StatusLine", true)
   -- local cursorline_hl = vim.api.nvim_get_hl_by_name("CursorLine", true)
   -- local normal_hl = vim.api.nvim_get_hl_by_name("Normal", true)
-  -- hl("Normal", { bg = "none" })
-  -- hl("NormalFloat", { bg = "none" })
+  -- local win_hls = { "Normal", "NormalFloat", "FloatBorder", "FloatTitle", "FloatFooter", "SignColumn", "SignColumnSB" }
+  -- for _, group in ipairs(win_hls) do
+  --   hl(group, { bg = "none" })
+  -- end
   -- hl("CmpItemKindCopilot", { fg = "#6CC644" })
   -- hl("CmpItemKindTabnine", { fg = "#CA42F0" })
   -- hl("CmpItemKindCrate", { fg = "#F64D00" })
@@ -21,13 +26,9 @@ function M.ColorMyPencils(color)
   -- hl("SLBranchName", { fg = normal_hl.foreground, bg = cursorline_hl.background })
   -- hl("SLSeparator", { fg = cursorline_hl.background, bg = statusline_hl.background })
 
-  hl("SignColumn", {
-    bg = "none",
-  })
-
   hl("ColorColumn", {
     ctermbg = 0,
-    bg = "#555555",
+    bg = "None",
   })
 
   hl("CursorLineNR", {
@@ -38,9 +39,9 @@ function M.ColorMyPencils(color)
     bg = "none",
   })
 
-  hl("NormalFloat", {
-    bg = "none",
-  })
+  -- hl("NormalFloat", {
+  --   bg = "none",
+  -- })
 
   hl("LineNr", {
     fg = "#5eacd3",

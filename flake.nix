@@ -1,7 +1,7 @@
 {
   description = "My NixOS/Nix-Darwin Configurations";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
@@ -25,7 +25,7 @@
       pkgs-git-lfs = import nixpkgs-git-lfs { system = "x86_64-linux"; };
       gitLfsOverlay = (_: _: { git-lfs-2_13 = pkgs-git-lfs.git-lfs; });
       customVimOverlay = import ./overlays/customVim.nix;
-      # customPkgsOverlay = import ./overlays/customPkgs.nix;
+      customPkgsOverlay = import ./overlays/customPkgs.nix;
 
       extraSpecialArgs = {
         inherit inputs self;
@@ -45,7 +45,7 @@
       overlays = [
         nixpkgs-f2k.overlays.default
         customVimOverlay
-        # customPkgsOverlay
+        customPkgsOverlay
       ];
     in
     {

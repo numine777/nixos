@@ -45,6 +45,10 @@
     tmux
     unzip
     zellij
+    mergiraf
+    difftastic
+    postgresql
+    mariadb
   ];
 
   # not big enough for their own modules

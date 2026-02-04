@@ -2,6 +2,7 @@
 {
   imports = [
     ./common.nix
+    ./git.nix
   ];
   home.packages = with pkgs; [
     direnv

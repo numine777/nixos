@@ -55,7 +55,11 @@ while [ "$1" ]; do
       notify-send -i "$HOME/nixos/nixos.png" "pls" "$host nixos config rebuilt "
       exit ;;
     rebuild-mac)
-      darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#Scotts-MacBook-Pro"
+      if [ $(which darwin-rebuild) ]; then
+	      sudo darwin-rebuild "${2:-switch}" --flake "$HOME/nixos#Scotts-MacBook-Pro"
+      else
+        sudo nix run --experimental-features "nix-command flakes" nix-darwin/master#darwin-rebuild -- switch --flake "$HOME/nixos#Scotts-MacBook-Pro"
+      fi
       exit ;;
     repl)
       [ ! -r /tmp/nixos-repl.nix ] && echo "builtins.getFlake (toString $HOME/nixos)" > /tmp/nixos-repl

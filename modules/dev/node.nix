@@ -9,7 +9,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ pkgs.nodejs ];
+    home.packages = with pkgs; [ nodejs pnpm bun ];
     home.sessionVariables = {
       NPM_CONFIG_USERCONFIG = "$HOME/.config/npm/config";
       NPM_CONFIG_CACHE = "$HOME/.cache/npm";

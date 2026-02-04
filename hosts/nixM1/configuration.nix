@@ -24,13 +24,13 @@
         NSAutomaticSpellingCorrectionEnabled = false;
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
       };
 
       dock = {
         autohide = true;
         mru-spaces = false;
-        orientation = "left";
+        orientation = "bottom";
         showhidden = true;
       };
 
@@ -51,11 +51,12 @@
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
   system.stateVersion = 5;
+  system.primaryUser = "scott";
 
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    coreutils
+    # coreutils
     git
     gnupg
     vim
@@ -66,8 +67,6 @@
   services.yabai.package = pkgs.yabai;
   services.skhd.enable = false;
   services.skhd.package = pkgs.skhd;
-
-  services.nix-daemon.enable = true;
 
   nix.settings.sandbox = true;
   nix.settings.extra-sandbox-paths = [ "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
@@ -94,6 +93,5 @@
 
   environment.variables.LANG = "en_US.UTF-8";
 
-  nix.configureBuildUsers = true;
   nix.nrBuildUsers = 32;
 }

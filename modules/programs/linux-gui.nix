@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   imports = [ ./linux-default.nix ];
   home.packages = with pkgs; [
     _1password-gui
@@ -7,7 +6,7 @@
     discord
     firefox
     notion-app-enhanced
-    slack
+    # slack
     # synergy
   ];
 }

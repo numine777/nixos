@@ -24,6 +24,7 @@
     unzip
     wget
     xclip
+    w3m
     zoxide
 
     awscli

@@ -22,7 +22,7 @@ in
       nodePackages.prettier
       nodePackages.eslint
       ccls
-      tree-sitter
+      # tree-sitter
     ];
     programs.neovim =
       {

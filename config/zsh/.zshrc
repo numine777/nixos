@@ -224,3 +224,7 @@ precmd() {
     compinit
   fi
 }
+
+cp_from_shareddrive() {
+    cp -r "/mnt/media/sftpuser/files/$1" "$2"
+}

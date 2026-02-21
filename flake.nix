@@ -13,14 +13,22 @@
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs-git-lfs.url = "github:nixos/nixpkgs/83667ff60a88e22b76ef4b0bdf5334670b39c2b6";
+    nixpkgs-git-lfs.url =
+      "github:nixos/nixpkgs/83667ff60a88e22b76ef4b0bdf5334670b39c2b6";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     # awesomewm modules
-    bling = { url = "github:BlingCorp/bling"; flake = false; };
-    rubato = { url = "github:andOrlando/rubato"; flake = false; };
+    bling = {
+      url = "github:BlingCorp/bling";
+      flake = false;
+    };
+    rubato = {
+      url = "github:andOrlando/rubato";
+      flake = false;
+    };
   };
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, emacs-overlay, nixpkgs-f2k, darwin, nixgl, nixpkgs-git-lfs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, emacs-overlay
+    , nixpkgs-f2k, darwin, nixgl, nixpkgs-git-lfs, ... }@inputs:
     let
       pkgs-git-lfs = import nixpkgs-git-lfs { system = "x86_64-linux"; };
       gitLfsOverlay = (_: _: { git-lfs-2_13 = pkgs-git-lfs.git-lfs; });
@@ -42,13 +50,9 @@
       # neovim-nightly-darwin = import ./packages/neovim-nightly-darwin.nix { inherit (neovim-flake-darwin) neovim; inherit liblpeg lib; };
       # darwinNvimNightlyOverlay = (_: _: { neovim-nightly = neovim-nightly-darwin; });
 
-      overlays = [
-        nixpkgs-f2k.overlays.default
-        customVimOverlay
-        customPkgsOverlay
-      ];
-    in
-    {
+      overlays =
+        [ nixpkgs-f2k.overlays.default customVimOverlay customPkgsOverlay ];
+    in {
       homemanagerConfigurations = {
         minimalConfig = home-manager.lib.homeManagerConfiguration {
           inherit extraSpecialArgs;
@@ -56,48 +60,78 @@
           modules = [
             ./hosts/nixMinimal/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlays.default emacs-overlay.overlay ];
+              nixpkgs.overlays = overlays ++ [
+                gitLfsOverlay
+                neovim-nightly.overlays.default
+                emacs-overlay.overlay
+              ];
             }
           ];
         };
         nixWork = home-manager.lib.homeManagerConfiguration {
           inherit extraSpecialArgs;
-          pkgs = import nixpkgs { system = "x86_64-linux"; config = { allowUnfree = true; }; };
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config = { allowUnfree = true; };
+          };
           modules = [
             ./hosts/nixWork/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay nixgl.overlay neovim-nightly.overlays.default emacs-overlay.overlay ];
+              nixpkgs.overlays = overlays ++ [
+                gitLfsOverlay
+                nixgl.overlay
+                neovim-nightly.overlays.default
+                emacs-overlay.overlay
+              ];
             }
           ];
         };
         nixThelio = home-manager.lib.homeManagerConfiguration {
           inherit extraSpecialArgs;
-          pkgs = import nixpkgs { system = "x86_64-linux"; config = { allowUnfree = true; }; };
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config = { allowUnfree = true; };
+          };
           modules = [
             ./hosts/nixThelio/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ gitLfsOverlay neovim-nightly.overlays.default ];
+              nixpkgs.overlays = overlays ++ [
+                gitLfsOverlay
+                neovim-nightly.overlays.default
+                nixgl.overlay
+                emacs-overlay.overlay
+              ];
             }
           ];
         };
-        nixos = home-manager.lib.homeManagerConfiguration
-          {
-            inherit extraSpecialArgs;
-            pkgs = import nixpkgs { system = "x86_64-linux"; config = { allowUnfree = true; }; };
-            modules = [
-              ./hosts/nixos/user.nix
-              {
-                nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default ];
-              }
-            ];
+        nixos = home-manager.lib.homeManagerConfiguration {
+          inherit extraSpecialArgs;
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config = { allowUnfree = true; };
           };
+          modules = [
+            ./hosts/nixos/user.nix
+            {
+              nixpkgs.overlays = overlays ++ [
+                neovim-nightly.overlays.default
+                nixgl.overlay
+                emacs-overlay.overlay
+              ];
+            }
+          ];
+        };
         nixM1 = home-manager.lib.homeManagerConfiguration {
           inherit extraSpecialArgs;
-          pkgs = import nixpkgs { system = "aarch64-darwin"; config = { allowUnfree = true; }; };
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
+            config = { allowUnfree = true; };
+          };
           modules = [
             ./hosts/nixM1/user.nix
             {
-              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default emacs-overlay.overlay ];
+              nixpkgs.overlays = overlays
+                ++ [ neovim-nightly.overlays.default emacs-overlay.overlay ];
             }
           ];
         };
@@ -118,7 +152,8 @@
           system = "aarch64-darwin";
           modules = [
             {
-              nixpkgs.overlays = overlays ++ [ neovim-nightly.overlays.default ];
+              nixpkgs.overlays = overlays
+                ++ [ neovim-nightly.overlays.default ];
             }
             ./hosts/nixM1/configuration.nix
           ];

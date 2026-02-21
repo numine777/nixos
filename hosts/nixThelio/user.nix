@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   imports = [
     ../../modules/shell/linux-default.nix
     ../../modules/editors/neovim.nix
@@ -16,40 +15,19 @@
     ../../modules/programs/linux-gui.nix
     ../../modules/desktop
     ../../modules/desktop/gtk.nix
-    ../../modules/desktop/windowManagers/awesome.nix
-    ../../modules/desktop/windowManagers/berry.nix
-    ../../modules/desktop/windowManagers/herbstluftwm.nix
-    ../../modules/desktop/windowManagers/i3.nix
-    ../../modules/desktop/windowManagers/sway.nix
   ];
 
   config = {
     programs.home-manager.enable = true;
-    home.homeDirectory = "/home/scot";
-    home.username = "scot";
+    home.homeDirectory = "/home/scott";
+    home.username = "scott";
     home.stateVersion = "23.11";
     home.keyboard = null;
-    home.sessionVariables = {
-      LOCALE_ARCHIVE_2_21 = /usr/lib/locale/locale-archive;
-    };
-    programs.bash = {
-      enable = true;
-      bashrcExtra = ''
-        eval "$(direnv hook bash)"
-      '';
-    };
     targets.genericLinux.enable = true;
     modules = {
       desktop = {
         picom.enable = true;
         dunst.enable = true;
-        windowManager = {
-          awesome.enable = true;
-          berry.enable = false;
-          herbstluftwm.enable = false;
-          i3.enable = true;
-          sway.enable = false;
-        };
       };
       dev = {
         clojure.enable = true;
@@ -61,7 +39,7 @@
         golang.enable = true;
       };
       editors = {
-        emacs.enable = false;
+        emacs.enable = true;
         neovim.enable = true;
         vim.enable = false;
         helix.enable = true;
@@ -69,7 +47,7 @@
       programs = {
         bottom.enable = true;
         irssi.enable = false;
-        kitty.enable = false;
+        kitty.enable = true;
         wezterm.enable = false;
         alacritty.enable = false;
         graphics = {

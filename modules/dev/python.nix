@@ -10,10 +10,9 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      python39
-      python39Packages.pip
+      python312
+      python312Packages.pip
       poetry
-      nodePackages.pyright
     ];
   };
 }

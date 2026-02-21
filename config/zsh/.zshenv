@@ -52,5 +52,6 @@ export PATH="$PATH:$ANDROID_SDK_ROOT/tools/bin"
 export PATH="$PATH:$ANDROID_SDK_ROOT/platform-tools"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$HOME/.nix-profile/bin:$PATH"
+export LC_ALL=C.UTF-8
 
 unset TMOUT

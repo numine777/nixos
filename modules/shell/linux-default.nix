@@ -12,7 +12,7 @@
     brightnessctl
     ccls
     btop
-    # direnv
+    direnv
     efibootmgr
     feh
     fortune

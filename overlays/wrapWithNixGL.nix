@@ -30,6 +30,7 @@ let
     in final.symlinkJoin {
       name = "${package.name}-nixgl";
       paths = (map wrapBin binFiles) ++ [ package ];
+      meta = package.meta // { mainProgram = lib.getName package; };
     };
 
   wrappers = let replacePrefix = replaceStrings [ "wrapWithNixGL" ] [ "nixGL" ];

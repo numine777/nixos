@@ -217,10 +217,34 @@ export PNPM_HOME="/Users/scott/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 eval "$(rbenv init - zsh)"
-precmd() {
-  fpath_string=$(print -l $fpath)
-  if [[ ! $fpath_string =~ "$ZSH_COMPLETION_USER_DIR" ]]; then
-    fpath=("$ZSH_COMPLETION_USER_DIR" $fpath)
-    compinit
-  fi
-}
+# precmd() {
+#   fpath_string=$(print -l $fpath)
+#   if [[ ! $fpath_string =~ "$ZSH_COMPLETION_USER_DIR" ]]; then
+#     fpath=("$ZSH_COMPLETION_USER_DIR" $fpath)
+#     compinit
+#   fi
+# }
+
+# opencode
+export PATH=/Users/scott/.opencode/bin:$PATH
+
+# Added by Antigravity
+export PATH="/Users/scott/.antigravity/antigravity/bin:$PATH"
+
+
+# >>> nvwb
+# Sourcing the nvwb wrapper function was added during the NVIDIA AI Workbench installation and
+# is required for NVIDIA AI Workbench to function properly. When uninstalling
+# NVIDIA AI Workbench, it will be removed.
+
+source $HOME/.local/share/nvwb/nvwb-wrapper.sh
+# >>> nvwb
+
+
+. "$HOME/.local/share/../bin/env"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<

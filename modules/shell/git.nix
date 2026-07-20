@@ -1,11 +1,15 @@
 { config, pkgs, libs, ... }:
 {
   programs.git = {
-    enable = false;
+    enable = true;
+    # signing = {
+    #   key = "03F336CD4EE53555";
+    #   signByDefault = true;
+    # };
     settings = {
       user = {
-        name = "Scott Walls";
         email = "scottwalls2008@gmail.com";
+        name = "Scott Walls";
       };
       core = {
         pager = "delta";

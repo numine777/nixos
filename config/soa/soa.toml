@@ -1,0 +1,262 @@
+# soa — staged orchestration for local models.
+#
+# Pipeline: `soa run "task"` executes each [[stage]] in order. A stage sends
+# its rendered prompt to its model and loops on tool calls until the model
+# produces a final text answer, which becomes `{{previous}}` for the next
+# stage. The last stage's answer is printed to stdout.
+
+[settings]
+searxng_url = "http://localhost:8888"
+searxng_max_results = 8
+default_max_turns = 16
+request_timeout_secs = 600
+# Optional run-wide hard stops. Token/cost accounting uses provider-reported
+# usage; time covers stages, tools, agents, retries, and fallback. Resumed runs
+# carry prior usage and active time forward.
+# max_run_tokens = 500000
+# max_run_cost_usd = 5.00
+# max_run_secs = 3600
+# Tool results longer than this are truncated before entering the
+# conversation (a recursive directory tree can exceed the context window).
+max_tool_output_chars = 30000
+# When real token usage (as reported by the provider) exceeds this fraction
+# of a model's `context_tokens`, chat auto-compacts and stage loops truncate
+# older tool results. 0 disables; only applies to models that declare
+# `context_tokens`.
+auto_compact_threshold = 0.8
+# Effect-safe tool rounds dispatch concurrently (mutation, process execution,
+# and approval-gated calls stay sequential). Set false to serialize everything.
+parallel_tools = true
+# Transient provider failures (network errors, 408/429/5xx, interrupted
+# streams) are retried this many times with exponential backoff before a
+# turn errors — local servers restart and swap models often. 0 disables.
+provider_retries = 3
+# MCP handshakes and tool calls are abandoned after this many seconds, so a
+# wedged (but not crashed) server cannot hang a stage forever.
+# mcp_timeout_secs = 60
+# Project instructions: each file is discovered by walking up from the
+# working directory and appended to every stage and agent system prompt.
+# All candidates that exist are sourced in the listed order; missing ones
+# are skipped.
+# context_files = ["AGENTS.md", "SOA.md"]     # default: ["SOA.md"]
+# Model used by `soa reflect`, which distills saved sessions (denied calls,
+# tool errors, rolled-back changes) into a lessons block in SOA.md and,
+# occasionally, new skill files. Defaults to the first stage's model.
+# reflect_model = "planner"
+
+# ---------------------------------------------------------------------------
+# Providers: model endpoints plus their wire adapters. The default adapter is
+# OpenAI-compatible `/chat/completions`; `anthropic_messages` speaks
+# Anthropic's native Messages API. Protocol details stay isolated here.
+# ---------------------------------------------------------------------------
+
+[providers.spark]
+adapter = "open_ai_chat_completions"
+base_url = "http://192.168.6.7:8000/v1"
+data_boundary = "local"            # mark hosted/proprietary APIs "external"
+
+[providers.threadripper]
+adapter = "open_ai_chat_completions"
+base_url = "http://192.168.5.188:8000/v1"
+data_boundary = "local"
+# api_key = "${LMSTUDIO_API_KEY}"        # ${VAR} expands from the environment
+# Extra headers on every request (values support ${VAR}) — e.g. Azure's
+# api-key or OpenRouter's HTTP-Referer:
+# headers = { "x-portkey-provider" = "openai" }
+
+# Claude models over Anthropic's native API. The api_key is sent as
+# x-api-key; anthropic-version defaults to 2023-06-01 (override via
+# headers). Thinking blocks are round-tripped across tool rounds
+# automatically. Pair with cached_input_cost_per_million on the model for
+# honest cache-hit accounting.
+# [providers.anthropic]
+# adapter = "anthropic_messages"
+# base_url = "https://api.anthropic.com/v1"
+# api_key = "${ANTHROPIC_API_KEY}"
+# data_boundary = "external"
+
+# ---------------------------------------------------------------------------
+# Models: a provider + model id + default sampling parameters.
+# ---------------------------------------------------------------------------
+
+[models.planner]
+provider = "spark"
+model = "qwen"
+temperature = 0.7
+# Declaring the context window enables the real-usage gauge in the chat
+# status bar, auto-compaction, and mid-stage shedding of old tool results.
+context_tokens = 131072
+# Optional cost accounting, in USD per million tokens. Both prices are
+# required on every model when settings.max_run_cost_usd is set. Cache-read
+# prompt tokens bill at cached_input_cost_per_million when set (otherwise
+# the full input rate — safe over-counting for spend caps).
+# input_cost_per_million = 0.20
+# output_cost_per_million = 0.80
+# cached_input_cost_per_million = 0.02
+# Fail over to other [models] entries (in order) when this endpoint stays
+# down after settings.provider_retries.
+# fallback = ["coder"]
+# If a fallback provider has data_boundary = "external" while this one is
+# local, explicit consent is required:
+# allow_external_fallback = true
+
+[models.coder]
+provider = "threadripper"
+model = "qwen-haiku"
+temperature = 0.2
+max_tokens = 8192
+context_tokens = 131072
+# input_cost_per_million = 3.00
+# output_cost_per_million = 15.00
+
+[models.reviewer]
+provider = "spark"
+model = "qwen"
+temperature = 0.7
+# input_cost_per_million = 0.20
+# output_cost_per_million = 0.80
+
+# ---------------------------------------------------------------------------
+# MCP servers. transport = "stdio" spawns a process; "http" connects to a
+# streamable-HTTP endpoint. `readonly_tools` marks tools as safe for
+# read-only stages when the server doesn't annotate them with readOnlyHint.
+# ---------------------------------------------------------------------------
+
+[mcp.filesystem]
+transport = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/Users/scott/personal"]
+readonly_tools = ["read_file", "read_multiple_files", "list_directory", "search_files", "get_file_info", "directory_tree"]
+
+# [mcp.remote]
+# transport = "http"
+# url = "http://localhost:9000/mcp"
+# auth_token = "${REMOTE_MCP_TOKEN}"
+# headers = { "x-team" = "soa" }
+
+# ---------------------------------------------------------------------------
+# Agents: subagents that stages (or other agents) can delegate tasks to via
+# `subagents = [...]`. Each becomes a tool `agent__<name>` for the caller's
+# model; the agent runs its own tool loop and returns its final answer.
+# `description` tells the calling model when to delegate.
+# ---------------------------------------------------------------------------
+
+[agents.researcher]
+model = "planner"
+mode = "read_only"
+# mcp = ["filesystem"]
+web_search = true
+description = "Answers research questions about the codebase or from the web without changing anything. Good for looking up APIs, finding relevant files, or summarizing docs."
+system_prompt_file = "prompts/researcher.md"
+max_turns = 12
+
+# ---------------------------------------------------------------------------
+# Stages, executed in order.
+#   mode = "read_only"  -> only read-only tools are exposed to the model
+#   mode = "read_write" -> all tools from the listed MCP servers
+# Prompt templates may use {{input}}, {{previous}}, and {{stage.<name>}}.
+# ---------------------------------------------------------------------------
+
+[[stage]]
+name = "research"
+model = "planner"
+mode = "read_only"
+# mcp = ["filesystem"]
+files = true
+web_search = true
+# The built-in URL-fetching tool pairs well with search results:
+# web_fetch = true
+system_prompt_file = "prompts/research.md"
+
+[[stage]]
+name = "implement"
+model = "coder"
+mode = "read_write"
+# Built-in file tools rooted at the working directory: read_file, list_dir,
+# glob, grep, plus write_file and edit_file in read_write mode. No MCP
+# server needed for file access.
+files = true
+# mcp = ["filesystem"]
+subagents = ["researcher"]
+skills = ["careful-editing"]     # from skills/ next to this file (settings.skills_dir)
+shell = true                     # unrestricted shell (stage is read_write anyway)
+# Pause writes and non-cargo shell commands for interactive y/n/always
+# approval; cargo builds and researcher delegations run unprompted.
+# Broad shell approvals cover only simple commands, never compound shell
+# expressions such as `cargo test; other-command`.
+# Non-interactive runs deny gated calls instead of prompting.
+require_approval = true
+# Additional read-like effects can be gated too, for example:
+# approval_effects = ["network_egress"]
+auto_approve = ["shell cargo *", "agent__researcher"]
+max_turns = 32
+system_prompt_file = "prompts/implement.md"
+prompt = """
+# Task
+{{input}}
+
+# Research briefing
+{{stage.research}}
+
+# Latest input (plan or review feedback)
+{{previous}}
+"""
+
+# The reviewer can send work back: reprompting `implement` re-runs it with
+# the instructions as {{previous}}, and review runs again afterwards since
+# the pipeline resumes in declared order. `can_reprompt = ["review"]` also
+# lets it re-run itself (e.g. to re-inspect after reading more files).
+[[stage]]
+name = "review"
+model = "reviewer"
+mode = "read_only"
+# mcp = ["filesystem"]
+can_reprompt = ["implement", "review"]
+# The shell grant is independent of mode: review can run the test suite
+# without gaining any file-write tools. A non-empty shell_allow accepts only
+# simple commands; pipes, command lists, redirections, and substitutions are
+# rejected even if their text matches a wildcard.
+shell = true
+files = true
+shell_allow = ["cargo check*", "cargo test*", "cargo build*", "cargo clippy*", "git status*", "git diff*", "git log*"]
+system_prompt_file = "prompts/review.md"
+
+# ---------------------------------------------------------------------------
+# Hooks: shell commands bound to tool-call events. `match` uses the same
+# `*`-wildcard descriptors as auto_approve (`edit_file *`, `shell cargo *`,
+# `agent__researcher`). A pre_tool hook that exits non-zero blocks the call
+# (before any approval prompt); a post_tool hook that exits non-zero has
+# its output appended to the tool result so the model sees it. Hooks get a
+# JSON payload on stdin and SOA_EVENT / SOA_TOOL / SOA_DESCRIPTOR /
+# SOA_PATHS in the environment.
+# ---------------------------------------------------------------------------
+
+# [[hooks]]
+# event = "post_tool"                 # lint after every native file edit
+# match = "edit_file *"
+# command = "cargo fmt --check 2>&1 | head -20"
+
+# [[hooks]]
+# event = "pre_tool"                  # protect a directory from writes
+# match = "write_file secrets/*"
+# command = "echo 'secrets/ is off limits' >&2; exit 1"
+
+# ---------------------------------------------------------------------------
+# Workflows: named pipelines over the stage library. `soa run` uses the
+# workflow named "default" (or settings.default_workflow); pick another
+# with `soa run -w quickfix "task"`. `soa stages` lists them.
+# ---------------------------------------------------------------------------
+
+# Stages and agents also accept:
+#   tool_choice = "any"            # or a tool name; forces the FIRST model
+#                                  # turn to call it, later turns are free
+#   output_schema_file = "x.json"  # constrain the final answer to a JSON
+#                                  # Schema (or inline: [stage.output_schema])
+
+[workflows.default]
+description = "research, implement, review"
+stages = ["research", "implement", "review"]
+
+[workflows.quickfix]
+description = "skip research for small, well-understood changes"
+stages = ["implement", "review"]

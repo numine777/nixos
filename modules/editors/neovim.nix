@@ -13,21 +13,24 @@ in
       stylua
       shellcheck
       black
-      # python39Packages.isort
       nixpkgs-fmt
       nil
-      nodePackages.yaml-language-server
-      nodePackages.bash-language-server
-      nodePackages.typescript-language-server
-      nodePackages.prettier
-      nodePackages.eslint
+      yaml-language-server
+      bash-language-server
+      typescript-language-server
+      prettier
+      eslint
       ccls
-      tree-sitter
+      # tree-sitter
+      # neovide
     ];
     programs.neovim =
       {
         enable = true;
-        package = pkgs.neovim;
+        package = pkgs.neovim.overrideAttrs (old: {
+          doCheck = false;
+        });
+        sideloadInitLua = true;
         # plugins = with pkgs; [
         #   # vimPlugins.lazy-nvim
         #   # languages

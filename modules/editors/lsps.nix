@@ -15,9 +15,9 @@ in
       black
       nixpkgs-fmt
       nil
-      nodePackages.yaml-language-server
-      nodePackages.bash-language-server
-      nodePackages.typescript-language-server
+      yaml-language-server
+      bash-language-server
+      typescript-language-server
       clang-tools
       lua-language-server
       starpls

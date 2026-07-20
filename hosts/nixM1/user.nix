@@ -23,7 +23,7 @@
     programs.home-manager.enable = true;
     home.homeDirectory = "/Users/scott";
     home.username = "scott";
-    home.stateVersion = "22.11";
+    home.stateVersion = "26.05";
     modules = {
       desktop = {
         windowManager = {

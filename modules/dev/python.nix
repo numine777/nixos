@@ -13,7 +13,7 @@ in
       python39
       python39Packages.pip
       poetry
-      nodePackages.pyright
+      pyright
     ];
   };
 }

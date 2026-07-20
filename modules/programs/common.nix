@@ -9,7 +9,7 @@
     # niv
     nnn
     obsidian
-    nemo
+    # nemo
     # slack
     tree-sitter
   ];

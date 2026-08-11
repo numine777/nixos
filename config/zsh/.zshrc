@@ -132,7 +132,11 @@ bindkey '^[[H' beginning-of-line                  # home
 bindkey '^[[F' end-of-line                        # end
 bindkey '^H' backward-kill-word
 bindkey '5~' kill-word
-bindkey -s '^f' "tmux-sessionizer\n"
+if [[ -n $HERDR_ENV ]]; then
+    bindkey -s '^f' "herdr-sessionizer\n"
+elif [[ -n $TMUX ]]; then
+    bindkey -s '^f' "tmux-sessionizer\n"
+fi
 
 # # prompt
 # precmd() {

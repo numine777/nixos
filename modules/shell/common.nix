@@ -45,6 +45,7 @@
     tmux
     unzip
     zellij
+    herdr
     mergiraf
     difftastic
     postgresql
@@ -53,4 +54,5 @@
   # not big enough for their own modules
   home.file.".bin".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/bin";
   home.file.".tmux.conf".text = import ./tmux.nix;
+  home.file.".config/herdr/config.toml".text = import ./herdr.nix;
 }

@@ -1,0 +1,105 @@
+# Rift v0.5.10 — adapted from hosts/nixM1/configuration.nix.
+# See README.md for installation and differences from AeroSpace.
+
+[settings]
+default_disable = false
+focus_follows_mouse = true
+# Rift has no monitor-change-only pointer warp; avoid warping on every focus.
+mouse_follows_focus = true
+mouse_hides_on_focus = true
+animate = true
+hot_reload = true
+
+[settings.layout]
+mode = "scrolling"
+
+[settings.layout.gaps.outer]
+top = 0
+left = 0
+bottom = 0
+right = 0
+
+[settings.layout.gaps.inner]
+horizontal = 0
+vertical = 0
+
+[virtual_workspaces]
+enabled = true
+default_workspace_count = 10
+workspace_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+preserve_focus_per_workspace = true
+workspace_auto_back_and_forth = false
+
+[keys]
+# Preserve the existing Ghostty AppleScript, including opening a new terminal.
+"Alt + Enter" = { exec = ["/usr/bin/osascript", "-e", 'tell application "Ghostty"', "-e", "do script", "-e", "activate", "-e", "end tell"] }
+
+# Same directions as AeroSpace; Rift does not offer workspace-boundary wrapping.
+"Alt + J" = { move_focus = "left" }
+"Alt + K" = { move_focus = "down" }
+"Alt + L" = { move_focus = "up" }
+"Alt + Semicolon" = { move_focus = "right" }
+
+"Alt + Shift + J" = { move_node = "left" }
+"Alt + Shift + K" = { move_node = "down" }
+"Alt + Shift + L" = { move_node = "up" }
+"Alt + Shift + Semicolon" = { move_node = "right" }
+
+"Alt + F" = "toggle_fullscreen"
+"Alt + Shift + Space" = "toggle_window_floating"
+
+# Closest native layout controls: rotate the current container, toggle stacking.
+# Slash does not force tiles; Comma toggles a stack instead of cycling accordion.
+"Alt + Slash" = "toggle_orientation"
+"Alt + Comma" = "toggle_stack"
+
+# Native resize steps are proportional, not AeroSpace's fixed 50 pixels.
+"Alt + Minus" = { resize_window_shrink = "smart" }
+"Alt + Equal" = { resize_window_grow = "smart" }
+
+# Rift has no binding modes. Replace Alt+R then H/J/K/L with Ctrl+Alt+H/J/K/L.
+# H = narrower, J = taller, K = shorter, L = wider, as in the old resize mode.
+"Alt + Ctrl + H" = { resize_window_shrink = "horizontal" }
+"Alt + Ctrl + J" = { resize_window_grow = "vertical" }
+"Alt + Ctrl + K" = { resize_window_shrink = "vertical" }
+"Alt + Ctrl + L" = { resize_window_grow = "horizontal" }
+# Alt+H / Alt+V (split horizontal/vertical) and Alt+R are deliberately unbound:
+# v0.5.10 has no explicit split command or native resize-mode command.
+
+# Cycle monitor focus left-to-right, wrapping and keeping the destination workspace.
+"Alt + Tab" = { exec = ["/bin/bash", "-c", 'exec /bin/bash "$HOME/.config/rift/focus-next-monitor.sh"'] }
+
+# Approximation of "next monitor": move right, wrapping at the display edge.
+# Rift moves windows to the destination's same-numbered, display-local workspace.
+"Alt + Shift + Tab" = { move_workspace_to_display = { selector = "right", wrap_around = true } }
+
+# Rift indexes workspaces from zero; labels and physical shortcuts remain 1–10.
+"Alt + 1" = { switch_to_workspace = 0 }
+"Alt + 2" = { switch_to_workspace = 1 }
+"Alt + 3" = { switch_to_workspace = 2 }
+"Alt + 4" = { switch_to_workspace = 3 }
+"Alt + 5" = { switch_to_workspace = 4 }
+"Alt + 6" = { switch_to_workspace = 5 }
+"Alt + 7" = { switch_to_workspace = 6 }
+"Alt + 8" = { switch_to_workspace = 7 }
+"Alt + 9" = { switch_to_workspace = 8 }
+"Alt + 0" = { switch_to_workspace = 9 }
+
+# The shorthand keeps focus on the current workspace (follow = false).
+"Alt + Shift + 1" = { move_window_to_workspace = 0 }
+"Alt + Shift + 2" = { move_window_to_workspace = 1 }
+"Alt + Shift + 3" = { move_window_to_workspace = 2 }
+"Alt + Shift + 4" = { move_window_to_workspace = 3 }
+"Alt + Shift + 5" = { move_window_to_workspace = 4 }
+"Alt + Shift + 6" = { move_window_to_workspace = 5 }
+"Alt + Shift + 7" = { move_window_to_workspace = 6 }
+"Alt + Shift + 8" = { move_window_to_workspace = 7 }
+"Alt + Shift + 9" = { move_window_to_workspace = 8 }
+"Alt + Shift + 0" = { move_window_to_workspace = 9 }
+
+"Alt + Shift + C" = "reload_config"
+
+[settings.ui.menu_bar]
+enabled = true
+display_style = "label"
+active_label = "name"

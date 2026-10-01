@@ -1,0 +1,40 @@
+{
+  "providers": {
+    "spark": {
+      "baseUrl": "http://192.168.6.7:8000/v1",
+      "api": "openai-completions",
+      "apiKey": "sk-no-key-required",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "azampatti/Qwen3.8-Flash-Next-125B-A5B-INT4-AutoRound",
+          "name": "Qwen 3.8 Flash Next 125B A5B (Spark, 262k advisor)",
+          "reasoning": true,
+          "contextWindow": 262144,
+          "maxTokens": 32768
+        }
+      ]
+    },
+    "uwuntu": {
+      "baseUrl": "http://192.168.5.188:8001/v1",
+      "api": "openai-completions",
+      "apiKey": "!cat ~/.pi/agent/keys/uwuntu",
+      "compat": {
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false
+      },
+      "models": [
+        {
+          "id": "unsloth/Qwen3.8-27B-GGUF",
+          "name": "Qwen 3.8 27B (5090, 262k primary)",
+          "reasoning": true,
+          "contextWindow": 262144,
+          "maxTokens": 32768
+        }
+      ]
+    }
+  }
+}

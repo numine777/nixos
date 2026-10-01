@@ -14,6 +14,7 @@
     ../../modules/dev/nix.nix
     ../../modules/dev/python.nix
     ../../modules/programs/ubuntu-default.nix
+    ../../modules/programs/pi.nix
     ../../modules/desktop
     ../../modules/desktop/gtk.nix
     ../../modules/desktop/windowManagers/awesome.nix
@@ -58,6 +59,7 @@
         helix.enable = true;
       };
       programs = {
+        pi.enable = true;
         bottom.enable = true;
         irssi.enable = false;
         kitty.enable = true;

@@ -1,0 +1,10 @@
+{
+  "theme": "dark",
+  "packages": [
+    "npm:pi-web-kit",
+    "npm:pi-lsp-adapter",
+    "npm:pi-subagents"
+  ],
+  "defaultProvider": "uwuntu",
+  "defaultModel": "unsloth/Qwen3.8-27B-GGUF"
+}

@@ -2,6 +2,8 @@
   description = "My NixOS/Nix-Darwin Configurations";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/master";
+    # Update Pi independently of the desktop/editor package set.
+    nixpkgs-pi.url = "github:nixos/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";

@@ -16,6 +16,7 @@
     ../../modules/dev/python.nix
     ../../modules/dev/ocaml.nix
     ../../modules/programs/mac-default.nix
+    ../../modules/programs/pi.nix
     ../../modules/desktop/windowManagers/yabai.nix
   ];
 
@@ -24,6 +25,11 @@
     home.homeDirectory = "/Users/scott";
     home.username = "scott";
     home.stateVersion = "26.05";
+
+    # Rift is installed separately; keep its config editable like the other dotfiles.
+    home.file.".config/rift".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos/config/rift";
+
     modules = {
       desktop = {
         windowManager = {
@@ -48,6 +54,7 @@
         lsp.enable = true;
       };
       programs = {
+        pi.enable = true;
         bottom.enable = true;
         kitty.enable = false;
         alacritty.enable = false;
